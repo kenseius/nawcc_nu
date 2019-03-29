@@ -1,0 +1,16 @@
+---
+strapless: true
+employmentMaterial: true
+buttonText: Submit
+---
+
+{{#if fabricator}}
+    <div class="layout_grid col4">
+    {{#each strapless.colors as |buttonClass buttonText|}}
+        <button class="button {{buttonClass}}">{{@key}}</button>
+    {{/each}}
+    </div>
+    {{else}}
+    <button class="button {{buttonClass}}">{{buttonText}}</button>
+{{/if}}
+

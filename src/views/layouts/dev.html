@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{title}}</title>
+
+	{{#if fabricator}}<link rel="stylesheet" href="../assets/fabricator/styles/f.css">{{/if}}
+	<!-- strapless styles -->
+	<link rel="stylesheet" href="../assets/strapless/styles/strapless.css">
+
+	<!-- FONT AWESOME + GOOGLE FONTS  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
+</head>
+<body>
+	{{> svg}}
+
+	{{#if fabricator}}
+		{{> nav.strapless_topnav}}
+
+		{{> f-icons}}
+		{{> strapless-sidenav}}
+		{{> f-control-bar}}
+		<div class="f-container">
+	{{/if}}
+
+
+
+
+	{% body %}
+
+
+	{{#if fabricator}}
+		</div>
+		<script src="./assets/fabricator/scripts/f.js"></script>
+	{{/if}}
+
+	<!-- LOOKIT DIS CRAZY JS OMG! -->
+	<script src="./assets/strapless/scripts/strapless.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(event) {
+			Strapless.init();
+		});
+	</script>
+
+</body>
+</html>

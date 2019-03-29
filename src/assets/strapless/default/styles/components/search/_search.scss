@@ -1,0 +1,164 @@
+// ===========================================
+//
+//      SEARCH
+//      ....................
+//      - assumed to be nested within <form>
+//      - in order to place search button within search field,
+//        we wrap the input and button within the same container and style it to mimic an infput field
+//
+// ===========================================
+
+//  8. widths
+// ************************
+//  - for unique search widths, either wrap the search form in .search,
+//    or add .search to the form itself
+// ************************
+
+.search form,
+form.search { 
+    max-width: 64rem; 
+}
+
+
+//  8. pseudo-search wrapper
+// ************************
+//  - to place the search button within and to the right side of the search element
+//    we had to simulate the exterior of the ssearch input, to nest everything.
+//  - this works out well for keeping code tidy, because the search inputs are getting nested within forms anyway,
+//    may as well merge them.
+//  - usage:
+//
+//      <form class="pseudo-search">
+//          <input type="search">
+//          <label>
+//              <select>
+//          <label>
+//              <select>
+//          <button>
+//      </form>
+//
+// ************************
+
+.pseudo-search {
+
+    display: flex;
+    // TODO: non-flex fallback
+    // @include span(12 of 12);
+    border: 0.2rem solid $wht; // $gry
+    background: transparent;
+
+    @include anim($global-animation);
+    & > * {@include anim($global-animation);}
+
+    @media #{$medium-down} { display: block; @include clear(); }
+
+    //  forces equal heights - TODO: improve this
+    // ************************
+    input[type="search"], button, select, select > option { max-height: 3.157rem + $base-horizontal-small; }
+    input[type="search"], button, select > option { min-height: 3.157rem + $base-horizontal-small; }
+    select > option { line-height: 3.157rem  + $base-horizontal-small; vertical-align: middle; }
+
+    // search input
+    // ************************
+    & > input[type="search"] {
+        margin: auto;
+        padding: 1rem $base-vertical;
+        border:0;
+        color: $placholderTextcolor; // $gry
+        background-color: transparent;
+        &:active, &:active:hover,
+        &:focus, &:focus:active {background-color: $wht; color: $slate;}
+        @media #{$medium-down} { @include span(12 of 12); }
+    }
+
+    // search button
+    // ************************
+    button {
+        padding: 1em $base-vertical;
+        margin: auto 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: $placholderTextcolor;
+        @include hover() { color: $slate; background: $wht; } // color: $wht; background-color:$slate;
+        @media #{$medium-only} { @include span(4 of 12 last no-gutters); width: 33.3333333%; }
+        @media #{$small-only} { width: 20%; }
+    }
+
+    select {
+        @include clear();
+        @include span(4 of 12);
+        border: 0;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+        background-color: transparent;
+        color: $placholderTextcolor;
+
+        // each dropdown item
+        & > option {
+            color: $slate;
+            background-color: transparent;
+            &:disabled {color: $placholderTextcolor;} // work around for placeholder
+        }
+
+        // IE - hides default dropdown arrows
+        select::-ms-expand {display: none;}
+
+        @include triangle($placholderTextcolor);
+        background-position: 80% 50%;
+
+        @media #{$medium-down} { @include span(4 of 12 no-gutters);  width: 33.3333333%; }
+        @media #{$medium-only} { padding-left: $base-vertical; text-align: left; }
+        @media #{$small-only} {width: 40%; text-align: left; padding-left: $base-vertical; }
+
+    }
+
+    //  hover / focus backgrounds
+    // *****************************
+    //  - uses input states to trigger adjacent labels and button to also
+    //    have a white background when the search input has focus
+    // *****************************
+
+    // hover and focus states
+    // ************************
+    //  - when hovering over .psuedo-search, styles for select and the button
+    &:focus input ~ select,
+    &:hover input ~ select,
+    input[type="search"]:focus ~ button.fa,
+    input[type="search"]:checked ~ button.fa,
+    input[type="search"]:active ~ button.fa {
+        background-color:$wht;
+        color: $placholderTextcolor;
+        border-color: $wht;
+        @include hover() { color: $slate; &.fa {color: $slate;} }
+    }
+
+    // when the search input has focus, it will styles the select dropdowns
+    input[type="search"]:focus ~ select,
+    input[type="search"]:checked ~ select,
+    input[type="search"]:active ~ select {
+        background-color:$wht;
+        color: $placholderTextcolor;
+        @include triangle($slate);
+        background-position: 80% 50%;
+        @include hover() { color: $slate; @include triangle($slate); background-position: 80% 50%; }
+    }
+
+    // when the wrapper element is hovered, applies unified styles throughout
+    // ************************************************************************
+    @include hover() {
+        color: $placholderTextcolor;
+        border-color: $wht;
+        background: $wht;
+        select  {
+            color: $placholderTextcolor;
+            background-color: $wht;
+            @include triangle($slate);
+            background-position: 80% 50%;
+            @include hover() { @include triangle($slate); background-position: 80% 50%; }
+        }
+        input[type="search"] { color: $slate; }
+    }
+
+}

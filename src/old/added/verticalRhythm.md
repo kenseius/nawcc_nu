@@ -1,0 +1,35 @@
+
+<section>
+
+<h1>Vertical Rhythm</h1>
+<div class="col2">
+<div class="left">
+<h4>What is Vertical Rhythm?</h4>
+<p>"Vertical rhythm is the concept of keeping vertical spaces between elements consistent.</p>
+<p>It is incredibly important as it helps to create a visually relaxing experience, and evokes a feeling of familiarity to users." (<a href="http://typographyhandbook.com">typographyhandbook.com</a>)</p>
+<h4>Tools</h4>
+<ul>
+<li><a href="https://scotch.io/tutorials/aesthetic-sass-3-typography-and-vertical-rhythm" alt="Aesthetic SASS Typography and Vertical Rhythm">Aesthetic SASS Typography and Vertical Rhythm</a></li>
+<li><a href="https://zellwk.com/blog/why-vertical-rhythms/">Why Vertical Rhythms</a></li>
+<li><a href="https://medium.com/written-in-code/aligning-type-to-baseline-the-right-way-using-sass-e258fce47a9b#.tlts8s1zw">Aligning Type To Baseline The Right Way Using SASS</a></li>
+<li><a href="https://zellwk.com/blog/web-typography-broken/">Is Web Typography Broken?</a></li>
+<li><a href="http://csswizardry.com/2012/06/single-direction-margin-declarations/">Single Direction Margin Declarations</a></li>
+<li><a href="http://soqr.fr/vertical-rhythm/">Vertical Rhythm Calculator</a></li>
+</ul>
+<!-- <blockquote>
+<p>"It is incredibly important as it helps to create a visually relaxing experience, and evokes a feeling of familiarity to users."</p>
+<span><a href="http://typographyhandbook.com/">- http://typographyhandbook.com/</a></span>
+</blockquote> -->
+<blockquote>
+<p>"Investing a little bit of time into using a baseline grid and calculating font sizes based on a modular scale allows you to create aesthetic, consistent styles without the need for magic numbers or pixel-pushing."</p>
+<span>- <a href="https://scotch.io/tutorials/aesthetic-sass-3-typography-and-vertical-rhythm" alt="Aesthetic SASS Typography and Vertical Rhythm">Aesthetic SASS Typography and Vertical Rhythm</a></span>
+</blockquote>
+</div>
+<div class="right">
+<img src="{{baseurl}}/assets/fabricator/images/styleguide/vr.png" alt="Vertical Rhythm">
+</div>
+</div>
+<p data-height="800" data-theme-id="light" data-slug-hash="ZBKZjw" data-default-tab="css" data-user="painteractive" data-embed-version="2" data-pen-title="Vertical Rhythm" class="codepen"></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+</section>

@@ -1,0 +1,22 @@
+---
+notes: |
+
+ PNGs
+ As great as SVGs are, they aren't very portable on their own.
+ If there's any need to download the image for general use, a .png is the way to go.
+ Additionally, while there's no
+ To serve responsive images based on screensize, use `<img srcset="">` in conjunction with responsive styles and breakpoints
+
+ The files:
+  - pagovLogo.png - desktop
+  - pagovLogoMobile.png - mobile
+  - pagovLogo@2x.png - desktop retina
+  - pagovLogoMobile@2x.png - mobile retina
+
+ !issues TODO: `@` interfer with visual studio's Razor code
+
+---
+<img sizes="100vw"
+     srcset="/assets/toolkit/images/logo/pagovLogoMobile.png 375w,
+             /assets/toolkit/images/logo/pagovLogo.png 1500w"
+     alt="{{title}}" >

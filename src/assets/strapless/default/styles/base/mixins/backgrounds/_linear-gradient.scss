@@ -1,0 +1,7 @@
+// linear gradient
+@mixin linear-gradient($r,$g,$b,$a, $r_2, $g_2, $b_2, $a_2){
+        background-image: -webkit-linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+        background-image:    -moz-linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+        background-image:      -o-linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+        background-image:         linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+}

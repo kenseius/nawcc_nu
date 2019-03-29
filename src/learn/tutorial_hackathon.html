@@ -1,0 +1,185 @@
+<h1 id="how-to-build-the-hackathon">How To Build The Hackathon</h1>
+<p>Process: Mockup &gt; Website
+———————————————</p>
+<h2 id="table-of-contents">Table Of Contents</h2>
+<ol>
+<li>Layout: Hackathon</li>
+<li>Page: Home</li>
+<li>Build Materials<ol>
+<li>Topnav</li>
+<li>Hero<ul>
+<li>Image</li>
+<li>Parallax Effect</li>
+</ul>
+</li>
+<li>Dates<ul>
+<li>Cards</li>
+</ul>
+</li>
+<li>Location<ul>
+<li>Google Maps Embed</li>
+</ul>
+</li>
+<li>Stay Updated<ul>
+<li>CiviCRM integration</li>
+</ul>
+</li>
+<li>Special Thanks    </li>
+</ol>
+</li>
+<li>Add Brand Assets</li>
+<li>Write Docs</li>
+<li>Write Tutorial</li>
+</ol>
+<h2 id="in-depth-">In Depth:</h2>
+<h3 id="1-hackathon-layout">1: Hackathon Layout</h3>
+<p>Within <code>views/layouts/</code> I created a new file called <code>hackathon.html</code> by duplicating <code>default.html</code></p>
+<p>This is it&#39;s starting point:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;&quot;&gt;
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;title&gt;{{title}}&lt;/title&gt;
+
+    {{#if fabricator}}&lt;link rel=&quot;stylesheet&quot; href=&quot;./assets/fabricator/styles/f.css&quot;&gt;{{/if}}
+    &lt;!-- strapless styles --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./assets/strapless/styles/strapless.css&quot;&gt;
+
+    &lt;!-- FONT AWESOME + GOOGLE FONTS  --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+    {{&gt; svg}}
+
+    {{#if fabricator}}
+        {{&gt; nav.topnav}}
+
+        {{&gt; f-icons}}
+        {{&gt; f-menu}}
+        {{&gt; f-control-bar}}
+        &lt;div class=&quot;f-container&quot;&gt;
+    {{/if}}
+
+
+    {% body %}
+
+
+    {{#if fabricator}}
+        &lt;/div&gt;
+        &lt;script src=&quot;./assets/fabricator/scripts/f.js&quot;&gt;&lt;/script&gt;
+    {{/if}}
+
+    &lt;!-- LOOKIT DIS CRAZY JS OMG! --&gt;
+    &lt;script src=&quot;./assets/strapless/scripts/strapless.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        document.addEventListener(&quot;DOMContentLoaded&quot;, function(event) {
+            Strapless.init();
+        });
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>After 2.1:</p>
+<pre><code>
+</code></pre><h3 id="1-2-page-">1.2 Page:</h3>
+<pre><code>---
+layout: employment
+title: Hackathon
+subtitle: The Hackathon Subtitle
+navIconsOn: true
+---
+{{&gt; nav.topnav}}
+</code></pre><h3 id="2-1-build-materials-topnav">2.1. Build Materials: Topnav</h3>
+<p><em>Materials &gt; Topnav</em></p>
+<p>Goals:</p>
+<ul>
+<li>Template:<ul>
+<li>Use YAML and moustaches to template</li>
+<li>icon and non-icon version for the topnav</li>
+</ul>
+</li>
+<li>Temporary SVG Logo</li>
+<li>Create Hackathon YAML List of Topnav Links</li>
+<li><p>BONUS: Improve Upon Topnav Code:</p>
+<ul>
+<li>Explore New Mobile Nav Ideas<ul>
+<li>Replace <em>Back to top</em> with sidenav trigger</li>
+<li>BONUS: Replace Fabricator Sidenav HTML + CSS with Strapless</li>
+</ul>
+</li>
+<li>Markup</li>
+<li>SASS</li>
+</ul>
+</li>
+<li><p>This is our starting point:</p>
+</li>
+</ul>
+<pre><code>---
+title: Top Nav
+iconSpotlight: fa-star
+iconInterns:   fa-circle
+iconAboutPA:   fa-info-circle
+iconBenefits:  fa-thumbs-up
+iconVeterans:  fa-square-o
+---
+&lt;nav class=&quot;nav primary_navigation&quot; role=&quot;navigation&quot;&gt;
+    &lt;a class=&quot;logo&quot; href=&quot;#&quot;&gt;{{&gt; logos.paLogoEmployment}}&lt;/a&gt;
+    &lt;div class=&quot;links&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;&lt;i class=&quot;fa {{iconSpotlight}}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Spotlight&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;&lt;i class=&quot;fa {{iconInterns}}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Interns&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;&lt;i class=&quot;fa {{iconAboutPA}}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; About PA&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;&lt;i class=&quot;fa {{iconBenefits}}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Benefits&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;&lt;i class=&quot;fa {{iconVeterans}}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Veterans&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;a class=&quot;nav-trigger nav-open&quot;&gt;
+        &lt;div class=&quot;inner&quot;&gt;&lt;/div&gt;
+        &lt;span class=&quot;menulabel&quot;&gt;MENU&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/nav&gt;
+</code></pre><ol>
+<li>Our Cleaned Up Template, with updated <code>{{moustaches}}</code> and filler front-matter. Restart assemble with <code>npm start</code></li>
+</ol>
+<pre><code>---
+title: Top Nav
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+navMenuLabel: MENU
+---
+&lt;nav class=&quot;nav primary_navigation&quot; role=&quot;navigation&quot;&gt;
+    &lt;a class=&quot;logo&quot; href=&quot;#&quot;&gt;{{&gt; logos.paLogoEmployment}}&lt;/a&gt;
+    &lt;div class=&quot;links&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;
+            {{#if navIconsOn}}&lt;i class=&quot;fa {{navURLicon}}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;{{/if}}
+            {{navURLlabel}}
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;a class=&quot;nav-trigger nav-open&quot;&gt;
+        &lt;div class=&quot;inner&quot;&gt;&lt;/div&gt;
+        &lt;span class=&quot;menulabel&quot;&gt;{{navMenuLabel}}&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/nav&gt;
+</code></pre><p>Note: For the <code>{{#if navIconsOn}}</code> portion, <code>navIconsOn: true</code> will be specified in the page <code>views/home.html</code></p>
+<p>Real Quick, to test if it&#39;s working:</p>
+<pre><code>---
+layout: hackathon
+title: Hackathon
+subtitle: The Hackathon Subtitle
+navIconsOn: true
+---
+{{&gt; nav.topnav}}
+</code></pre><!-- TODO: Add screenshot -->
+<p>That done, we won&#39;t be using Icons in this project, so we&#39;ll leave this off.</p>
+<pre><code>---
+layout: hackathon
+title: Hackathon
+subtitle: The Hackathon Subtitle
+navIconsOn: false
+---
+{{&gt; nav.topnav}}
+</code></pre>

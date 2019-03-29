@@ -1,0 +1,27 @@
+<form class="search">
+    <div class="pseudo-search">
+
+        <!-- Search -->
+        <input placeholder="Search..." name="keywords" title="keywords" type="search" value="" {{#if search}}focus{{/if}}>
+
+        <!-- County - Select Dropdown -->
+        <label class="hidden" for="countyCode">County</label>
+        <select name="countyCode">
+            <option value="" disabled selected>County</option>
+            <option value="Perry">Perry</option>
+            <option value="Dauphin">Dauphin</option>
+        </select>
+
+        <!-- Gender - Select Dropdown -->
+        <label class="hidden" for="gender">Gender</label>
+        <select name="gender">
+            <option value="" disabled selected>Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+
+        <!-- Search Sumbit Button -->
+        <button class="fa fa-search" type="submit"></button>
+
+    </div>
+<form>

@@ -1,0 +1,118 @@
+// ===========================================
+//
+//      FORMS
+//      -----------------------
+//
+//      I. form - (this page)
+//          1. form
+//          2. optional
+//          3. CAPTCHA
+//
+//      II. labels - (forms/labels.scss)
+//
+//      III. inputs - (forms/inputs.scs)
+//          4. inputs - input, textarea, select
+//          5. textarea
+//          6. select
+//          7. placeholder text
+//
+//      IV. checkboxes - (forms/checkboxes.scss)
+//          9. checkbox
+//
+//      V.   formgroup - (forms/_formgroup.scss)
+//
+//      VI.  validation - (forms/_validation.scss)
+
+//      VII. search/search.scss
+//
+//      ...............
+//
+//      example markup structure
+//
+//      <form>
+//
+//          <label>
+//              Label
+//              <input>             (or textarea, select)
+//          </label>
+//
+//          <section .formgroup>
+//              <label>
+//                  Label
+//                  <input>         (or textarea, select)
+//              </label>
+//          </section>
+//
+//      </form>
+//
+// ===========================================
+
+//  1. form styles
+// ************************
+form:not(#aspnetForm), .form {
+
+    // clearfix
+    @include clear(); // TODO: is this the best clearfix solution?
+    clear: both; // required to prevent search form from covering everything... TODO: why does it do that?
+
+    display: block;
+    margin:auto;
+    &:not(.search) {max-width: $article-max-width;}
+    position: relative;
+    &.wide {max-width:$base-max-width;}
+    
+}
+
+form, form:not(#aspnetForm) {
+    h2, p {max-width: 100%;}
+    h2 { @include h2_styles; margin-bottom: 0; }
+    hr {margin-top: 1rem; margin-bottom: 1rem;} // TODO: remove this
+}
+
+//  2. OPTIONAL FORMGROUPS
+// ************************
+
+//  OPTIONAL -  for indicating optional fields in forms
+.optional {
+    color: lighten($slate,25%);
+    label {color: lighten($slate,25%) !important;} // using important, because it's intended to override boilded-in styles
+    &.instructions { margin:0 auto 1.3333rem; text-align:center; }
+}
+p.optional { // TODO: combine with  p.info
+    font-size: 77.77778%;
+    font-style: italic;
+    text-transform:none;
+    color: lighten($slate,25%);
+}
+label {
+    // "OPTIONAL" LABLE
+    span.optional {
+        font-size: small;
+        font-style: italic;
+        text-transform:none;
+        color: lighten($slate,25%);
+    }
+}
+
+// non-2col form instructions
+.formInfo {
+    margin:0 auto 1.3333rem; text-align:center;
+    // font-size: 77.77778%;
+    font-style: italic;
+    // text-transform:none;
+    text-align: left;
+    color: lighten($slate,25%);
+}
+
+
+
+//  3. CAPTCHA
+// ************************
+
+.g-recaptcha {margin-bottom: $base-horizontal-padding;}
+.g-recaptcha > div {max-width: $article-max-width; display: block; margin-left: auto; margin-right: auto;}
+
+
+// ============================
+//  the end. sincerely, FORMS
+// ============================

@@ -1,0 +1,21 @@
+<svg style="display: none;">
+    <symbol id="paLogoHackathon" viewBox="0 0 146.4 24">
+        <defs>
+            <style>
+            <![CDATA[
+                .logoTitle, .logoSubTitle {fill: #404040;}
+                .paKeystone .pa {fill: #fafafa;}
+                .logoTitle {font-family: 'Open Sans Condensed', sans-serif; font-size: 10.34px; font-weight: 700; text-transform: uppercase;}
+             ]]>
+            </style>
+        </defs>
+        <title>hackathon</title>
+        <g class="paKeystone">
+            <polygon class="hackathonKeystone" points="6.16 0 6.94 3.34 0 3.34 4.45 23.5 20.03 23.5 24.49 3.34 17.55 3.34 18.33 0 6.16 0"/>
+            <path class="pa" d="M9.13,14.45H7.8v3.6h-2V7.49H9.14c2.86,0,4.1,1.06,4.1,3.43s-1.15,3.53-4.11,3.53M9.07,9.21H7.8v3.52H9.05c1.51,0,2-.45,2-1.79s-.63-1.73-2-1.73" transform="translate(-1.5 -0.25)"/>
+            <path class="pa" d="M19.85,18.06l-.8-2.44H15.11l-.78,2.44h-2L15.78,7.49h2.66L22,18.06ZM17.07,9.47,15.61,14h2.92Z" transform="translate(-1.5 -0.25)"/>
+        </g>
+        <!-- logo text -->
+        <text class="logoTitle" transform="translate(28.68 15.69)">hackathon</text>
+    </symbol>
+</svg>

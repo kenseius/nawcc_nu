@@ -1,0 +1,42 @@
+---
+title: Materials
+fabricator: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+{{> heros.hero_Logo}}
+<!-- <h1 data-f-toggle="labels">Docs</h1> -->
+
+{{#each materials.brand.items}}
+    {{> f-item this}}
+{{/each}}
+
+<hr>
+<hr>
+<hr>
+
+{{#each materials.components.items}}
+    {{> f-item this}}
+{{/each}}
+
+<hr>
+<hr>
+<hr>
+
+{{#each materials.structures.items}}
+    {{> f-item this}}
+{{/each}}
+
+<hr>
+<hr>
+<hr>
+
+{{#each materials.projects.items}}
+    {{> f-item this}}
+{{/each}}

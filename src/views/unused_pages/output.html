@@ -1,0 +1,30 @@
+---
+title: Implement
+subtitle: STRAPLESS - OUTPUT
+layout: strapless
+fabricator: true
+output: true
+bodyClass: body_Output
+heroClass: hero_Output
+---
+{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_Output" }}
+
+<section class="introSection">
+	<div>
+		<div class="intro">
+			<h1>{{title}}</h1>
+		</div>
+		<div class="buttonBar buttonBarUXplaybook">
+			{{#each materials.output.items}}
+				<a class="iconButtonHyperlink" href="product.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+			{{/each}}
+		</div>
+	</div>
+</section>
+
+{{#each materials.output.items}}
+    {{> f-item this}}
+{{/each}}

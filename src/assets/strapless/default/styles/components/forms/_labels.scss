@@ -1,0 +1,21 @@
+// ===========================================
+//      FORMS - LABELS
+// ===========================================
+
+//  3. labels
+// ************************
+
+label {
+    display: block;
+    margin-bottom: $base-horizontal-padding;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    button, p {text-transform: none;}
+    font-size: small;
+    color: $slate;
+    @media #{$small-only} {
+        margin-bottom: $base-horizontal-small;
+         @include span(12 of 12);
+     }
+}

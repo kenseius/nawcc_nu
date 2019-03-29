@@ -1,0 +1,77 @@
+---
+title: Learn
+subtitle: STRAPLESS - Learn
+layout: strapless
+fabricator: true
+learn: true
+---
+{{> heros.hero_Logo SVG_xlink="straplessLogo"}}
+
+<main>
+
+<section class="introSection">
+	<div>
+		<div class="intro">
+			<h1>{{title}}</h1>
+			<p>Anything could be a product. An iPod, a toaster, a restaurant, or a government website. What they all share is the <span class="italic">user's experience</span>.</p>
+			<p>UX is central to product development, because <strong>UX is the product.</strong></p>
+		</div>
+		<div class="buttonBar buttonBarUXplaybook">
+			{{#each materials.learn.items}}
+				<a class="iconButtonHyperlink" href="product.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+			{{/each}}
+		</div>
+	</div>
+</section>
+
+	
+	<section class="introSection introDeliverables">
+		<h2>{{title}}</h2>
+		{{#each materials.learn.items}}
+		<div>
+			<div class="intro">
+				<p>{{name}}</p>
+			</div>
+			<div class="buttonBar buttonBarUXplaybook">
+			{{#if items}}
+				{{#each items}}
+					<a class="iconButtonHyperlink" href="product.html#{{@key}}">
+						<i class="fa fa-user"></i> 
+						<span>{{name}}</span>
+					</a>
+				{{/each}}
+				{{else}}
+				<a class="iconButtonHyperlink" href="product.html#{{@key}}">
+						<i class="fa fa-user"></i> 
+						<span>{{name}}</span>
+					</a>
+			{{/if}}
+			</div>
+		</div>
+		{{/each}}
+	</section>
+</main>
+
+{{#each materials.markdown.items}}
+	{{> f-item this}}
+{{/each}}
+
+{{#each materials.learn.markdown.items}}
+    {{> f-item this}}
+{{/each}}
+
+
+
+{{#each docs}}
+	<div class="f-item-group docs">
+		<article class="article" id="{{@key}}">
+			<!-- {{!--<h2 id="{{@key}}"><a href="#{{@key}}">{{name}}</a></h2>--}} -->
+			<h1 id="{{@key}}">{{name}}</h1>
+			{{> containers.metadata title=name metadata="Documentation"}}
+			{{{content}}}
+		</article>
+	</div>
+{{/each}}

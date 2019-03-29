@@ -1,0 +1,31 @@
+// ==========================
+//  
+//   Absconder's Most Wanted 
+//  -----------------------------
+//   - "About" section on the home page
+//
+// ==========================
+
+.about {
+    max-width: $article-max-width;
+    h1, h2, p {margin-bottom: $base-vertical;}
+    p {
+        font-family: $base-font;
+        line-height: 1.778rem;
+        &:last-of-type{margin-bottom: 0;}
+    }
+    // hyperlinks
+    a {
+        // appearance
+        display: inline-block;
+        padding: 2px 2px 0 2px;
+        border-bottom: 2px solid $gld;
+        color: $slate;
+        font-weight: bold;
+        @include hover() {background: $slate; color: $wht; border-bottom: 2px solid $slate;}
+        // &:hover {background: $slate; color: $wht; border-bottom: 2px solid $slate;}
+        // TODO: why doesn't the normal hover mixin work?
+        // @include hover() {background: $wht; color: darken($slate,15%);}
+    }
+
+}

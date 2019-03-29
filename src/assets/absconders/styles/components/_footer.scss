@@ -1,0 +1,229 @@
+// ==========================================
+//
+//      footer
+//      =======================
+//
+//      I. pa footer ("agency footer")
+//      II. AA Contact - Unique for AA
+//
+// ==========================================
+
+//  I. PA FOOTER
+// **********************
+.pa_footer {
+    @include container(100%);
+    width: 100%;
+    background: $slate;
+    position: relative;
+    overflow: hidden;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    // border-top: 3px solid $slate;
+    a {
+        color: $gry_muted;
+        @include hover(){color: $ylw;}
+    }
+    .pa_links {
+        border-top: 1px solid darken($slate,10%);
+        @include wrap($base-max-width, auto);
+        padding: $base-vertical-padding 0;
+        a, p {
+            @include type-setting(-1);
+            @media #{$small-only} { @include type-setting(0); }
+        }
+        img {
+            display: block;
+            width:span(2 of 12); //100%;
+            height: auto;
+            @include span(2 of 12);
+            // @include filter(invert(0.75));
+            @media #{$small-only} {display:none;}
+        }
+        ul {
+            list-style: none;
+            @include span(3.3333 of 12);
+            // white-space : nowrap;
+            li { &:first-child { color: $wht; font-weight: bold;} }
+            &:last-child { @include last; }
+            @media #{$small-only} {
+                @include span(12 of 12);
+                margin-bottom: $base-horizontal-small;
+                padding: 0 $base-horizontal-small;
+                &:last-child {margin-bottom: 0;}
+            }
+        }
+        @media #{$small-only} { padding: $base-horizontal-padding 2.269%; }
+    }
+    .pa_info {
+        @include wrap(100%, auto);
+        background: $blk;
+        padding: $base-horizontal-small;
+        div {
+            @include wrap($base-max-width, auto);
+            ul {
+                display: inline-block;
+                @include span(8 of 12);
+                @media #{$small-only} {@include span(12 of 12);}
+                li {@include type-setting(-1); text-align: right;}
+                li {
+                    @include span(3 of 12 no-gutters);
+                    border-left: solid 1px #666;
+                    //width: 22%;
+                    text-align: center;
+                    &:first-child {
+                        border-left: 0;
+                        text-align: left;
+                    }
+                    // padding-right: $base-horizontal-small;
+                    // padding-left: $base-horizontal-small;
+                    @media #{$small-only} {
+                        @include type-setting(0);
+                        border-left: 0;
+                        @include span(12 of 12);
+                        // padding-left: 2.269%;
+                        // padding-right: 2.269%;
+                        margin-bottom: $base-horizontal-small;
+                        text-align: left;
+                    }
+                }
+                @media #{$small-only} {
+                    @include span(12 of 12);
+                    padding-left: 2.269%;
+                    padding-right: 2.269%;
+                }
+            }
+            p {
+                @include span(4 of 12 last);
+                color: $gry_muted;
+                text-align: right;
+                @media #{$small-only} {
+                    @include span(12 of 12);
+                    padding-left: 2.269%;
+                    padding-right: 2.269%;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+}
+
+//  II. AA Contact
+// **********************
+
+%absc-contact {
+    @include container(100%);
+    width: 100%;
+    background: $gry_bold;
+    position: relative;
+    overflow: hidden;
+}
+
+%absc-contact-wrapper {
+    @include wrap($base-max-width, auto);
+    padding: $base-vertical-padding 0;
+    background: $gry_bold;
+    @media #{$medium-only} { padding: 3.157rem; }
+    @media #{$small-only} { padding: $base-horizontal-padding 2.269%; }
+}
+
+%absc-contact-col {
+    @include span(6 of 12);
+    &:last-child { @include last; }
+    @media #{$medium-down} {
+        @include span(12 of 12);
+        + %absc-contact-col {
+            margin-top: $base-horizontal-small;
+        }
+    }
+    @media #{$small-only} {
+        text-align: left;
+    }
+}
+
+%absc-contact-list-header {
+    @include type-setting(0);
+    text-transform: uppercase;
+    margin-bottom: $base-horizontal-padding;
+}
+
+%absc-contact-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+//easily change the dimensions in one spot.
+
+$icon-dimension: 50px;
+
+%absc-contact-item {
+    position: relative;
+    padding-left: $icon-dimension*1.5;
+    margin-bottom: $base-horizontal-small;
+    height: $icon-dimension;
+    + %absc-contact-item {
+        margin-top: $base-horizontal-small;
+    }
+    @media #{$small-only} {
+        padding-left: $icon-dimension*1.25;
+    } 
+}
+
+%absc-contact-item-icon {
+    &:first-of-type {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $slate;
+        color: $gry_bold;
+        border-radius: $icon-dimension;
+        @include type-setting(2);
+        height: $icon-dimension;
+        width: $icon-dimension;
+        line-height: $icon-dimension - 7px*2;
+        text-align: center;
+        margin-right: $icon-dimension/2;
+        padding: 7px;
+    }
+}
+
+%absc-contact-link {
+    @include type-setting(0);
+    line-height: $icon-dimension;
+    color: $slate;
+    @include hover(){
+        color: $gry_muted;
+    }
+    @media #{$small-only} { @include type-setting(0); }
+}
+
+
+//Compile all absc footer placeholders
+.absc_contact {
+    @extend %absc-contact;
+    &-wrapper {
+        @extend %absc-contact-wrapper;
+    }
+    &-col {
+        @extend %absc-contact-col;
+    }
+    h2 {
+        @extend %absc-contact-list-header;
+    }
+    ul {
+        @extend %absc-contact-list;
+    }
+    li {
+        @extend %absc-contact-item;
+    }
+    .fa {
+        @extend %absc-contact-item-icon;
+    }
+    a {
+        @extend %absc-contact-link;
+    }
+}

@@ -1,0 +1,15 @@
+// most things will live inside this base-wrapper
+// should also contain width / max-width...
+@mixin base-wrapper($padding: $base-vertical-padding, $paddingMobile: $base-vertical-padding-small) {
+    display: block;
+    position: relative;
+    padding-top: $padding;
+    padding-bottom: $padding;
+    @include clear();
+
+    @media #{$small-only} {
+        padding-top : $paddingMobile;
+        padding-bottom : $paddingMobile;
+    }
+}
+// .wrapper {@include base-wrapper();}

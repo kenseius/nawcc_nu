@@ -1,0 +1,279 @@
+// ===========================================
+//
+//       VIII. FORMS - VALIDAtION
+//
+// ===========================================
+
+//  1. validation icons mixin
+// ****************************
+//  - used here to avoid repeating code
+//  - there's no need to place it in _mixins, since it's only used on this page
+// ****************************
+
+    @mixin validation-icons($valid-icon-color) {
+        display:block;
+        margin: auto;
+        flex-grow: 1;
+        position: relative;
+        &::after {
+            display: block;
+            margin:auto;
+            position: absolute;
+            top: -2.75rem;
+            right: 1rem;
+            font-family: FontAwesome;
+            // content: '\f058';
+            font-size: 1.75rem;
+            color: $valid-icon-color;
+            @include anim(all 0.3s ease-in-out);
+        }
+    }
+
+//  1. validation - method I
+// ****************************
+//  -  css + html
+// ****************************
+
+/*
+    TODO: fix this - it isn't working with the mcv validation just yet
+
+input,
+// select,
+textarea {
+
+    // validation styles
+
+    // ****************************
+    // NOTE: .complete is the check / X that appears in the input:
+    //  label
+    //      input
+    //      span.complete
+    // ****************************
+
+    .help, .complete { display:none; font-size:90%; @include anim(all 0.3s ease-in-out);}
+
+    // pre-interaction styles
+    // &:required
+    &:optional,
+    &:invalid   { background:$wht; border: 0.2rem solid $wht; }
+
+    // invalid input only triggers for fields with :focus
+    &:focus, &:active {
+
+        // background-color:$wht;
+        border: 0.2rem solid $slate;
+
+        // &:valid,   &:in-range     { background-color:$wht; border-color: $gryslvr; }
+        &:invalid, &:out-of-range { background-color:$wht; }
+
+        // validation icons
+        &:valid + .complete,
+        &:valid   { &::after { content: '\f058'; } }
+        // &:invalid + .complete { &::after { content: '\f057'; } }
+
+        // &:valid + .complete, .help, or .validation-summary-valid
+        &:disabled,
+        &:valid,
+        &:valid + .complete { background-color: $gry; border-color: $gryslvr; @include validation-icons( lighten($slate,20%) ); }
+
+        // invalid (sometimes equal to default input styles)
+        &:invalid,
+        &:invalid + .complete { background-color: $wht;                         @include validation-icons( $red ); }
+
+        // &:valid + .complete {   background:       $gry; border-color: $gryslvr; @include validation-icons( lighten($slate,20%) ); }
+        // &:invalid + .complete { background-color: $wht;                         @include validation-icons( $red ); }
+
+        // hover styles this breaks
+        // &:valid, &:invalid {
+        //     @include hover() { border-color: $slate; color: $slate; }
+        // }
+
+    }
+
+    // after :focus, if valid
+    &:disabled,
+    &:in-range,
+    // &:valid
+    &:visited:valid
+    { background-color:$gry; border-color: $gryslvr; }
+    // &:valid + .complete    { &::after { content: '\f058'; } } // validation icons
+    // &:valid + .complete    { @include validation-icons( lighten($slate,20%) ); border-color:$gryslvr; }
+
+    // style the validation popup
+    &::-webkit-validation-bubble-message {padding: 1em;}
+
+    // helper text
+    // .help {position: relative;}
+    // &:focus + .help {display:inline-block;}
+
+}
+
+*/
+
+.socialMedia {
+    input:optional {
+        &:focus, &:active {
+
+            // background-color:$wht;
+            // border: 0.2rem solid $slate;
+            border-style: solid;
+            border-width: 0.2rem;
+            border-left-color:      $wht;
+            border-right-color:     $gryslvr;
+            border-top-color:       $gryslvr;
+            border-bottom-color:    $gryslvr;
+
+            // &:invalid, &:out-of-range { background-color:$wht; }
+
+            // validation icons
+            // &:valid + .complete   { &::after { content: '\f058'; } }
+
+            // &:valid + .complete, .help, or .validation-summary-valid
+            &:valid {
+                background-color:             $gry;
+                border-left-color:      $wht;
+                border-right-color:     $gryslvr;
+                border-top-color:       $gryslvr;
+                border-bottom-color:    $gryslvr;
+                // @include validation-icons( lighten($slate,20%) );
+            }
+            &:valid + .fa {
+                background-color:             $gry;
+                border-left-color:      $gryslvr;
+                border-right-color:     $wht;
+                border-top-color:       $gryslvr;
+                border-bottom-color:    $gryslvr;
+            }
+            // hover styles
+            &:valid, &:invalid {
+                @include hover() { border-color: $slate; color: $slate; }
+            }
+
+        }
+        &:valid + .complete    {
+            border-left-color:      $wht;
+            border-right-color:     $gryslvr;
+            border-top-color:       $gryslvr;
+            border-bottom-color:    $gryslvr;
+        }
+        &:valid + .fa    {
+            background:             $gry;
+            border-left-color:      $gryslvr;
+            border-right-color:     $wht;
+            border-top-color:       $gryslvr;
+            border-bottom-color:    $gryslvr;
+        }
+    }
+}
+
+//  1. validation - method II
+// ****************************
+//  -  uses js plugins (TODO: what arew the plugins?)
+// ****************************
+
+// grey background, segmented inner-form containers
+label.valid,
+.valid {
+    position : relative;
+    &::after {
+        position : absolute;
+        top: 3.1rem;
+        right: .8rem;
+        font-family: FontAwesome;
+        content: '\f058';
+        border-color:$gryslvr;
+        font-size: 1.75rem;
+        color : $valid;
+        //opacity : .7;
+        background-color: $gry;
+        padding: 0 5px;
+    }
+    //.chosen-container is for the chosen multi-select plugin
+    input, select, textarea, div.chosen-container, div.chosen-container ul {
+            background: $gry;
+            border-color: $gryslvr;
+    }
+}
+
+// TODO: should this be here? there's validation.scss... are these the same... ?
+.validation-wrapper {
+    display : none;
+    margin-bottom : 2em;
+
+    p {
+        padding: 0.9rem;
+    }
+
+    .field-validation-error {
+        display: block;
+        // margin-left: 1em;
+        margin: 1rem;
+        padding-bottom: 0.3333rem;
+        color: lighten($slate,25%);
+    }
+}
+
+// validation message - this can be assigned to a p, and razor's output is a span (TODO: merge these, remove span)
+.field-validation-error {
+
+    display: block;
+    @include type-setting(0);
+    text-transform: none;
+    padding: $base-font-size;
+    background: $red;
+    color: $wht;
+    // border-left:$red solid 0.2rem;
+    // margin-bottom: $base-horizontal-padding;
+
+    // > span {
+        // &:before {
+        //     margin-right: 0.5rem;
+        //     content: "\2022";
+        // }
+    // }
+}
+
+// styling input itself where there's an error
+.input-validation-error {border-color:$red;}
+
+// validation - related: used in _forms (input fields) & _wizard
+// used for validation summary that appears at the top of the form after submission if there's validation errors
+
+.validation_message {
+    border-left:$red solid 0.2rem;
+
+    .validation-wrapper { display : block; }
+    p {
+        display: block;
+        @include clear();
+        margin: 0 auto 1.3333rem;
+        color: $red; //  lighten($slate,25%);
+    }
+    .error-alert { display: block; @include span(11 of 12 last); }
+    i {
+        @include span(1 of 12);
+        color: $red;
+        font-size:1.6667rem;
+        // &.fa-warning {color: $red;}
+    }
+    ul {
+        list-style: disc;
+        list-style-position: outside;
+        display:block;
+        margin: 0 0 1.77778rem;
+        padding-left: 2.369rem;
+        COLOR: $slate;
+        li {line-height: 1.77778rem;}
+    }
+    @media #{$small-only} {
+        ul { padding-left: 1.3333rem; }
+        i {font-size: 1rem; padding-right: 0; padding-top: 0.33333rem;}
+    }
+}
+
+
+// validation for submit a tip
+// .field-validation-error,
+.validation-summary-errors {
+    color: $red;
+}

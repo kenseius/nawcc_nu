@@ -1,0 +1,41 @@
+---
+title: Home
+subtitle: NAWCC
+layout: layout_webAppStandards_nested
+fabricator: false 
+ui_content: false
+ui_toolkit: false
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: star
+material_icons: true
+fontAwesome_icons: false
+
+bodyClass: demo
+heroClass: home_hero
+navMenuLabel: Menu
+
+---
+
+<link rel="stylesheet" href="{{baseurl}}/assets/fabricator/styles/f.css">
+
+{{> heros.hero heroClass="home_hero"}}
+
+<div class="f-menu f-menu-active">
+{{> sidenav.sidebar_nav}}
+</div>
+<main class="layout_grid col3 f-container">
+    {{> cards.card cardClass="gry"}}
+    {{> cards.card cardClass="gry"}}
+    {{> cards.card cardClass="gry"}}
+</main>
+
+{{> containers.paFooter}}
+

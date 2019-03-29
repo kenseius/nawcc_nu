@@ -1,0 +1,487 @@
+<h1 id="tutorial">Tutorial</h1>
+<p>For our second Tutorial, we&#39;ll be updating the <strong>Table Of Contents</strong>.</p>
+<p>The old <strong>Table Of Contents</strong> (ToC) was written in static HTML, the hoverStyles are incorrect, and the CSS doesn&#39;t seem to render correctly under &#39;Components&#39;. (Since we have more sections to add now, we&#39;ll need to adjust the styles regardless. Conveniently, both the layout and the appearance are controlled from the same block of code.</p>
+<p>Here&#39;s what we&#39;ll be working on:</p>
+<p>Styling:</p>
+<ul>
+<li>create a new SASS partial (<code>assets/toolkit/styles/_TableOfContents.scss</code>) for ToC</li>
+<li>style fixes</li>
+<li>layout fixes</li>
+</ul>
+<p>Auto-Generation</p>
+<ul>
+<li>create a new HTML partial (<code>material</code>) for ToC</li>
+<li>use <code>data</code> to programmatically generate the content</li>
+<li>use handlebars to summon the ToC (<code>{{&gt; TableOfContents}}</code>) back into the Overview page (<code>views/index.html</code>)</li>
+</ul>
+<h2 id="styling">Styling</h2>
+<h3 id="create-a-new-sass-partial">Create A New SASS Partial</h3>
+<p>Here&#39;s the code we&#39;re working with.</p>
+<pre><code class="lang-css">article {
+    &amp;.tableofcontents {
+        a {
+            background: none;
+            @include hover() {background: $ylw;}
+        }
+        max-width: $base-max-width;
+        @include layout(4 0.333 after fluid border-box);
+        @include clear();
+        header {
+            @include span(12 of 12);
+            .meta {max-width: $base-max-width;}
+        }
+        ul {
+            margin-bottom: $base-horizontal-padding;
+            @include span(1 of 4);
+            &amp;:nth-child(4) {@include last;}
+            &amp;:last-child {
+                @include span(4 of 4);
+                li {
+                    @include span(1 of 4);
+                    &amp;:first-child {@include span(4 of 4);}
+                    &amp;:nth-child(4n+4) {@include last;}
+                }
+            }
+            @media #{$medium-only} {
+                @include span(2 of 4);
+                &amp;:nth-child(even) {@include last;}
+                &amp;:last-child {
+                    @include span(4 of 4);
+                    li{
+                        @include span(2 of 4);
+                        &amp;:first-child {@include span(4 of 4);}
+                        &amp;:nth-child(even) {@include last;}
+                    }
+                }
+            }
+            @media #{$small-only} {
+                @include span(4 of 4);
+                &amp;:last-child {
+                    li {@include span(4 of 4);}
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>To start, we&#39;ll want to unnest it from <code>article</code>, so we can reuse it anywhere, just by applying the class <code>.TableOfContents</code> (I also capitalized the words in the class, for consistency.)</p>
+<p>First things, first: we need to create a new partial.</p>
+<p>Navigate to the SASS directory (<code>assets/toolkit/styles/</code>), and add a new file to the <code>assets/toolkit/styles/components/</code> directory. Name it <code>_TableOfContents.scss</code>.</p>
+<p>Note:</p>
+<ol>
+<li>Remember to add this component to <code>styles/toolkit.scss</code>.
+It can be added anywhere after the /base/ styles. Let&#39;s add it to the bottom of the Components list.</li>
+<li>The underscore in the name for the SASS partial tells the compiler not to compile the partial on its own (in which case, instead of everything compiling to just <code>toolkit.css</code>, it would output an extra <code>TableOfContents.css</code> file)</li>
+</ol>
+<p>--</p>
+<p>Update:</p>
+<p>We&#39;ll need to update the SCSS, as grids must be nested within an additional wrapper. (When using floats for layout. Alternatively, flexbox wouldn&#39;t require an extra wrapping component.)</p>
+<p>Here&#39;s the new snippet:</p>
+<pre><code>// Table Of Contents
+// ==========================
+.tableOfContents {
+    background: $wht;
+    padding: $base-vertical-padding 0;
+    .tableOfContents_grid {
+        max-width: $base-max-width;
+        margin: auto;
+        @include layout(4 0.333 after fluid border-box);
+        @include clear();
+        header, h2, .meta, .meta_article {@include span(4 of 4); max-width: $base-max-width;}
+        a {
+            background: none;
+            @include hover() {background: $ylw;}
+        }
+        ul {
+            @include clear();
+            margin-bottom: $base-horizontal-padding;
+            min-height: 300px;
+            list-style-position: inside;
+            @include span(1 of 4);
+            li {list-style-position: inside; margin: 0; padding: 0;}
+            li:first-child {
+                list-style: none;
+                strong {
+                    @include type-setting(1);
+                    padding-bottom: 1.333rem;
+                }
+                margin-bottom: 1.333rem;
+                border-bottom: 2px solid $gry;
+            }
+            &amp;:nth-child(4n) {@include last;}
+            // &amp;:last-child {
+            //     @include span(4 of 4);
+            //     li {
+            //         @include span(1 of 4);
+            //         &amp;:first-child {@include span(4 of 4);}
+            //         &amp;:nth-child(4n+4) {@include last;}
+            //     }
+            // }
+            @media #{$medium-only} {
+                @include span(2 of 4);
+                &amp;:nth-child(even) {@include last;}
+                // &amp;:last-child {
+                //     @include span(4 of 4);
+                //     li{
+                //         @include span(2 of 4);
+                //         &amp;:first-child {@include span(4 of 4);}
+                //         &amp;:nth-child(even) {@include last;}
+                //     }
+                // }
+            }
+            @media #{$small-only} {
+                @include span(4 of 4);
+                // &amp;:last-child {
+                //     li {@include span(4 of 4);}
+                // }
+            }
+        }
+    }
+}
+</code></pre><p>It needs a little cleaned up.</p>
+<pre><code class="lang-css">.tableOfContents {
+    background: $wht;
+    padding: $base-vertical-padding 0;
+    .tableOfContents_grid {
+        max-width: $base-max-width;
+        margin: auto;
+        @include layout(4 0.333 after fluid border-box);
+        @include clear();
+        header, h2, .meta, .meta_article {@include span(4 of 4); max-width: $base-max-width;}
+        a { background: none; @include hover() {background: $ylw;} }
+        ul {
+            @include clear();
+            margin-bottom: $base-horizontal-padding;
+            min-height: 300px;
+            list-style-position: inside;
+            @include span(1 of 4);
+            li {list-style-position: inside; margin: 0; padding: 0;}
+            li:first-child {
+                list-style: none;
+                margin-bottom: 1.333rem;
+                border-bottom: 2px solid $gry;
+                strong { @include type-setting(1); padding-bottom: 1.333rem; }
+            }
+            &amp;:nth-child(4n) {@include last;}
+            @media #{$medium-only} { @include span(2 of 4); &amp;:nth-child(even) {@include last;} }
+            @media #{$small-only} { @include span(4 of 4); }
+        }
+    }
+}
+</code></pre>
+<p>There we go. So, let&#39;s look at our frontpage:</p>
+<pre><code class="lang-markdown">
+&lt;section class=&quot;tableOfContents&quot;&gt;
+
+## Table Of Contents
+
+&lt;section class=&quot;meta meta_article&quot;&gt;
+    &lt;p&gt;Metadata&lt;/p&gt;
+    &lt;p class=&quot;meta_right&quot;&gt;November 23, 2016&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;tableOfContents_grid&quot;&gt;
+
+- **Build + Prototype**
+- Data (Yaml)
+- Partials (Handlebars)
+- Front-matter
+- Gulp
+- /dist/
+- Components
+
+
+- **Frontend Assets**
+- SASS
+- Images
+- JS
+
+
+- **Docs**
+- Markdown
+- Notes (materials)
+- How to:
+ -  Start
+ -  Style
+ -  Build
+ -  Modify
+ -  Write Docs
+
+
+- **Integration**
+- Insertion points
+- Front-matter
+- Frontend Frameworks:
+ - Foundation
+ - Bootstrap
+- CMS
+ - Wordpress
+ - Sharepoint
+ - Drupal
+
+
+- **Output For Partner**
+- Styleguide
+- Pages
+- Hide internal documentation and code  
+
+
+- **Central Base**
+- Modular Scale
+- Vertical Rhythm
+- Grid
+- Widths
+- Alignment
+- Output to single base.scss file
+
+
+- **Unified Variables**
+- SASS variables
+- Wireframes Template
+- P5 Template
+- Xd Template
+- Sketch Template
+
+
+- **Best Practices**
+- Accessability
+- Cross-platform, Device-agnostic, Responsiveness
+- Semantics
+
+
+- **Atomic Design**
+- Build modularly, and unify across the board
+ - HTML5
+ - CSS3
+ - Brand Assets
+
+
+- **Code**
+- Standards
+- Nomenclature
+- File Structure
+- Dependencies
+- Javascript
+
+
+- **DRY**
+- Don&#39;t Repeat Yourself
+- mixins
+- materials &amp; prototyping
+
+
+- **Sites**
+- Styles, HTML5, Javascript
+- Use Templates to only display Relevant Materials
+- Downloads
+- pa.gov (default)
+- Employment
+- Most Wanted Absconders
+- SCND
+
+
+- **Additional Resources**
+- Checklists
+- References
+
+&lt;/div&gt;
+
+&lt;/section&gt;
+</code></pre>
+<p>As you can tell, it&#39;s written in markdown, which outputs to HTML, which is what our SCSS is styling.</p>
+<p>And this would be all well and good, except that it&#39;s outpu is atic.</p>
+<p>--</p>
+<h2 id="auto-generation">Auto-Generation</h2>
+<h3 id="data">DATA</h3>
+<p>Here&#39;s the data we&#39;ll be working with. It&#39;s just copied from a list, without any modifications yet.</p>
+<pre><code>Build + Prototype
+
+    Data (Yaml)
+    Partials (Handlebars)
+    Front-matter
+    Gulp
+    /dist/
+    Components
+
+Frontend Assets
+
+    SASS
+    Images
+    JS
+
+Docs
+
+    Markdown
+    Notes (materials)
+    How to:
+    Start
+    Style
+    Build
+    Modify
+    Write Docs
+
+Integration
+
+    Insertion points
+    Front-matter
+    Frontend Frameworks:
+    Foundation
+    Bootstrap
+    CMS
+    Wordpress
+    Sharepoint
+    Drupal
+
+Output For Partner
+
+    Styleguide
+    Pages
+    Hide internal documentation and code
+
+Central Base
+
+    Modular Scale
+    Vertical Rhythm
+    Grid
+    Widths
+    Alignment
+    Output to single base.scss file
+
+Unified Variables
+
+    SASS variables
+    Wireframes Template
+    P5 Template
+    Xd Template
+    Sketch Template
+
+Best Practices
+
+    Accessability
+    Cross-platform, Device-agnostic, Responsiveness
+    Semantics
+
+Atomic Design
+
+    Build modularly, and unify across the board
+    HTML5
+    CSS3
+    Brand Assets
+
+Code
+
+    Standards
+    Nomenclature
+    File Structure
+    Dependencies
+    Javascript
+
+DRY
+
+    Don&#39;t Repeat Yourself
+    mixins
+    materials &amp; prototyping
+
+Sites
+
+    Styles, HTML5, Javascript
+    Use Templates to only display Relevant Materials
+    Downloads
+    pa.gov (default)
+    Employment
+    Most Wanted Absconders
+    SCND
+</code></pre><p>Right now, it won&#39;t within a <code>.yml</code> file.  So we have to do some fixes. Here&#39;s what we get:</p>
+<pre><code>Build + Prototype:
+  - Data (Yaml)
+  - Partials (Handlebars)
+  - Front-matter
+  - Gulp
+  - /dist/
+  - Components
+
+Frontend Assets:
+  - SASS
+  - Images
+  - JS
+
+Docs
+  - Markdown
+  - Notes (materials)
+  - How to:
+    - Start
+    - Style
+    - Build
+    - Modify
+    - Write Docs
+
+Integration
+  - Insertion points
+  - Front-matter
+  - Frontend Frameworks:
+    - Foundation
+    - Bootstrap
+  - CMS
+    - Wordpress
+    - Sharepoint
+    - Drupal
+
+Output For Partner
+  - Styleguide
+  - Pages
+  - Hide internal documentation and code
+
+Central Base
+
+    Modular Scale
+    Vertical Rhythm
+    Grid
+    Widths
+    Alignment
+    Output to single base.scss file
+
+Unified Variables
+
+    SASS variables
+    Wireframes Template
+    P5 Template
+    Xd Template
+    Sketch Template
+
+Best Practices
+
+    Accessability
+    Cross-platform, Device-agnostic, Responsiveness
+    Semantics
+
+Atomic Design
+
+    Build modularly, and unify across the board
+    HTML5
+    CSS3
+    Brand Assets
+
+Code
+
+    Standards
+    Nomenclature
+    File Structure
+    Dependencies
+    Javascript
+
+DRY
+
+    Don&#39;t Repeat Yourself
+    mixins
+    materials &amp; prototyping
+
+Sites
+
+    Styles, HTML5, Javascript
+    Use Templates to only display Relevant Materials
+    Downloads
+    pa.gov (default)
+    Employment
+    Most Wanted Absconders
+    SCND
+</code></pre>

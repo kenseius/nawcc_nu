@@ -1,0 +1,36 @@
+// ==========================
+//  
+//   Hyperlinks 
+//  -----------------------------
+//   - for styling hyperlinks on a global level 
+//   - or, styling exceptions to global a styles
+//
+// ==========================
+
+// hyperlinks
+$hyperlink_Color: $bludrk;
+
+*:not(.nav):not(.links):not(.accordion_sidenav):not(.sidenav_header):not(.pagination):not(.buttonList):not(.tabs):not(.tableOfContents):not(.accordion):not(.results) > a:not(.button):not(.nav-tile) {
+    display: inline-block;
+    padding: 1.333px 1.333px 0;
+    border-bottom: 1.333px solid $hyperlink_Color;
+    color: $hyperlink_Color;
+    @include hover() {background: $hyperlink_Color; color: $wht;}
+}
+
+
+// old: delete this probably
+
+// a {
+//     color: $bluer;
+//     background: lighten($ylw,25%); 
+//     color: $slate;
+//     @include hover() {background: $wht; color: darken($slate,15%);}
+//     border-bottom: 2px solid $ylw; color: $slate;
+//     color: $slate;
+//     &.underline {
+//         text-decoration: underline;
+//     }
+//     @include hover() {background-color: $ylw; color: darken($slate,15%);}
+// }
+

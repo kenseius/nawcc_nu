@@ -1,0 +1,595 @@
+// ===============================================
+//
+//      MIXINS
+//     ..................
+//
+//      clearfix
+//      animate
+//          transitions
+//              anim
+//              anim_multi
+//              anim_multi_3
+//              anim_multi_4
+//          transforms
+//          animation
+//          keyframes
+//      filter
+//      interaction
+//          hover
+//          hover_only
+//          hover_visited
+//          hover-style
+//      links
+//      box-sizing
+//      box-shadow
+//      centering
+//          content_centered
+//          absolute_center
+//          center - 1
+//          center - 2
+//      breakpoints
+//      grid
+//      border-radius
+//      font-smoothing
+//      hidden
+//      navigation-list
+//      flexbox
+//      rgba
+//      linear-gradient
+//      backgrounds
+//          bg-all
+//          bg-url
+//          bg
+//          bg-no_url
+//          bg-size
+//      padding
+//          padded (top, right, bottom, left)
+//          padding (top + bottom, left + right)
+//      wrappers / containers
+//          wrap
+//          base-container
+//          global-container
+//          base-wrapper
+//          wrapper
+//          wrapper-pad
+//      titles
+//          title
+//          h2_styles
+//      triangle
+//
+// ===============================================
+
+
+/* .clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }*/
+
+@mixin clear() {
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {clear: both;}
+}
+
+// TRANSITIONS
+// -----------------------------
+
+// one transition
+@mixin anim($animation) {
+   -webkit-transition: $animation;
+      -moz-transition: $animation;
+        -o-transition: $animation;
+           transition: $animation;
+}
+
+// two transitions
+@mixin anim_multi($animation, $animation_2) {
+   -webkit-transition: $animation, $animation_2;
+      -moz-transition: $animation, $animation_2;
+        -o-transition: $animation, $animation_2;
+           transition: $animation, $animation_2;
+}
+
+// 3 transitions
+@mixin anim_multi_3($animation, $animation_2, $animation_3) {
+   -webkit-transition: $animation, $animation_2, $animation_3;
+      -moz-transition: $animation, $animation_2, $animation_3;
+        -o-transition: $animation, $animation_2, $animation_3;
+           transition: $animation, $animation_2, $animation_3;
+}
+
+// 4 transitions
+@mixin anim_multi_4($animation, $animation_2, $animation_3, $animation_4) {
+   -webkit-transition: $animation, $animation_2, $animation_3, $animation_4;
+      -moz-transition: $animation, $animation_2, $animation_3, $animation_4;
+        -o-transition: $animation, $animation_2, $animation_3, $animation_4;
+           transition: $animation, $animation_2, $animation_3, $animation_4;
+}
+
+// TRANSFORMS
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+       -moz-transform: $transform;
+        -ms-transform: $transform;
+         -o-transform: $transform;
+            transform: $transform;
+}
+
+// ANIMATIONS
+@mixin animation($content) {
+  -webkit-animation: $content;
+     -moz-animation: $content;
+          animation: $content;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} { @content; }
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+}
+
+
+// FILTERS
+@mixin filter($filter) {
+    -webkit-filter:$filter;
+            filter:$filter;
+}
+
+// HYPERLINKS
+// ----------------------
+
+// MOBILE NO-HOVER MIXIN
+@mixin hover() {
+    [data-whatinput="touch"] &:focus,
+    [data-whatinput="touch"] &:active,
+    [data-whatinput="mouse"] &:focus,
+    [data-whatinput="mouse"] &:active,
+    [data-whatinput="mouse"] &:hover {@content;}
+}
+
+// MOBILE NO-HOVER MIXIN - JUST :HOVER
+@mixin hover_only() { [data-whatinput="mouse"] &:hover {@content;} }
+
+
+// MOBILE NO-HOVER MIXIN - W/ VISITED
+@mixin hover_visited() {
+    [data-whatinput="touch"] &:visited,
+    [data-whatinput="touch"] &:focus,
+    [data-whatinput="touch"] &:active,
+    [data-whatinput="mouse"] &:visited,
+    [data-whatinput="mouse"] &:focus,
+    [data-whatinput="mouse"] &:active,
+    [data-whatinput="mouse"] &:hover {@content;}
+}
+
+// LINKS
+@mixin links ($link, $visit, $hover, $active) {
+  a {
+    color: $link;
+    &:visited {color: $visit;}
+    &:hover {color: $hover;}
+    &:active {color: $active;}
+  }
+}
+
+// A TAGS - VARIABLES AS SELECTORS
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
+// usage
+// .class {
+//   #{$a-tags} { color: red; text-decoration: none; }
+// }
+// #{$a-tags-hover} { color: blue; }
+
+// HOVER STYLE
+@mixin hover-style($color) {
+  &:hover { background: lighten($color, 3%); }
+}
+
+
+// BOX SIZING
+@mixin box-sizing($box-size) {
+    -webkit-box-sizing: $box-size;
+       -moz-box-sizing: $box-size;
+            box-sizing: $box-size;
+}
+
+// BOX SHADOW
+@mixin box-shadow($boxshadow) {
+    -webkit-box-shadow: $boxshadow;
+       -moz-box-shadow: $boxshadow;
+            box-shadow: $boxshadow;
+}
+
+// CENTERED
+@mixin content-centered {display: block; margin-left:auto; margin-right: auto;}
+.content_centered { @include content-centered }
+
+@mixin absolute_center {position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));}
+.absolute_wrap, .absolute_parent { position: relative; }
+.absoute_center, .absolute_child { @include absolute_center; }
+
+// flexbox centered is below
+
+// CENTERED MIXIN
+//
+//  - via sitepoint.com/centering-with-sass
+//
+//  @param {Length | null} $width [null] - Element width
+//  @param {Length | null} $height [null] - Element height
+//
+//  defined   = y
+//  undefined = n
+//
+//    width        height      	solution
+//    --------     --------       ------------
+//     n              n	             translate
+//     y	          y	             margin
+//     y	          n	             margin-left + translateY
+//     n	          y  	         translateX + margin-top
+//
+
+@mixin center($width: null, $height: null) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @if not $width and not $height {
+        // Go with `translate`
+        transform: translate(-50%, -50%);
+    } @else if $width and $height {
+        // Go width `margin`
+        width: $width;
+        height: $height;
+        margin: -($width / 2) #{0 0} -($height / 2);
+    } @else if not $height {
+        // Go with `margin-left` and `translateY`
+        width: $width;
+        margin-left: -($width / 2);
+        transform: translateY(-50%);
+    } @else {
+        // Go with `margin-top` and `translateX`
+        height: $height;
+        margin-top: -($height / 2);
+        transform: translateX(-50%);
+    }
+}
+
+// center vertically and/or horizontally an absolute positioned element
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+}
+
+// // LAYOUT
+// // ================================
+//
+// // breakpoints
+//
+// $S:     480px;
+// $M:     768px;
+// $L:     1024px;
+//
+// // media queries
+//
+// @mixin MQ($canvas) {
+//   @if $canvas == S {
+//    @media only screen and (min-width: $S) { @content; }
+//   }
+//   @else if $canvas == M {
+//    @media only screen and (min-width: $M) { @content; }
+//   }
+//   @else if $canvas == L {
+//    @media only screen and (min-width: $L) { @content; }
+//   }
+// }
+//
+// // super light grid system
+//
+// @mixin column($percentage, $float-direction:left) {
+//   width: 100% * $percentage;
+//   float: $float-direction;
+// }
+
+// border radius
+@mixin border-radius($radius:.25em) {
+  border-radius: $radius;
+}
+
+// antialiasing mode font rendering
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// MIXIN - VISIBILITY
+@mixin hidden($visibility, $opacity) {
+    visibility:$visibility;
+    opacity:$opacity;
+    @include anim(visibility 0s ease-in-out 0.1s);
+    @include anim(opacity 0.1s ease-in-out);
+}
+
+
+// NAV MENU
+@mixin navigation-list {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    > li{
+        display:block;
+        float:left;
+        &:last-child{
+            margin-right:0px;
+        }
+    }
+}
+
+
+// FLEXBOX
+// ------------------------------
+
+// display: flex
+@mixin flexbox {
+    display: -webkit-box;      // OLD - iOS 6-, Safari 3.1-6
+    display: -moz-box;         // OLD - Firefox 19- (buggy but mostly works)
+    display: -ms-flexbox;      // TWEENER - IE 10
+    display: -webkit-flex;     // NEW - Chrome
+    display: flex;             // NEW, Spec - Opera 12.1, Firefox 20+
+}
+
+// flex, if used for a % width container
+@mixin flex($flex, $width) {
+    -webkit-box-flex:$flex;      // OLD - iOS 6-, Safari 3.1-6
+    -moz-box-flex:$flex;         // OLD - Firefox 19-
+    width: $width;               // For old syntax, otherwise collapses.
+    -webkit-flex:$flex;          // Chrome
+    -ms-flex:$flex;              // IE 10
+    flex:$flex;                  // NEW, Spec - Opera 12.1, Firefox 20+
+}
+
+// order
+@mixin flex_order($order) {
+    -webkit-box-ordinal-group: $order;   // OLD - iOS 6-, Safari 3.1-6
+    -moz-box-ordinal-group: $order;      // OLD - Firefox 19-
+    -ms-flex-order: $order;              // TWEENER - IE 10
+    -webkit-order: $order;               // NEW - Chrome
+    order: $order;                       // NEW, Spec - Opera 12.1, Firefox 20+
+}
+
+
+@mixin flex-center { @include flexbox; justify-content: center; align-items: center; }
+
+.flex-center {@include flex-center;}
+
+// BACKGROUNDS
+// ------------------------------
+
+// rgba
+@mixin rgba($r,$g,$b,$a){background: rgba($r,$g,$b,$a);}
+
+// linear gradient
+@mixin linear-gradient($r,$g,$b,$a, $r_2, $g_2, $b_2, $a_2){
+        background-image: -webkit-linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+        background-image:    -moz-linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+        background-image:      -o-linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+        background-image:         linear-gradient(rgba($r,$g,$b,$a), rgba($r_2,$g_2,$b_2,$a_2));
+}
+
+// bg - all
+@mixin bg-all($url, $position, $repeat, $attachment) {
+    background-image: url($url);
+    background-attachment: $attachment;
+    background-position: $position;
+    background-repeat: $repeat;
+}
+
+// bg - just url
+@mixin bg-url($url) {
+    background-image: url($url);
+}
+
+//bg - implementation with darken
+@mixin bg($url, $shade, $bg-size){
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $bg-size;
+
+    // black
+    background-image:        -webkit-gradient(linear, 0 100%, 0 0,
+                                         from(rgba(0, 0, 0, $shade)), to( rgba(0,0,0,0.25) )), url($url);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade),      rgba(0,0,0,0.25) ), url($url);
+    background-image:         linear-gradient(rgba(0, 0, 0, $shade),      rgba(0,0,0,0.25) ), url($url);
+
+    // yellow
+    // background-image:        -webkit-gradient(linear, 0 100%, 0 0,
+    //                                      from(rgba(0, 0, 0, $shade)), to( rgba(255,224,102,0.25) )), url($url);
+    // background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade),      rgba(255,224,102,0.25) ), url($url);
+    // background-image:         linear-gradient(rgba(0, 0, 0, $shade),      rgba(255,224,102,0.25) ), url($url);
+
+    // peach
+    // background-image: -webkit-gradient(linear, 0 100%, 0 0, from( rgba(0, 0, 0, $shade) ), to( rgba(255,224,178,0.25) )), url($url);
+    // background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade), rgba(255,224,178,0.25) ), url($url);
+    // background-image: linear-gradient(rgba(0, 0, 0, $shade), rgba(255,224,178,0.25) ), url($url);
+}
+
+// bg - implementation with darken // dark color
+/* @mixin hero-bg-url($url, $shade){
+    background-image: -webkit-gradient(linear, 0 100%, 0 0, from(rgba(0, 0, 0, $shade)), to(rgba(0, 0, 0, $shade))), url($url),;
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade), rgba(0, 0, 0, $shade)), url($url);
+    background-image: linear-gradient(rgba(0, 0, 0, $shade), rgba(0, 0, 0, $shade)), url($url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}*/
+
+// bg - no url
+@mixin bg-no_url($position, $repeat, $attachment) {
+    background-attachment: $attachment;
+    background-position: $position;
+    background-repeat: $repeat;
+}
+
+// bg - size
+@mixin bg-size($bg-size) {
+    -webkit-background-size:    $bg-size;
+       -moz-background-size:    $bg-size;
+         -o-background-size:    $bg-size;
+            background-size:    $bg-size;
+}
+
+
+// @mixin background($url, $shade){
+//     background-color: $bg-color;
+//     background-image:        -webkit-gradient(linear, 0 100%, 0 0,
+//                                          from( rgba(0, 0, 0, $shade) ), to( rgba(255,224,178,0.25) )), url($url);
+//     background-image: -webkit-linear-gradient( rgba(0, 0, 0, $shade),       rgba(255,224,178,0.25) ),  url($url);
+//     background-image:         linear-gradient( rgba(0, 0, 0, $shade),       rgba(255,224,178,0.25) ),  url($url);
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: cover;
+// }
+
+/* background mixin (wip)
+@mixin background($bg-color $bg-img_url $bg-attachment $bg-position_x $bg-position_y $bg-repeat $bg-size) {
+    background-color:           $bg-color;
+    background-image:       url($bg-img_url);
+    background-attachment:      $bg-attachment;
+    background-position:        $bg-position_x
+                                $bg-position_y;
+    background-repeat:          $bg-repeat;
+    -webkit-background-size:    $bg-size;
+       -moz-background-size:    $bg-size;
+         -o-background-size:    $bg-size;
+            background-size:    $bg-size;
+}
+*/
+
+
+// ======================================
+//      grid variables & mixins
+// ======================================
+
+
+//  grid mixins
+// ==========================
+
+    @mixin padded($top, $right, $bottom, $left) {
+        padding-top:    $top;
+        padding-right:  $right;
+        padding-bottom: $bottom;
+        padding-left:   $left;
+    }
+
+    @mixin padding($topbottom, $leftright) {
+        padding: $topbottom $leftright;
+    }
+
+//  wrappers
+// ==========================
+
+    // parent-level content wrappers, allows full-width backgrounds for a nested container
+
+    // basic block with width / max width
+    @mixin wrap($max-width, $margin) {
+        display:block;
+        max-width:$max-width;
+        margin-left: $margin;
+        margin-right: $margin;
+        @include clear();
+    }
+
+    @mixin base-container($width) {
+        display:block;
+        width:$width;
+        @include clear();
+    }
+
+    @mixin global-container($width, $max-width, $topbottom, $leftright) {
+        @include base-container($width);
+        max-width: $max-width;
+        margin: auto;
+        @include padding($topbottom, $leftright);
+    }
+
+    // most things will live inside this base-wrapper
+    // should also contain width / max-width...
+    @mixin base-wrapper($padding: $base-vertical-padding, $paddingMobile: $base-vertical-padding-small) {
+         display: block;
+         position: relative;
+         padding-top: $padding;
+         padding-bottom: $padding;
+         @include clear();
+
+         @media #{$small-only} {
+             padding-top : $paddingMobile;
+             padding-bottom : $paddingMobile;
+         }
+    }
+    // .wrapper {@include base-wrapper();}
+
+    @mixin wrapper( $bg-color, $max-width ){
+        @include base-wrapper();
+        @include container($max-width);
+        background: $bg-color;
+    }
+
+    @mixin wrapper-pad( $bg-color, $max-width, $padding ){
+        @include base-wrapper($padding);
+        @include container($max-width);
+        background: $bg-color;
+    }
+
+
+// from ._wizard.scss - unique typography styling
+
+// title - used to consolidate common h1 styles for easy usage
+@mixin title {
+    padding: 0 $base-horizontal-padding $base-horizontal-padding; // 1.3333333em; //  $base-horizontal-padding; // 0 1.77778em 1.77778em;
+    border-bottom: $base-border; // 0.2rem solid lighten($slate,55%);
+    @include type-setting(0);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+// h2 style
+@mixin h2_styles {
+    padding: $base-vertical;
+    margin-left: auto;
+    margin-right: auto;
+    @include type-setting(0);
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid $gry_muted;
+}
+
+
+// background triangle mxin, uses Foundation bg triangle mixin
+@mixin triangle($triangleColor){
+    @include background-triangle($triangleColor);
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-size: 0.625em; // = 10px
+}

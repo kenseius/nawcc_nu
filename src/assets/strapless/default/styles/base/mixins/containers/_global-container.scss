@@ -1,0 +1,6 @@
+@mixin global-container($width, $max-width, $topbottom, $leftright) {
+    @include base-container($width);
+    max-width: $max-width;
+    margin: auto;
+    @include padding($topbottom, $leftright);
+}

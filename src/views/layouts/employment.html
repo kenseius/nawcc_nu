@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{title}}</title>
+
+	{{#if fabricator}}<link rel="stylesheet" href="{{baseurl}}/assets/fabricator/styles/f.css">{{/if}}
+	<!-- toolkit styles -->
+	<!-- <link rel="stylesheet" href="{{baseurl}}/assets/toolkit/employment/styles/toolkit.css"> -->
+	<link rel="stylesheet" href="{{baseurl}}/assets/toolkit/styles/toolkit.css">
+
+	<!-- FONT AWESOME + GOOGLE FONTS  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
+</head>
+<body>
+	{{> svg}}
+
+	{{#if fabricator}}
+		{{> nav.topnav}}
+
+		{{> f-icons}}
+		{{> f-menu}}
+		{{> f-control-bar}}
+
+		<div class="f-container">
+
+	{{/if}}
+
+
+	{% body %}
+
+
+{{#if fabricator}}
+	</div>
+{{/if}}
+
+<!-- FOOTER -->
+{{#if home}}
+	{{> footer.paFooter}}
+	{{else}}
+		{{> footer.cardFooter}}
+		{{> footer.paFooter}}
+{{/if}}
+
+{{#if fabricator}}
+	<script src="{{baseurl}}/assets/fabricator/scripts/f.js"></script>
+{{/if}}
+
+	<!-- toolkit scripts -->
+	<script src="{{baseurl}}/assets/employment/scripts/toolkit.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+
+<!-- <div class="f-item-group" id="{{@key}}"> -->
+
+{{#if items}}
+	<!-- <h3 id="{{@key}}" class="f-item-heading" data-f-toggle="labels">{{name}}</h3> -->
+	{{#each items}}
+		<!-- <div class="f-item-group" id="{{@key}}"> -->
+			{{> styleguide-item-content this}}
+		<!-- </div> -->
+	{{/each}}
+	{{else}}
+		<!-- <h3 id="{{@key}}" class="f-item-heading" data-f-toggle="labels">{{name}}</h3> -->
+		{{> styleguide-item-content this}}
+{{/if}}
+<!-- 
+</div> -->

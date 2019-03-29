@@ -1,0 +1,32 @@
+<div id="{{@key}}">
+
+{{#if items}}
+	{{#each items}}
+		<div class="f-item-group" id="{{@../key}}-{{@index}}">
+			<section class="hero {{heroClass}} hero_strapless_materials" data-f-toggle="labels" {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+				<div>
+					<img src="./assets/strapless/images/UI_components/navigation/{{@../key}}.png" alt="@key">
+					<h1>{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+					<p>Buttons are used to activate something on a page.</p>
+					{{#if tagline}}<p>{{tagline}}</p>{{/if}}
+				</div>
+			</section>
+			{{> f-item-content this}}
+		</div>
+	{{/each}}
+{{else}}
+	<div class="f-item-group">
+		<section class="hero {{heroClass}} hero_strapless_materials" data-f-toggle="labels" {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+			<div>
+				<img src="./assets/strapless/images/UI_components/navigation/{{@key}}.png" alt="@key">
+				<h1>{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+				{{#if tagline}}<p>{{tagline}}</p>{{/if}}
+				<!-- {{> f-item-controls}} -->
+			</div>
+		</section>
+		{{> f-item-content this}}
+	</div>
+{{/if}}
+
+</div>
+

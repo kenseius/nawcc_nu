@@ -1,0 +1,62 @@
+/* ==========================
+
+    BUTTONS
+    ------------
+
+    used in:
+    	home
+		search
+		profile
+
+========================== */
+// to do: move this to _mixins
+
+@mixin button($color, $bg, $border_color, $hover_color, $hover_bg) {
+    display: block;
+    margin: $base-vertical 0;
+    padding: $base-vertical;
+    border-color: $border_color;
+    border-style : solid;
+    background:$bg;
+    color: $color;
+    @include type-setting(0);
+    font-size: $base-font-size;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    cursor:pointer;
+
+    @include anim ($global-animation);
+    @include hover() {background: $hover_bg; color: $hover_color;} // outline: 0;
+
+    // remove blue glowing input style - doesn't need to use the hover mixin
+    outline: 0;
+    &::-moz-focus-inner {border:0;}
+
+}
+
+button,
+.button,
+[type="submit"] {
+    @include button($slate, transparent, $slate, $wht, $slate);
+    border: 0.1875rem solid $slate;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: $article-max-width;
+    @include hover() { background: $slate; color: $wht; }
+
+    &.inverted {
+        background: transparent;
+        color: $wht;
+        border: 0.1875rem solid $wht;
+        @include hover() { background: $wht; color: $slate; }
+    }
+    // oulined
+    // &.outlined { background: transparent; color: $slate; border: 0.1875rem solid $slate;  @include hover() {background: $slate; color: $wht;} }
+}
+
+// dropdown arrow
+.dropdown_arrow { &::before {
+        // @include background-triangle($gry_muted);
+        @extend .updown_caret::before !optional;
+    }
+}

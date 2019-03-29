@@ -1,0 +1,104 @@
+---
+title: Code Philosophy
+subtitle: STRAPLESS - BUILD
+icon: fa-terminal
+---
+
+{{#markdown}}
+
+
+### Where’s the Grid?
+Practically speaking, this means that when building your web pages, the first focus is simply on creating the HTML scaffolding, and provided it’s semanticly sound and consistent, it will automatically incorporate these universal style elements.
+
+
+### Built for Vertical Growth
+
+By building the grid to accommodate the semantic markup (versus the "div soup" thats commonly found in frameworks like bootstrap and foundation), updating code to meet improving standards will be an intuitive adaption path. 
+
+
+### CODE = DESIGN 
+
+The code should match the design, and vice versa. With tools like XD and Sketch, we're able to easily create near-pixel perfect mockups for every component. 
+
+Regardless of how you've gone about your frontend code, the common link between your code and the design are the **variables**. 
+
+Variables, in this case, refers to everything involving dimensions, all the way to colors and icons.  
+
+
+
+### Start From Scratch
+
+As with styling, you should always begin a new project with a clean slate. Our UI Toolkit keeps our various components and code snips saved, so there's no need to worry about this adding extra dev time. In fact, doing this ensures that you're completely familiar with the entirety of the frontend code, as well as ensuring no conflicts arrise from old or superfuleous styles. 
+
+
+### DRY
+
+DRY stands for "Don't Repeat Yourself". 
+
+
+### Learn the Code, Not A Framework
+
+Frameworks are great, and inevietably any mature design system and toolkit eventually turns into yet another frontend framework. 
+
+Because there are so many frameworks, and they're all so functionally different, we don't want to entangle our code with anything unnecessary. 
+
+
+### Code for the User
+
+So, this might seem crazy, and it probably is, but bear with me. 
+
+Let's apply design thinking to coding.
+
+Cool? Ok. So, scenario: 
+
+Design has finished crafting some iteration of their mockups and styleguide. We're at a handoff point. 
+
+Thinking about code with design thinking means think about code as a _product_. 
+
+If it's a product, it has users. 
+
+So, let's think in terms of users. 
+
+> Who are we writing the code for? 
+
+There are two users: 
+
+- humans (which could be present you, future you, or a colleague)
+- browsers 
+
+So, when we code, we should be coding in a way that these two users will find the most efficient, effective, useful, and delightful.
+
+(assumptive personas)
+
+#### Humans
+
+Humans (yes, specifically _you_...in general) are busy. 
+
+We're busy, so we don't have a lot of time to waste. We have a job to do, and only so much time to do it.
+
+As such, it seems likely that humans that code professionally tend to prefer code that is: 
+
+- easy to maintain
+- easily scannable / searchable
+- thoroughly understood
+- effective for its purpose
+
+That last one is usually the money-maker. 
+
+As such, we prefer to work with tools that are:
+
+- familiar
+- fresh in our memory
+- already part of our process
+
+Nevertheless, we know that learning new languages and tools is imperative to keeping up with our peers and industry standards. 
+
+#### Browsers 
+
+Browsers are programs. 
+
+They think like, well, programs. You know, machines. 
+
+They are (usually) easier users to understand, because we don't have to assume. We specifically know what a browser needs to see to render a website in the best possible way. In a way, we're interviewing this use when we inspect a website. We're asking, "OK, that's not what I coded. What code are _you_ seeing, and why are you seeing it that way?"
+
+{{/markdown}}

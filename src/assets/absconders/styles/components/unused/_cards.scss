@@ -1,0 +1,57 @@
+/*
+
+// CARD STYLES
+// ==========================================================
+
+// used for GOVERNMENT BODIES on frontpage
+.card {
+    display: block;
+    padding-top:1.875em;
+    .card_content {
+        display: flex;
+        min-height: 6.875em; // = 110px
+        padding: 1.25em 1.875em; // = 20px 30px
+        background:$gry;
+        color: $slate;
+        align-items: center;
+        h5 {margin-bottom: 0;}
+        h5 small { color: lighten($slate,10%); @include anim(all 0.3s ease-in-out);}
+        @include anim(all 0.3s ease-in-out);
+        @media #{$medium-only} {padding: 1.25em;}
+        @media #{$small-only} {padding: 1em 0.85em;}
+    }
+    .card_top {
+        min-height: 8.5em; // = 136px
+        @include anim(all 0.3s ease-in-out);
+    }
+    .card_img {
+        min-height: 8.5em; // = 136px
+        @include anim(all 0.3s ease-in-out);
+        // @include bg-no_url(center center, no-repeat, scroll);
+        @include bg-size(cover);
+    }
+     @include hover() {
+        .card_top {@include filter(brightness(80%))}
+        .card_content {
+            background:$pch;
+            h5 small {color: $slate;}
+        }
+    }
+    @media #{$small-only} {
+        padding-top: 0.75em;
+        @media #{$medium-only} {padding: 1.25em;}
+        @media #{$small-only} {padding: 1em 0.85em;}
+        .card_content{
+            min-height: 0;
+            padding: 0.625em 0.75em; // 10px
+            // border-bottom: 0.1875em solid $grydrk;
+        }
+    }
+}
+
+// ==========================================================
+//  OUTLINES - TEXT OVER IMAGE STYLES ==== { moved to hero }
+// ==========================================================
+
+
+*/

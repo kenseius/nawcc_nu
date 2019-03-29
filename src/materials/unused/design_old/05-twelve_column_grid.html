@@ -1,0 +1,82 @@
+---
+title: Grid
+subtitle: STRAPLESS - DESIGN
+icon: fa-th
+---
+
+<div class="layout_grid col1">
+{{#iterate 1}}
+    {{> images.image imageSource="http://via.placeholder.com/1024x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col2">
+{{#iterate 2}}
+    {{> images.image imageSource="http://via.placeholder.com/500x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col3">
+{{#iterate 3}}
+    {{> images.image imageSource="http://via.placeholder.com/350x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col4">
+{{#iterate 4}}
+    {{> images.image imageSource="http://via.placeholder.com/350x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col5">
+{{#iterate 5}}
+    {{> images.image imageSource="http://via.placeholder.com/350x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col6">
+{{#iterate 6}}
+    {{> images.image imageSource="http://via.placeholder.com/350x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col7">
+{{#iterate 7}}
+    {{> images.image imageSource="http://via.placeholder.com/350x100"}}
+{{/iterate}}
+</div>
+<div class="layout_grid col8">
+{{#iterate 8}}
+    {{> images.image imageSource="http://via.placeholder.com/350x100"}}
+{{/iterate}}
+</div>
+
+{{#markdown}}
+
+Strapless is using a 12 column float grid: 
+
+~~~
+
+// 12 cols with 1.778em (28.45px) gutters (margin-right + float)
+$susy: (
+    columns: 12,
+    gutters: 1.778,
+    gutter-position: after,
+    math: fluid,
+    // container: $base-max-width
+    global-box-sizing: border-box,
+    column-width : 50.512px //  old: 50px
+);
+
+~~~
+
+
+{{/markdown}}
+
+{{#markdown}}
+
+## Susy: Grids on the Fly
+
+Susy is a helper tool that lets you create any kind of grids easily without the need do a ton of math. The beauty about Susy is that it separates presentational CSS from the HTML.
+
+If you have used traditional grid frameworks like Foundation and Bootstrap before, you already know that the grids that come with these frameworks already have fixed widths and breakpoints. Furthermore, classes have to be added to the HTML if you decide to change your layout.
+
+Susy removes this layer altogether. You can immediately target any css class and apply a grid to it.
+
+- [Susy](https://zellwk.com/blog/susy2-tutorial/)
+
+{{/markdown}}

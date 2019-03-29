@@ -1,0 +1,24 @@
+{
+  "name": "@pai/strapless",
+  "version": "0.0.9",
+  "description": "Strapless node module",
+  "main": "index.js",
+  "scripts": {
+    "publish": "npm publish"
+  },
+  "publishConfig": {
+    "registry": "https://painteractive.pkgs.visualstudio.com/_packaging/pai-private/npm/registry"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://painteractive.visualstudio.com/DefaultCollection/PAI%20Internal%20Projects/_git/Strapless"
+  },
+  "keywords": [
+    "strapless"
+  ],
+  "devDependencies": {
+    "susy": "2.2.12"
+  },
+  "author": "PAI Dev Team",
+  "license": "ISC"
+}

@@ -1,0 +1,16 @@
+// ANIMATIONS + KEYFRAMES
+// -----------------------------
+
+// ANIMATIONS
+@mixin animation($content) {
+  -webkit-animation: $content;
+     -moz-animation: $content;
+          animation: $content;
+}
+
+// KEYFRAMES
+@mixin keyframes($name) {
+  @keyframes #{$name} { @content; }
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+}

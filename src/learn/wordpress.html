@@ -1,0 +1,104 @@
+<h2 id="starting-a-wordpress-project">Starting A Wordpress Project</h2>
+<p>[ resources ]</p>
+<ul>
+<li><a href="https://wordpress.org/">Wordpress.org</a></li>
+<li><a href="https://codex.wordpress.org/Installing_WordPress">Installing Wordpress</a></li>
+</ul>
+<p>[ directions for macOS Sierra ]</p>
+<ol>
+<li>Create a Local Server (MySQL / Apache)<ul>
+<li>Apache = Server</li>
+<li>MySQL = Database Administration</li>
+<li>PHP = programming language</li>
+<li>Using MAMP:<ol>
+<li>Open phpMyAdmin</li>
+<li>Under <strong>Create Database</strong> enter the database name, and click <strong>Create</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>Setting Wordpress Up Locally Prior To Install<ul>
+<li>Download from <a href="wordpress.org">wordpress.org</a></li>
+<li>Extract the files, and place within the desired directory (we&#39;ll be placing it within <code>Applications/MAMP/htdocs</code>)</li>
+<li>Rename <code>wp-config-sample.php</code> to <code>wp-config.php</code></li>
+<li>Open <code>wp-config.php</code> in a text editor</li>
+</ul>
+</li>
+</ol>
+<p>This is the part we&#39;re aiming for:</p>
+<pre><code>/** The name of the database for WordPress */
+define(&#39;DB_NAME&#39;, &#39;database_name_here&#39;);
+
+/** MySQL database username */
+define(&#39;DB_USER&#39;, &#39;username_here&#39;);
+
+/** MySQL database password */
+define(&#39;DB_PASSWORD&#39;, &#39;password_here&#39;);
+
+/** MySQL hostname */
+define(&#39;DB_HOST&#39;, &#39;localhost&#39;);
+</code></pre><pre><code>- `define(&#39;DB_NAME&#39;, &#39;database_name_here&#39;);` Replace `database_name_here` with your database name
+- `define(&#39;DB_USER&#39;, &#39;username_here&#39;);` and
+- `define(&#39;DB_PASSWORD&#39;, &#39;password_here&#39;);` Both of these values are going to be `root` when developing locally.
+- `/** MySQL hostname */
+define(&#39;DB_HOST&#39;, &#39;localhost&#39;);` The database host is `localhost` by default, which is what we want.
+</code></pre><p>Here&#39;s what it&#39;ll look like when updated:</p>
+<pre><code>// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define(&#39;DB_NAME&#39;, &#39;code4pa_wp&#39;);
+
+/** MySQL database username */
+define(&#39;DB_USER&#39;, &#39;root&#39;);
+
+/** MySQL database password */
+define(&#39;DB_PASSWORD&#39;, &#39;root&#39;);
+
+/** MySQL hostname */
+define(&#39;DB_HOST&#39;, &#39;localhost&#39;);
+</code></pre><p>Save this file, and we&#39;ll move on to the next step</p>
+<ol>
+<li><p>Install Wordpress</p>
+</li>
+<li><p>Open a browser, and navigate to the directory to begin installing</p>
+<ul>
+<li><code>http://localhost:8888/OA%20-%20PA%20Hackathonwp-admin/install.php</code></li>
+<li>Note: you can just navigate to <code>http://localhost:8888/OA%20-%20PA%20Hackathon/</code>, and it&#39;ll automatically navigate to <code>http://localhost:8888/OA%20-%20PA%20Hackathon/wp-admin/install.php</code></li>
+</ul>
+</li>
+<li>Select your language</li>
+<li><p>In the next screen, enter</p>
+<ul>
+<li><code>Site Title</code>     </li>
+<li><code>Username</code>     </li>
+<li><code>Your Email</code>     </li>
+<li><code>Search Engine Visibility</code></li>
+<li>Note: Write these down somewhere. The very next screen will ask you to login.</li>
+</ul>
+</li>
+<li><p>Login</p>
+</li>
+</ol>
+<h2 id="creating-a-theme">Creating a Theme</h2>
+<p>All website files needed to style wordpress are within the <code>wp-content/themes</code> directory.</p>
+<p>At the very minimum, for a theme to work within wordpress, you must include:</p>
+<ol>
+<li>style.css</li>
+<li>index.php</li>
+</ol>
+<p>Otherwise, for consideration in the WordPress.org theme directory, the minimum required Theme Files are:</p>
+<ol>
+<li><p><strong>style.css</strong>
+Your theme’s main stylesheet file. This file will also include information about your theme, such as author name, version number, and plugin URL, in it’s header.</p>
+</li>
+<li><p><strong>index.php</strong>
+The main template file for your theme. This will be the template for the homepage on your site unless a static front page is specified. If you only include this template file, it must include all functionality of your theme. However, you can use as many relevant template files as you want in your theme.</p>
+</li>
+<li><p><strong>comments.php</strong>
+The comment template which is included wherever comments are allowed. This file should provide support for threaded comments and trackbacks, and should style author comments differently then user comments.</p>
+</li>
+<li><p><strong>screenshot.png</strong>
+In the WordPress.org theme directory, screenshot.png acts as a visual indicator of what your theme looks like. It is visible both in the web view and in the admin dashboard. Note: this screenshot can be no larger than 1200x900px.</p>
+</li>
+</ol>

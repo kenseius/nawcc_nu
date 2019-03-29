@@ -1,0 +1,27 @@
+// UP-DOWN CARET
+// ====================================
+.updown_caret::after,
+.is-accordion-submenu-parent > a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 6px;
+    border-color: lighten($slate, 30%) transparent transparent;
+    border-top-style: solid;
+    border-bottom-width: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 1rem;
+    @include anim(all 0.3s ease);
+}
+.updown_caret[aria-expanded='true']::after  > a::after,
+.is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: scaleY(-1);
+    -ms-transform: scaleY(-1);
+    transform: scaleY(-1);
+}

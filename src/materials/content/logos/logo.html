@@ -1,0 +1,23 @@
+---
+employmentMaterial: true
+notes: |
+
+ For display logos on the web, there are 2 file types: `.png` and `.svg`
+
+ The preferred method for web display is `.svg`, for a wide range of reasons.
+ - **Infinitely Scalable** - SVGs completely sidestep the inherent quality loss that comes with traditional image encodings (.png, .jpg, etc). Meaning, no matter the size (whether 25px or 250,000px), it will always display sharp, crisp edges.
+ - **Accessable** - this is an accessability win, as images should not contain text if possible
+ - **Fast** - SVGs can achieve incredibly tiny filesizes.
+ - **Extremely Customizable** - you can rapidly apply changes to the logo's contents --- namely, the keystone's color, the color of the 'PA', and the text, including it's color, font, and the actual text content itself.
+ - **Strong Support Across Browsers** - in fringe cases, the .pngs will act as fallbacks.
+
+ SVGs are stored in a single file `.svg.html`.
+ To use, target the desired svg ID with `xlink:href="#id"` as demonstrated.
+
+ There are 3 types of logos - the base PA.gov logo, and 2 SVG logo templates.
+ 1. **PA.GOV Logo**
+ 2. **Logo Template** - Keystone, Title
+ 3. **Logo Template w/ Subtitle** - Keystone, Title, Subtitle
+
+---
+<svg class="svg"><use xlink:href="#paLogoWebAppStandards" /></svg>

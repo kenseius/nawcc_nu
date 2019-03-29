@@ -1,0 +1,131 @@
+// ===========================================
+//
+//      VII. FORMS - FORM GROUPS
+//
+// ===========================================
+
+// grey background, segmented inner-form containers
+.formgroup {
+    display: block;
+    padding: $base-horizontal-padding $base-horizontal-padding 0; // $base-padding;
+    margin:0 auto $base-horizontal-padding;
+    background: $grylite;
+    @include clear();
+
+    // all labels will default to 12 col
+    label {@include span(12 of 12);}
+
+    .form_instructions {
+        @include container(100%);
+        padding-bottom: 0;
+        margin-bottom:0;
+        label {@include span(6 of 12);}
+        p {
+            @include span(6 of 12 last);
+            padding-top: 1.77778rem;
+            color: lighten($slate,25%);
+            font-size: 0.75rem;
+        }
+    }
+
+    @media #{$small-only} {padding: $base-vertical;}
+
+}
+
+
+// SOCIAL MEDIA - unique formgroup layout
+
+// .formgroup.inline-icons
+.inlineIcons {
+    // label {
+        margin-bottom: 0;
+
+        // social media icons
+        .fa {
+            display: block;
+            float:left;
+            width: 10%;
+            padding: 1rem;
+            margin: auto 0;
+            background: $wht;
+            border: 0.2rem solid #fafafa;
+            font-size: 1.2rem;
+            line-height: $base-line-height;
+            max-height: 3.157rem + $base-horizontal-small;
+            text-align: center;
+        }
+        .fa-facebook {color: $facebook;}
+        .fa-twitter {color: $twitter;}
+
+        // input field
+        input {
+            width: 90%;
+            float: right;
+            margin-top: 0;
+        }
+
+        @media #{$small-only} {
+            .fa {font-size: 1rem; width: 10%;}
+            input {width: 90%;}
+        }
+
+    // }
+}
+
+// .formgroup.socialmedia
+.socialMedia {
+    label {
+        @extend .inlineIcons;
+        &:last-child {margin-bottom: $base-horizontal-padding;}
+        @media #{$small-only} {
+            .fa {padding: 1rem 0 1rem 0.778rem;}
+        }
+    }
+}
+
+.currentLocation {
+    // @extend .inlineIcons;
+    // margin-top: 0.333rem;
+    @include clear();
+    margin-bottom: $base-horizontal-padding;
+
+    // icons
+    // since .fa is nested within button, apply positioning styles to button and text styles to fa
+    button {
+        display: block;
+        float:right;
+        width: 10%;
+        padding: 1rem;
+        margin: 0.333rem auto 0;
+        background: $wht;
+        border: 0.2rem solid $wht;
+        text-align: center;
+        @include hover(){
+            background: $wht;
+            color: $slate;
+            border-color: $wht;
+        }
+    }
+    .fa {
+        font-size: 1.2rem;
+        line-height: $base-line-height;
+        max-height: 3.157rem + $base-horizontal-small;;
+        text-align: center;
+        float:right;
+    }
+    .fa-facebook {color: $facebook;}
+    .fa-twitter {color: $twitter;}
+
+    // input field
+    input {width: 90%; float:left; margin-top: 0.333rem;}
+
+    // validation - floating adjustment
+    .field-validation-error {@include span(12 of 12);}
+
+    @media #{$small-only} {
+        button {padding: 1rem 0.778rem 1rem 0;}
+        .fa {font-size: 1rem;}
+        input {width: 90%;}
+    }
+
+}

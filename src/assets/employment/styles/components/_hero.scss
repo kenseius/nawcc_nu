@@ -1,0 +1,95 @@
+// /////////////////////////////////////////
+//
+//      HERO
+//      1.1 hero  - .hero, header.hero
+//      1.2 outline - .outline
+//      1.3 card - .card @extends hero styles
+//
+// /////////////////////////////////////////
+
+
+//  1.1 hero
+// ************************
+.hero {
+    display: block;
+    padding: $base-vertical-padding 0;
+    // margin-bottom: $base-horizontal-padding;
+    margin: auto;
+
+    @include anim($global-animation);
+    // @include bg('/assets/toolkit/images/background/aa_banner.jpg', 0.8, cover);
+    @include bg('https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+    &.spotlight {
+        background: $gld;
+        .outline {margin: auto; display: block;}
+    }
+    text-align: center;
+    h1, h2, p {text-align: center;}
+
+    // overrides body's 65px top-padding - for home page's transparent navbar
+    // &.home_hero {
+    //     margin-top: -65px;
+    //     padding: 65px + 77.78px 0 $base-vertical-padding; // 77.78 = $base-vertical-padding
+    // }
+
+    img,
+    object {
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-width: $article-max-width;
+        // height: auto;
+        @media #{$medium-only} { width: 80%;}
+        @media #{$small-only} { width: 90%;}
+    }
+
+    section {
+        @include container(64rem);
+        margin: 0 auto;
+        h1 {color: $wht; padding-bottom: $base-horizontal-padding;}
+        p { @include type-setting(2); color: $wht; margin-bottom: $base-horizontal-padding; }
+        button,
+        a.button {
+            // font-family: $base-font; // override user agent styles
+            font-family: 'Source Sans Pro', 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.333rem;
+            font-weight: 700;
+            letter-spacing: 0.13333rem;
+
+            background: $ylw;
+            border: $base-border;
+            border-color: $ylw;
+
+            @include anim($global-animation);
+            @include hover() {background: $wht; color: $slate; border-color: $slate;}
+            @include span(4 of 12);
+            text-align: center;
+            margin-top: 0;
+
+            // secondary button style
+            &:last-child {
+                background: rgba(0,0,0,0.2);
+                border-color: $ylw; // lighten($ylw,15%)
+                color: $ylw; // lighten($ylw,15%)
+            }
+            // alt secondary styles - slate bg w/ ylw border and white text
+            // &:last-child { background:$slate; color: $wht; }
+
+            @media #{$medium-only} {
+                @include span(6 of 12 1.333);
+                &:last-child { @include last(); }
+            }
+            @media #{$small-only} {@include span(12 of 12); }
+        }
+
+        // mobile
+        @media #{$medium-only} {padding: 0 $base-padding;}
+        @media #{$small-only} {
+            padding: 0 $base-padding;
+            h1, p {padding-bottom: $base-horizontal-small;}
+        }
+    }
+    @media #{$small-only} {padding: $base-horizontal-padding 0;}
+
+} // end header .hero

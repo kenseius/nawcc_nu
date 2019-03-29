@@ -1,0 +1,251 @@
+---
+title: Layout
+subtitle: STRAPLESS - DESIGN
+icon: fa-object-group
+---
+
+
+
+
+    <h2>Content Types</h2>
+    <section class="layout_grid col2">
+        <div>
+{{#markdown}}
+Before we can begin laying out a website, we must first look at the **Content**. 
+
+No, you don't need to invest hours into reading someone's blog --- you just need to identify the **type of content**.
+
+Thinking in the context of an HTML5 document, these are the primary content types:
+
+- **informational text** : is this content meant to be **read**?
+- **media** : is this content meant to be **viewed**?
+- **CTA Funnel** : is the user being directed **to do something**? 
+- **data entry** : is the user being asked to **input information**? 
+
+Depending on the type of content being portrayed, we'll choose a design pattern to structure our layout.
+{{/markdown}}
+        </div>
+        <img src="assets/strapless/images/layout/the-content-matrix.png" alt="Scrolling">
+    </section>
+
+{{#markdown}}
+
+## Design Patterns
+
+**Design Patterns** are developed by observing the "flow" of a user's attention throughout their interactions with a website.
+
+We begin to find Design Patterns by conducting user research, and identifying common usage patterns. 
+
+On the Commonwealth's websites, there are three predominant design patterns. 
+
+- **F-pattern**
+- **Z-pattern**
+- **V-pattern**
+
+{{/markdown}}
+
+
+
+<section class="layout_grid col2">
+    <div>
+        <h3>F-Pattern</h3>
+        <p>This is for text-heavy pages, like articles and blog feeds.</p> 
+        <p>It draws your attention down and across, as you scan through article titles or a list of content.</p>
+    </div>
+    <img src="assets/strapless/images/layout/f-pattern.png" alt="F Pattern">
+</section> 
+
+<section class="layout_grid col2">
+    <div>
+        <h3>Z-Pattern</h3>
+        <p>This is used for nearly all other layouts.</p>
+        <p>It draws your attention across the top, then diagonally down to the left, before directing your attention horizontally across the viewport.</p>
+    </div>
+    <img src="assets/strapless/images/layout/z-pattern.png" alt="Z Pattern">
+</section> 
+
+<section class="layout_grid col2">
+    <div>
+        <h3>V-Pattern</h3>
+        <p>This is used for Call To Actions or featured content that's been visually centered.</p>
+        <p>It draws the viewers attention down and inward, towards a central focal point.</p>
+    </div>
+    <img src="assets/strapless/images/layout/v-pattern.png" alt="V Pattern">
+</section> 
+
+
+
+
+<section>
+{{#markdown}}
+
+Once we've identified the type of content, considered common usage patterns, and applyied a bit of psychology and color theory, we're able to use various UI elements to guide a user's attention and interactions through the interface. 
+
+
+(Usability.gov)[usability.gov]
+
+A UI is composed of four categories:
+
+- **navigation**
+  topnav, sidenav, search field forms, pagination, tags, icons
+- **input**
+  text field, date fields, dropdown lists, checkboxes, clickable buttons, toggles
+- **information**
+  text content, tooltips, message boxes, alerts, notifications, icons, progress bars, charts, modals
+- **sharing**
+  friend lists, follow buttons, like/promote, share buttons
+
+After we assemble our UI elements in the best way that accomplishes the user's objectives, we're able to start identifing reusable **layouts**, **templates** and **themes**.
+
+{{/markdown}}
+</section>
+
+
+
+
+    <h2>Navigation Patterns</h2>
+    <section class="layout_grid col2">
+        <div>
+{{#markdown}}
+
+### Vertical Navigation 
+
+Strapless's design system, along with most modern websites, is built for vertical navigation. 
+
+Meaning, they're designed to guide the user's focus _down the page_, while ensuring navigation is always immediately apparent and available. 
+
+- user's both expect and prefer to scroll on a website (versus zooming in)
+- the visual positioning, weight and vertical scale are all intended to subtly encourange the user to scroll.
+
+{{/markdown}}
+        </div>
+        <img src="https://media.giphy.com/media/63I6FXZTXks2A/giphy.gif" alt="Scrolling">
+    </section>
+
+    <section class="layout_grid col2">
+        <div>
+            <h3>Top Nav</h3>
+            <p><strong>Primary Navigation</strong></p>
+            <p>Used for moving the user across top-level website pages, or sections within a single-page site (like pa.gov)</p>
+            <p>To ensure navigation is always available to the user, the topnav remains fixed to the top of the page, on mobile and desktop.</p>
+{{#markdown}}
+Navigation is reserved for moving a user from one point in the site to another. 
+It should remain consistent across every page of a given site, and should adapt to the screen size to ensure navigation is equally possible for every user.
+                
+Navigation should be visually distinct and visually constant. Meaning, if the navigation is at the top on the home page, it should be there on a subpage. 
+
+As with buttons, provided visual distinction and consistency are observed, there is no need to underline the text.  
+
+It's acceptable to use buttons within the topnav, like the "Escape" button in the example. It should fill the entire height and width of a nav-item.
+
+Navigation items can also have assocated icons, though it's not required. 
+
+In general, you should not put any external links in the navigation. If you can't avoid it, they must have an exernal link icon. 
+{{/markdown}}
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/navPatterns_topnav.png" alt="Topnav">
+            <img src="assets/strapless/images/layout/navPatterns_topnav_fixed.png" alt="Topnav - Fixed">
+            <img src="assets/strapless/images/layout/scrolling.gif" alt="PA.gov - Topnav - Fixed">
+        </div> 
+    </section>
+
+    <section class="layout_grid col2">
+        <div>
+            <h3>Side Nav</h3>
+            <p><strong>Secondary Navigation</strong></p>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/navPatterns_sidenav.png" alt="Sidenav">
+            <img src="assets/strapless/images/layout/navPatterns_sidenav_fixed.png" alt="Sidenav - Fixed">
+        </div>
+    </section>
+
+    <section class="layout_grid col2">
+        <div>
+            <h3>Icon Bar</h3>
+            <p><strong>Secondary Navigation</strong></p>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/navPatterns_sidenav.png" alt="Sidenav">
+            <img src="assets/strapless/images/layout/navPatterns_sidenav_fixed.png" alt="Sidenav - Fixed">
+        </div>
+    </section>
+
+
+    <h2>Content Patterns</h2>
+    <section class="layout_grid col2">
+        <div>
+            <h3>Hero Banners</h3>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/contentPatterns_hero.png" alt="Hero">
+        </div>
+    </section> 
+    <section class="layout_grid col2">
+        <div>
+            <h3>Articles</h3>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/contentPatterns_article.png" alt="Article">
+        </div>
+    </section> 
+
+
+    <h2>Input Patterns</h2>
+    <section class="layout_grid col2">
+        <div>
+            <h3>Forms</h3>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/contentPatterns_forms.png" alt="Forms">
+        </div>
+    </section> 
+    <section class="layout_grid col2">
+        <div>
+            <h3>Search</h3>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/contentPatterns_article.png" alt="Article">
+        </div>
+    </section> 
+    <section class="layout_grid col2">
+        <div>
+            <h3>Search Results</h3>
+        </div>
+        <div>
+            <img src="assets/strapless/images/layout/contentPatterns_article.png" alt="Article">
+        </div>
+    </section> 
+
+
+
+<!-- 
+
+This takes the form of several basic body / container layout configuartions. Specical consideration is given to using semantic HTML containers.
+
+Two different content types:
+
+- article
+- section 
+
+From this, we're able to develop page layouts: 
+
+- Admin GUI
+- Single Page
+- Home Page  
+
+Their usage is based on what sort of content they contain. 
+
+- One column: Full Width
+- One column: Base Max Width
+- One column: Article Max Width
+- Two column: Base Max Width
+
+
+Content types are then sorted by their purpose or usage: 
+
+- main
+- article
+- section
+- forms -->

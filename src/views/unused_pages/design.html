@@ -1,0 +1,36 @@
+---
+title: Design
+subtitle: STRAPLESS - UI TOOLKIT
+layout: strapless
+fabricator: true
+design: true
+bodyClass: body_Design
+heroClass: hero_Design
+---
+
+{{> svg_strapless}}
+{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_Design home_hero"}}
+
+<section class="introSection introIcons">
+	<div>
+		<div class="intro">
+			<h1>{{title}}</h1>
+			<p>The central design for the Commonwealth is built around accessability, modern web practices, and user-centered thinking.</p>
+            <p>Following these guidelines will allow you to implement the design system anywhere you wish.</p>
+        </div>
+		<div class="buttonBar buttonBarUXplaybook">
+			{{#each materials.design.items}}
+				<a class="iconButtonHyperlink" href="#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+			{{/each}}
+		</div>
+	</div>
+</section>
+
+<main>
+    {{#each materials.design.items}}
+        {{> strapless-article this }}
+    {{/each}}
+</main>

@@ -1,0 +1,11 @@
+---
+layout: default
+fabricator: true
+title: projects
+subtitle: A Robust Anti-Framework Frontend Asset Toolkit
+heroClass: false
+---
+{{> heros.hero}}
+{{#each materials.projects.items}}
+    {{> f-item this}}
+{{/each}}

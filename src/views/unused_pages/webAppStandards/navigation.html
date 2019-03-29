@@ -1,0 +1,66 @@
+---
+title: Navigation
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true
+navigation: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: fa-star
+material_icons: false
+fontAwesome_icons: false
+
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+navMenuLabel: Menu
+
+---
+
+<div id="01-info" class="componentsIntro">
+    {{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Navigation home_hero"}}
+    <div class="layout_grid col2">
+        <div class="article">
+            <h1>{{title}}</h1>
+
+{{#markdown}}
+
+Navigation is used to move a user from one part of a website to another.
+
+It's essential that users are able to access the parts of a website they're seeking, in the fewest steps possible, from any other part of the site. 
+
+It breaks down into four categories:
+
+- **Primary Navigation**:  used to bring users to each top level parent page
+    - Top Nav
+- **Secondary Navigation**
+    - Side Nav
+    - Sidebar Nav 
+- **Tertiary Navigation** 
+    - Pagination
+    - Breadcrumbs
+    - Buttons
+    - Hyperlinks
+- **Search**
+    - Search Input
+    - Search Results
+            
+
+            {{/markdown}}
+        </div>
+        <div>
+            {{> images.image imageSource="/assets/strapless/images/UI_components/Navigation_1440.png"}}  
+        </div>
+    </div>
+</div>
+
+{{#each materials.navigation.items}}
+     {{> f-item this}}
+{{/each}}

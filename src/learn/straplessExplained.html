@@ -1,0 +1,172 @@
+<h1 id="strapless-the-heck-is-it-">Strapless: The Heck Is It?</h1>
+<h2 id="ii-how-to-use-strapless">II. How to use Strapless</h2>
+<p>There&#39;s a few ways to get started. </p>
+<ul>
+<li>NPM Repo</li>
+<li>Clone </li>
+<li>Static Website</li>
+</ul>
+<p>TL;DR:</p>
+<ol>
+<li>Install Strapless (instructions in README)</li>
+<li>Using the mockups as a guide, build out the site by adjusting styles on a module-by-module basis.</li>
+<li>The toolkit can be used as reference for how the markup, on a base level, should be composed. Adjust the markup in your own seperate</li>
+</ol>
+<p>Strapless SCSS is best compiled locally. The /src/ directory is only used for dev, not final output. See the /dist/ folder for this.</p>
+<p>When Working Locally:</p>
+<ul>
+<li>adjust styles in relevant _scss partials</li>
+<li>adjust markup, prototype pages using Handlebars partials</li>
+<li>Adjustments made and saved anywhere will immediately render (or throw an error if done incorrectly)</li>
+<li>markup: this is the guide for the wrapping markup of all components. These are for the Devs to ensure whatever CMS we&#39;re using is outputting its data within this exact markup.</li>
+</ul>
+<h2 id="how-to-layout-a-page-the-semantic-accessable-way-">How To Layout A Page (The Semantic, Accessable Way)</h2>
+<p>Strapless is built aroud the concept of <strong>Atomic Design</strong>, meaning instead of thinking of a website from the top down (&quot;We need to build a website with 5 pages.&quot;), think of it in reverse: Build the individual materials (components, structures, patterns, atoms, etc) first, then sew them together uses Handlebars to pull in materials,</p>
+<p>They&#39;re structured loosely like this:</p>
+<ul>
+<li><strong>Layout</strong> <ul>
+<li><strong>Pages</strong> - <em>Conditionally loads materials based on which layout you specify</em> <ul>
+<li><strong>Materials</strong> - <em>the elements contained on each page</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The Layout is comprised of the base HTML5 markup, including the <code>&lt;head&gt;</code>, and links to the stylesheet and scripts.</p>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;&quot;&gt;
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;title&gt;{{title}}&lt;/title&gt;
+
+    {{#if fabricator}}&lt;link rel=&quot;stylesheet&quot; href=&quot;./assets/fabricator/styles/f.css&quot;&gt;{{/if}}
+    &lt;!-- toolkit styles --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./assets/toolkit/styles/toolkit.css&quot;&gt;
+
+    &lt;!-- FONT AWESOME + GOOGLE FONTS  --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+    {{&gt; svg}}
+
+    {{#if fabricator}}
+        {{&gt; topnav.topnav}}
+
+        {{&gt; f-icons}}
+        {{&gt; f-menu}}
+        {{&gt; f-control-bar}}
+        &lt;div class=&quot;f-container&quot;&gt;
+    {{/if}}
+
+
+    {% body %}
+
+
+    {{#if fabricator}}
+        &lt;/div&gt;
+    &lt;script src=&quot;./assets/fabricator/scripts/f.js&quot;&gt;&lt;/script&gt;
+    {{/if}}
+
+    &lt;!-- LOOKIT DIS CRAZY JS OMG! --&gt;
+    &lt;script src=&quot;./assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- &lt;script src=&quot;./assets/toolkit/scripts/jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./assets/toolkit/scripts/what-input.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt; --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The content of each page is inserted at the <code>{ body }</code> point. </p>
+<h3 id="building-materials-components-">Building Materials (Components)</h3>
+<p>For each component: </p>
+<ol>
+<li><p>From the list of HTML5 elements, determine the central, overall, or primary <strong>Role</strong>(its function), of the code you&#39;re about to write. </p>
+</li>
+<li><p>Review the list of pre-existing components. Then, depending on whether the role already exists, or not, we&#39;ll modify via new (or <em>with utmost caution for the global effect</em> adjusted) <code>materials</code> and new or adjusted <code>SASS partials</code>) from the base example. </p>
+<ul>
+<li>nav</li>
+<li>main</li>
+<li>section</li>
+<li>article </li>
+<li>form</li>
+<li>table</li>
+<li>aside</li>
+</ul>
+</li>
+</ol>
+<h3 id="when-building-with-strapless-locally-">When Building with Strapless Locally:</h3>
+<p>From within <code>/src/views/pages/</code>: </p>
+<ul>
+<li><p>create a new page by duplicating <code>default</code>, and rename the duplicate as you feel led. </p>
+</li>
+<li><p>Assuming you&#39;ve already built every component (both the material and SASS partial) you need, we&#39;ll summon the components individually using <a href="handlebarsjs.com">Handlebars.js&#39;s</a> <code>{{moustaches}}</code>, some YAML to auto-generate and auto-iterate relevant components as needed (because DRY) to uniquely and rapidly modify each to meet your needs. </p>
+</li>
+</ul>
+<h3 id="how-to-access-the-code-output-by-the-custom-pages">How to Access The Code Output By The Custom Pages</h3>
+<p>Strapless is using Fabricator to output the static html into the <code>/dist/</code> folder in real time (or, at least, as fast as your compiler can manage), so whenever you feel like your pages are previewing exactly how you&#39;d like, you can either begin the Integration stage, or if you don&#39;t need anything besides a static site, you&#39;re ready to link it together.</p>
+<ul>
+<li>to cut down on compilation time, keep your code trim, and your <code>images</code> folder tiny as possible. Compress, use SVG, use a CDN, use whatever method you can to bring this to a minimum. <a href="path/to/doc">path/to/doc</a></li>
+</ul>
+<p>--</p>
+<h3 id="a-natural-checkpoint">A Natural Checkpoint</h3>
+<p>In terms of displaying content, there&#39;s two types of websites:</p>
+<ul>
+<li>Static </li>
+<li>Dynamic</li>
+</ul>
+<p>While you edit and build your assets and pages, Strapless is auto-generating a <em>static HTML website</em>, which lives in the <code>/dist/</code> directory .</p>
+<ul>
+<li>This means it&#39;ll work as-is, out the box, though it isn&#39;t necessarily optimized for one usage or another. Use this as a point of reference, or as a launching point for integrating with a CMS or 3rd-party framework. </li>
+<li>You can also use front-matter and YAML data files to template around specific entry points. (More on this: <a href="/path/to/doc">/link/to/doc</a> )</li>
+</ul>
+<p>-- </p>
+<ol>
+<li><p>Integration: Download the template you need, depending on your usage. </p>
+<ul>
+<li>Whatever Categorizes These<ul>
+<li>Microsoft: Razor/MVC/asp.net/etc.</li>
+<li>App Engine</li>
+</ul>
+</li>
+<li>CMS: <ul>
+<li>Sharepoint</li>
+<li>Wordpress (php)</li>
+<li>Drupal   </li>
+</ul>
+</li>
+<li>3rd Party Framework: <ul>
+<li>Bootstrap (App Engine)<ul>
+<li>Foundation  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Other Pattern Library tools: <ul>
+<li><a href="http://patternlab.io/">http://patternlab.io/</a> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Wrap It Up: </p>
+<ul>
+<li>We&#39;ll be working with contents of the <code>/dist/</code> folder. </li>
+<li>Connect <strong>Hyperlinks</strong></li>
+<li>Go through a few end-of-development checklists <a href="path/to/doc">path/to/doc</a> </li>
+<li><strong>Adjust filepaths:</strong> Depending on how things are configured with your webhost and your usage of the site, you may need to adjust the reference urls. <a href="/path/to/doc">/link/to/doc</a></li>
+</ul>
+<p>Add the following files to your page:</p>
+</li>
+</ol>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;
+</code></pre>
+<pre><code class="lang-html">&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<ol>
+<li>Success! :)</li>
+</ol>

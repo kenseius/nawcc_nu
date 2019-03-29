@@ -1,0 +1,109 @@
+<!-- fabricator menu -->
+<div class="f-menu">
+
+	{{> f-controls}}
+
+	<ul class="accordion navAccordion">
+
+		<li>
+			<a href="index.html" class="f-menu__heading">Overview</a>
+		</li>
+		<li>
+			<a href="strapless.html" class="f-menu__heading">Strapless</a>
+		</li>
+		<li>
+			<input type="checkbox" checked> <i></i>
+			<a href="brand.html" class="f-menu__heading">Brand</a>
+			<div>
+				<ul>
+					{{#each materials.brand.items}}
+					<li>
+						<a href="#{{@key}}">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
+
+		<li>
+			<input type="checkbox" checked> <i></i>
+			<a href="materials.html" class="f-menu__heading">Materials</a>
+			<div>
+				<ul>
+					{{#each materials}}
+					<!-- <li>
+						<a href="materials.html#{{@key}}">{{name}}</a>
+					</li> -->
+					<li>
+						<input type="checkbox" checked> <i></i>
+						<a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+						<div>
+							<ul>
+								{{#each items}}
+								<li>
+									<a href="{{@../key}}.html#{{@key}}">{{name}}</a>
+								</li>
+								{{/each}}
+							</ul>
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
+
+
+		<!-- {{!--
+		{{#each materials}}
+		<li>
+			<input type="checkbox" checked> <i></i>
+			<a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+			<div>
+				<ul>
+					{{#each items}}
+					<li>
+						<a href="{{@../key}}.html#{{@key}}">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
+		{{/each}}
+		--}} -->
+
+
+		{{#each views}}
+		<li>
+			<input type="checkbox" checked> <i></i>
+			<a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+			<div>
+				<ul>
+					{{#each items}}
+					<li>
+						<a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
+		{{/each}}
+
+		<li>
+			<input type="checkbox" checked> <i></i>
+			<a href="docs.html" class="f-menu__heading">Docs</a>
+			<div>
+				<ul>
+					{{#each docs}}
+					<li>
+						<a href="docs.html#{{@key}}">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
+
+	</ul>
+
+
+</div>
+<!-- /fabricator menu -->

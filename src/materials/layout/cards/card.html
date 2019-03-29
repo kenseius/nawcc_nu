@@ -1,0 +1,173 @@
+---
+notes: |
+Generic card markup. There's two versions:
+- Outline (by adding `class="outline"`)
+- No outline (just a `div`)
+---
+<!-- <a class="card">
+    <div>
+        <{{~# if cardTitleTag}}{{cardTitleTag}}{{else}}h2{{~/if}}>
+            {{~title~}}
+        </{{~# if cardTitleTag}}{{cardTitleTag}}{{else}}h2{{~/if}}>
+        <p>{{subtitle}}</p>
+    </div>
+</a> -->
+
+{{#if fabricator}}
+
+    <section class="layout_grid col3">
+        <section class="card">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <section class="card buttonList">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Absolutely This Is The Longest Hyperlink In The Whole Entire World Ever</span>
+            </a>
+        </section>
+        <section class="card">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+    </section>
+
+    <section class="layout_grid col2">
+        <section class="card">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <section class="card">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+    </section>
+
+    <section class="layout_4col_8col">
+        <section class="card gry">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <article>
+            {{> typography.h1}}
+            {{> typography.paragraph}}
+            {{> typography.paragraph}}
+            {{> typography.paragraph}}
+        </article>
+    </section>`
+
+        <section class="card gry">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+
+
+    <section class="layout_grid col3">
+        <section class="card">
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <section class="card">
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <section class="card">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <section class="card">
+            {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+            <a href="#" class="button blu">Call To Action</a>
+        </section>
+        <section class="card buttonList">
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Longer Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>The Longest Hyperlink Ever</span>
+            </a>
+        </section>
+        <section class="card buttonList">
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Absolutely This Is The Longest Hyperlink In The Whole Entire World Ever</span>
+            </a>
+        </section>
+        <section class="card buttonList">
+            <h3>Card Title</h3>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-star"></i> 
+                <span>Hyperlink</span>
+            </a>
+        </section>
+        <section class="card">
+            <h3>Card Title</h3>
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+        </section>
+        <section class="card">
+            <h3>Card Title</h3>
+        </section>
+        <section class="card">
+            <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+        </section>
+    </section>
+
+{{else}}
+    <section class="card {{cardClass}}">
+        {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+        <h3>Card Title</h3>
+        <p>Card Text. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. </p>
+        <a href="#" class="button blu">Call To Action</a>
+    </section>
+
+{{/if}}

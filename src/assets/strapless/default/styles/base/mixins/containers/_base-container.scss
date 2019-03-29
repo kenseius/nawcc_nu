@@ -1,0 +1,5 @@
+@mixin base-container($width) {
+    display:block;
+    width:$width;
+    @include clear();
+}

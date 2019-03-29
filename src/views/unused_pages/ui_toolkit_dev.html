@@ -1,0 +1,310 @@
+---
+title: UI Toolkit
+subtitle: STRAPLESS - UI TOOLKIT
+layout: strapless
+fabricator: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: mail
+material_icons: true
+fontAwesome_icons: false
+
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+
+---
+{{> heros.hero_Logo}}
+
+<main>
+
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1>Navigation</h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.navigation.items}}
+                <a class="button" href="#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1>Content</h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.content.items}}
+                <a class="button blu" href="content.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1>Layout</h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.layout.items}}
+                <a class="button" href="#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="layout_grid col4">
+        <div class="buttonList">
+            <h3>Navigation</h3>
+            {{#each materials.navigation.items}}
+                <a href="#{{@key}}">
+                    <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h3>Content</h3>
+            {{#each materials.content.items}}
+                <a href="#{{@key}}">
+                    <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h3>Layout</h3>
+            {{#each materials.layout.items}}
+                <a href="#{{@key}}">
+                    <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h3>Input</h3>
+            {{#each materials.input.items}}
+                <a href="#{{@key}}">
+                    <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h3>Sharing</h3>
+            {{#each materials.sharing.items}}
+                <a href="#{{@key}}">
+                    <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="introSection introIcons">
+        <div>
+            <div class="intro">
+                <h1>Navigation</h1>
+            </div>
+            <div class="buttonList">
+                {{#each materials.navigation.items}}
+                    <a href="#{{@key}}">
+                        <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                        <span>{{name}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <section class="layout_4col_8col">
+        <div>
+            <h1>Navigation</h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.navigation.items}}
+                <a class="button blu" href="#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection introIcons">
+        <div>
+            <div class="intro">
+                <h1>Content</h1>
+            </div>
+            <div class="buttonBar buttonBarUXplaybook">
+                {{#each materials.content.items}}
+                    <a class="iconButtonHyperlink" href="#{{@key}}">
+                        <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                        <span>{{name}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <section class="introSection introIcons">
+            <div>
+                <div class="intro">
+                    <h1>Layout</h1>
+                </div>
+                <div class="buttonBar buttonBarUXplaybook">
+                    {{#each materials.content.items}}
+                        <a class="iconButtonHyperlink" href="#{{@key}}">
+                            <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                            <span>{{name}}</span>
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+
+{{#markdown}}
+
+<!-- TAB NAV -->
+    <!-- <div class="tabs iconBar" data-tabgroup="uiToolkit-tab-group">
+        <div class="layout_grid col5">
+            <a class="iconButtonHyperlink active" href="#navigation">
+                <i class="fa fa-star"></i> 
+                <span>Navigation</span>
+            </a>
+            <a class="iconButtonHyperlink" href="#content">
+                <i class="fa fa-star"></i> 
+                <span>Content</span>
+            </a>
+            <a class="iconButtonHyperlink" href="#layout">
+                <i class="fa fa-star"></i> 
+                <span>Layout</span>
+            </a>
+            <a class="iconButtonHyperlink" href="#input">
+                <i class="fa fa-star"></i> 
+                <span>Inputs</span>
+            </a>
+            <a class="iconButtonHyperlink" href="#sharing">
+                <i class="fa fa-star"></i> 
+                <span>Sharing</span>
+            </a>
+        </div> -->
+        
+        <!-- <div class="layout_grid col4">
+        {{#each materials.design.items}}
+            <a class="iconButtonHyperlink" href="#{{@index}}">
+                <i class="fa fa-star"></i> 
+                <span>{{name}}</span>
+            </a>
+        {{/each}}
+        </div> -->
+    <!-- </div> -->
+<!-- 
+    <section class="introSection introIcons">
+        <div>
+            <div class="intro">
+                <h1>Navigation</h1>
+            </div>
+            <div class="buttonBar" style="margin:3.157rem auto;">
+                {{#each materials.build.items}}
+                    <a class="iconBarHyperlink" href="ui_toolkit.html#{{@key}}">
+                        <i class="fa {{#if icon}}{{#each this}}{{icon}}{{/each}}{{else}}fa-star{{/if}}"></i> 
+                        <span>{{name}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Tab Content -->
+    <!-- <div id="uiToolkit-tab-group" class="tabgroup">
+    
+        <div id="navigation">
+            <section class="introSection introIcons">
+                <div>
+                    <div class="intro">
+                        <h1>Navigation</h1>
+                    </div>
+                    <div class="buttonBar buttonBarUXplaybook">
+                        {{#each materials.navigation.items}}
+                            <a class="iconButtonHyperlink" href="#{{@key}}">
+                                <i class="fa fa-star {{#each this}}{{icon}}{{/each}}"></i> 
+                                <span>{{name}}</span>
+                            </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+            {{#each materials.navigation.items}}
+                {{> f-item this}}
+            {{/each}}
+        </div>
+    
+        <div id="content">
+            {{#each materials.content.items}}
+                {{> f-item this}}
+            {{/each}}    
+        </div>
+     
+        <div id="layout">
+            {{#each materials.layout.items}}
+                {{> f-item this}}
+            {{/each}}
+        </div>
+
+        <div id="input">
+            {{#each materials.input.items}}
+                {{> f-item this}}
+            {{/each}}
+        </div>
+
+        <div id="sharing">
+            {{#each materials.sharing.items}}
+                {{> f-item this}}
+            {{/each}}
+        </div>
+    
+    </div> -->
+{{/markdown}}
+
+</main>
+
+<!-- 
+<main>
+
+<section class="introSection introDeliverables">
+    <h2>Components</h2>
+    {{#each materials.components.items}}
+    <div>
+        <div class="intro">
+            <p>{{name}}</p>
+        </div>
+         <div class="buttonBar buttonBarUXplaybook">
+        {{#if items}}
+            {{#each items}}
+                <a class="iconButtonHyperlink" href="#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+            {{/each}}
+            {{else}}
+            <a class="iconButtonHyperlink" href="#{{@key}}">
+                <i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+                <span>{{name}}</span>
+            </a>
+        {{/if}}
+        </div> 
+    </div>
+    {{/each}}
+</section>
+
+</main> -->
+
+<!-- {{#each materials.components.items}}
+    {{> f-item this}}
+{{/each}} -->

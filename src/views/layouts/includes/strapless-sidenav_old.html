@@ -1,0 +1,466 @@
+<!-- TOP NAV - MOBILE SIDE SLIDEOUT MENU -->
+<nav data-scroll-header class="accordion_sidenav accordion_sidenav_strapless f-menu sidenav_strapless_JSref">
+     
+    <!-- {{> f-controls}}  -->
+
+{{#if ui_toolkit}}
+
+    <div class="sidenav_header">
+        <!-- <a href="{{baseurl}}/webappstandards.html" data-balloon="Back to All Components" data-balloon-pos="bottom">
+            <i class="fa fa-chevron-left"></i>
+            <span>Back</span>
+        </a> -->
+        <p class="sidenav_title">
+            {{#if structure}}<i class="fa fa-paint-brush"></i> <span>Structure</span>{{/if}}
+            {{#if navigation}}<i class="fa fa-bars"></i> <span>Navigation</span>{{/if}}
+            {{#if ui_content}}<i class="fa fa-list"></i> <span>Content</span>{{/if}}
+            {{#if ui_layout}}<i class="fa fa-columns"></i> <span>Layout</span>{{/if}}
+            {{#if input}}<i class="fa fa-check-square-o"></i> <span>Input</span>{{/if}}
+            {{#if sharing}}<i class="fa fa-share-square-o"></i> <span>Sharing</span>{{/if}}
+        </p> 
+    </div> 
+
+{{#if structure}}
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.design.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+
+{{#if navigation}}
+
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if navigation}}<i class="fa fa-bars"></i> <span>Navigation</span>{{/if}}
+            </a>
+            <div class="buttonList">
+                {{#each materials.navigation.items}} 
+                    <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if navigation}}<i class="fa fa-columns"></i> <span>Layout</span>{{/if}}
+            </a>
+            <div class="buttonList">
+                {{#each materials.layout.items}} 
+                    <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if navigation}}<i class="fa fa-list"></i> <span>Content</span>{{/if}}
+            </a>
+            <div class="buttonList">
+                {{#each materials.content.items}} 
+                    <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if navigation}}<i class="fa fa-check-square-o"></i> <span>Forms</span>{{/if}}
+            </a>
+            <div class="buttonList">
+                {{#each materials.input.items}} 
+                    <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.navigation.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div> -->
+
+{{/if}}
+
+{{#if ui_content}}
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.content.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+{{#if ui_layout}}
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.layout.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+{{#if input}}
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.input.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+{{#if sharing}}
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.sharing.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+<!-- {{#if nada}}
+    {{#each materials.sharing.items}}
+        {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i>
+                <a href="sharing.html" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{name}}</span> 
+                    {{else}}{{name}}
+                    {{/if}}
+                </a>
+        {{else}}
+            <div class="accordion">
+                <a href="sharing.html#{{@key}}" class="f-menu__heading">{{name}}</a>
+            </div>
+        {{/if}}
+        {{#if items}}
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="sharing.html#{{name}}">{{name}}</a>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+{{/if}} -->
+
+    <!-- <div class="accordion">
+        <input type="checkbox" {{#if navigation}}{{else}}checked{{/if}}> <i></i>
+        <a href="navigation.html" class="f-menu__heading {{#if navigation}}active{{/if}}">
+            <i class="fa fa-bars"></i>
+            <span>Navigation</span>
+        </a>
+        <div class="buttonList">
+            {{#each materials.navigation.items}}
+                <a href="navigation.html#{{name}}" class="f-menu_heading">{{name}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="accordion">
+        <input type="checkbox" {{#if ui_content}}{{else}}checked{{/if}}> <i></i>
+        <a href="content.html" class="f-menu__heading {{#if ui_content}}active{{/if}}">
+            <i class="fa fa-list"></i>
+            <span>Content</span>
+        </a>
+            {{#each materials.content.items}}
+            <div class="accordion buttonList">
+                <input type="checkbox" {{#if ui_content}}{{else}}checked{{/if}}> <i></i>
+                <a href="content.html" class="f-menu__heading {{#if ui_content}}active{{/if}}">
+                    <i class="fa fa-list"></i>
+                    <span>{{name}}</span>
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="content.html#{{name}}">{{name}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="accordion">
+        <input type="checkbox" {{#if ui_layout}}{{else}}checked{{/if}}> <i></i>
+        <a href="layout.html" class="f-menu__heading {{#if ui_layout}}active{{/if}}">
+            <i class="fa fa-columns"></i>
+            <span>Layout</span>
+        </a>
+        <div class="buttonList">
+            {{#each materials.layout.items}}
+                <a href="layout.html#{{name}}">{{name}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="accordion">
+        <input type="checkbox" {{#if input}}{{else}}checked{{/if}}> <i></i>
+        <a href="input.html" class="f-menu__heading {{#if input}}active{{/if}}">
+            <i class="fa fa-check-square-o"></i>
+            <span>Inputs</span>
+        </a>
+        <div class="buttonList">
+            {{#each materials.input.items}}
+                <a href="input.html#{{name}}">{{name}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="accordion">
+        <input type="checkbox" {{#if sharing}}{{else}}checked{{/if}}> <i></i>
+        <a href="sharing.html" class="f-menu__heading {{#if sharing}}active{{/if}}">
+            <i class="fa fa-share-square-o"></i>
+            <span>Sharing</span>
+        </a>
+        <div class="buttonList">
+            {{#each materials.sharing.items}}
+                <a href="sharing.html#{{name}}">{{name}}</a>
+            {{/each}}
+        </div>
+    </div> -->
+{{/if}}
+
+{{#if learn}}
+ {{#each materials.content.items}}
+     <a href="#{{@key}}">{{name}}</a>
+ {{/each}}    
+
+ {{#each materials.layout.items}}
+     <a href="#{{@key}}">{{name}}</a>
+ {{/each}}
+
+ {{#each materials.input.items}}
+     <a href="#{{@key}}">{{name}}</a>
+ {{/each}}
+
+ {{#each materials.sharing.items}}
+     <a href="#{{@key}}">{{name}}</a>
+ {{/each}}
+{{/if}}
+
+    {{#if learn}}
+        {{~#each materials.learn.items}}
+            <a href="#{{@key}}">{{name}}</a>
+        {{/each~}}
+    {{/if}} 
+ 
+    {{#if build}}
+        {{~#each materials.build.items}}
+            <a href="#{{@key}}">{{name}}</a>
+        {{/each~}}
+    {{/if}}
+
+    <!-- {{#if design}}
+        {{~#each materials.design.items}}
+            <a href="#{{@key}}">{{name}}</a>
+        {{/each~}}
+    {{/if}} -->
+
+    {{#if brandPage}}
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i>
+            <a href="brand.html" class="f-menu__heading">
+                <i class="fa fa-home"></i>
+                <span>Brand</span>
+            </a>
+            <div class="buttonList">
+                {{#each materials.brand.items}}
+                    <a href="#{{@key}}">{{name}}</a>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+
+    <!-- {{#if ui_toolkit}}
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i>
+            <a href="components.html">
+                <i class="fa fa-home"></i>
+                <label>UI Components</label>
+            </a>
+            <div class="buttonList">
+                {{#each materials.components.items}}
+                    <a href="#{{@key}}">{{name}}</a>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}} -->
+<!--
+    <div>
+        <input type="checkbox" checked> <i></i>
+        <a href="brand.html" class="f-menu__heading">
+            <i class="fa fa-home"></i>
+            <label>Brand</label>
+        </a>
+        <div>
+            {{#each materials.brand.items}}
+            <a href="#{{@key}}">{{name}}</a>
+            {{/each}}
+        </div>
+    </div>
+
+    <div>
+    <input type="checkbox" checked> <i></i>
+	<a href="materials.html">
+        <i class="fa fa-home"></i>
+        <label>Materials</label>
+    </a>
+    <div>
+        {{#each materials}}
+        <a href="#{{@key}}.html">{{name}}</a>
+        {{/each}}
+    </div>
+    </div>
+
+    <div>
+    <input type="checkbox" checked> <i></i>
+    <a href="pages.html">
+        <i class="fa fa-home"></i>
+        <label>Pages</label>
+    </a>
+    <div>
+        {{#each views}}
+            <input type="checkbox" checked> <i></i>
+            <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+            <div>
+            {{#each items}}
+                <a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
+            {{/each}}
+            </div>
+        {{/each}}
+    </div>
+    </div>
+
+    <input type="checkbox" checked> <i></i>
+    <a href="docs.html" class="f-menu__heading">Docs</a>
+    <div>
+    {{#each docs}}
+        <a href="docs.html#{{@key}}">{{name}}</a>
+    {{/each}}
+    </div>
+-->
+
+</nav>

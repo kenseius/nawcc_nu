@@ -1,0 +1,63 @@
+---
+title: Layout
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true
+ui_layout: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: fa-star
+material_icons: true
+fontAwesome_icons: false
+
+pageClass: layout
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+navMenuLabel: Menu
+
+---
+
+
+<div id="01-info" class="componentsIntro">
+    <section class="layout_grid col2 whatIsthis">
+        <div class="article">
+            <h1>{{title}}</h1>
+            <!-- {{!-- {{> logos.paLogo siteTitle="Navigation"}} --}} -->
+
+{{#markdown}}
+
+**Content Layout** is used to arrange the content on a page, and within sections. 
+
+These components are used for laying out the content within a page or section. 
+
+All content lives within one of the 6 content containers: `main`, `article`, `section`, `aside`, `header`, `footer`.
+
+{{/markdown}}
+
+        </div>
+        <div>
+            {{> images.image imageSource="./assets/strapless/images/UI_components/layout_1440.png"}}  
+        </div>
+    </section>
+
+    <section class="layout_grid col3 tabs" data-tabgroup="components_tabs">
+        {{#each materials.layout.items}}
+        <a class="button red" href="layout.html#{{@../key}}">
+            <img src="./assets/strapless/images/UI_components/layout/{{@key}}.png" alt="@key">                  
+            <span>{{name}}</span>
+        </a>
+        {{/each}} 
+    </section>
+</div>
+
+{{#each materials.layout.items}}
+    {{> f-item this}}
+{{/each}}

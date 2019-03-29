@@ -1,0 +1,66 @@
+<div class="layout_strapless_material">
+	<div class="f-item-preview">
+		{{{material @key @root}}}
+	</div>
+	{{#if notes}}
+		<div class="layout_sidenav" data-f-toggle="notes">
+			<!-- TAB NAV -->
+			<div class="tabs buttonList sidenav" data-tabgroup="sidenav-tab-group-{{@../key}}-{{@index}}">
+				<a href="#uno-{{@../key}}-{{@index}}" class="active">
+					<i class="fa fa-info"></i> 
+					<span>Notes</span>
+				</a>
+				<a href="#dos-{{@../key}}-{{@index}}">
+					<i class="fa fa-html5"></i> 
+					<span>Markup</span>
+				</a>
+				<a href="#tres-{{@../key}}-{{@index}}">
+					<i class="fa fa-paint-brush"></i> 
+					<span>Styles</span>
+				</a>
+			</div>
+			
+			<!-- Tab Content -->
+			<div id="sidenav-tab-group-{{@../key}}-{{@index}}" class="tabgroup">
+			
+				<div id="uno-{{@../key}}-{{@index}}">
+					<div class="f-item-notes" data-f-toggle="notes">
+						{{{notes}}}
+					</div>	
+				</div>
+			
+				<div id="dos-{{@../key}}-{{@index}}">
+					<h3>Markup - HTML5</h3>
+					<div class="f-item-code f-item-hidden" data-f-toggle="code">
+						<pre><code class="language-markup">{{material @key @root}}</code></pre>
+					</div>
+				</div>
+				
+				<div id="tres-{{@../key}}-{{@index}}">
+					<h3>Styles - CSS3</h3>
+					<div class="f-item-code f-item-hidden" data-f-toggle="code">
+						<pre><code class="language-markup">{{name}}</code></pre>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		{{else}}
+			<div class="f-item-code" data-f-toggle="code">
+				<section class="accordion accordion_uiComponents">
+					<input type="checkbox" class="accordion_input" checked aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Markup - HTML5</p>
+					<div>
+						<pre><code class="language-markup">{{material @key @root}}</code></pre>
+					</div>
+				</section>
+				<section class="accordion accordion_uiComponents">
+					<input type="checkbox" class="accordion_input" checked aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Styles - CSS3</p>
+					<div>
+						<pre><code class="language-markup">{{material @key @root}}</code></pre>
+					</div>
+				</section>
+			</div>
+	{{/if}}
+</div>

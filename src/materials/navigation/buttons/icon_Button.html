@@ -1,0 +1,20 @@
+---
+buttonTitle: Button Title
+buttonIcon: fa-star
+---
+{{#if fabricator}}
+    <div class="layout_grid col4">
+    {{#each strapless.colors as |buttonClass buttonText|}}
+        <button class="iconButton {{buttonClass}}">
+            <i class="fa fa-heart"></i>
+            <span>{{@key}}</span>
+        </button>
+    {{/each}}
+    </div>
+    {{else}}
+    <button class="iconButton {{buttonClass}}">
+        <i class="fa {{buttonIcon}}"></i>
+        <span>{{buttonTitle}}</span>
+    </button>
+{{/if}}
+

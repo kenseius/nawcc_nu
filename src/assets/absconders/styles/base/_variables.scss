@@ -1,0 +1,119 @@
+﻿/*  COLORS
+--------------------------------------
+
+white       =   #fafafa
+slate       =   #404040
+yellow      =   #ffe0b2
+grey        =   #ebebeb
+light grey  =   #e1e1e1
+muted grey  =   #bdbdbd
+dark slate  =   #464646
+blue        =   #598db2
+blue - dark =   #294c65
+turquoise   =   #006064
+green       =   #5a7f68
+red         =   #c92a2a
+
+-------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+// STANDARD COLORS
+$wht:       #fafafa; // rgb - 250,250,250 | brighter: #fefefe
+$slate:     #333; // TODO: give #333 its own variable - slate is normally: darken(#595959, 10%); // = #404040 | rgb - 64, 64, 64
+$blk:       #111; //  #000222 |
+$blkalt:    #3c4245;
+$whtlite:   #ffffff; // pure white
+$blkdrk:    #000000; // pure black
+
+// SHADES OF GREY
+$gryliter:  #f2f2f2; // = lighten($gry, 2.639%)
+$gry:       #ebebeb;
+$grylite:   #e0e0e0;
+$gryslvr:   #dadada;
+$gry_bold:  #e9e9e9;
+$gry_muted: #bdbdbd;
+$grydrk:    #464646; // #777
+
+// UNIQUE COLORS
+$ylw:     #ffe066; // yellow 3 - rgb: 255 224 102	 - via open color (https://yeun.github.io/open-color/swatches.html)
+$grn:     #5A7F68; // #598
+$valid:   $grn;
+$red:     #c92a2a; // = oc | old: #f03e3e;
+
+// BRAND COLORS
+$bludrk:  #294c65;
+$blu:     #598db2;  // rgb(89,141,178)
+$bluer:   #1155cc;
+$gld:     #ffb74d;
+$pch:     #ffe0b2;
+$trq:     #006064;
+
+// SOCIAL MEDIA COLORS
+$facebook:  #3b5998;
+$twitter:   #00aced;
+$linkedin:  #0077b5;
+$google:    #dd4b39;
+$instagram: #517fa4;
+$pinterest: #cb2027;
+$flickr:    #ff0084;
+$vimeo:     #1ab7ae;
+$youtube:   #bb0000;
+
+// Base Styles used throughout site
+
+// fonts
+$base-font:             'Montserrat', 'Gotham', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+$title-font:            'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+$table-font:            'Source Sans Pro';
+$base-font-size:        1rem; // = 16px
+
+// dimensions
+$base-width:            100%;
+$base-max-width:        64rem; // helps set margins
+$article-max-width:     42.81rem; // = 64rem * 0.77778
+$base-border:           0.2em solid $gry_muted;// $grylite;
+
+// animations
+$global-animation:      all 0.33333s ease-in-out;
+$base-hover-color:      $ylw;
+
+// colors
+$global-background:     $gryliter;
+
+
+// Vertical Rhythm
+$base-horizontal-value:         1.77778;
+$base-horizontal-padding:       1.77778rem;
+$base-horizontal-small:         0.77778rem;
+$base-vertical-padding:         $base-font-size * 4.86111125;           // = 77.77778px; was: $base-font-size * 4.6875 = 75px | was: $base-font-size * 6.25; // = 100px
+$base-vertical-padding-small:   $base-font-size * 2.369; // 2;
+$base-vertical-scale:           1.33333;                                // via: http://type-scale.com/?size=16&scale=1.333&text=A%20Visual%20Type%20Scale&webfont=Montserrat&font-family=%27Montserrat%27%2C%20%27Gotham%27%2C%20%27Open%20Sans%27%2C%20%27Helvetica%20Neue%27%2C%20Helvetica%2C%20sans-serif%20&font-weight=400&font-family-headers=&font-weight-headers=bold&background-color=white&font-color=%23333
+$base-vertical:                 1.33333rem;
+$base-padding-value:            1.45;
+$base-padding:                  1.45rem;
+$base-margin:                   0 auto $base-horizontal-padding;
+$base-line-height:              $base-padding-value * $base-font-size;  // was 1.6 * $base-font-size;
+
+
+/* Font Awesome Variable override */
+// TODO, should not come from bower_components probably
+// $fa-font-path : "../../bower_components/font-awesome/fonts";
+
+// unused variables (that should be used probably at some point)
+$border-size: 0.125em;
+$bg-url: "../img/background/test/blueprint_2.jpg";
+$bg-shade: 1; // .5;
+
+
+// topnav
+$navHeight: 65px;
+$navZIndex : 1005;
+$navBackground: $slate;
+$navLinkColor: $wht;
+$navHamburger-color: $grylite;
+$navHamburger-menuColor: $grylite;
+
+// forms
+$placholderTextcolor: #909090; // search, inputs

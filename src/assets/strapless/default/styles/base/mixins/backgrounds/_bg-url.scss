@@ -1,0 +1,4 @@
+// bg - just url
+@mixin bg-url($url) {
+    background-image: url($url);
+}

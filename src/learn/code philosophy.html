@@ -1,0 +1,105 @@
+<h1 id="code-philosophy">code philosophy</h1>
+<ol>
+<li>The code must be as semantic as possible</li>
+<li><p>always use the least amount of markup possible. In practice, this constantly means removing unnecessary containers. By coordinating with the SCSS, we can determine which HTML brackets and classes are unnecessary.</p>
+<p>For example, the goal of the below code is to create a full-width section with a centered title, vertical padding, and a white background:</p>
+<pre><code> // css
+ body {background: $wht;}
+ .wrapper {
+     display:block;
+
+ &lt;!-- html --&gt;
+ &lt;div class=&quot;wrapper&quot;&gt;
+     &lt;div class=&quot;title white_background&quot;&gt;
+         &lt;h1 class=&quot;bold center&quot;&gt;Title&lt;/h1&gt;
+     &lt;/div&gt;  
+ &lt;/div&gt;
+</code></pre><p>In this case,</p>
+</li>
+<li><p>this includes using as few classes or IDs as possible. It is often better simply use a parent class to define it&#39;s children, provided that this practice is maintained.</p>
+</li>
+<li>avoid generic classes. Instead, incorporate the style into a more meaningful class. In the above example, h1 doesn&#39;t need the bold or center class. Instead, .nav &gt; h1 {font-weight: bold; text-align: center;}.</li>
+<li>always write neat code Not only does this make the code more readable, which is helpful for collaboration, but it makes it more manageable.</li>
+<li>it&#39;s a work in progress code can always be improved. this is intended to be built in many small interative steps</li>
+</ol>
+<p>When coding:</p>
+<p>If you&#39;re going to use a div or a span, decide first if there isn&#39;t a more meaningful HTML5 wrapper (like <code>&lt;section&gt;</code> or <code>&lt;nav&gt;</code>).</p>
+<p>--</p>
+<p>For HTML5 and CSS3 DOCUMENTS:</p>
+<p>// code indent as the romans do</p>
+<p>for scanability, to keep things tidy, and to signal that a block of code is complete.</p>
+<pre><code>a { color: $slate; border:2px solid $slate; }
+</code></pre><p>when a block of code is being worked on, open the brackets.  </p>
+<pre><code>a {
+    color: $slate;
+    border:2px solid $slate;
+    background: $wht;
+}
+</code></pre><p>when coding within pre-existing code-blocks, adhere to the patterns in the local document, or improve them to fit the global standard (whatever we define that as).</p>
+<p>as a general rule, whoever authored the majority of that particular section (or document) of the code sets these patterns through the act of writing the code.</p>
+<p>Of course, this does not necessarily apply to other programing languages.</p>
+<p>aside note: changing indent patterns or comment patterns should happen on a document-level (unify at least the document code while a universal standard is decided upon) and usually really would only ever also mean an audit, rewrite, change and/or removal of the code, so to keep it simple: just indent to convey inheritance if nesting styles.</p>
+<p>--</p>
+<p>#html / css3</p>
+<p>Getting Started:</p>
+<ol>
+<li>install node.js  </li>
+<li>install npm  <ul>
+<li>installing gulp and dependencies</li>
+</ul>
+</li>
+<li>install gulp  <ul>
+<li>gulpfile</li>
+<li>dependencies  </li>
+</ul>
+</li>
+<li>install sass</li>
+<li>create html5 file structure</li>
+<li>add in components</li>
+<li>fill with content</li>
+<li>adjust styles as needed</li>
+</ol>
+<p>##sass</p>
+<p>sass file structure:</p>
+<pre><code>/sass/
+     /base
+         /global  
+             _global.scss
+             _typography.scss
+         /layout  
+             _susy.scss
+             _vertical-rhythm.scss
+             _breakpoints.scss
+             _layout.scss  
+         _reset.scss
+         _mixins.scss
+         _variables.scss
+         _helpers.scss
+     /components
+         /forms
+             _forms.scss
+             _inputs.scss
+             _labels.scss
+             _formgroups.scss
+             _checkboxes
+             _validation.scss
+         /nav
+             _backToTop.scss
+             _topnav.scss
+         /search
+             _pagination.scss
+             _search.scss
+             _searchResults.scss
+         _alerts.scss
+         _buttons.scss
+         _footer.scss
+         _hero.scss
+         _icons.scss
+         _loading-spinners.scss
+         _media-object.scss
+         _metadata.scss
+         _tables.scss
+         _tooltips.scss
+     /pages
+     /vendor
+</code></pre>

@@ -1,0 +1,31 @@
+---
+title: Content
+subtitle: STRAPLESS - UI TOOLKIT
+layout: layout_webAppStandards
+fabricator: true 
+ui_content: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: mail
+material_icons: true
+fontAwesome_icons: false
+
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+
+---
+
+{{> heros.hero_Logo}}
+{{#each materials.content.items}}
+    <article>
+    {{> f-item this}}
+    </article>
+{{/each}}

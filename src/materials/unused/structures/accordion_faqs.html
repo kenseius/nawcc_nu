@@ -1,0 +1,9 @@
+---
+layout: hackathon
+---
+<section class="faqs">
+    {{~# if h2}}<h2>{{h2}}</h2>{{/if~}}
+    {{#each hackathon.faqs~}}
+        {{> accordion}}
+    {{~/each}}
+</section>

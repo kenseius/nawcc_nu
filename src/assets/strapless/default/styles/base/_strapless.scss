@@ -1,0 +1,115 @@
+// ==========================
+//  
+//   Strapless / Fabricator styles 
+//  -----------------------------
+//   - styling for how strapless portrays materials 
+//      - fabricator styles 
+//      - docs
+//
+// ==========================
+
+
+// fabricator / styleguide styles
+.f-container {
+    // background-color: $gryliter;
+    & > * {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    & > h1, & > .meta, & > p, & > ul {
+        margin-bottom: $base-vertical; 
+        max-width: $article-max-width;
+    }
+    & > h2, & > h3, & > pre {margin-bottom: $base-horizontal-small;}
+    & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 { 
+        // font-family: $base-font; 
+        font-weight: 700; 
+        max-width:$article-max-width;
+    }
+    & > h1 { @include type-setting(4); }
+    & > pre { max-width:$article-max-width;}
+    .f-item-heading-group {
+        & > h2 { @include type-setting(3); text-transform: none;}
+        & > h3 { @include type-setting(1); text-transform: uppercase;}
+    }
+
+    .f-color-chips {max-width: $base-max-width;}
+
+    .f-item-preview {
+        .oldnav, .nav {position: relative;}
+
+        // styles content within <sections> when displayed via f-item-preview 
+        & > section {
+            .col2,
+            pre {@include wrap($base-max-width, auto);}
+        }
+
+
+    }
+
+    .f-item-notes {
+       ul {list-style: disc;}
+       ol {list-style: decimal;}
+       ul, ol, p {margin-bottom: $base-horizontal-padding;}
+    }
+
+    .f-item-group {
+        & > h2,
+        & > .f-item-heading,
+        & > .f-item-heading-group,
+        & > .f-item-preview,
+        & > .f-item-code { 
+            max-width: $base-max-width;
+            margin-left: auto;
+            margin-right: auto;
+            // @include wrap($base-max-width, auto) 
+        }
+        & > .f-item-notes { @include wrap($article-max-width, auto) }
+        // &:nth-child(odd){background-color: $wht;}
+    }
+
+    p > img {max-width:$article-max-width; background: $blu;}
+
+    // & > article,
+    article,
+    .article {
+        @include article;
+        margin: 0 auto $base-vertical-padding; // $base-vertical-padding auto ($base-vertical-padding * 1.778);
+        
+        // adds padding for the first element
+        & > *:not(img):first-child {padding-top: $base-vertical-padding;}
+        
+        & > h1, & > h2, img, pre {
+            // max-width: $base-max-width;
+            @media #{$medium-down} {max-width: $article-max-width;}
+        }
+        & > h2, 
+        // & > h3, 
+        & > pre {margin-bottom: $base-vertical-padding; }
+        &> h1, & > h2, & > h3, & > h4, & > h5, & > h6 { 
+            font-family: $base-font; 
+            font-weight: 700; 
+            // max-width:$article-max-width;
+        }
+        // & > h1 { @include type-setting(4); }
+        pre {
+            @include clear;
+            display: block;
+            width: 100%;
+        }
+        // & > h1, & > h2, pre {max-width: $base-max-width;}
+        .col2 { img {max-width: 100%;} }
+    }
+
+}
+
+
+// styling for documentation pages
+.docs {
+    table {max-width: $article-max-width;}
+    article {
+        & > h1:first-child,
+        & > .meta,
+        & > .meta_article {max-width: $base-max-width;}
+    }
+}

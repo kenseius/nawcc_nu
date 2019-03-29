@@ -1,0 +1,101 @@
+// @import "../base/siteVariables";
+// @import "../helpers/breakpoints";
+/* ==============================
+
+      VERTICAL RHYTHM
+      ==================
+
+      [ reference - via _variables.scss ]
+
+      $base-font-size:        16px; // = 1rem
+      $base-line-height:      1.45 * $base-font-size; // was 1.6 * $base-font-size;
+      $base-vertical-scale:   1.33333;
+
+
+      // dimensions
+      // ======================
+      //
+      // 255.382em 4086.115px
+      // 180.61em 2889.756px
+      // 127.73em 2043.674px
+      // 90.332em 1445.314px
+      // 63.884em 1022.146px
+      // 45.18em  722.875px
+      // 31.952em 511.227px
+      // 22.597em   361.547
+      // 15.981em  255.691px
+      // 11.302em 180.828px
+      // 7.993em 127.884px
+      //
+      // 5.653em 90.441px
+      // 3.998em 63.961px
+      // 2.827em 45.234px
+      // 1.999em 31.99px
+      // 1.414em 22.624px
+      // 16px 1em
+      //
+      // 0.707em 11.315px
+      // 0.5em 8.002px
+
+      $base-width:            100%;
+      $base-max-width:        64rem;
+      $article-max-width:     31.952rem; // 511.227px
+      $text-max-width:        $article-max-width;
+      $base-border:           0.2rem solid $gry_muted;// $grylite;
+
+      $h1: 5.653em; // 90.441px
+      $h2: 3.998em; // 63.961px
+      $h3: 2.827em; // 45.234px
+      $h4: 1.999em; // 31.99px
+      $h5: 1.414em; // 22.624px
+      $lead: 1.414em; // 22.624px
+      $p1: 1em; // 16px
+
+
+// ============================== */
+
+
+$h1: 5.653; // 90.441px
+$h2: 3.998; // 63.961px
+$h3: 2.827; // 45.234px
+$h4: 1.999; // 31.99px
+$h5: 1.414; // 22.624px
+$pLead: 1.414; // 22.624px
+$p1: 1; // 16px
+
+// establish vertical rhythm -  ( type scale = perfect forth scale - 1.333 )
+$type-settings: (
+    -1: ( font-size: $base-font-size * 0.707,     line-height: $base-line-height ),         // -1 | small text
+     0: ( font-size: $base-font-size,             line-height: $base-line-height ),         //  0 | base font size (16px)
+     1: ( font-size: $base-font-size * $h5,       line-height: $base-font-size * $h4 ),   //  1 | h5
+     2: ( font-size: $base-font-size * $h4,       line-height: $base-font-size * $h3 ),   //  2 | h4
+     3: ( font-size: $base-font-size * $h3,       line-height: $base-font-size * $h2 ),   //  3 | h3
+     4: ( font-size: $base-font-size * $h2,       line-height: $base-font-size * $h1 ),   //  4 | h2
+     5: ( font-size: $base-font-size * $h1,       line-height: $base-font-size * 7.993 ) // 127.884px //  5 | h1
+);
+
+
+// establish vertical rhythm -  ( type scale = perfect forth scale - 1.333 )
+// $type-settings: (
+//     -1: ( font-size: $base-font-size * 0.778,   line-height: $base-line-height ),           // -1 | small text
+//      0: ( font-size: $base-font-size,           line-height: $base-line-height ),           //  0 | base font size (16px)
+//      1: ( font-size: $base-font-size * 1.333,   line-height: 2.369rem ),   //  1 | h5
+//      2: ( font-size: $base-font-size * 1.778,   line-height: $base-line-height * 1.333 ),   //  2 | h4
+//      3: ( font-size: $base-font-size * 2.369,   line-height: $base-line-height * 1.778 ),   //  3 | h3
+//      4: ( font-size: $base-font-size * 3.157,   line-height: $base-line-height * 2.369 ),   //  4 | h2
+//      5: ( font-size: $base-font-size * 4.209,   line-height: $base-line-height * 3.157 )    //  5 | h1
+// );
+
+// functions
+@function type-scale($level) {  @return map-get(map-get($type-settings, $level), 'font-size'); }
+@function line-height($level) { @return map-get(map-get($type-settings, $level), 'line-height'); }
+
+// mixin
+@mixin type-setting($level) {
+    font-size: type-scale($level);
+    line-height: line-height($level);
+
+    @media #{$small-only} {
+        font-size : type-scale(round($level * 2/3));
+    }
+}

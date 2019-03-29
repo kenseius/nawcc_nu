@@ -1,0 +1,41 @@
+navItems:
+  Design: "design.html"
+  Build: "build.html"
+  Brand: "brand.html"
+  UI Toolkit: "ui_toolkit.html"
+  Assets: "assets.html"
+
+heroContent:
+    hero_Strapless:
+      - {heroClass: hero_Strapless hero_LearnTheCode, title: Learn The Code, subtitle: Not A Framework}
+      - {heroClass: hero_Strapless hero_WeAllBuiltIt, title: We All Built It, subtitle: A compilation of the best of all our code}
+
+buttonBarStrapless:
+    buttonBarStrapless:
+        Build + Prototype: "fa-user"
+        Front-End Assets: "fa-briefcase"
+        Docs: "fa-thumbs-up"
+        Integration: "fa-home"
+        Styleguide: "fa-briefcase"
+        Central Base: "fa-handshake-o"
+        Unified Variables: "fa-briefcase"
+        Best Practices: "fa-handshake-o"
+        Atomic Design: "fa-handshake-o"
+
+colors:
+  Slate: slate
+  Grey: gry
+  White: wht
+  Outlined: outlined
+  Blue: blu
+  Dark Blue: bludrk
+  Light Blue: blulite
+  Green: grn
+  Red: red
+  Orange: org
+  Peach: pch
+  Gold: gld
+  Yellow: ylw
+
+  
+  

@@ -1,0 +1,47 @@
+---
+title: Structure
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true
+structure: true
+ui_toolkit: false
+
+pageClass: structure
+bodyClass: body_UItoolkit
+heroClass: hero_Design
+navMenuLabel: Menu
+
+---
+
+
+
+<div id="01-info" class="componentsIntro">
+	
+	{{> svg}}
+	{{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Design home_hero"}}
+	<section class="introSection introIcons">
+		<div>
+			<div class="intro">
+				<h1>{{title}}</h1>
+				<p>The central design for the Commonwealth is built around accessability, modern web practices, and user-centered thinking.</p>
+				<p>Following these guidelines will allow you to implement the design system anywhere you wish.</p>
+			</div>
+			<div class="buttonBar buttonBarUXplaybook tabs" data-tabgroup="components_tabs">
+				{{#each materials.design.items}}
+					<a class="iconButtonHyperlink" href="#{{@key}}">
+						<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+						<span>{{name}}</span>
+					</a>
+				{{/each}}
+			</div>
+		</div>
+	</section>
+
+</div>
+
+{{#each materials.design.items}}
+     {{> f-item_article this}}
+{{/each}}
+
+
+	

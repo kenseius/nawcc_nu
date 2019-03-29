@@ -1,0 +1,146 @@
+// ===========================================
+//
+//      CARDS
+//      -----------------------
+//      1.1 card - .card @extends hero styles
+//      1.2 card - .outline
+//      1.3 card - .pagov - GOV BODIES cards
+//
+// /////////////////////////////////////////
+
+
+//  1.1 cards
+// ************************
+.card {
+    // @extend .hero;
+    position: relative;
+    display: block;
+    padding: $base-vertical-padding;
+    margin: 0;
+
+    width: 100%;
+    max-width: $base-max-width;
+    min-height: 33.333vh;
+    // padding: 3.157rem 1rem; // $base-horizontal-padding
+    // margin-bottom: 0;
+
+    @include anim($global-animation);
+    // @include bg('/assets/toolkit/images/background/aa_banner.jpg', 0.8, cover);
+    @include bg('https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+    &.spotlight {
+        background: $gld;
+        .outline {margin: auto; display: block;}
+    }
+
+    text-align: center;
+    h1, h2, p {text-align: center;}
+    h2 {@include type-setting(3);}
+    h2, p {color: $wht;}
+
+    // bg images
+    &.card_jobcards {background: $blu; color: $wht;}
+    &.card_spotlights {background:$gld; color:$wht;}
+    &.card_openjobs {background: $blu; color: $wht;}
+    &.card_internships { @include bg('https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=872&q=80&cs=tinysrgb&crop=', 0.8, cover); }
+    &.card_aboutpa { @include bg('https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover); }
+    &.card_benefits {background: $blu; color: $wht;}
+    &.card_veterans {background:$wht; color: $blu;}
+
+    // centers .outline wrapper within card
+    .outline {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+
+        width: 100%;
+        max-width: $article-max-width;
+
+    }
+
+
+    @media #{$medium-only} { padding: $base-vertical;}
+    @media #{$small-only} { padding: $base-horizontal-small;}
+
+    @include anim($global-animation);
+    @include hover() {
+        background: $wht;
+        h2, p {color: $slate;}
+        .outline {
+            h1, p {color: $slate;}
+            background: $wht;
+        }
+    }
+
+}
+
+//  1.2.2 columns
+// ************************
+
+// this is essentially .col1, but that's less meaningful than hero
+// .hero {
+//     .outline {margin: auto;}
+// }
+.col2, .col3 {
+    .card {height: 33vh;}
+    @media #{$medium-down} { .card {height: auto;} }
+    @media #{$small-only} { .card { @include span(100% no-gutters); } }
+}
+.col2 {
+    max-width: 100%;
+    .card { @include span(50% no-gutters); margin-bottom:0; &:last-child {@include last;} }
+    &.gutter { .card{@include span(6 of 12);} }
+}
+.col3 {
+    .card { @include span(33.33% no-gutters); &:last-child {@include last;} }
+    &.gutter { .card{@include span(4 of 12);} }
+}
+
+
+//  1.3 pa.gov: GOVERNMENT BODIES cards
+// ************************
+// used for GOVERNMENT BODIES on frontpage
+// .card {
+//     display: block;
+//     padding-top:1.875em;
+//     .card_content, .outline {
+//         display: flex;
+//         min-height: 6.875em; // = 110px
+//         padding: 1.25em 1.875em; // = 20px 30px
+//         background:$gry;
+//         color: $slate;
+//         align-items: center;
+//         h5 {margin-bottom: 0;}
+//         h5 small { color: lighten($slate,10%); @include anim(all 0.3s ease-in-out);}
+//         @include anim(all 0.3s ease-in-out);
+//         @media #{$medium-only} {padding: 1.25em;}
+//         @media #{$small-only} {padding: 1em 0.85em;}
+//     }
+//     .card_top {
+//         min-height: 8.5em; // = 136px
+//         @include anim(all 0.3s ease-in-out);
+//     }
+//     .card_img {
+//         min-height: 8.5em; // = 136px
+//         @include anim(all 0.3s ease-in-out);
+//         // @include bg-no_url(center center, no-repeat, scroll);
+//         @include bg-size(cover);
+//     }
+//      @include hover() {
+//         .card_top {@include filter(brightness(80%))}
+//         .card_content {
+//             background:$pch;
+//             h5 small {color: $slate;}
+//         }
+//     }
+//     @media #{$small-only} {
+//         padding-top: 0.75em;
+//         @media #{$medium-only} {padding: 1.25em;}
+//         @media #{$small-only} {padding: 1em 0.85em;}
+//         .card_content{
+//             min-height: 0;
+//             padding: 0.625em 0.75em; // 10px
+//             // border-bottom: 0.1875em solid $grydrk;
+//         }
+//     }
+// }

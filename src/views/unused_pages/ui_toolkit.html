@@ -1,0 +1,89 @@
+---
+title: UI Toolkit
+subtitle: STRAPLESS - UI TOOLKIT
+layout: strapless
+fabricator: false
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: mail
+material_icons: true
+fontAwesome_icons: false
+
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+
+---
+{{> heros.hero_Logo}}
+
+<main class="main_uiToolkit">
+
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-bars"></i> <span>Navigation</span></h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.navigation.items}}
+                <a class="button slate" href="navigation.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-list blu"></i> <span>Content</span></h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.content.items}}
+                <a class="button blu" href="content.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-columns red"></i> <span>Layout</span></h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.layout.items}}
+                <a class="button red" href="layout.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-check-square-o grn"></i> <span>Inputs</span></h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.input.items}}
+                <a class="button grn" href="input.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-share-square-o ylw"></i> <span>Sharing</span></h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.sharing.items}}
+                <a class="button" href="sharing.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+
+</main>

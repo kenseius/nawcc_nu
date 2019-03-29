@@ -1,0 +1,6 @@
+// ==========================
+//  padding
+// ==========================
+@mixin padding($topbottom, $leftright) {
+    padding: $topbottom $leftright;
+}

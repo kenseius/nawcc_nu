@@ -1,0 +1,161 @@
+---
+title: Styles
+subtitle: STRAPLESS - BUILD
+icon: fa-css3
+---
+
+{{#markdown}}
+
+## sass
+
+### What is SASS? 
+
+[SASS](http://sass-lang.com) is a **CSS Preprocessor**. 
+
+No idea what that means? No worries! Learning SASS is easy*! 
+
+---
+
+*A few assumptions: 
+
+- you have a least a moderate amount of understanding of CSS and HTML
+- you've rarely or never worked with SASS or any other CSS preprocessor 
+
+---
+
+To make sense of SASS, let's start with something you know: 
+
+**CSS**
+
+Ok, so, let's say you've got all your perfectly coded styles ready to go, and they all live in one styles.css file.
+
+(It's considered best practice to limit styles to one single CSS file.)
+
+But styles.css is probably *massive*. 15k lines long. 50k lines. Crazy long. I've heard some stories, man. 
+
+Sure, it may be well organized, and consistently commented, but you've gotta admit --- it's takes forever to find what you're looking for. And every day you code something new, it becomes more difficult to maintain.
+
+Coding with CSS starts out bright, sunny, and clear... and then, BAM! Tornado! 
+
+{{/markdown}}
+
+<!--<iframe allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" class="imgur-embed-iframe-pub imgur-embed-iframe-pub-wUcgIBZ-true-540" scrolling="no" src="http://imgur.com/wUcgIBZ/embed?ref=http%3A%2F%2Flocalhost%3A3000%2Fbuild.html&amp;w=540" id="imgur-embed-iframe-pub-wUcgIBZ" style="height: 500px; width: 540px; margin: 10px 0px; padding: 0px;"></iframe>-->
+
+<!-- other ways to embed this --> 
+
+
+<blockquote style="text-align: center;" class="imgur-embed-pub" lang="en" data-id="wUcgIBZ">
+    <a href="//imgur.com/wUcgIBZ">BAM! CSS Tornado!</a>
+</blockquote>
+<script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+
+<!--
+<video>
+   <source src="http://i.imgur.com/wUcgIBZ.webm" type="video/webm">
+</video>
+-->
+
+{{#markdown}}
+
+Right? It gets complicated, code steps on earlier code's feet, collaboration inevietably results in multiple inconsolable versions. It eventually becomes a battle of specificity, until you cave in and it becomes a battle of which `!important` magically wins somehow.
+
+#### Here's where **SASS** comes in
+
+> A quick aside about nomenclature:  
+> 
+> - SASS stands for Syntactically Awesome Style Sheets
+> - SASS is the language name, whereas '.scss' is the file extension. 
+> - (There's also a truncated version of SASS's code structure called SCSS, but let's not get into that.)
+
+
+SASS allows you to **code modularly**.
+
+![Oooooo](http://data.whicdn.com/images/90073555/large.gif)
+
+_Oooooooo._
+
+That's right. 
+
+Now you can (manually, mind you) parse out your 150k line CSS file into small individual files, which can be organized into a logical, easy-to-search file structure.
+
+Like this:
+
+~~~css
+
+/sass/
+    /base
+        /global  
+            _global.scss
+            _typography.scss
+        /layout  
+            _susy.scss
+            _vertical-rhythm.scss
+            _breakpoints.scss
+            _layout.scss  
+        _reset.scss
+        _mixins.scss
+        _variables.scss
+        _helpers.scss
+    /components
+        /forms
+            _forms.scss
+            _inputs.scss
+            _labels.scss
+            _formgroups.scss
+            _checkboxes
+            _validation.scss
+        /nav
+            _backToTop.scss
+            _topnav.scss
+        /search
+            _pagination.scss
+            _search.scss
+            _searchResults.scss
+        _alerts.scss
+        _buttons.scss
+        _footer.scss
+        _hero.scss
+        _icons.scss
+        _loading-spinners.scss
+        _media-object.scss
+        _metadata.scss
+        _tables.scss
+        _tooltips.scss
+    /pages
+    /vendor
+    styles.scss
+
+~~~
+
+These files (called **partials**) aren't readable by a brower, however. You can only edit them in a text editor. 
+
+Our goal is to always work on our CSS within these partials, while running a compiler like Ruby or Gulp, to end up with just one CSS file. 
+
+( One CSS file that's been linted and minified, and while it's extremely unreadable to a human, it makes for a very quick read for the browser. )
+
+You can use this stylesheet with an HTML document, to preview the result in a browser. 
+
+Congrats! Now your CSS is now both browser *and* human-friendly. Your future self will thank you.
+
+Beyond that, SASS brings [some seriously powerful enhancements to the table](http://sass-lang.com/guide): 
+
+- Variables (which is the link between the visual design and the code)
+- Mixins
+- Code Nesting
+- Import
+- Extend/Inheritance
+- Operators
+
+If you aren't convinced yet, just give it a try --- it feels *just like* coding in CSS. 
+
+And that's just it. If you can program in CSS, you can program using SASS. The code snippets, workarounds and tricks that you already know work here too, only less redundantly. 
+
+---
+
+terms: 
+
+- minified: all spaces are removed until the file is one line of code tall
+- linted: tested for errors in the code
+
+{{/markdown}}

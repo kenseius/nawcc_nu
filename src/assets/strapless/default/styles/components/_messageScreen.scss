@@ -1,0 +1,29 @@
+// ==========================
+//  
+//   Message Screen 
+//  -----------------------------
+//   - Standalone fullscreen page with a message for the user and a button to navigate to the previous screen or the site's homepage
+//   - styles can be used for Modals, 404, etc. 
+//   - Absolutely centers the messsage within the screen
+//
+// ==========================
+.messageScreen {
+    position: relative;
+    min-height: 100vh;
+     min-width: 100vw;
+        height: 100%;
+         width: 100%;
+
+    max-width: $article-max-width;
+    padding: 0;
+
+    // to un-offset the topnav, allowing it to fill the entire screen
+    margin: -65px auto 65px;
+
+    div {
+        @include absolute_center;
+        text-align: center;
+    }
+    h1, p {margin-bottom: $base-horizontal-padding;}
+    button {margin: auto;}
+}

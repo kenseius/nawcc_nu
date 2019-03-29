@@ -1,0 +1,105 @@
+// article styles
+
+
+@mixin article_cards {
+    // margin-left: 1rem; 
+    // margin-right: 1rem;
+    // padding: 1rem;
+    // border: 1px solid $gryslvr;
+    // border-bottom-width: 3px;
+    background: $wht;
+    max-width: $base-max-width + 9.969rem;
+
+    // from helpers.scss > .shadow-center 
+    -webkit-box-shadow: 0 8px 6px -6px rgba(153, 153, 153, 0.83);
+       -moz-box-shadow: 0 8px 6px -6px rgba(153, 153, 153, 0.83);
+            box-shadow: 0 8px 6px -6px rgba(153, 153, 153, 0.83);
+
+    @media #{$extra-large-down} {
+        margin-left: $base-horizontal-padding; 
+        margin-right: $base-horizontal-padding; 
+    }
+            
+}
+
+@mixin article {
+
+    margin:3.157rem auto;
+
+    // undoes scnd global styles
+    // h1, h2, h4, p {padding-bottom: 0;}
+    p {line-height: 1.778rem;}
+    & > p:last-child {margin-bottom: $base-horizontal-padding;}
+
+    a {
+        display: inline-block;
+        border-right: 3px solid transparent;
+        border-left: 3px solid transparent;
+        border-bottom: 2px solid $org;
+        color: $slate;
+        @include hover() {background: $org; color: $wht;}
+    }
+
+    // intended global typography styles
+    h1, .meta, p, ul, ol {margin-bottom: $base-vertical;}
+    h2, h3, h4, h5, pre {margin-bottom: $base-horizontal-small;}
+    section, hr {margin-bottom: $base-horizontal-padding;}
+    li {margin-bottom: 0.333em;}
+
+    // max-width: container vrs children
+    // &.base_width {max-width: $base-max-width;}
+    // 1. max-width: 42.81rem; // forces everything nested within articles to fit into it's max-width
+    // 2. active. allows only child elements to have the max-width of article text, allowing some article content to extend past max line-width for article text
+    // max-width: $base-max-width;
+    
+    & > h1, & > h2, & > h3, & > h4, & > h5,
+    & > p,
+    & > a,
+    & > ul, & > ol,
+    & > blockquote,
+    & > iframe,
+    // & > img, // TODO: max-width breaks responsiveness
+    & > pre,
+    & > hr,
+    .meta_article {
+        max-width: $article-max-width; margin-left: auto; margin-right:auto;
+        &.baseWidth {max-width: $base-max-width;}
+    }
+
+    // widths for nested sections
+    & > section {
+        & > h1, & > h2, & > h3, & > h4, & > h5,
+        & > p,
+        & > a,
+        & > ul, & > ol,
+        & > blockquote,
+        & > iframe,
+        & > img,
+        & > pre,
+        & > hr,
+        .meta_article {
+            max-width: $article-max-width; margin-left: auto; margin-right:auto;
+            &.baseWidth {max-width: $base-max-width;}
+        }
+        @media #{$extra-large-down} {padding: 0;}
+    }
+
+    section.baseWidth {max-width: $base-max-width; margin-left: auto; margin-right: auto;}
+
+    // unique intended exceptions to global styles
+    .meta p {margin-bottom: 0;}
+
+    // when styled to appear as a card 
+    // - used for Strapless / Web App Standards components
+
+    &.article_cards {@include article_cards;}
+
+    @media #{$extra-large-down} { padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+    // @media #{$medium-only} { padding: 3.157rem; }
+    // @media #{$small-only} { padding: 2.369rem; }
+
+}
+
+
+// & > article, & > .article,
+article, .article {@include article;}

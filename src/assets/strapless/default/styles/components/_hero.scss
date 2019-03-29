@@ -1,0 +1,165 @@
+// =========================================
+//
+//      HERO
+//      ------------------
+//      1.1 hero  - .hero, header.hero
+//      1.1 aboutPA sections
+//
+// =========================================
+
+
+//  1.1 hero
+// ************************
+.hero {
+    display: block;
+    padding: $base-vertical-padding 0;
+    margin: auto;
+
+    .outline, div {margin: auto;}
+    & > div:not(.search) {max-width: $article-max-width;}
+
+    // for use when building the transparent nav
+    &.home_hero {
+        // margin-top: -65px;
+        padding: 65px + 77.78px 0 $base-vertical-padding; // 77.78 = $base-vertical-padding
+    }
+
+
+    // default bg: if no images appear
+    background-color: $slate;
+    color: $wht;
+
+    // bg images
+
+    // strapless
+    // ************************
+    //  - use nth-of-type to specify different styles per section
+    // ************************
+    &.hero_Strapless {
+
+        // default, header
+        &:first-of-type{
+            background: $pch;
+            h1, h2, p {color: $slate;}
+            h2 {@include type-setting(4);}
+        }
+
+        // Subsequent heros
+        &.hero_LearnTheCode, &.hero_WeAllBuiltIt { div {padding: $base-vertical-padding * 1.333;} }
+        &.hero_LearnTheCode { h1, h2, p {color: $wht;} @include bg('https://images.unsplash.com/photo-1485356824219-4bc17c2a2ea7?dpr=1&auto=format&fit=crop&w=1500&h=1002&q=80&cs=tinysrgb&crop=', 0.8, cover);}
+        &.hero_WeAllBuiltIt { h1, h2, p {color: $wht;} @include bg('https://images.unsplash.com/photo-1462146449396-2d7d4ba877d7?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);}
+
+    }
+
+    &.hero_Space {@include bg('https://images.unsplash.com/photo-1485356824219-4bc17c2a2ea7?dpr=1&auto=format&fit=crop&w=1500&h=1002&q=80&cs=tinysrgb&crop=', 0.8, cover);}
+
+    // employment
+    &.hero_jobcards {background: $blu; color: $wht;}
+    &.hero_Spotlight {background:$gld; color:$wht;}
+    &.hero_spotlightJobs {
+        background: $blu; .outline {border-color:$org;} h2, p {color: $org;}
+        @include bg('https://images.unsplash.com/photo-1479244023581-940699c647cd?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=', 0.8, cover);
+    }
+    &.hero_Openjobs { background: $wht; .outline {border-color:$blu;} h2, p {color: $blu;} }
+    &.hero_Internships {@include bg('https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=872&q=80&cs=tinysrgb&crop=', 0.8, cover);}
+    &.hero_AboutPA { @include bg('https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover); }
+    &.hero_Benefits { background: $blu; border-color: $blu; h2, p {color: $wht;} }
+    &.hero_Veterans {@include bg('https://images.unsplash.com/photo-1450430463204-6f53fe1c2777?dpr=2&auto=format&fit=crop&w=1500&h=994&q=80&cs=tinysrgb&crop=', 0.8, cover);}
+
+    // @include bg('https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+
+    // @include bg('./assets/strapless/images/background/code.jpg', 0.8, cover);
+   //  @include bg('https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+
+    &.hero_strapless_materials {
+        background-color: $gry;
+        // border-bottom: $base-border;
+        // border-bottom-color: $org;
+        div {max-width: $base-max-width;}
+        h1 {
+            color: $slate; 
+            margin-bottom: 0; 
+            padding-bottom: 1.778rem;
+            text-align: left;
+            width: 100%;
+            border-bottom: $base-border;
+            border-bottom-color: $org;
+        }
+        // @include bg('https://images.unsplash.com/photo-1450430463204-6f53fe1c2777?dpr=2&auto=format&fit=crop&w=1500&h=994&q=80&cs=tinysrgb&crop=', 0.8, cover);
+    }
+
+    &.hero_Design {background: $blulite;}
+    &.hero_Navigation {background: $blu;}
+    &.hero_Build, &.hero_Layout {background: $red;}
+    &.hero_Brand,
+    &.hero_Forms {
+        // red out-of-focus dots: @include bg('https://images.unsplash.com/photo-1488485300416-de7f8f876d4b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+        // sky scraper fading into clouds: @include bg('https://images.unsplash.com/photo-1496307653780-42ee777d4833?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);   
+        // sky gradient: @include bg('https://images.unsplash.com/photo-1495206255513-257bdf652e26?dpr=1&auto=format&fit=crop&w=1500&h=844&q=80&cs=tinysrgb&crop=', 0.8, cover);   
+        background: $grn;
+    }
+    &.hero_UItoolkit {
+        // red out-of-focus dots: @include bg('https://images.unsplash.com/photo-1488485300416-de7f8f876d4b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+        // sky scraper fading into clouds: @include bg('https://images.unsplash.com/photo-1496307653780-42ee777d4833?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);   
+        // sky gradient: @include bg('https://images.unsplash.com/photo-1495206255513-257bdf652e26?dpr=1&auto=format&fit=crop&w=1500&h=844&q=80&cs=tinysrgb&crop=', 0.8, cover);   
+        background: $org;
+    }
+    &.hero_Assets,
+    &.hero_Content {
+        // red out-of-focus dots: @include bg('https://images.unsplash.com/photo-1488485300416-de7f8f876d4b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);
+        // sky scraper fading into clouds: @include bg('https://images.unsplash.com/photo-1496307653780-42ee777d4833?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=', 0.8, cover);   
+        // sky gradient: @include bg('https://images.unsplash.com/photo-1495206255513-257bdf652e26?dpr=1&auto=format&fit=crop&w=1500&h=844&q=80&cs=tinysrgb&crop=', 0.8, cover);   
+        background: $slate;
+    }
+
+    background-color: #fafafa;
+
+    &.hero_strapless_preview {background-color: $blu;}
+
+    text-align: center;
+    h1, h2, p {text-align: center;}
+    img,
+    object {
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-width: $article-max-width;
+        // height: auto;
+        @media #{$medium-only} { width: 80%;}
+        @media #{$small-only} { width: 90%;}
+    }
+    @media #{$small-only} {padding: $base-horizontal-padding 0;}
+
+} // end header .hero
+
+
+//  1.2 aboutPA hero-like sections
+// ************************
+
+.heroAboutPA {
+    @extend .hero;
+    @include clear();
+    div {@include wrap($article-max-width, auto); padding: $base-vertical-padding * 1.778 0;}
+
+    h2, p, button {color: $wht;}
+    h2, p {text-align: left;}
+    button {border: 0.125em solid $wht; margin-bottom: 0;}
+
+    // left and right. since left is the default, there's no need to specify with a class. Nevertheless
+    &.left { div {margin-left: $base-vertical-padding * 2.369;} }
+    &.right { div {@include last; margin-right: $base-vertical-padding * 2.369;} }
+
+    &.heroStateAgencies {@include bg('https://images.unsplash.com/photo-1473773508845-188df298d2d1?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=1125&q=80&cs=tinysrgb&crop=', 0.82, cover);}
+    &.heroPublicService {@include bg('https://images.unsplash.com/photo-1457282367193-e3b79e38f207?dpr=0.89552241563797&auto=format&fit=crop&w=1500&h=995&q=80&cs=tinysrgb&crop=', 0.82, cover);}
+    &.heroNotJustHbg {@include bg('http://www.pa.gov/wp-content/uploads/2016/05/capbg.jpg', 0.82, cover);}
+
+    @media #{$small-only} { div {padding: $base-horizontal-padding;} }
+    @media #{$medium-only} { div {padding: $base-vertical-padding;} }
+    @media #{$large-down} {
+        div,
+        &.left div, &.right div {
+            display: block; float: none; margin: auto;
+            h2, p, button {max-width: $article-max-width;}
+        }
+    }
+}

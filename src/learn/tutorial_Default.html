@@ -1,0 +1,362 @@
+<h2 id="tutorial">Tutorial</h2>
+<p>My Steps As I Create the &quot;Default&quot; Styles</p>
+<ol>
+<li>Make a Backup</li>
+<li><p>Planning</p>
+<p> My Plan:</p>
+<ol>
+<li>Create Strapless Brands Assets</li>
+<li>Create A Introduction Page, with a Hero, and several Fullscreen &amp; unique screens</li>
+</ol>
+</li>
+<li><p>Views &gt; New Folder (strapless) &gt; Intro.html<br> I copied the contents of the Employment Benefits page to the new intro.html page</p>
+<pre><code class="lang-html"> ---
+ layout: employment
+ title: Strapless
+ subtitle: A Robust Anti-Framework Frontend Asset Toolkit
+ employment: true
+ heroClass: hero_Benefits
+ benefits: true
+
+ title_JobCards: Job Cards
+ subtitle_JobCards: Fill out a job card, &amp; receive email notifications about available jobs that interest you.
+ CTA_JobCards: View Jobs &amp; Apply
+
+ title_OpenJobs: Open Jobs
+ subtitle_OpenJobs: Opportunities across a wide variety of occupations.
+ CTA_OpenJobs: View Jobs &amp; Apply
+
+ ---
+ {{&gt; topnav.topnav}}
+ {{&gt; heros.hero}}
+ {{&gt; tabs_ButtonBar}}
+ {{&gt; typography.article}}
+</code></pre>
+</li>
+</ol>
+<ol>
+<li>I started modifying the files to create what I wanted. I need to change the layout of the page to <code>default</code>, and remove the unused frontmatter. I&#39;ll be creating unique components for strapless, in their own directory <code>src/materials/strapless</code></li>
+<li>NOTE: As it turns out, each material subdirectory needs a topnav page <em>with the same name</em> to correspond (if there isn&#39;t one, it returns a 404.). So, I ended up making a toplevel page <code>src/views/strapless.html</code>. It&#39;ll begin here instead of in <code>src/views/strapless/intro.html</code></li>
+<li><p>I&#39;ll start with the hero. I first navigate to <code>materials/components/hero.html</code></p>
+<pre><code class="lang-html"> ---
+ notes: |
+  To change the banner appearance, change the class. The classes are defined in .hero.scss.
+ ---
+ &lt;section class=&quot;hero {{heroClass}}&quot;&gt;
+     &lt;div class=&quot;outline&quot;&gt;
+         &lt;h1&gt;{{title}}&lt;/h1&gt;
+         &lt;p&gt;{{subtitle}}&lt;/p&gt;
+     &lt;/div&gt;
+ &lt;/section&gt;
+</code></pre>
+</li>
+<li><p>Because I intend to use an <strong>SVG logo</strong>, using the <strong>SVG logo template</strong>, and I&#39;m just trying to prototype quickly, (I need to organize the current svg.html into a seperate <code>svg_employment.html</code> file, and make a decision about how we&#39;ll be sorting individual components from site to site) I&#39;m going to use the <code>hero_SVG.html</code> template, as it contains an embedded svg already.</p>
+</li>
+</ol>
+<pre><code class="lang-html">&lt;header class=&quot;hero&quot;&gt;
+    &lt;h1 class=&quot;hidden&quot;&gt;{{title}}&lt;/h1&gt;
+    &lt;svg id=&quot;f-icon-styleguideLogo&quot; class=&quot;svg&quot; viewBox=&quot;0 0 146.4 24&quot;&gt;
+        &lt;defs&gt;
+            &lt;style&gt;
+                &lt;![CDATA[
+                    @import url(&#39;https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:700&#39;);
+                    .logoTitle {font-family: &#39;Open Sans Condensed&#39;, sans-serif; font-size: 10.34px; font-weight: 700; }
+                    .logoSubTitle {font-family: &#39;Montserrat&#39;, sans-serif; font-size: 4px; letter-spacing: 0.01em;}
+                    .keystone, .logoTitle, .logoSubTitle {fill: #fafafa; text-transform: uppercase;}
+                    .f-icon-aalogo_nav .keystone, .f-icon-aalogo_nav .logoTitle {fill: #fafafa;}}
+                ]]&gt;
+            &lt;/style&gt;
+        &lt;/defs&gt;
+        &lt;title&gt;PBPP Keystone + {{title}} - Logo with Subtitle&lt;/title&gt;
+        &lt;path class=&quot;keystone&quot; d=&quot;M15.13,7.06h-.9v1.8H15c.87,0,1.56-.08,1.56-.91s-.48-.89-1.39-.89ZM16.2,5.68c0-.62-.37-.73-1.16-.73h-.82V6.5H15c.83,0,1.2-.26,1.2-.82Zm1,2.23c0,1.06-.68,1.51-2,1.51H13.59v-5h1.49c1.35,0,1.78.37,1.78,1.15a1.08,1.08,0,0,1-.78,1.13A1.15,1.15,0,0,1,17.2,7.92Zm5.29-3h-.8v2h.7c.88,0,1.29-.16,1.29-1S23.25,5,22.49,5Zm1.88.93c0,1.13-.55,1.6-1.87,1.6h-.8V9.42h-.64v-5h1.47c1.18,0,1.84.38,1.84,1.5ZM18.84,5H18v2h.7c.88,0,1.29-.16,1.29-1S19.59,5,18.84,5Zm1.88.93c0,1.13-.55,1.6-1.87,1.6H18V9.42H17.4v-5h1.47c1.18,0,1.84.38,1.84,1.5ZM11.37,5h-.8v2h.7c.88,0,1.29-.16,1.29-1S12.13,5,11.37,5Zm1.88.93c0,1.13-.55,1.6-1.87,1.6h-.8V9.42H9.93v-5h1.47c1.18,0,1.84.38,1.84,1.5ZM2.82,9.57l.87,4a19.14,19.14,0,0,1,7.9-2.66A19.28,19.28,0,0,0,2.82,9.57Zm10.54,1.61a19.4,19.4,0,0,1,8.91,9.21L23.7,14a19.24,19.24,0,0,0-10.33-2.78Zm-.84-.4a19.69,19.69,0,0,1,11.27,2.73L26,3.59H19L19.83.25H7.66l.79,3.34H1.5L2.73,9.15a19.78,19.78,0,0,1,9.79,1.64Zm9.6,10.31-.59,2.65H6L3.79,14a18.75,18.75,0,0,1,8.65-2.75,19,19,0,0,1,9.68,9.88Z&quot;/&gt;
+        &lt;text class=&quot;logoTitle&quot; transform=&quot;translate(30.18 12.93)&quot;&gt;{{title}}&lt;/text&gt;
+        &lt;text class=&quot;logoSubTitle&quot; transform=&quot;translate(30.59 18.89)&quot;&gt;THE PA.GOV TOOLKIT&lt;/text&gt;
+    &lt;/svg&gt;
+&lt;/header&gt;
+</code></pre>
+<ol>
+<li><p>Back to <code>strapless.html</code></p>
+<pre><code class="lang-html"> ---
+ layout: default
+ title: Strapless
+ subtitle: A Robust Anti-Framework Frontend Asset Toolkit
+ heroClass: hero_Strapless
+ ---
+ {{&gt; topnav.topnav}}
+ {{&gt; heros.hero}}
+ {{&gt; tabs_ButtonBar}}
+ {{&gt; typography.article}}
+</code></pre>
+<p> So, I removed everything unnecessary, and defined the <code>layout, title, subtitle,</code> and <code>heroClass</code>. This leaves two items on my immediate todo list: <code>/views/layouts/default.html</code>, and .hero_Strapless needs created and styled. Let&#39;s start with the styles.</p>
+</li>
+<li><p><code>src/assets/toolkit/styles/components/_hero.scss</code></p>
+<p> There&#39;s a few things going on in this style partial, but all we&#39;re interested in right now is the first section, under <code>// bg images</code></p>
+<pre><code class="lang-css"> //  1.1 hero
+ // ************************
+ .hero {
+     display: block;
+     padding: $base-vertical-padding 0;
+     margin: auto;
+     .outline {margin: auto;}
+     // default bg: if no images appear
+     background-color: $slate;
+
+     // bg images
+     &amp;.hero_jobcards {background: $blu; color: $wht;}
+     &amp;.hero_Spotlight {background:$gld; color:$wht;}
+     &amp;.hero_spotlightJobs {
+         background: $blu; .outline {border-color:$org;} h2, p {color: $org;}
+         @include bg(&#39;https://images.unsplash.com/photo-1479244023581-940699c647cd?dpr=2&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1500&amp;amp;h=1000&amp;amp;q=80&amp;amp;cs=tinysrgb&amp;amp;crop=&#39;, 0.8, cover);
+     }
+     &amp;.hero_Openjobs { background: $wht; .outline {border-color:$blu;} h2, p {color: $blu;} }
+     &amp;.hero_Internships {@include bg(&#39;https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?dpr=0.89552241563797&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=872&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+     &amp;.hero_AboutPA { @include bg(&#39;https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover); }
+     &amp;.hero_Benefits { background: $blu; border-color: $blu; h2, p {color: $wht;} }
+     &amp;.hero_Veterans {@include bg(&#39;https://images.unsplash.com/photo-1450430463204-6f53fe1c2777?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=994&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+
+     @include bg(&#39;https://images.unsplash.com/photo-1482146426705-433fc4949dbb?dpr=0.89552241563797&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);
+
+     text-align: center;
+     h1, h2, p {text-align: center;}
+     img,
+     object {
+         display: block;
+         margin: auto;
+         width: 100%;
+         max-width: $article-max-width;
+         // height: auto;
+         @media #{$medium-only} { width: 80%;}
+         @media #{$small-only} { width: 90%;}
+     }
+     @media #{$small-only} {padding: $base-horizontal-padding 0;}
+
+ } // end header .hero
+</code></pre>
+<p> The specific section we&#39;re adding is:</p>
+<pre><code class="lang-css"> // solid background color
+ &amp;.hero_Strapless {
+     background-color: $gry;
+     color: $slate;
+ }
+ // background image / gradient mixin
+ &amp;.hero_Strapless {
+     @include bg(&#39;/path/to/img.jpg&#39;, 0.8, cover);
+ }
+</code></pre>
+<pre><code>Now, I haven&#39;t made any design assets yet for this, so I&#39;m not sure which hero image style I&#39;ll be going with. There&#39;s two options:
+</code></pre><ol>
+<li>a background image with a gradient over top</li>
+<li><p>or a solid color background</p>
+<p> So, before we head to the next section, I&#39;ll start making our frontend assets. I&#39;ll be needing a background image. Because I&#39;m attempting to rapidly prototype, I&#39;m going to select an image url from <a href="unsplash.com">unsplash.com</a>.</p>
+</li>
+</ol>
+</li>
+<li><p>The Design Process (separate doc: design_Process.md)</p>
+</li>
+<li><p>So, Now that my design assets are complete, we need to start creating the Strapless Home page (<code>views/strapless.html</code>).</p>
+<pre><code class="lang-html">---
+layout: default
+title: Strapless
+subtitle: A Robust Anti-Framework Frontend Asset Toolkit
+heroClass: hero_Strapless
+---
+{{&gt; topnav.topnav}}
+{{&gt; heros.hero}}
+{{&gt; tabs_ButtonBar}}
+{{&gt; heros.hero}}
+{{&gt; heros.hero}}
+{{&gt; typography.article}}
+</code></pre>
+<p> We&#39;re going to be reusing the <code>hero</code> element, so rather than making a new .html material for each instance, I&#39;ll add classes in <code>_hero.scss</code> doc to uniquely style each subsequent section. (nth-of-type would also work, but to avoid unintended style spill-over, we&#39;ll use unique classes.)</p>
+<pre><code>```
+{{&gt; heros.hero}}
+{{&gt; heros.hero}} &lt;!-- 2nd Hero = .hero_LearnTheCode, :nth-of-type(2) --&gt;
+{{&gt; heros.hero}} &lt;!-- 3rd Hero = .hero_WeAllBuiltIt, :nth-of-type(3)--&gt;
+```
+
+```css
+.hero {
+    // strapless
+    // ************************
+    //  - use nth-of-type to specify different styles per section
+    // ************************
+    &amp;.hero_Strapless {
+
+        // default, header
+        background: $pch;
+        .outline {border-color:$slate;}
+        h1, p {color: $slate;}
+
+        // Subsequent heros
+        &amp;:nth-of-type(2){@include bg(&#39;https://images.unsplash.com/photo-1485356824219-4bc17c2a2ea7?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1002&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+        &amp;:nth-of-type(3){@include bg(&#39;https://images.unsplash.com/photo-1485136886653-2ea3967d5ecb?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1875&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+
+    }
+}
+```
+</code></pre><p><img src="/assets/toolkit/images/strapless/defaultTut_1.jpg" alt="Tutorial"></p>
+<p>This isn&#39;t exactly what we&#39;re looking for style-wise, so with a few modifications, the updates styles are:</p>
+<pre><code>```css
+.hero {
+    &amp;.hero_Strapless {
+
+        // default, header
+        background: $pch;
+        .outline {border:0;}
+        h1, p {color: $slate;}
+
+        // Subsequent heros
+        &amp;:nth-of-type(2){ h1, p {color: $wht;} @include bg(&#39;https://images.unsplash.com/photo-1485356824219-4bc17c2a2ea7?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1002&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+        &amp;:nth-of-type(3){ h1, p {color: $wht;} @include bg(&#39;https://images.unsplash.com/photo-1485136886653-2ea3967d5ecb?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1875&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+
+    }
+}
+```
+</code></pre><p><img src="/assets/toolkit/images/strapless/defaultTut_2.jpg" alt="Tutorial"></p>
+<p>After adding the unique classes:</p>
+<pre><code class="lang-css">// strapless
+// ************************
+//  - use nth-of-type to specify different styles per section
+// ************************
+&amp;.hero_Strapless {
+
+    // default, header
+    &amp;:first-of-type{
+        background: $pch;
+        h1, h2, p {color: $slate;}
+        h2 {@include type-setting(4);}
+    }
+
+    // Subsequent heros
+    &amp;.hero_LearnTheCode, &amp;.hero_WeAllBuiltIt { div {padding: $base-vertical-padding * 1.333;} }
+    &amp;.hero_LearnTheCode { h1, h2, p {color: $wht;} @include bg(&#39;https://images.unsplash.com/photo-1485356824219-4bc17c2a2ea7?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1002&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+    &amp;.hero_WeAllBuiltIt { h1, h2, p {color: $wht;} @include bg(&#39;https://images.unsplash.com/photo-1462146449396-2d7d4ba877d7?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=&#39;, 0.8, cover);}
+
+}
+</code></pre>
+</li>
+<li><p>Now, I don&#39;t want to make different materials for each section. Instead, I&#39;ll make use of <code>{{#if}}{{/if}} / {{else}}</code> logic, and <code>data</code> to programmatically generate unique content(the text) for each hero element used.</p>
+<p>We&#39;ll be using <code>data</code> in order to build both the <code>Button Bar</code> and the hero elements.</p>
+<p>I navigated to the <code>data</code> directory, and created a new file called <code>strapless.yml</code></p>
+<pre><code>heroContent:
+    hero_Strapless:
+      - {heroClass: hero_Strapless hero_LearnTheCode, title: Learn The Code, subtitle: Not A Framework}
+      - {heroClass: hero_Strapless hero_WeAllBuiltIt, title: We All Built It, subtitle: A compilation of the best of all our code}
+
+buttonBarStrapless:
+    buttonBarStrapless:
+        Build + Prototype: &quot;fa-user&quot;
+        Front-End Assets: &quot;fa-briefcase&quot;
+        Docs: &quot;fa-thumbs-up&quot;
+        Integration: &quot;fa-home&quot;
+        Styleguide: &quot;fa-briefcase&quot;
+        Central Base: &quot;fa-handshake-o&quot;
+        Unified Variables: &quot;fa-briefcase&quot;
+        Best Practices: &quot;fa-handshake-o&quot;
+        Atomic Design: &quot;fa-handshake-o&quot;
+</code></pre><p>We won&#39;t be updating the <code>hero.html</code> material itself, as the data will dynamically fill in the values for each <code>{{title}}</code> <code>{{subtitle}}</code>, and <code>{{heroClass}}</code>. This is the material.</p>
+<pre><code class="lang-html">&lt;!-- Hero --&gt;
+&lt;section class=&quot;hero {{heroClass}}&quot;&gt;
+    &lt;div&gt;
+        &lt;h1&gt;{{title}}&lt;/h1&gt;
+        &lt;p&gt;{{subtitle}}&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+<p>We&#39;ll add a Structure material, to easily display each Strapless hero element we just built.</p>
+<pre><code class="lang-html">    ---
+    notes: |
+     Heros used for the Home page of Strapless.
+    strapless: true
+    title: Strapless
+    subtitle: A Robust Anti-Framework Frontend Asset Toolkit
+    heroClass: hero_Strapless
+    ---
+    {{#if fabricator}}
+        &lt;!-- Hero --&gt;
+        &lt;section class=&quot;hero {{heroClass}}&quot;&gt;
+            &lt;div&gt;
+                &lt;h1&gt;{{title}}&lt;/h1&gt;
+                &lt;p&gt;{{subtitle}}&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+        {{#each strapless.heroContent.hero_Strapless}}
+            {{&gt; heros.hero}}
+        {{/each}}
+    {{else}}
+        {{#each strapless.heroContent.hero_Strapless}}
+            {{&gt; heros.hero}}
+        {{/each}}
+    {{/if}}
+</code></pre>
+<p>And finally, we&#39;ll add a new section for strapless in <code>tabs_ButtonBar.html</code></p>
+<pre><code class="lang-html">{{#if strapless}}
+    {{#each strapless.buttonBarStrapless}}
+        &lt;!-- Button Bar: Strapless--&gt;
+        &lt;section class=&quot;buttonBar {{@key}}&quot;&gt;
+            &lt;div&gt;
+                {{#each this}}
+                    {{&gt; icon_Button_Hyperlink}}
+                {{/each}}
+            &lt;/div&gt;
+        &lt;/section&gt;
+    {{/each}}
+{{/if}}
+</code></pre>
+<p>Here it is with logic built in to only display the relevant buttons depending on the page.</p>
+<p>```html
+{{#if fabricator}}</p>
+<pre><code>{{#each toolkit.tabButtonBar}}
+    &lt;!-- Button Bar - Tab-like SubNavbar --&gt;
+    &lt;section class=&quot;buttonBar {{@key}}&quot;&gt;
+        &lt;div&gt;
+            {{#each this}}
+                {{&gt; icon_Button_Hyperlink}}
+            {{/each}}
+        &lt;/div&gt;
+    &lt;/section&gt;
+{{/each}}
+</code></pre><p>{{/if}}</p>
+</li>
+</ol>
+<pre><code>{{#if benefits}}
+    {{#each toolkit.buttonBarBenefits}}
+        &lt;!-- Button Bar: Employment - Benfits --&gt;
+        &lt;section class=&quot;buttonBar {{@key}}&quot;&gt;
+            &lt;div&gt;
+                {{#each this}}
+                    {{&gt; icon_Button_Hyperlink}}
+                {{/each}}
+            &lt;/div&gt;
+        &lt;/section&gt;
+    {{/each}}
+    {{else}}
+        {{#if spotlights}}
+            {{#each toolkit.buttonBarSpotlights}}
+                &lt;!-- Button Bar: Employment - Spotlights --&gt;
+                &lt;section class=&quot;buttonBar {{@key}}&quot;&gt;
+                    &lt;div&gt;
+                        {{#each this}}
+                            {{&gt; icon_Button_Hyperlink}}
+                        {{/each}}
+                    &lt;/div&gt;
+                &lt;/section&gt;
+            {{/each}}
+            {{else}}
+            {{#if strapless}}
+                {{#each strapless.buttonBarStrapless}}
+                    &lt;!-- Button Bar: Strapless--&gt;
+                    &lt;section class=&quot;buttonBar {{@key}}&quot;&gt;
+                        &lt;div&gt;
+                            {{#each this}}
+                                {{&gt; icon_Button_Hyperlink}}
+                            {{/each}}
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+                {{/each}}
+            {{/if}}
+        {{/if}}
+{{/if}}
+
+```
+</code></pre>

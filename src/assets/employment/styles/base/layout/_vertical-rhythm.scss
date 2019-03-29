@@ -1,0 +1,39 @@
+// @import "../base/siteVariables";
+// @import "../helpers/breakpoints";
+/* ==============================
+
+      VERTICAL RHYTHM
+      ==================
+
+      [ reference - via _variables.scss ]
+
+      $base-font-size:        16px; // = 1rem
+      $base-line-height:      1.45 * $base-font-size; // was 1.6 * $base-font-size;
+      $base-vertical-scale:   1.33333;
+
+
+// ============================== */
+
+// establish vertical rhythm -  ( type scale = perfect forth scale - 1.333 )
+$type-settings: (
+    -1: ( font-size: $base-font-size * 0.778,   line-height: $base-line-height ),           // -1 | small text
+     0: ( font-size: $base-font-size,           line-height: $base-line-height ),           //  0 | base font size (16px)
+     1: ( font-size: $base-font-size * 1.333,   line-height: $base-line-height * 1.778 ),   //  1 | h4  | old = 1.333 + 0.45 (line height multiplier)
+     2: ( font-size: $base-font-size * 1.778,   line-height: $base-line-height * 1.333 ),   //  2 | h3  | old = 2.228
+     3: ( font-size: $base-font-size * 2.369,   line-height: $base-line-height * 1.778 ),   //  3 | h2  | old = 2.819
+     4: ( font-size: $base-font-size * 3.157,   line-height: $base-line-height * 2.369 )    //  4 | h1  | old = 3.607
+);
+
+// functions
+@function type-scale($level) {  @return map-get(map-get($type-settings, $level), 'font-size'); }
+@function line-height($level) { @return map-get(map-get($type-settings, $level), 'line-height'); }
+
+// mixin
+@mixin type-setting($level) {
+    font-size: type-scale($level);
+    line-height: line-height($level);
+
+    @media #{$small-only} {
+        font-size : type-scale(round($level * 2/3));
+    }
+}

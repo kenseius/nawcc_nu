@@ -1,0 +1,6 @@
+// bg - no url
+@mixin bg-no_url($position, $repeat, $attachment) {
+    background-attachment: $attachment;
+    background-position: $position;
+    background-repeat: $repeat;
+}

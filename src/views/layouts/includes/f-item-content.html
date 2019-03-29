@@ -1,0 +1,75 @@
+<div class="layout_strapless_material">
+	<div class="f-item-preview">
+		{{{material @key @root}}}
+	</div>
+	{{#if notes}}
+		<div class="f-item-notes" data-f-toggle="notes">
+			<section class="accordion accordion_uiComponents"  data-f-toggle="notes">
+				<input type="checkbox" class="accordion_input" aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Specifications</p>
+				<div>
+					{{#markdown}}
+
+| Attribute           |    Value          |
+|-------------------- | ----------------- |
+| **Backgrounds**     | White: #fafafa,  Grey: #ebebeb, Slate: #464646   |
+| **Height**	         | 35px              |
+| **Width**	         | 100% of viewport  |
+| **Letter Spacing**  | None              |
+| **Logo Dimensions** | Height: 28.43px   |
+| **Width**           | 29.64px           |
+| **Font Size**	     | 16px              |
+| **Text Content**	  | An Official Pennsylvania Government Website |
+| **Translate Label** | Translate        |
+
+					{{/markdown}}
+				</div>
+			</section>
+			<section class="accordion accordion_uiComponents" data-f-toggle="code">
+				<input type="checkbox" class="accordion_input" checked aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Documentation</p>
+				<div>
+					<article>
+						{{{notes}}}
+					</article>
+				</div>
+			</section>
+			<section class="accordion accordion_uiComponents" data-f-toggle="code">
+				<input type="checkbox" class="accordion_input" checked aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Markup - HTML5</p>
+				<div>
+					<pre><code class="language-markup">{{material @key @root}}</code></pre>
+				</div>
+			</section>
+		</div>
+		{{else}}
+		<div>
+			<div class="f-item-code">
+					<section class="accordion accordion_uiComponents"  data-f-toggle="notes">
+						<input type="checkbox" class="accordion_input" aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Specifications</p>
+						<div class="layout_twoCol">
+							{{#markdown}}
+
+| Attribute           |    Value          |
+|-------------------- | ----------------- |
+| **Backgrounds**     | White: #fafafa,  Grey: #ebebeb, Slate: #464646   |
+| **Height**	         | 35px              |
+| **Width**	         | 100% of viewport  |
+| **Letter Spacing**  | None              |
+| **Logo Dimensions** | Height: 28.43px   |
+| **Width**           | 29.64px           |
+| **Font Size**	     | 16px              |
+| **Text Content**	  | An Official Pennsylvania Government Website |
+| **Translate Label** | Translate        |
+
+							{{/markdown}}
+						</div>
+					</section>
+					<section class="accordion accordion_uiComponents" data-f-toggle="code">
+						<input type="checkbox" class="accordion_input" checked aria-hidden="true"> <i aria-hidden="true"></i> <p class="accordion_title">Markup - HTML5</p>
+						<div>
+							<pre><code class="language-markup">{{material @key @root}}</code></pre>
+						</div>
+					</section>
+					
+				</div>
+			</div>
+	{{/if}}
+</div>

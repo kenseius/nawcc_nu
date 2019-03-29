@@ -1,0 +1,29 @@
+---
+title: Sidebar Navigation
+---
+
+<!-- TOP NAV - MOBILE SIDE SLIDEOUT MENU -->
+<nav data-scroll-header class="accordion_sidenav" id="nav-menu">
+
+    {{~#each materials.brand.items}}
+        <a href="#{{@key}}">
+			<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+			<label>{{name}}</label>
+        </a>
+    {{/each~}}
+
+    <div class="accordion">
+        <input type="checkbox" checked> <i></i>
+        <a href="brand.html" class="f-menu__heading">
+            <i class="fa fa-home"></i>
+            <label>Brand</label>
+        </a>
+        <div class="buttonList">
+            {{#each materials.brand.items}}
+                <a href="#{{@key}}">{{name}}</a>
+            {{/each}}
+        </div>
+    </div>
+
+</nav>
+

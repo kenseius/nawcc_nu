@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{title}}</title>
+
+	{{#if fabricator}}<link rel="stylesheet" href="./assets/fabricator/styles/f.css">{{/if}}
+	<!-- strapless styles -->
+	<link rel="stylesheet" href="./assets/strapless/styles/strapless.css">
+
+	<!-- FONT AWESOME, MATERIAL DESIGN ICONS + GOOGLE FONTS  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body {{#if design}}class="{{bodyClass}}"{{/if}} 
+{{#if build}}class="{{bodyClass}}"{{/if}}
+{{#if brandPage}}class="{{bodyClass}}"{{/if}} 
+{{#if ui_toolkit}}class="{{bodyClass}}"{{/if}}
+{{#if assets}}class="{{bodyClass}}"{{/if}}
+>
+
+{{> svg}}
+{{> svg_strapless}}
+{{> f-icons}}
+{{> nav.strapless_topnav}}
+
+{{#if design}}
+	{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_Design home_hero"}}
+	<!-- {{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="home_hero"}} -->
+{{/if}}
+{{#if build}}
+	{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_Build home_hero"}}
+{{/if}}
+{{#if brandPage}}
+	{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_Brand home_hero"}}
+{{/if}}
+{{#if ui_toolkit}}
+	{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_UItoolkit home_hero"}} 
+{{/if}}
+{{#if assets}}
+	{{> heros.hero_Logo SVG_xlink="straplessLogo" heroClass="hero_Assets home_hero"}}
+{{/if}}
+
+{{#if fabricator}}
+	{{> strapless-sidenav}}
+	{{> f-control-bar}}
+	<div class="f-container">
+{{/if}}
+
+{% body %}
+
+{{#if fabricator}}
+	</div>
+	<script src="./assets/fabricator/scripts/f.js"></script>
+{{/if}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<!-- LOOKIT DIS CRAZY JS OMG! -->
+<script src="./assets/strapless/scripts/strapless.js"></script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(event) {
+		Strapless.init();
+	});
+</script>
+
+<!-- Transparent Topnav -->
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		//this measures how far down the sticky element is from the top
+		var stickyTop = $(".home_nav");
+	
+		if (stickyTop)
+			stickyTop = stickyTop.offset().top;
+
+		//whenever the user scrolls, measure how far we have scrolled
+		$(window).scroll(function() {
+	
+			var windowTop = $(window).scrollTop();
+	
+			//check to see if we have scrolled past the original location of the sticky element
+			if (windowTop > stickyTop) {
+				//if so, change the sticky element to fixed positioning
+				$(".home_nav").css({ "background-color": "#fafafa", });
+				$(".navitem").css({ "color": "#404040", });
+				$(".logo").css({ "display": "inline-block", });
+			} else {
+				$(".home_nav").css({ "background-color": "transparent" });
+				$(".navitem").css({ "color": "#fafafa", });
+				$(".logo").css({ "display": "none", });
+			}
+		});
+	});
+</script>
+
+<!-- Sticky Side Nav -->
+<script>
+	$(document).ready(function() {
+
+		//this measures how far down the sticky element is from the top
+		var stickyTop = $(".sidenav_strapless_JSref");
+
+		if (stickyTop)
+			stickyTop = stickyTop.offset().top;
+
+		//whenever the user scrolls, measure how far we have scrolled
+		$(window).scroll(function() {
+			var windowTop = $(window).scrollTop();
+
+			//check to see if we have scrolled past the original location of the sticky element
+			if (windowTop > stickyTop) {
+
+				//if so, change the sticky element to fixed positioning
+				$(".sidenav_strapless_JSref").css({
+					"position": "fixed",
+					"top": 65
+				});
+			} else {
+				$(".sidenav_strapless_JSref").css({
+					"position": "static"
+				});
+			}
+		});
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+colors:
+  primary:
+    Slate: "#404040"
+    White: "#fafafa"
+    Orange: "#d49e0f"
+    OA Blue: "#15397F"
+  secondary:
+    Grey: "#eaeaea"
+    Red: "#c92a2a"
+    Yellow: "#ffe066"
+    Blue: "#598db2"
+    Green: "#5A7F68"
+
+links:
+  Topnav:
+    - Spotlights
+    - Interns
+    - About PA
+    - Benefits
+    - Veterans
+  Icons:
+    - fa-star
+    - fa-circle
+    - fa-thumbs-up
+    - fa-circle
+    - fa-star
+
+tabButtonBar:
+    buttonBarSpotlights:
+        Employees: "fa-user"
+        Jobs: "fa-briefcase"
+    buttonBarBenefits:
+        Total Rewards: "fa-thumbs-up"
+        Work / Life Balance: "fa-home"
+        Career Development: "fa-briefcase"
+        Giving Back: "fa-handshake-o"
+
+buttonBarSpotlights:
+    buttonBarSpotlights:
+        Employees: "fa-user"
+        Jobs: "fa-briefcase"
+
+buttonBarBenefits:
+    buttonBarBenefits:
+        Total Rewards: "fa-thumbs-up"
+        Work / Life Balance: "fa-home"
+        Career Development: "fa-briefcase"
+        Giving Back: "fa-handshake-o"

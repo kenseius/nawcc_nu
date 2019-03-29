@@ -1,0 +1,14 @@
+---
+layout: hackathon
+---
+<section class="cards_dates">
+    <section class="card">
+        <div>
+            <h2>Hackathon Dates</h2>
+            <p>Join Us For Pennsylvania’s First Annual Open Data Hackathon</p>
+        </div>
+    </section>
+    {{#each hackathon.dates~}}
+        {{> cards.card}}
+    {{~/each}}
+</section>

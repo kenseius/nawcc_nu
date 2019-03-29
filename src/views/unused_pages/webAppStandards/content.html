@@ -1,0 +1,59 @@
+---
+title: Content
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true 
+ui_content: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: star
+material_icons: true
+fontAwesome_icons: false
+
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+navMenuLabel: Menu
+
+---
+
+<div id="01-info" class="componentsIntro">
+    {{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Content home_hero"}}
+    <div class="layout_grid col2">
+        <div class="article">
+            <h1>{{title}}</h1>
+
+{{#markdown}}
+
+### What Are Content Components? 
+
+Content is half of the Informational UI Components, and the central point of emphasis for our site.
+
+Content includes: 
+
+- **titles**: `<h1> - <h5>` 
+- **body text**: `<p>`, `<ul>`, `<ol>`
+- **images**: `<img>`
+- **colors**
+- **icons**
+- **logos**
+            
+{{/markdown}}
+
+        </div>
+        <div>
+            {{> images.image imageSource="/assets/strapless/images/UI_components/Content_1440.png"}}  
+        </div>
+    </div>
+</div>
+
+{{#each materials.content.items}}
+    {{> f-item this}}
+{{/each}}

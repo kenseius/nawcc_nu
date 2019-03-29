@@ -1,0 +1,50 @@
+<div class="f-item-group" id="{{@key}}">
+
+{{#if items}}
+	<!--<div class="f-item-heading-group">-->
+		<!--<h2 class="f-item-heading" data-f-toggle="labels">{{name}}</h2>
+		<div class="meta meta_article">
+			<p>Metadata</p>
+			<p class="meta_right">March 12, 2016</p>
+		</div>-->
+		<!--<h1 id="{{@key}}" class="f-item-heading" data-f-toggle="labels">{{name}}</h1>
+	</div>-->
+	<!-- Hero -->
+	<!--<section class="hero {{heroClass}} hero_strapless_materials f-item-heading-group" {{~#if heroID}}id="{{heroID}}"{{/if~}}>-->
+	<section class="hero {{heroClass}} hero_strapless_materials" {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+		<div>
+			<h1 id="{{@key}}" class="f-item-heading" data-f-toggle="labels">{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+		</div>
+	</section>
+	<main>
+	{{#each items}}
+		<div class="f-item-group" id="{{@key}}">
+			<div class="f-item-heading-group" data-f-toggle="labels">
+				<h2 class="f-item-heading">{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h2>
+				<!--{{> f-item-controls}}-->
+			</div>
+			{{> f-item-content this}}
+
+				{{#each items}}
+				<h3 class="f-item-heading">{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h3>
+				{{> f-item-content this}}
+				{{/each}}
+
+		</div>
+	{{/each}}
+	</main>
+	{{else}}
+		<!--<div class="f-item-heading-group" data-f-toggle="labels">
+			<h1 class="f-item-heading">{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+			{{> f-item-controls}}
+		</div>-->
+		<section class="hero {{heroClass}} hero_strapless_materials" data-f-toggle="labels" {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+			<div>
+				<h1 id="{{name}}" class="f-item-heading" data-f-toggle="labels">{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+				<!--{{> f-item-controls}}-->
+			</div>
+		</section>
+		{{> f-item-content this}}
+{{/if}}
+
+</div>

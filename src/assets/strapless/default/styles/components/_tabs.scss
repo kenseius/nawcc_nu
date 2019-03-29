@@ -1,0 +1,76 @@
+
+// ===================================
+//              TABS
+// ===================================
+
+// used largely for the WIZARD
+.tabs {
+    @include clear();
+
+    // old tab styles -> moved .iconButton styles to _buttons.scss
+    // .iconButton {
+
+    //     // Change this depending on the number of tabs
+    //     @include span(3 of 12); &:last-of-type{@include last;} // 4 tabs
+
+    //     // float:left;
+    //     // width:50%;       // 2 tabs
+    //     // width:33.33333%; // 3 tabs
+    //     // width:20%;       // 5 tabs
+    //     // &.progress-step { a {padding: 1.25rem 0 0.5rem;} }
+    //     padding: $base-vertical;
+    //     text-align: center;
+    //     // text-transform:uppercase;
+    //     background-color: $wht;
+    //     color: #888;
+    //     & button {
+    //         border: 2px solid transparent;
+    //         border-bottom-color:2px solid #888;
+    //     }
+    //     i {
+    //         display: block;
+    //         margin: auto;
+    //         font-size: 4em;
+    //         padding-bottom: 10px;// 0.625em - = 10px
+    //         //small + medium only
+    //         @media screen and (max-width: 39.9375em) {font-size: 2em; }
+    //         @media screen and (min-width: 40em) and (max-width: 63.9375em) {font-size: 3em; }
+    //     }
+    //     @include anim($global-animation);
+    //     @include hover() {background:$gry;}
+    //     &.active {background:$gry;}
+    // }
+
+
+    a {
+        &.active {
+            background: $slate;
+            color: $wht;
+            span, i {color: $wht;}
+        }
+    }
+
+    &.iconBar {
+        a {
+            &.active {
+                background-color:$gry;
+                border-top-color:$org;
+                // @media #{$small-only} {
+                //     border-left:2px solid $org;
+                //     border-bottom-color: transparent;
+                // }
+                color: $slate;
+                i {color: $org;}
+            }
+        }
+    }
+}
+
+// tab screens wrapper
+.tabgroup {
+    // @include container(100%);
+    @include wrap(100%, auto);
+    #tab1, #tab2, #tab3, #tab4, #tab5,
+    #first, #second, #third { padding:1.875rem; } // = 30px
+    #start, #role, #project, #projectDetail { height: 100%; @include clear(); } // ensures full height, even when content is shorter than viewport
+}

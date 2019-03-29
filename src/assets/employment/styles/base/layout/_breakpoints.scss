@@ -1,0 +1,69 @@
+/* BREAKPOINTS & REM QUICKVIEW
+===========================================
+
+1rem = 16px
+2rem = 32px
+3rem = 48px
+4rem = 64px
+
+0.0625rem   =       1px
+0.125rem    =       2px
+0.15625rem  =       2.5px
+0.1875rem   =       3px
+0.3125rem   =       5px
+0.625rem    =      10px
+0.9375rem   =      15px
+1.25rem     =      20px
+1.5625rem   =      25px
+2.5rem      =      40px
+3.125rem    =      50px
+3.375rem;   =      54px - back-to-top bottom + bottom navbar height
+4.6875rem   =      75px
+6.25rem     =     100px
+
+20rem       =  320px - iPhone 5
+30rem       =  480px
+40rem       =  640px - foundation medium
+46.13rem    =  738px - absconders topnav breakpoint
+50rem       =  800px
+60rem       =  960px
+64rem       = 1024px - iPad / foundation large
+70rem       = 1120px
+80rem       = 1280px
+
+63.9375rem =    1023px - single page - goal title switch to tablet view
+81.25rem   =    1300px
+87.5rem    =    1400px - where GOVERNMENT overlaps edge
+
+*/
+
+//  media query variables
+// ...........................
+
+// foundation's breakpoints
+$small-top-breakpoint: 39.9375rem;
+$medium-bottom-breakpoint: 40rem;
+$medium-top-breakpoint: 63.9375rem;
+$large-bottom-breakpoint: 64rem;
+$large-top-breakpoint: 74.9375rem;
+
+// additional breakpoints
+$small-topnav-breakpoint: 46.13rem; // used for topnav, when only 2 links
+$medium-800-breakpoint: 50rem; // used for media-objects
+$large-topnav-breakpoint: 65.63rem; // used in topnav, to collapse to mobile slightly earlier (1.63rem ealier) than the standard large breakpoint
+
+
+// Usage:  @media #{$small-only}
+// output: "@media screen and (max-width: 39.9375em)
+$small-only: "screen and (max-width: #{ $small-topnav-breakpoint })";
+$small-topnav: "screen and (max-width: #{ $small-top-breakpoint })";
+$medium-up: "screen and (min-width: #{ $medium-bottom-breakpoint })";
+$medium-down: "screen and (max-width : #{ $medium-top-breakpoint })";
+$medium-800-down: "screen and (max-width : #{ $medium-800-breakpoint })";
+$medium-only: "screen and (min-width: #{ $medium-bottom-breakpoint }) and (max-width: #{ $medium-top-breakpoint })";
+$large-down: "screen and (max-width: #{ $large-bottom-breakpoint })";
+$large-up: "screen and (min-width: #{ $large-bottom-breakpoint })";
+$large-topnav: "screen and (max-width: #{ $large-topnav-breakpoint })";
+$large-only: "screen and (min-width: #{ $large-bottom-breakpoint }) and (max-width: #{ $large-top-breakpoint })";
+$extra-large: "screen and (min-width: #{ $large-top-breakpoint })";
+$extra-large-down: "screen and (max-width: #{ $large-top-breakpoint })";

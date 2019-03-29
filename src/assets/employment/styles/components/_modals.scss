@@ -1,0 +1,58 @@
+﻿.mfp-wrap {
+
+    button, button:hover {
+        background-color : transparent;
+        margin : 0;
+    }
+
+    #projectDetail, #terms-modal {
+        background : $wht;
+        @include container(64rem);
+        position : relative;
+        // padding: $base-padding * 1.5;
+        padding: $base-horizontal-small 0;
+
+        @media #{$medium-down} {
+            padding : $base-padding;
+        }
+
+        // h1 { padding-left: $base-vertical; padding-right: $base-vertical;}
+        // p { padding-left: $base-vertical; padding-right: $base-vertical; }
+
+        .project-id {
+            border : $base-border;
+            padding : .5rem;
+            border-width : 1px;
+            background-color : $gry;
+            text-align : center;
+            display : inline;
+            position : absolute;
+            right : 100px;
+            top : 50px;
+
+            @media #{$medium-down} {
+                position : relative;
+                text-align : center;
+                top : unset;
+                right : unset;
+                display : block;
+                width : $base-max-width;
+            }
+
+            @media #{$small-only} {
+                max-width : 90%;
+            }
+        }
+    }
+
+    #terms-modal {
+        h1, p, ul {
+            display: block;
+            max-width: $base-max-width * 0.77778;
+        }
+        h1 {margin: $base-vertical auto;}
+        p, ul {margin: 0 auto $base-horizontal-small;}
+        // ul {padding-left: 2.369rem;}
+    }
+
+}

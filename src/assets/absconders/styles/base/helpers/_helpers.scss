@@ -1,0 +1,169 @@
+// HELPERS
+// =========================================
+
+// TEXT LEFT, RIGHT, & CENTER
+.txt-left,
+.text-left {text-align: left !important;}
+.txt-right,
+.text-right {text-align: right !important;}
+.txt-cntr,
+.txt-center,
+.text-center,
+.text-centered {text-align: center !important;}
+
+// TYPOGRAPHY - HELPERS
+.italic {font-style: italic;}
+strong, .bold {font-weight: bold;}
+.text-middle {vertical-align: middle;}
+.text-center { text-align: center; }
+.lrg {font-size: 6em;}
+small, .small, .sml {font-size: 77.778%;}
+.lh-1 {line-height: 1em;}
+.small-caps { font-variant: small-caps; }
+.small, .txt-sml {font-size: small;}
+.large, .txt-lrg {font-size: large;}
+
+// LAYOUT POSITION
+.centered, .left, .right {display:block;}
+.centered {margin: 0 auto;}
+.left     {margin: 0 auto 0 0;}
+.right    {margin: 0 0 0 auto;}
+
+// POSITION: RELATIVE
+.relative {position: relative;}
+
+// HIDE
+// https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/
+.display-none {display: none !important;}
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+// IMG - RESPONSIVE
+img.responsive { display: block; max-width: 100%; height: auto; }
+
+// z-index
+.z-top {position: relative; z-index:3; opacity: 0.99;}
+.z500 {z-index: 500;}
+
+//  PIPE (ie. "|" )
+.pipe {font-size:1.5625em; padding:0 0.9375em; vertical-align: middle;}
+small {
+    vertical-align: middle;
+    .pipe {font-size:1.5em; padding:0 0.9375em; vertical-align: top; line-height: 1.5em;}
+}
+
+// fix overlay
+.search-overlay {z-index: 1;}
+
+// FOUNDATION TOGGLES
+// ===============================================
+.is-hidden {display: none;}
+.is-found {
+    display: block;
+    /* transition visibility */
+    @include anim(visibility 0s);
+    visibility: visible;
+    -webkit-overflow-scrolling: touch;
+}
+.readmore {
+    text-align: center;
+    padding-top:25px;
+    padding-bottom:25px;
+    a {color: $wht; @include anim(color 0.3s ease); @include hover() {color:$slate;} }
+}
+
+// EXTERNAL LINK ICON
+// ===============================================
+.external_link {
+    position: relative;
+    &:before {
+        content:"\f08e"; // \f14c = external link square | \f08e = external link outline
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        color: $gryslvr;
+        font-size: 18px;
+        padding-right: 0.5em;
+        position: absolute;
+        top: 0px; right:0px;
+        padding: 7px 25px;
+        @include anim(all 0.3s ease-in-out);
+    }
+}
+
+
+// Lines Title (ie. -------- TITLE --------- )
+.line-title {
+    margin:0 auto 1.3333rem;
+    text-align:center;
+    display:block;
+    position:relative;
+    overflow:hidden;
+    &:before, &:after {
+        content:'';
+        display:inline-block;
+        height: 0.125rem; //2px
+        background-color: lighten($slate,55%);
+        width:50%;
+        position:relative;
+        vertical-align:middle;
+    }
+    &:before { left:-0.77778em; margin-left:-50%; }
+    &:after { right:-0.77778em; margin-right:-50%; }
+}
+
+// PADDING + MARGIN HELPER CLASSES
+
+.m25 {margin:25px;}
+.m50 {margin:50px;}
+
+.mt25 {margin-top: 25px;}
+.mb25 {margin-bottom: 25px;}
+.mb75 {margin-bottom: 75px;}
+.mtb25 {margin-top: 25px; margin-bottom: 25px;}
+.mtb75 {margin-top: 75px; margin-bottom: 75px;}
+.mtb100 { margin-top : 100px; margin-bottom: 100px; }
+
+.pt0 { padding-top:0; }
+.ptb0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.p10 {padding:10px;}
+.p15 {padding:15px;}
+.p25 {padding:25px;}
+.p50 {padding: 50px;}
+
+.pt10 {padding-top: 10px;}
+.pb10 {padding-bottom: 10px;}
+.ptb10 {padding-top:10px; padding-bottom: 10px;}
+
+.pt15 {padding-top:15px;}
+.pb15 {padding-bottom:15px;}
+.pr15 {padding-right:15px;}
+.ptb15 {padding-top:15px; padding-bottom: 15px;}
+
+.pt25 {padding-top:25px;}
+.pb25 {padding-bottom:25px;}
+.ptb25 {padding-top:25px; padding-bottom:25px;}
+
+.pt50 {padding-top:50px;}
+.pb50 {padding-bottom:50px;}
+.ptb50 {padding-top:50px; padding-bottom:50px;}
+.ptlr50 {padding-top: 50px; padding-left: 50px; padding-right: 50px;}
+.ptbl50 {padding-top:50px; padding-bottom:50px; padding-left: 50px;}
+
+.pt75 {padding-top:75px;}
+.ptb75 {padding-top:75px; padding-bottom:75px;}
+
+.pt100 {padding-top:100px;}
+.pb100 {padding-bottom:100px !important;}
+.ptb100 {padding-top:100px; padding-bottom:100px;}
+
+.padwrap {padding: 10px;}

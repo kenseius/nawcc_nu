@@ -1,0 +1,27 @@
+<div id="{{@key}}">
+
+{{#if items}}
+	{{#each items}}
+		<div class="f-item-group" id="{{@../key}}-{{@index}}">
+			<section class="hero {{heroClass}} hero_strapless_materials" data-f-toggle="labels" {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+				<div>
+					<h1>{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+				</div>
+			</section>
+			{{> f-item-content_articles this}}
+		</div>
+	{{/each}}
+{{else}}
+	<div class="f-item-group">
+		<section class="hero {{heroClass}} hero_strapless_materials" data-f-toggle="labels">
+			<div>
+				<h1>{{#if title}}{{title}}{{else}}{{name}}{{/if}}</h1>
+				<!-- {{> f-item-controls}} -->
+			</div>
+		</section>
+		{{> f-item-content_articles this}}
+	</div>
+{{/if}}
+
+</div>
+

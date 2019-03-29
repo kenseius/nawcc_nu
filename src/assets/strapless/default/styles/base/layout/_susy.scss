@@ -1,0 +1,60 @@
+﻿// GRID - via SUSY
+// ===============================================
+//@import "susy";
+
+// 12 cols with 1.778em (28.45px) gutters (margin-right + float)
+$susy: (
+    columns: 12,
+    gutters: 1.778,
+    gutter-position: after,
+    math: fluid,
+    // container: $base-max-width
+    global-box-sizing: border-box,
+    column-width : 50.512px //  old: 50px
+);
+
+/* USAGE
+// ===================
+
+@include container;                 // establish a layout context
+@include span(<width>);             // lay out your elements
+// @include border-box-sizing       // not sure why this is here ?
+
+// global settings
+$susy: (
+  columns: 12,  // The number of columns in your grid
+  gutters: 1/4, // The size of a gutter in relation to a single column
+);
+
+// general
+body { @include container(80em); }
+nav { @include span(25%); }
+
+// grid
+nav { @include span(3 of 12); }
+
+// advanced
+main {
+  float: left;
+  width: span(4);
+  margin-left: span(2) + gutter();
+  margin-right: gutter();
+}
+
+// output
+
+// spans = float-left
+// container =  max-width: #;
+                margin-left: auto;
+                margin-right: auto;
+
+
+*/
+
+// LEGACY
+// ===================
+// implement to sub in for foundation's grid
+
+//.row {@include container($base-max-width);}
+// .row {@include layout(12 (60px 20px) split static);}
+//.column, .columns {@include span(12);}

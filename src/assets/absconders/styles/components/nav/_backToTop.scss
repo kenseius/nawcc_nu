@@ -1,0 +1,61 @@
+/* BACK TO TOP
+========================================= */
+.back-to-top {
+    display: inline-block;
+    position: fixed;
+    bottom: 3.375rem; // = 54px
+    right: 1em; // 0.9375rem; // = 15px
+    padding: 1rem 1.7rem; // 0.9375rem 0.975rem
+    z-index: 1000;
+
+    cursor: pointer;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+
+    text-align: center;
+    color: $slate;
+    border: 0.1875rem solid $slate; //3px
+    background: rgba(250,250,250,0.55);
+
+    @include anim_multi(opacity 0.3s 0s, visibility 0s 0.3s);
+
+    i {
+        font-size: 1.2rem;
+        color: $slate;
+        font-weight: 500;
+    }
+
+    @include hover() {
+        background-color: $pch;
+        border-color: darken($slate,10%);
+        // i {color: $slate;}
+        // p { color: $slate;}
+    }
+
+    p {
+        @include type-setting(-1);
+        color:$slate;
+        padding-bottom: 0;
+    }
+
+    &.back-to-top-is-visible,
+    &.back-to-top-fade-out { @include anim_multi(opacity 0.3s 0s, visibility 0s 0s); }
+    &.back-to-top-is-visible {visibility: visible; opacity: 1;}
+
+    @media #{$small-only} {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.75rem 1.2rem; // 0.85rem;
+    }
+    @media #{$medium-only} {
+        padding: 0.65rem 1.3rem;
+        bottom: 1.1rem;
+        right: 1.1em;
+    }
+}
+
+/* Small only */
+// @media screen and (max-width: $small-top-breakpoint) {
+//     &.back-to-top{right: 0.5rem; bottom:5rem;} // = 80px
+// }

@@ -1,0 +1,12 @@
+<header class="hero {{heroClass}}" {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+    <h1 class="hidden">{{title}}</h1>
+    {{#if SVG_xlink}}
+        <svg class="svg"><use xlink:href="#{{SVG_xlink}}" /></svg>
+        {{else}}
+        {{#if absconders}}
+            <svg class="svg"><use xlink:href="#f-icon-aalogo" /></svg>
+                {{else}}
+                <svg class="svg"><use xlink:href="#paLogoSubtitle" /></svg>
+        {{/if}}
+    {{/if}}
+</header>

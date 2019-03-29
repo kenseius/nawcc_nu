@@ -1,0 +1,220 @@
+---
+title: Web App Standards
+siteTitle: Web App Standards
+fabricator: false
+layout: layout_webAppStandards_toplevel
+
+linkURL: google.com
+icon: mail
+material_icons: true
+fontAwesome_icons: false
+
+---
+{{> svg}}
+{{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="home_hero"}}
+
+<main class="main_home">
+    
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1>Hello!</h1>
+            <p style="font-size: 1.333rem; margin-bottom: 1.778rem;">Welcome to the Commonwealth's <strong>Web App Standards UI Library</strong></p> 
+        </div>
+        <div>
+            <h3><strong>What is this?</strong></h3>
+            <p>A set of consistent, reusable components developed as a collaboration between PAI, the Governor’s Communications Department, and various Commonwealth agencies. In addition to providing a common look and feel, these components are accessible, responsive, and scalable. Design standards are largely based on U.S. Web Design Standards (developed by 18F), and informed by currently accepted best practices.</p>
+        </div>
+    </section>
+
+<!-- 
+    <section class="introSection introIcons">
+        <div>
+            <div class="intro">
+                <h1>{{title}}</h1>
+                <p>The central design for the Commonwealth is built around accessability, modern web practices, and user-centered thinking.</p>
+                <p>Following these guidelines will allow you to implement the design system anywhere you wish.</p>
+            </div>
+            <div class="buttonBar buttonBarUXplaybook">
+                {{#each materials.design.items}}
+                    <a class="iconButtonHyperlink" href="#{{@key}}">
+                        <i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+                         <span>{{name}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div> 
+    </section>
+     -->
+    <!-- <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-bars"></i> <span>Design</span></h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.design.items}}
+                <a class="button slate" href="design.html#{{@key}}">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section> -->
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-bars"></i> <span>Design</span></h1>
+        </div>
+        <div class="layout_grid col3" style="padding: 0;">
+            {{#each materials.design.items}}
+                <a class="button iconButton blulite" href="webappstandards/design.html#{{@key}}">
+                    <i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+                     <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-bars"></i> <span>Navigation</span></h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.navigation.items}}
+                <a class="button blu" href="webappstandards/navigation.html#{{@key}}">
+                    <img src="./assets/strapless/images/UI_components/navigation/{{@key}}.png" alt="@key">                  
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-list slate"></i> <span>Content</span></h1>
+        </div>
+        <div class="layout_grid col2">
+            {{#each materials.content.items}}
+                <a class="button slate" href="webappstandards/content.html#{{@key}}">
+                    <img src="./assets/strapless/images/UI_components/content/{{name}}.png" alt="@key">  
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-columns red"></i> <span>Layout</span></h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.layout.items}}
+                <a class="button red" href="webappstandards/layout.html#{{@key}}">
+                    <img src="./assets/strapless/images/UI_components/layout/{{@key}}.png" alt="@key">
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-check-square-o grn"></i> <span>Inputs</span></h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.input.items}}
+                <a class="button grn" href="webappstandards/input.html#{{@key}}">
+                    {{> images.image imageSource="./assets/strapless/images/UI_components/layout/modals.png"}} 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="introSection layout_4col_8col">
+        <div>
+            <h1><i class="fa fa-share-square-o ylw"></i> <span>Sharing</span></h1>
+        </div>
+        <div class="layout_grid col3">
+            {{#each materials.sharing.items}}
+                <a class="button" href="webappstandards/sharing.html#{{@key}}">
+                    {{> images.image imageSource="./assets/strapless/images/UI_components/layout/modal.png"}} 
+                    <span>{{name}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+
+</main>
+
+
+<main>
+    <!-- <section class="article">
+        <h1>Hello!</h1>
+        <p>Welcome to the Commonwealth Web App Standards UI Library.</p> 
+        <p><strong>What is this?</strong></p>
+        <p>A set of consistent, reusable components developed as a collaboration between PAI, the Governor’s Communications Department, and various Commonwealth agencies. In addition to providing a common look and feel, these components are accessible, responsive, and scalable. Design standards are largely based on U.S. Web Design Standards (developed by 18F), and informed by currently accepted best practices.</p>
+    </section> -->
+<!-- 
+    {{> heros.hero_Logo}}
+    
+    
+    <section class="tableOfContents">
+        <div class="buttonList">
+            <h4><a href="design.html">Design</a></h4>
+            <hr>
+            {{#each materials.design.items}}
+                <a href="design.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h4><a href="build.html">Build</a></h4>
+            <hr>
+            {{#each materials.build.items}}
+                <a href="build.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h4><a href="brand.html">Brand</a></h4>
+            <hr>
+            {{#each materials.brand.items}}
+                <a href="brand.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+            {{/each}}
+        </div>
+        <div class="buttonList">
+            <h4><a href="assets.html">Assets</a></h4>
+            <hr>
+            {{#each materials.assets.items}}
+                <a href="assets.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+            {{/each}}
+        </div>
+    </section>
+     <section class="tableOfContents">
+        <h4><a href="ui_toolkit.html">UI Toolkit</a></h4>
+        <hr>
+        <div class="buttonList buttonList_uiToolkit">
+            {{#each materials.components.items}}
+                <a href="ui_toolkit.html#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+            {{/each}}
+        </div>
+    </section> -->
+    <!-- 
+    TODO: Creat a material for this
+    <section class="tableOfContents article">
+        <div class="buttonList">
+            <p>Label</p>
+            <hr>
+            {{> sidenav.sidenav_Button}}
+            {{> sidenav.sidenav_Button}}
+            {{> sidenav.sidenav_Button}}
+            {{> sidenav.sidenav_Button}}
+            {{> sidenav.sidenav_Button}}
+        </div>
+    </section> -->
+</main>

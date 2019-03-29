@@ -1,0 +1,91 @@
+---
+title: Semantics
+subtitle: STRAPLESS - BUILD
+icon: fa-code
+---
+
+<img src="/Absconders/img/styleguide/semantics.jpg" alt="Semantics">
+<section>
+    <h3>Semantic Code is Meaningful Code</h3>
+    <p>Semantics in web design refers to "the clarity of the code"; using HTML elements to convey <strong class="italic">meaning</strong>.</p>
+    <p>In other words, aligning the meaning of the content with the code.</p>
+    <p>When coding or designing, the decisions about which elements to use aren't arbitrary.
+        Like following a map, reviewing the content grants an understanding of each element's core purpose, or role.
+        These roles tell us both what to design and what HTML5 elements to use.</p>
+    <p>For example:</p>
+    <div class="col2">
+        <pre class="left"><code>BAD SEMANTICS
+---------------------
+&lt;div class="article"&gt;
+&lt;div class="title"&gt;Header Title&lt;/div&gt;
+&lt;div class="content"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <pre class="right"><code>GOOD SEMANTICS
+---------------------
+&lt;article&gt;
+&lt;h1&gt;Header Title&lt;/h1&gt;
+&lt;p&gt;Content&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+    </div>
+    <p><code>h1</code> gives meaning to "Header Title", whereas <code>div.title</code> does not. </p>
+    <p><code>p</code> gives meaning to "Content", whereas <code>div.content</code> does not.</p>
+    <p>
+        The idea is that through semantic markup, screen readers and browsers have a description of whatever (otherwise unspecified) content an HTML element contains.
+        Screen readers and browsers display content based on what meaning is conveyed through the markup...
+        It wouldn't be very helpful if every single item on a page is delivered exactly the same because they all live in meaningless div's.
+    </p>
+</section>
+<section>
+    <h3>Why Is Non-Semantic Markup Bad?</h3>
+    <p>While both semantic and non-semantic code will visually appear exactly the same (assuming identical css styling), conveying meaning through the code is important for:</p>
+    <ul>
+        <li><strong>screen readers</strong></li>
+        <li><strong>search engines</strong></li>
+        <li><strong>modularity</strong> - so long as the html structure follows the content, and the styles follow the html structure, each individual module will remain robust, self-contained and reusable as possible.</li>
+        <li><strong>maintainability</strong> - because meaning is tied to the code structure, a sense of organization is inherent; thus, the code becomes easier to scan, edit, and write.</li>
+    </ul>
+</section>
+<section class="baseWidth">
+    <pre><code>COMMON HTML5 ELEMENTS
+---------------------
+main           h1
+nav            h2
+article        h3
+details        h4
+aside          h5
+form           p
+section        img
+header         footer</code></pre>
+</section>
+<section class="col2">
+    <ul class="left">
+        <li><h3>Tools</h3></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML Element - Mozilla</a></li>
+        <li><a href="https://www.w3.org/TR/html-markup/elements-by-function.html" target="_blank">HTML5 Elements By Functions</a></li>
+        <li><a href="http://www.quackit.com/html_5/tags/" target="_blank">HTML5 Tags/</a></li>
+        <li><a href="https://css-tricks.com/semantic-class-names/" target="_blank">Semantic Class Names</a></li>
+        <li><a href="https://teamtreehouse.com/community/what-is-semantic-design" target="_blank">What Is Semantic Design?</a></li>
+        <li><a href="http://vanseodesign.com/web-design/semantic-html/" target="_blank">Semantic HTML</a></li>
+        <li><a href="https://www.w3.org/standards/semanticweb/" target="_blank">Semantic Web</a></li>
+        <li><a href="http://html5doctor.com/" target="_blank">html5doctor.com/</a></li>
+        <li><a href="http://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank">HTML5 Semantic Elements</a></li>
+        <li><a href="http://www.w3schools.com/tags/default.asp" target="_blank">HTML5 Tags</a></li><a href="http://www.w3schools.com/tags/default.asp" target="_blank">
+        </a><li><a href="http://www.w3schools.com/tags/default.asp" target="_blank"></a><a href="http://www.hongkiat.com/blog/html-5-semantics/" target="_blank">HTML5 Semantics</a></li>
+        <li><a href="https://codepen.io/mi-lee/post/an-overview-of-html5-semantics" target="_blank">An Overview of HTML5 Semantics</a></li>
+        <li><a href="https://www.smashingmagazine.com/2011/11/html5-semantics/" target="_blank">HTML5 Semantics - Smashing Magazine</a></li>
+        <li><a href="https://css-tricks.com/snippets/html/html5-page-structure/" target="_blank">Page Structure</a></li>
+        <li><a href="https://css-tricks.com/what-beautiful-html-code-looks-like/" target="_blank">What Beautiful HTML Code Looks Like</a></li>
+    </ul>
+    <ul class="right">
+        <li><h3>cheatsheets</h3></li>
+        <li><a href="https://learn-the-web.algonquindesign.ca/topics/html-semantics-cheat-sheet/" target="_blank">https://learn-the-web.algonquindesign.ca/topics/html-semantics-cheat-sheet/</a></li>
+        <li><a href="https://www.smashingmagazine.com/wp-content/uploads/images/html5-cheat-sheet/html5-cheat-sheet.pdf" target="_blank">https://www.smashingmagazine.com/wp-content/uploads/images/html5-cheat-sheet/html5-cheat-sheet.pdf</a></li>
+        <li><a href="https://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf" target="_blank">https://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf</a></li>
+        <li><a href="http://www.smashingapps.com/2013/01/08/17-html5-cheat-sheets-and-tutorials.html" target="_blank">http://www.smashingapps.com/2013/01/08/17-html5-cheat-sheets-and-tutorials.html</a></li>
+        <li><a href="http://imh01-inmotionhosting1.netdna-ssl.com/img/infographics/html5_cheat_sheet_tags.png" target="_blank">http://imh01-inmotionhosting1.netdna-ssl.com/img/infographics/html5_cheat_sheet_tags.png</a></li>
+        <li><a href="https://cdn.woorkup.com/wp-content/uploads/2016/01/HTML5-Visual-Cheat-Sheet1.pdf" target="_blank">https://cdn.woorkup.com/wp-content/uploads/2016/01/HTML5-Visual-Cheat-Sheet1.pdf</a></li>
+        <li><a href="http://cheatsheet.zemplate.com/html/html5" target="_blank">http://cheatsheet.zemplate.com/html/html5</a></li>
+        <li><a href="http://html.com/cheat-sheet/" target="_blank">http://html.com/cheat-sheet/</a></li>
+        <li><a href="http://www.corporateprogrammer.com/blog/html5-structural-semantics/" target="_blank">http://www.corporateprogrammer.com/blog/html5-structural-semantics/</a></li>
+    </ul>
+</section>

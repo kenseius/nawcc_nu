@@ -1,0 +1,138 @@
+---
+title: Top Nav
+navURL: http://google.com
+navMenuLabel: Menu
+styles: Test! 
+
+notes: |
+
+ ![topnav](./assets/strapless/images/ui_components/navigation/topnav.png)   
+
+ ### Top Nav 
+ #### *Primary Navigation*
+ 
+ ### Usage
+
+ Used for moving the user across top-level website pages, or sections within a single-page site (like pa.gov) 
+
+ To ensure navigation is always available to the user, the topnav remains fixed to the top of the page, on mobile and desktop.
+ 
+ ![Topnav Fixed](./assets/strapless/images/layout/navPatterns_topnav_fixed.png)
+ ![Scrolling](./assets/strapless/images/layout/scrolling.gif)
+
+ Navigation is reserved for moving a user from one point in the site to another. 
+ 
+ It should remain consistent across every page of a given site, and should adapt to the screen size to ensure navigation is equally possible for every user.
+    
+ ### Appearance
+
+ Navigation should be visually distinct and visually constant. Meaning, if the navigation is at the top on the home page, it should be there on a subpage. 
+
+ As with buttons, provided visual distinction and consistency are observed, there is no need to underline the text.  
+
+ It's acceptable to use buttons within the topnav, like the "Escape" button in the example. It should fill the entire height and width of a nav-item.
+
+ Navigation items can also have assocated icons, though it's not required. 
+
+ In general, you should not put any external links in the navigation. If you can't avoid it, they must have an exernal link icon. 
+
+ 
+ | Attribute           |    Value          |
+ |-------------------- | ----------------- |
+ | **Backgrounds**     | White: #fafafa    |
+                         |  Grey: #ebebeb    |
+                        |  Slate: #464646   |
+ | **Height**	         | 35px              |
+ | **Width**	         | 100% of viewport  |
+ | **Letter Spacing**  | None              |
+ | **Logo Dimensions** | Height: 28.43px   |
+ | **Width**           | 29.64px           |
+ | **Font Size**	     | 16px              |
+ | **Text Content**	  | An Official Pennsylvania Government Website |
+ | **Translate Label** | Translate        |
+
+---
+
+<nav class="nav primary_navigation" role="navigation">
+    <a class="logo" href="#">{{> logos.logo}}</a>
+    <div class="links">
+    {{#each hackathon.navItems as |navURL navURLlabel|}}
+        {{> nav.nav_item}}
+    {{/each}}
+    </div>
+    <a class="nav-trigger nav-open">
+        <div class="inner"></div>
+        <span class="menulabel">{{navMenuLabel}}</span>
+    </a>
+</nav>
+
+<article>
+
+        <!-- Nav Container -->
+    <section class="layout_4col_8col">
+
+        <section class="accordion accordion_uiComponents"  data-f-toggle="notes">
+            <input type="checkbox" class="accordion_input" aria-hidden="true"> 
+            <i aria-hidden="true"></i> 
+            <p class="accordion_title">Container - Top Nav</p>
+            <div>
+                <p>The button's background color is determined by the active theme.</p>
+            </div>
+        </section>
+
+        <nav class="nav primary_navigation" style="height:65px">
+        </nav>
+
+    </section>
+  
+    
+
+    <!-- Nav Item -->
+    <section class="layout_4col_8col">
+
+        <section class="accordion accordion_uiComponents"  data-f-toggle="notes">
+            <input type="checkbox" class="accordion_input" aria-hidden="true"> 
+            <i aria-hidden="true"></i> 
+            <p class="accordion_title">Nav Item</p>
+            <div>
+                <p>The button's background color is determined by the active theme.</p>
+                {{#markdown}}
+
+| | |
+| ------------- | ---------- |
+| semantics | `h1` |
+| font-size | 4.209em = 67.34px |	
+| line-height | 5.61315rem |
+
+                {{/markdown}}
+            </div>
+        </section>
+
+        <nav class="nav primary_navigation">
+            <div class="links">
+                {{> topnav.nav_item}}
+                {{> topnav.nav_item navURLlabel="Nav Item + Icon" navIconsOn=true}}
+            </div>
+        </nav>
+
+    </section>
+
+    <!-- Logo -->
+    <section class="layout_4col_8col">
+
+        <section class="accordion accordion_uiComponents"  data-f-toggle="notes">
+            <input type="checkbox" class="accordion_input" aria-hidden="true"> 
+            <i aria-hidden="true"></i> 
+            <p class="accordion_title">Logo + Title</p>
+            <div>
+                <p>The button's background color is determined by the active theme.</p>
+            </div>
+        </section>
+
+        <nav class="nav primary_navigation">
+            <a class="logo" href="#">{{> logos.logo}}</a>
+        </nav>
+
+    </section>
+
+</article>

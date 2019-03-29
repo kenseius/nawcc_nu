@@ -1,0 +1,43 @@
+---
+title: Sidenav Button
+notes: | 
+    This applies to the sidenav, as well as to lists of buttons or hyperlinks. 
+    The button is built to conditionally handle either Font Awesome icons or Google's Material Design Icons. 
+    Frontmatter variables: 
+    - linkURL
+    - icon: either the Material Design icon name or the Font Awesome icon class. 
+    - material_icons: true or false
+    - fontAwesome_icons: true or false
+    - name: title
+
+    | Attribute           |    Value          |
+    |-------------------- | ----------------- |
+    | **Backgrounds**     | White: #fafafa    |
+                            |  Grey: #ebebeb    |
+                           |  Slate: #464646   |
+    | **Height**	         | 35px              |
+    | **Width**	         | 100% of viewport  |
+    | **Letter Spacing**  | None              |
+    | **Logo Dimensions** | Height: 28.43px   |
+    | **Width**           | 29.64px           |
+    | **Font Size**	     | 16px              |
+    | **Text Content**	  | An Official Pennsylvania Government Website |
+    | **Translate Label** | Translate        |
+
+    
+--- 
+
+{{#if fabricator}}<div class="buttonList">{{/if}}
+<a href="{{linkURL}}">
+    {{#if fabricator}}
+        <i class="fa fa-star"></i>
+        <span>{{title}}</span>
+    {{else}}
+    {{#if icon}}
+        {{#if material_icons}}<i class="material-icons">{{icon}}</i>{{/if}}
+        {{#if fontAwesome_icons}}<i class="fa {{icon}}"></i>{{/if}}
+    {{/if}}
+    <span>{{name}}</span>
+    {{/if}}
+</a>
+{{#if fabricator}}</div>{{/if}}

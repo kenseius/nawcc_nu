@@ -1,0 +1,881 @@
+// ==========================================
+//
+//      NAVIGATION
+//      =======================
+//
+//      I.  styleguide
+//      II. unique styling by parent ID
+//          1. home
+//
+// =========================================
+
+// ==========================
+//  I. sidenav
+// ==========================
+
+// .publicNav,
+// .dashboard {
+
+    /* NAV: mobile left slideout menu
+    --------------------------------------- */
+    #nav-menu {
+        //@include span(2 static isolate);
+        width: 15em;
+        display: block;
+        position: fixed;
+        //top : 67px; // = the height of the top nav
+        right : -100%;
+        left : 0;
+        height: 100%;
+        // padding: 50px 20px 20px; //  50px 0px 0px; // 0px
+
+        background: $slate; // $blu;
+        font-weight: 700;
+        @include type-setting(0);
+        color: $gry;
+
+        @include anim(all 305ms ease);
+        @media #{$medium-only} { @include span(1.1 static isolate); }
+        @media #{$small-only} { left : -500%; margin-right : 0; }
+
+        // variation for frontpage to keep it hidden on large screens
+        &.publicNav {
+            @media #{$medium-up} {  left : -500%; margin-right : 0; }
+            // @media #{$medium-up} {  z-index: unset; }
+        }
+
+        // LOG OFF - remove form styling from log off
+        // *********************************************
+        form {
+            margin : 0; // !important;
+            max-width: auto;
+            label { width : auto; }
+            input {
+                display:inline-block;
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+        }
+
+        //  CART - # of items in cart indicator
+        // *********************************************
+        span {
+            position: absolute;
+            left: 2.369rem; // 20px;
+            top: 0.95rem; // -3px
+            background: $ylw;
+            // padding : 5px;
+            width: 1rem;
+            font-size : .7rem;
+            text-align: center;
+            line-height: 1rem;
+            border-radius : 5px;
+            color : $slate;
+        }
+
+        //  NAV ITEMS
+        // **********************
+        a {
+            display:block;
+            // clear : both;
+            position : relative;
+            // margin-bottom: 30px;
+            padding: $base-vertical;
+            // height : 2.5rem;
+
+            color: $wht;
+            font-weight: 700;// 400;
+            text-transform: uppercase;
+
+            @include anim($global-animation);
+            @include hover() {
+                background: $ylw;
+                color: $slate;
+                span {background: $wht;}
+            }
+
+            // @include anim(all 150ms ease);
+            // @include hover() {color: lighten($grn, 10%);}
+
+            // adds arrow
+            &.active {
+
+                // @include type-setting(0);
+                background: $ylw; // $slate
+                color: $slate; // $wht
+                font-weight: 700; // 400
+
+                span {background: $wht;}
+
+                &:after, &:before {
+                	left: 100%;
+                	top: 50%;
+                	border: solid transparent;
+                	content: " ";
+                	height: 0;
+                	width: 0;
+                	position: absolute;
+                	pointer-events: none;
+                }
+
+                &:after {
+                	border-color: rgba(250,250,250, 0);
+                	border-left-color: #ffe066;
+                	border-width: 10px;
+                	margin-top: -10px;
+                }
+                &:before {
+                	border-color: rgba(64, 64, 64, 0);
+                	border-left-color: $wht;
+                	border-width: 13px;
+                	margin-top: -13px;
+                }
+            }
+
+        }
+
+        //  TITLE + ICON
+        // ******************
+        label, i {vertical-align: middle;}
+
+        label {
+            display : inline-block;
+            padding-bottom: 0;
+            margin-bottom:0;
+            font-size : inherit;
+            color : inherit;
+            text-transform: none;
+            cursor : pointer;
+            @media #{$medium-only} { display : none; }
+            // @media #{$large-only} { display : inline-block; }
+        }
+
+        i {
+            // display : inline-block; = .fa is already inline-block
+            font-size: $base-vertical;
+            margin-right: $base-horizontal-small;  // old: 30px
+            width: $base-vertical;
+        }
+
+        &.active {
+            z-index : 1004;
+            //top: 67px; // 10px;
+            right : 0;
+            left: 0;
+            width : 100%;
+            @media #{$small-only} { width : 100%; }
+            label { display : inline-block; }
+        }
+
+    }
+    @media #{$medium-only} { .nav .links {display: block;} }
+
+    .f-container #nav-menu {position: relative;}
+
+// }
+
+.nav {
+
+    /* NAV: container
+    ------------------------------------------------------ */
+    // @include box-sizing(border-box);
+    // font-family: "Open Sans Condensed", sans-serif;
+    display: block;
+    position: relative;
+    top: 0; left: 0;
+    width: 100%;
+    float: left;
+    z-index: $navZIndex;
+    @include clear();
+    overflow: hidden;
+
+    // ---| positioning - moved to ul |---
+    // padding-left: 0%; // 3% | 1.04167%
+    // padding-right: 0%; // 3% | 1.04167%
+    // min-height: 106px; // 65px
+	// max-height: 65px; // 65px // 106px
+
+    background: $navBackground;
+
+    &.home_nav {
+        background: transparent;
+        border: 0;
+        .logo {display: none;}
+    }
+
+    // border-top: 1px solid $wht;
+    // border-bottom: 1px solid black;
+    // border-bottom: 2px solid $grylite;
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    /* NAV: Left + Right Positioning | Fullpage + Mobile
+    ------------------------------------------------------ */
+    // .links,
+    // .title {margin-top:0 !important; margin-bottom:0 !important;}
+
+    // &:after {
+    //     content: "";
+    //     display: table;
+    //     clear: both;
+    // }
+
+
+    /* NAV: Links + Logo
+    ------------------------------------------------------ */
+
+    // wraps the non-logo links
+    .links {
+        float: right;
+        // use $large-topnav for top nav external links
+        @media #{$small-only} {display: none;}
+    }
+
+    // logo / title
+    .logo {
+
+        display: inline-block;
+        text-align: left;
+        // float: left;
+        width: auto;
+        padding: 8.5px $base-horizontal-small 0;// img styles: 8.5px 0;
+
+        line-height: 2.24rem;
+        vertical-align: middle;
+
+        // TODO: what is this?
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+
+        img, object {
+            @include clear();
+            @include anim($global-animation);
+            margin: 0;
+            display: block;
+            // height: 48px;
+            // width: auto;
+            width: 100%; // fix for IE
+            max-height: 48px;
+
+            // just img styles:  width: auto;  margin: 0;
+            // just object styles: max-width:280px;
+
+            @media #{$medium-only} {
+                margin-left: 0;
+                width: 95%;
+                padding-top: 2.5px;
+                // @include transform(0.9);
+            }
+             @media #{$small-only} {
+                margin-left: 0;
+                width: 90%;
+                padding-top: 5px;
+                // @include transform(0.9);
+            }
+
+        }
+
+        @include anim($global-animation);
+        @include hover() {
+            background: transparent;
+            @include transform( scale(0.9) );
+            img {@include filter(invert(75%));}
+            object { .a, .b {fill: $slate;} }
+        }
+        // @media only screen and (max-width: 68em) {padding-top: 0.625em; padding-right: 0;}
+    }
+
+
+
+
+
+    // ---| positioning |--
+
+    // logo image
+    // @media #{$medium-up} {    .logo_desktop {display: block;} .logo_mobile {display: none;} }
+    // @media #{$small-topnav} { .logo_desktop {display: none;}  .logo_mobile {display: block;} }
+
+    // @media #{$large-up} { @include bg-all("../img/logo/scnd_logo_long.png", center, no-repeat, contain);}
+    // @media #{$medium-down} { @include bg-all("../img/logo/scnd_logo.png", center, no-repeat, contain); }
+
+    @media only screen and (max-width: 68em) {min-height: 65px;}
+    @media only screen and (max-width: 68em) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    a:not(.logo) {
+
+        @include clear();
+        position:relative;
+        padding: 15px 35px; // 8px 12px | 25px | 34px 40px
+
+        // most semantic method for floating links to the right in the correct order
+        display: inline-block;
+        text-align: right;
+
+        // text styling
+        line-height: 2.24rem;
+        vertical-align: middle;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 0.9em;
+        letter-spacing: 0.1em;
+
+        color: $navLinkColor;
+        &.active {color: $slate; background: $gry;}
+
+        // icons next to nav items
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 2.24rem;
+            max-height: $base-vertical; //14.4px; // 65px; // 60
+            padding: 0 5px; // 0 10px
+            margin: 0;
+        }
+
+        label {margin-bottom: 0; color: inherit; display: inline-block;}
+
+        // if we want to put the .psuedo-search bar into the top nav
+        &.search {border-left:0.2rem solid $grylite; margin-left: -0.25rem;}
+
+        @include anim($global-animation);
+        @include hover() {
+            color: $slate;
+            background-color: $gry;
+            img {@include filter(invert(75%));}
+        }
+
+        /* activate nav dropdowns */
+        &:hover > ul {
+            display:block;
+            @include anim(all .3s);
+        }
+
+        @media #{$small-only} {display: none;}
+
+    }
+
+
+    // NAV: dropdowns
+    ul {
+        display:none;
+        position:absolute;
+
+        top:100%;
+        left:0;
+        padding:0;
+
+        li {
+            float:none;
+            width:200px;
+            background: $grylite;
+            a {
+                color: $slate;
+                line-height : 2rem;
+            }
+            &.active a {
+                color: $slate;
+                background: $gry_muted;
+                @include anim($global-animation);
+            }
+
+        }
+        a {
+            line-height:120%;
+            padding:10px 15px;
+            text-align:left;
+        }
+    }
+
+
+}
+
+/* NAV: MOBILE TRIGGER
+--------------------------------------- */
+
+.nav .nav-trigger {
+    display : none;
+    padding-top: 1.75em; // 17px
+    margin-right: 15px;
+    float: right;
+    z-index: 2;
+    height: 40px;
+    width: 40px;
+    top:1.75em; // 2.1em if no label
+    right: -1em;
+    cursor: pointer;
+    // border: 2px solid lighten($slate,30%);
+    transform: translate(-50%, -50%);
+
+    @include anim($global-animation);
+
+    &.nav-open {
+        position: relative;
+        .inner, .inner::before, .inner::after {
+            background-color: $navHamburger-color;
+            content: "";
+            display: block;
+            height: 3px;
+            width: $base-vertical; // 18px;
+            // transition: all .5s ease;
+            @include anim($global-animation);
+            @include hover() { background-color: darken($navHamburger-color, 30%); }
+        }
+
+        .inner {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            &::before {
+                margin-top: -6px;
+                position: absolute;
+            }
+            &::after {
+                margin-top: 6px;
+                position: absolute;
+            }
+        }
+    }
+    &.active {
+        .inner {
+            background-color: transparent;
+            left: 54%;
+            &::before, &::after {
+                transform: rotate(45deg);
+                transform-origin: 0 50%;
+                width: 17px;
+            }
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    .menulabel {
+        font-size:.65em; /* .9em */
+        color: $navHamburger-menuColor;// lighten($slate,35%);
+        position: relative;
+        right:-0.5em;
+        top:-0.1em;
+    }
+
+    // use $large-topnav for top nav external links
+    @media #{$small-only} {
+        display: block;
+    }
+}
+
+
+
+
+// SUBNAV
+.subnav {
+    display: block;
+    height: 1.5rem;
+    width: 100%;
+    background: $gry;
+    position: relative;
+    ul {
+        @include container(64rem);
+        li {
+            @include span(3 of 12 no-gutters);
+            a {
+                color: $slate;
+                padding: 1rem;
+                letter-spacing: 0.5rem;
+                text-transform: uppercase;
+                font-size: 0.75rem;
+                @include hover() {color: $gld;}
+            }
+        }
+    }
+    &.sticky {
+        position: fixed;
+        width: 100%;
+        top: 6rem; // 4.0625rem; // 0
+        z-index:99999999999;
+    }
+}
+
+
+
+
+
+
+////////////////////////////////
+//    OLD NAV
+///////////////////////////////
+
+
+
+
+
+
+.oldnav {
+
+    /* NAV: container
+    ------------------------------------------------------ */
+    // @include box-sizing(border-box);
+    // font-family: "Open Sans Condensed", sans-serif;
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    float: left;
+    z-index: $navZIndex;
+    @include clear();
+    overflow: hidden;
+
+    // ---| positioning - moved to ul |---
+    // padding-left: 0%; // 3% | 1.04167%
+    // padding-right: 0%; // 3% | 1.04167%
+    // min-height: 106px; // 65px
+	// max-height: 65px; // 65px // 106px
+
+    background: $navBackground;
+
+    &.home_nav {
+        background: transparent;
+        border: 0;
+        .logo {display: none;}
+    }
+
+    // border-top: 1px solid $wht;
+    // border-bottom: 1px solid black;
+    // border-bottom: 2px solid $grylite;
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    /* NAV: Left + Right Positioning | Fullpage + Mobile
+    ------------------------------------------------------ */
+    .links,
+    .title {margin-top:0 !important; margin-bottom:0 !important;}
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+    /* NAV: Links + Logo
+    ------------------------------------------------------ */
+
+    // logo / title
+
+
+    ul {
+        display: block;
+        list-style: none;
+        margin: auto;
+        line-height: 1;
+
+        // ---| positioning - moved from parent (.oldnav) |--
+        // padding-left: $base-vertical-scale; // 2%; // 3% | 1.04167%
+        // padding-right: $base-vertical; // 3% | 1.04167%
+        max-height: 65px;
+        @media only screen and (max-width: 68em) {min-height: 65px;}
+
+        @media only screen and (max-width: 68em) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        img, object {
+            @include anim($global-animation);
+            margin-left: 0;
+            // height: 48px;
+            // width: auto;
+        }
+
+        &.title {
+
+            // ---| positioning - moved from parent (.oldnav) |--
+
+            // logo image
+            @media #{$medium-up} {    .logo_desktop {display: block;} .logo_mobile {display: none;} }
+            @media #{$small-topnav} { .logo_desktop {display: none;}  .logo_mobile {display: block;} }
+
+            // @media #{$large-up} { @include bg-all("../img/logo/scnd_logo_long.png", center, no-repeat, contain);}
+            // @media #{$medium-down} { @include bg-all("../img/logo/scnd_logo.png", center, no-repeat, contain); }
+
+            @include anim($global-animation);
+            @include hover() {
+                img {
+                    // @include anim($global-animation);
+                    @include filter(invert(75%));
+                }
+                object {
+                    .a, .b {fill: $slate;}
+                }
+                // background: transparent;
+                // @include anim(all 150ms ease);
+            }
+
+            @media only screen and (max-width: 68em) {min-height: 65px;}
+            @media only screen and (max-width: 68em) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+        }
+
+        &.links {
+            // padding-left: 10px;
+            // padding-right: 10px;
+            margin-top: 5px; //10px
+        }
+
+        li {
+            position:relative;
+            display: inline-block;
+            @include clear();
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 0px; //10px
+            padding-bottom: 0px; //10px
+            line-height: 2.24rem;
+            @include anim($global-animation);
+            @include hover() {
+                color: $slate;
+                background-color: $gry;
+                a {color: $slate;}
+                img {@include filter(invert(75%));}
+            }
+
+            a {
+                display: block;
+                padding: 15px 35px; // 8px 12px | 25px | 34px 40px
+                margin-top:0px; // 7px | 5px
+                margin-bottom: 0px;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 0.9em;
+                letter-spacing: 0.1em;
+                color: $navLinkColor;
+                vertical-align: middle;
+                background: transparent;
+                // border:2px solid transparent;
+                @include anim(all 150ms ease);
+                &.logo {
+                    width: auto;
+                    padding: 8.5px $base-horizontal-small 0;// img styles: 8.5px 0;
+                    img,
+                    object {
+                        display:block;
+                        margin-left: 0;
+                        // just object styles: max-width:280px;
+                        width: 100%; // fix for IE
+                        max-height: 48px;
+                        // just img styles:  width: auto;  margin: 0;
+                        @media #{$medium-only} {
+                            margin-left: 0;
+                            width: 95%;
+                            padding-top: 2.5px;
+                            // @include transform(0.9);
+                        }
+                         @media #{$small-only} {
+                            margin-left: 0;
+                            width: 90%;
+                            padding-top: 5px;
+                            // @include transform(0.9);
+                        }
+                    }
+                    // @include transform( scale(0.95) );
+                    @include anim( all .45s ease-out );
+                    -webkit-backface-visibility: hidden;
+                            backface-visibility: hidden;
+                    // @include transform(translateZ(0) scale(1.0, 1.0));
+                    @include hover() {
+                        // color: #fff; //#fafafa
+                        // border:2px solid $slate;
+                        background: transparent;
+                        // opacity: 0.9;
+                        // @include transform( scale(1) );
+                    }
+                    @media only screen and (max-width: 68em) {padding-top: 0.625em; padding-right: 0;}
+                }
+
+                // used for pa.gov location?
+                // &.loc {
+                //     line-height: 1em;
+                //     height: 62px;
+                //     text-align: right;
+                //     span, i {display: inline-block;}
+                //     i {font-size: 2em; padding-left: 8px; vertical-align: top;}
+                // }
+                //
+                // i {
+                //     margin-left : .7rem;
+                // }
+
+                // icons
+                .icon {
+                    display: inline-block;
+                    vertical-align: middle;
+                    line-height: 2.24rem;
+                    max-height: $base-vertical; //14.4px; // 65px; // 60
+                    // padding: 0 5px; // 0 10px
+                    margin: 0;
+                }
+
+                // external link icons
+                .fa-external-link {
+                    color: lighten($slate, 20%);
+                }
+
+            }
+
+            // img {
+            //   max-height: 65px; // 60
+            //   padding: 0 5px; // 0 10px
+            //   margin: 0;
+            // }
+
+            &.search {border-left:0.2rem solid $grylite; margin-left: -0.25rem;}
+
+            &.active a {
+                color: $slate;
+                background: $gry;
+            //	@include anim(all .3s);
+            }
+
+            /* activate nav dropdowns */
+            &:hover > ul {
+                display:block;
+                @include anim(all .3s);
+            }
+
+        }
+
+        /* NAV: dropdowns */
+        ul {
+            display:none;
+            position:absolute;
+
+            top:100%;
+            left:0;
+            padding:0;
+
+            li {
+                float:none;
+                width:200px;
+                background: $grylite;
+                a {
+                    color: $slate;
+                    line-height : 2rem;
+                }
+                &.active a {
+                    color: $slate;
+                    background: $gry_muted;
+                    @include anim($global-animation);
+                }
+
+            }
+            a {
+                line-height:120%;
+                padding:10px 15px;
+                text-align:left;
+            }
+        }
+    }
+
+}
+
+.oldnav {
+    .links {float: right;}
+    .title {float: left;}
+    // use $large-topnav for top nav external links
+    @media #{$small-only} {
+        .links {display: none;}
+        .title { float: left; }
+    }
+}
+
+/* NAV: MOBILE TRIGGER
+--------------------------------------- */
+
+.oldnav .nav-trigger {
+    display : none;
+    padding-top: 1.75em; // 17px
+    margin-right: 15px;
+    float: right;
+    z-index: 2;
+    height: 40px;
+    width: 40px;
+    top:1.75em; // 2.1em if no label
+    right: -1em;
+    cursor: pointer;
+    // border: 2px solid lighten($slate,30%);
+    transform: translate(-50%, -50%);
+
+    @include anim($global-animation);
+
+    &.nav-open {
+        position: relative;
+        .inner, .inner::before, .inner::after {
+            background-color: $navHamburger-color;
+            content: "";
+            display: block;
+            height: 3px;
+            width: $base-vertical; // 18px;
+            // transition: all .5s ease;
+            @include anim($global-animation);
+            @include hover() { background-color: darken($navHamburger-color, 30%); }
+        }
+
+        .inner {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            &::before {
+                margin-top: -6px;
+                position: absolute;
+            }
+            &::after {
+                margin-top: 6px;
+                position: absolute;
+            }
+        }
+    }
+    &.active {
+        .inner {
+            background-color: transparent;
+            left: 54%;
+            &::before, &::after {
+                transform: rotate(45deg);
+                transform-origin: 0 50%;
+                width: 17px;
+            }
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    .menulabel {
+        font-size:.65em; /* .9em */
+        color: $navHamburger-menuColor;// lighten($slate,35%);
+        position: relative;
+        right:-0.5em;
+        top:-0.1em;
+    }
+
+    // use $large-topnav for top nav external links
+    @media #{$small-only} {
+        display: block;
+    }
+}

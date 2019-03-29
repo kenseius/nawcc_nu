@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{title}}</title>
+
+	{{#if fabricator}}<link rel="stylesheet" href="./assets/fabricator/styles/f.css">{{/if}}
+	<!-- strapless styles -->
+	<link rel="stylesheet" href="./assets/strapless/styles/strapless.css">
+
+	<!-- FONT AWESOME, MATERIAL DESIGN ICONS + GOOGLE FONTS  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body {{#if design}}class="{{bodyClass}}"{{/if}} {{#if output}}class="{{bodyClass}}"{{/if}} {{#if build}}class="{{bodyClass}}"{{/if}} {{#if ui_toolkit}}class="{{bodyClass}}"{{/if}}>
+
+{{> svg}}
+{{> svg_strapless}}
+{{> f-icons}}
+{{> nav.was_topnav}}
+
+{{#if fabricator}}
+	{{> strapless-sidenav}}
+	{{> f-control-bar}}
+	<div class="f-container tabgroup" id="components_tabs">
+{{/if}}
+
+{% body %}
+
+{{#if fabricator}}
+	</div>
+	<script src="./assets/fabricator/scripts/f.js"></script>
+{{/if}}
+
+<!-- LOOKIT DIS CRAZY JS OMG! -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="./assets/strapless/default/scripts/strapless.js"></script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(event) {
+		Strapless.init();
+	});
+</script>
+
+</body>
+</html>

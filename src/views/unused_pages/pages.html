@@ -1,0 +1,19 @@
+---
+fabricator: true
+---
+{{> heros.hero_Logo}}
+<!-- <h1 data-f-toggle="labels">Pages</h1> -->
+
+<ul>
+{{#each views.pages.items}}
+	<li>
+		<a href="pages/{{@key}}.html" class="f-item-heading" target="_blank">{{name}}</a>
+	</li>
+{{/each}}
+</ul>
+
+<ul>
+{{#each views.strapless_pages.items}}
+	<li><a href="pages/{{@key}}.html" class="f-item-heading" target="_blank">{{name}}</a></li>
+{{/each}}
+</ul>

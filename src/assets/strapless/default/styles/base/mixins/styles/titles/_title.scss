@@ -1,0 +1,14 @@
+// ======================================
+//      title
+// ======================================
+
+// from ._wizard.scss - unique typography styling
+
+// title - used to consolidate common h1 styles for easy usage
+@mixin title {
+    padding: 0 $base-horizontal-padding $base-horizontal-padding; // 1.3333333em; //  $base-horizontal-padding; // 0 1.77778em 1.77778em;
+    border-bottom: $base-border; // 0.2rem solid lighten($slate,55%);
+    @include type-setting(0);
+    text-align: center;
+    text-transform: uppercase;
+}

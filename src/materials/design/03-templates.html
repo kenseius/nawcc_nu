@@ -1,0 +1,33 @@
+---
+title: Types of Pages
+---
+
+
+<img src="./assets/strapless/images/ui_components/design/page_types.png" alt="Page Types">
+
+{{#markdown}}
+
+## Types of Pages
+
+There are 9 different types of pages in this design system: 
+
+- Home
+- Page 
+- Landing Page
+- Blog Feed
+- Article
+- Admin UI
+- Search 
+- Form
+- Message Screen
+
+The "Page" page is the basic template for any page types not included in this list. 
+
+{{/markdown}}'
+
+
+<section class="layout_grid col3">
+    {{#each views.demo.items}}
+        <a class="button blu" href="demo/{{@key}}.html" target="_blank">{{name}}</a>
+    {{/each}}
+</section>

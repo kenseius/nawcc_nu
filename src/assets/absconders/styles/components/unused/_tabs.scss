@@ -1,0 +1,43 @@
+
+// ===================================
+//              TABS
+// ===================================
+
+// used largely for the WIZARD
+.tabs {
+    &:not(.subwizard) {
+        li {
+            float:left;
+            // width:50%;       // 2 tabs
+               width:33.33333%; // 3 tabs
+            // width:20%;       // 5 tabs
+            &.progress-step { a {padding: 1.25rem 0 0.5rem;} }
+        }
+        a {
+            display:block;
+            text-align:center;
+            text-decoration:none;
+            text-transform:uppercase;
+            color:#888;
+            // padding:20px 0;
+            // adjust padding for wizard top
+
+            border-bottom:2px solid #888;
+            background:$wht;
+            @include anim(all 0.3s ease-in-out);
+            &.active {background: $gry;}
+            @include hover() {background:$gry;}
+        }
+        @include clear();
+    }
+}
+
+// tab screens wrapper
+.tabgroup {
+    @include container(100%);
+    #tab1, #tab2, #tab3, #tab4, #tab5,
+    #first, #second, #third { padding:1.875rem; } // = 30px
+    #start, #role, #project, #projectDetail { height: 100%; @include clear(); } // ensures full height, even when content is shorter than viewport
+}
+
+// wizard styling found now in components/_wizard

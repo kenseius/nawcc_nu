@@ -1,0 +1,142 @@
+// ===========================================
+//      FORMS - CHECKBOXES
+// ===========================================
+
+//  9. checkbox
+// ************************
+
+    .checkbox {
+
+        &.narrow {max-width: 60%;}
+        &.narrow_80 {max-width: 80%;}
+        span {margin:auto 1rem; text-transform: none;}
+
+        // INPUTS
+        input {
+
+            // positioning / spacial
+            width: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 0;
+
+            // visual appearance of field + entered text
+            border: none;
+
+        }
+
+    }
+
+    .control {
+        position: relative;
+        cursor: pointer;
+        text-transform:none;
+        padding-bottom : 0;
+        input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            background: transparent;
+        }
+
+        // checkbox container - set dimensions here
+        .control__indicator {
+            position: relative;
+            display: block;
+            margin:auto;
+            width: 1rem;
+            // max-width: 3rem;
+            min-width: 2rem; // 3rem; // 2.369rem;
+            height: 2rem;// 3rem; // 100%; // 1.25rem;
+            background: $wht; // old = #e6e6e6
+            border:0.2rem solid $gry_muted; // $wht;
+            border-radius:0.2369rem;
+            // &:after {border-color: lighten($slate, 25%);}
+            // border: 0.2rem solid $grylite;
+            @include anim(all 0.3s ease-in-out);
+
+            @media #{$small-only} {float : right;}
+        }
+
+        // .control--radio .control__indicator { border-radius: 50% } > moved below to .control--radio section
+
+        // hover and focus states
+        &:hover input ~ .control__indicator{ background:$wht; border-color: $gry_muted; &:after{display:block; border-color: $gry_muted;} } // #ccc;
+
+        // checked + focus state
+        // input:focus ~ .control__indicator,
+        input:checked ~ .control__indicator { background: $gry_muted; border-color: $gry_muted; &:after{border-color: $slate;} } // #2aa1c0;
+
+        // hover state whilst checked
+        // input:checked:focus ~ .control__indicator,
+        &:hover input:not([disabled]):checked ~ .control__indicator { background: $grylite; &::after{border-color:$slate;} }// #0e647d;
+
+        // disabled state
+        input:disabled ~ .control__indicator { pointer-events: none; opacity: .6; background: $gryslvr; }
+
+        // check mark
+        .control__indicator:after { position: absolute; display: none; content: ''; }
+
+        // show check mark
+        input:checked ~ .control__indicator:after { display: block; }
+
+        // checkbox tick
+        .control__indicator:after {
+            // display: block;
+            position: absolute;
+            margin: auto;
+            top: 0; right: 0; left: 0; bottom: 0.2369rem; // bottom: 0.333rem;
+            // top: 1rem; // 4px;
+            // left: 1rem; // 8px;
+            width: 0.5rem;// 4px;
+            height: 0.9rem; // 0.95rem; // 10px;
+            transform: rotate(45deg);
+            border: solid $slate;// solid lighten($slate, 25%);// $wht;
+            border-width: 0 0.2rem 0.2rem 0 // 0 2px 2px 0;
+        }
+
+        /* disabled tick colour */
+        input:disabled ~ .control__indicator:after { border-color: #7b7b7b; }
+
+        // VISIBILITY TOGGLE
+        // =====================
+        &.toggle-visibility {
+            // hover and focus states
+            &:hover input ~ .control__indicator{  &:after{display:block; color: $bludrk;} } // #ccc;
+            input:checked ~ .control__indicator {&:after{color: $bludrk;}} // #2aa1c0;
+            .control__indicator:after {
+                position : absolute;
+                top: 0;
+                right: 0;
+                bottom: 0.55rem;
+                right: 0;
+                margin-left: 0.1rem;
+                font-family: FontAwesome;
+                content: '\f06e';
+                font-size: 1.333rem;
+                color : $wht;
+                transform: rotate(0deg);
+                border: 0;
+            }
+        }
+
+        //  RADIO BUTTONS
+        // =====================
+
+        // .control--radio .control__indicator { border-radius: 50% }
+        //
+        // // Radio button inner circle
+        // .control--radio .control__indicator:after {
+        // 	top: 7px;
+        // 	left: 7px;
+        // 	width: 6px;
+        // 	height: 6px;
+        // 	border-radius: 50%;
+        // 	background: #fff;
+        // }
+        //
+        // // Disabled circle colour
+        // .control--radio input:disabled ~ .control__indicator:after { background: #7b7b7b; }
+
+
+    } // end .control / checkbox styles

@@ -1,0 +1,83 @@
+.f-controls {
+	@include clearfix;
+	@include border-box;
+
+	.f-control {
+		display: block;
+		float: left;
+		text-align: center;
+		width: percentage(1/3);
+		margin: 0;
+		padding: 1rem 0;
+
+		&.f-active {
+			box-shadow: inset 0 0.25rem 0 0 color(accent);
+
+			use {
+				fill: color(menu-text);
+			}
+		}
+
+		svg {
+			vertical-align: middle;
+
+			use {
+				fill: if($theme == $theme-dark, color(normal), color(light) );
+			}
+		}
+	}
+}
+
+.f-control {
+	@include border-box;
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 0.66rem;
+
+	&:first-child {
+		margin-left: 0;
+	}
+
+	svg {
+		width: 0.875rem;
+		height: 0.875rem;
+
+		use {
+			fill: color(light);
+		}
+	}
+}
+
+.f-control-bar {
+	@include clearfix;
+	padding: 1rem 0;
+
+	/* BACK TO TOP - STOLEN DIRECTLY FROM BACK TO TOP SCSS
+	========================================= */
+	// .back-to-top
+    display: inline-block;
+    position: fixed;
+    bottom: 3.375rem; // = 54px
+    right: 1em; // 0.9375rem; // = 15px
+    padding: 1rem 1.7rem; // 0.9375rem 0.975rem
+    z-index: 1000;
+
+    // cursor: pointer;
+    text-align: center;
+    color: #404040;
+    border: 0.1875rem solid #404040; //3px
+    background: rgba(250,250,250,0.55);
+
+	&:hover {background-color: #404040; color: #fafafa;}
+
+}
+
+.f-menu-toggle {
+	cursor: pointer;
+	vertical-align: middle;
+	svg {
+		display: block;
+		float: left;
+		margin-bottom: -1px;
+	}
+}

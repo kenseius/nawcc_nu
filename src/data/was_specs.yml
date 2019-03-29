@@ -1,0 +1,761 @@
+---
+-
+    FIELD1: Navigation
+    FIELD2: 
+    FIELD3: 
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Name
+    FIELD3: attribute
+    FIELD4: value
+    FIELD5: value_hover
+    FIELD6: notes
+    FIELD7: 
+-
+    FIELD1: Top Nav
+    FIELD2: Container - Top Nav
+    FIELD3: semantics
+    FIELD4: nav
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 65px
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 100% of viewport
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: $theme-background-color
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Nav Item
+    FIELD3: semantics
+    FIELD4: a
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 65px
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: auto
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 0 1.778em
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: transparent
+    FIELD5: 
+    FIELD6: 
+    FIELD7: $theme-background-color
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: $theme-text-color
+    FIELD5: $topnav-hover-color
+    FIELD6: 
+    FIELD7: $theme-text-color
+-
+    FIELD1: 
+    FIELD2: Logo + Site Title
+    FIELD3: semantics
+    FIELD4: a > img / svg
+    FIELD5: 
+    FIELD6: 
+    FIELD7: $topnav-hover-color
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: transparent
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: $theme-text-color
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: font-size
+    FIELD4: 1.778em
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: max-width
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: max characters
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: Side Nav
+    FIELD2: Container - Side Nav
+    FIELD3: semantics
+    FIELD4: nav
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 100% of viewport
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 3-4 of 12 columns
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: $theme-background-color
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Container - Sidebar Nav 
+    FIELD3: semantics
+    FIELD4: nav
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: auto
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 2-3 of 12 columns
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 1rem
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: $gry
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Container - Sidebar Nav 
+    FIELD3: semantics
+    FIELD4: nav
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: auto
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Side Nav Item
+    FIELD3: semantics
+    FIELD4: a
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 1.778em
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 100% of container
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: Iconbar
+    FIELD2: Container - Icon Bar
+    FIELD3: semantics
+    FIELD4: nav
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 100%
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: $gry
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Icon Bar Hyperlink
+    FIELD3: semantics
+    FIELD4: a
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 100% of parent
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: max-height
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: auto
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 0 1,7778rem;
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: transparent
+    FIELD5: $wht;
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: Hyperlinks
+    FIELD2: Hyperlink
+    FIELD3: semantics
+    FIELD4: a
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: border
+    FIELD4: border-top 3px solid transparent; border-right 3px solid transparent; border-left 3px solid transparent; border-bottom 3px solid $blu;
+    FIELD5: border-color $blu;
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: none
+    FIELD5: $blu
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: $blu
+    FIELD5: $wht
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Hyperlink - Icon
+    FIELD3: semantics
+    FIELD4: a > i
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: border
+    FIELD4: border-top 3px solid transparent; border-right 3px solid transparent; border-left 3px solid transparent; border-bottom 3px solid $blu;
+    FIELD5: border-color $blu;
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: none
+    FIELD5: $blu
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: $blu
+    FIELD5: $wht
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Hyperlink - External Link
+    FIELD3: semantics
+    FIELD4: a > i
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: border
+    FIELD4: border-top 3px solid transparent; border-right 3px solid transparent; border-left 3px solid transparent; border-bottom 3px solid $blu;
+    FIELD5: border-color $blu;
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: none
+    FIELD5: $blu
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: $blu
+    FIELD5: $wht
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: Pagination
+    FIELD2: Container - Pagination
+    FIELD3: semantics
+    FIELD4: nav
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: widths
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Pagination Numbers
+    FIELD3: semantics
+    FIELD4: a
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: widths
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: Search
+    FIELD2: Container - Search 
+    FIELD3: semantics
+    FIELD4: form
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: $base-height + 4.xrem padding-top & padding-bottom
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: $base-max-width
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: none, color, or image
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Search - Input
+    FIELD3: semantics
+    FIELD4: input
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: text_color
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: Buttons
+    FIELD2: Default Button
+    FIELD3: semantics
+    FIELD4: button
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: $base-height
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: auto
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: max-width
+    FIELD4: 2.369rem
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: $theme-background-color
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: border
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: Icon Button
+    FIELD3: semantics
+    FIELD4: button
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: height
+    FIELD4: $base-height
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: width
+    FIELD4: auto
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: max-width
+    FIELD4: 2.369rem
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: padding
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: background
+    FIELD4: $theme-background-color
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 
+-
+    FIELD1: 
+    FIELD2: 
+    FIELD3: border
+    FIELD4: 
+    FIELD5: 
+    FIELD6: 
+    FIELD7: 

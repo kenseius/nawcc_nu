@@ -1,0 +1,64 @@
+/*
+=============================
+
+    PAGINATION
+    ------------
+    - search results
+
+    pagination markup:
+
+    section.searchResults
+        a (absconders media objects)
+        p.resultsMessage
+        div.pagination
+            a.first
+            a.previous
+            a (page numbers)
+            a.next
+            a.last
+
+============================= */
+
+.pagination {
+    @include clear();
+    @include span(12 of 12);
+    @include flexbox;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    @media #{$small-only} { flex-wrap: wrap; }
+    a {
+        display: block;
+        padding: 0.45rem 1rem;
+        background: transparent;
+        text-align: center;
+        margin: 0;
+        @include anim($global-animation);
+        @include hover() { background: $slate; color: $wht; }
+        &.active { background: $slate; color: $wht; }
+        @media #{$small-only} { padding: 0.45rem; }
+    }
+    .first, .previous, .next, .last {
+        // width: span(2 of 12);
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.2rem;
+    }
+    .first, .previous {float:left;}
+    .next, .last {float:right;}
+}
+
+// post results, pre paginstion message about results (no results, or "showing # of #")
+.resultsMessage {
+    @include span(12 of 12);
+    margin: 0 auto $base-horizontal-padding;
+    padding-top:$base-horizontal-padding;
+    text-align: center;
+    font-style: italic;
+    span {
+        font-style: normal;
+        padding: 0.5rem $base-horizontal-small;
+        margin: 0 0.333rem;
+        background: $gry;
+    }
+}

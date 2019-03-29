@@ -1,0 +1,93 @@
+---
+buttonTitle: Button Title
+buttonIcon: fa-star
+notes: |
+    ```css
+    // ===================================
+    //      BUTTON BAR
+    //      --------------------
+    //      1. buttonBar = wrapper
+    //          &.buttonbarSpotlights = unique styling for Spotlights page, which has 2 tabs
+    //      2. iconButtonHyperlink = individual items
+    //          .active = used for current page, styled same as hover
+    // ===================================
+
+    // used largely for =
+    //  .jobsBar = employment
+
+    .buttonBar {
+        &.buttonBarSpotlights {
+            div {
+                max-width: $article-max-width * 0.778;
+                .iconButtonHyperlink {
+                    @include span(6 of 12); &:last-of-type{@include last;}
+                    @media #{$medium-down} {
+                        margin-bottom: $base-vertical;
+                        @include span(6 of 12);
+                        &:last-of-type{@include last;}
+                    }
+                    @media #{$small-only} {
+                        margin-bottom:$base-horizontal-small;
+                        @include span(12 of 12 0.333);
+                    }
+                }
+            }
+        }
+    }
+
+    // a tags with with icons
+    .iconButtonHyperlink {
+        // Change this depending on the number of tabs
+        @include span(3 of 12); &:last-of-type{@include last;} // 4 tabs
+
+        padding: $base-vertical;
+        text-align: center;
+        text-transform:uppercase;
+        color: $slate;
+        border-bottom:2px solid transparent;
+
+        i {
+            display: block;
+            margin: auto;
+            font-size: 4.209rem;
+            padding-bottom: 10px;// 0.625em - = 10px
+            @include anim($global-animation);
+            @media #{$small-only} {font-size: 2.369rem;}
+            @media #{$medium-only} {font-size: 3.157rem;}
+        }
+
+        @include anim($global-animation);
+        @include hover() {
+            background-color:$gry;
+            border-bottom-color: $org;
+            @media #{$small-only} {
+                border-left:2px solid $org;
+                border-bottom-color: transparent;
+            }
+            i {color: $org;}
+        }
+
+        &.active {
+            background-color:$gry;
+            border-bottom-color:$org;
+            @media #{$small-only} {
+                border-left:2px solid $org;
+                border-bottom-color: transparent;
+            }
+            i {color: $org;}
+        }
+
+        @media #{$medium-down} {@include span(6 of 12); &:nth-child(even){@include last;} }
+        @media #{$small-only} {@include span(12 of 12 0.333);}
+
+    }
+
+    ```
+
+---
+<!-- Button Bar - Tab-like SubNavbar -->
+<a class="iconButtonHyperlink {{iconButtonClass}}" href="{{iconButtonURL}}">
+    <i class="fa {{#if icon}}{{icon}}{{else}}fa-{{this}}{{/if}} {{#if buttonIcon}}{{buttonIcon}}{{/if}}"></i>
+    {{#if buttonBar}}{{@key}}{{else}}<p>{{buttonTitle}}</p>{{/if}}
+</a>
+

@@ -1,0 +1,8 @@
+// basic block with width / max width
+@mixin wrap($max-width, $margin) {
+    display:block;
+    max-width:$max-width;
+    margin-left: $margin;
+    margin-right: $margin;
+    @include clear();
+}

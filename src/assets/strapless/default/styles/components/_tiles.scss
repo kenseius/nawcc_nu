@@ -1,0 +1,65 @@
+/* 
+=======================================
+ TILES
+======================================= */
+
+
+.nav-tiles-container .columns:last-child:not(:first-child) {float: left;}
+
+    .nav-tiles-container a,
+    .nav-tiles-container a:visited,
+    .nav-tiles-container a:link {color: #fafafa; font-size: 1.333rem; transition: all 0.33333s ease-in-out;}
+    .nav-tiles-container a:hover {color: #2a578d;}
+
+    .nav-tiles-container div {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        margin-bottom: 1rem;
+        transition: all 0.33333s ease-in-out;
+    }
+
+    .nav-tile {
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        height: 12em;
+        width: 100%;
+        margin-bottom: 1em;
+        background: #2a578d;
+        border: 0.1875rem solid #2a578d;
+        transition: all 0.33333s ease-in-out;
+    }
+    .nav-tile:hover { background: #fafafa; border: 0.1875rem solid #2a578d;}
+
+    .nav-tileImage {
+        min-height: 12em;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .nav-tile-text {
+        text-transform: none;
+        text-align: center;
+        max-width: 80%;
+    }
+
+// adjusted style to preview in strapless's ui library
+
+.nav-tiles-container {
+    // @include clear();
+    // @include container($base-max-width);
+    // float: none;
+    & > * {
+        @include clear();
+        @include span(4 of 12); 
+        &:nth-child(3n){@include last;} 
+        @media #{$small-only} {@include span(12 of 12);} 
+    } 
+}

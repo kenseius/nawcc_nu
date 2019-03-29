@@ -1,0 +1,52 @@
+//  1.1 outlines
+// ************************
+
+.outline {
+    display:block;
+    max-width: $article-max-width;
+    border: 0.125em solid $wht; // = 2px
+    padding: $base-vertical-padding-small; // $base-horizontal-padding; // 2.369 = 37.9px | 3.157 = 50.51px  | old: 3.125em = 50px
+
+    // TODO: make mixin w/ PADDING example below
+    // margin: $base-horizontal-padding;
+    // margin: auto;
+    // @media #{$medium-only} { margin: $base-vertical;}
+    // @media #{$small-only} { margin: $base-horizontal-small;}
+
+    // color: $wht;
+    // background: rgba(0,0,0,0.35); // rgba(0,0,0,0.175);
+    h1, h2, h3, h4, h5, p, label { color: $wht;}
+    h1, h2, h3, h4, h5, label { color: $wht; font-weight: 900;}
+    .cta {padding-top: $base-horizontal-padding; font-weight: 900;}
+    // @include anim(all 0.3s ease-in-out);
+    &.outline_wht {
+        h1, p {color: $wht; @include anim(all 0.3s ease-in-out);}
+        @include hover() { background: $wht;  h1, p {color: $slate;} }
+    }
+    &.outline_wht_title {
+        h1, p {color: $wht; @include anim(all 0.3s ease-in-out);}
+    }
+    &.outline_slate {
+        border: 2px solid $slate;
+        h1, p { color: $slate; @include anim(all 0.3s ease-in-out);}
+        @include hover() { background: $wht; }
+    }
+    &.outline_slatealt {
+        h1, p { color: $wht; @include anim(all 0.3s ease-in-out);}
+        @include hover() { background: $slate; border: 0.125em solid $slate; }
+    }
+    &.filledin {
+        background: $wht;
+        h1, p {color:$slate; background: transparent;}
+    }
+    // @media #{$small-only} {
+    //     margin-top: 1.5em;
+    //     margin-bottom: 1.5em;
+    //     padding: 1.25em;
+    //     &.outline_wht {
+    //         p { margin-bottom: 0.25em; small {font-size: 0.85rem;} }
+    //         h1 {font-size: 1.25rem;}
+    //     }
+    // }
+    // @media #{$medium-only} {padding: 2.5em;}
+}

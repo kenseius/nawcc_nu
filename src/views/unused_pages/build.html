@@ -1,0 +1,35 @@
+---
+title: Build
+subtitle: STRAPLESS - BUILD
+layout: strapless_transparent
+fabricator: true
+build: true
+bodyClass: body_Build
+heroClass: hero_Build home_hero
+---
+<section class="introSection introIcons">
+	<div>
+		<div class="intro">
+			<h1>{{title}}</h1>
+			<p>In order to build a successful UI, we must first understand the user.</p>
+			<p>During the UX Process, the UX roles empathise with the user and the stakeholder; Define, Ideate, Prototype, Test, Implement</p>
+		</div>
+		<div class="buttonBar buttonBarUXplaybook">
+			{{#each materials.build.items}}
+				<a class="iconButtonHyperlink" href="#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+			{{/each}}
+		</div>
+	</div>
+</section>
+
+<main>
+{{#each materials.build.items}}
+    {{> strapless-article this }}
+{{/each}}
+</main>
+
+
+

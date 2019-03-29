@@ -1,0 +1,13 @@
+---
+notes: |
+  Placeholder values:  
+  - navURL: http://google.com  
+  - navURLlabel: Nav Item  
+  - navURLicon: fa-star  
+---
+<a href="{{navURL}}{{this}}" class="navitem {{navItemActive}} {{#if ui_toolkit}}active{{/if}}">
+  {{~#if navIconsOn}}<i class="fa {{navURLicon}}" aria-hidden="true"></i>{{/if~}}
+  {{~navURLlabel~}}{{~@key~}}
+</a>
+
+

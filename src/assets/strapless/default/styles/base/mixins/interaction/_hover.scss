@@ -1,0 +1,59 @@
+// INTERACTIONS
+// ----------------------
+// 
+//  Ideal order: Link, Visited, Focus, Hover, Active
+//
+
+// MOBILE NO-HOVER MIXIN
+@mixin hover() {
+    // on page load, before input method has been detected
+    [data-whatinput="initial"] &:focus,
+    [data-whatinput="initial"] &:hover,
+    [data-whatinput="initial"] &:active,
+
+    // no :hover for touch input
+    [data-whatinput="touch"] &:focus,
+    [data-whatinput="touch"] &:active,
+
+    // standard mouse input
+    [data-whatinput="mouse"] &:focus,
+    [data-whatinput="mouse"] &:active,
+    [data-whatinput="mouse"] &:hover {@content;}
+}
+
+// HOVER MIXIN WITHOUT WHAT-INPUT
+@mixin hover_no-whatinput() {
+    &:focus,
+    &:active,
+    &:hover {@content;}
+}
+
+// MOBILE NO-HOVER MIXIN - JUST :HOVER
+@mixin hover_only() { [data-whatinput="mouse"] &:hover {@content;} }
+
+// MOBILE NO-HOVER MIXIN - W/ VISITED
+@mixin hover_visited() {
+
+    // on page load, before input method has been detected
+    [data-whatinput="initial"] &:visited,
+    [data-whatinput="initial"] &:focus,
+    [data-whatinput="initial"] &:hover,
+    [data-whatinput="initial"] &:active,
+
+    // no :hover for touch input
+    [data-whatinput="touch"] &:visited,
+    [data-whatinput="touch"] &:focus,
+    [data-whatinput="touch"] &:active,
+
+    // standard mouse input
+    [data-whatinput="mouse"] &:visited,
+    [data-whatinput="mouse"] &:focus,
+    [data-whatinput="mouse"] &:hover,
+    [data-whatinput="mouse"] &:active {@content;}
+
+}
+
+// HOVER STYLE
+@mixin hover-style($color) {
+  &:hover { background: lighten($color, 3%); }
+}

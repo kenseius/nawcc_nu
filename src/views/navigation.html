@@ -1,0 +1,132 @@
+---
+title: Navigation
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true
+navigation: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+linkURL: google.com
+icon: fa-star
+material_icons: false
+fontAwesome_icons: false
+
+pageClass: navigation
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+navMenuLabel: Menu
+
+---
+
+<div id="01-info" class="componentsIntro">
+    <!-- {{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Navigation home_hero"}} -->
+
+    <section class="layout_grid col2 whatIsthis">
+        <div class="article">
+            <h1>{{title}}</h1>
+            <!-- {{!-- {{> logos.paLogo siteTitle="Navigation"}} --}} -->
+
+{{#markdown}}
+
+Navigation is used to move a user from one part of a website to another.
+
+It's essential that users are able to access the parts of a website they're seeking, in the fewest steps possible, from any other part of the site. 
+
+            {{/markdown}}
+        </div>
+        <div>
+            
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_page.png"}} 
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/layout.png"}}
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/content.png"}}
+
+            <!-- {{> images.image imageSource="./assets/strapless/images/3d_demo_page/layout.png"}}
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_layout.png"}} 
+
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/content.png"}}
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_content.png"}}
+            
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/navigation.png"}}
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_navigation.png"}} 
+            
+            {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_page.png"}} -->
+        </div>
+    </section>
+
+    <section class="layout_grid col3 tabs" data-tabgroup="components_tabs">
+        {{#each materials.navigation.items}}
+            <a class="button blu" href="#{{@key}}">
+                <img src="./assets/strapless/images/UI_components/navigation/{{@key}}.png" alt="@key">                  
+                <span>{{name}}</span>
+            </a>
+        {{/each}} 
+    </section>
+
+    <!-- <section>
+        <h3>Primary Navigation</h3>
+        <p>Used to bring users to each top level parent page</p>
+        <div class="layout_grid col3">
+            <a class="button blu" href="search.html#search">
+                <img src="./assets/strapless/images/UI_components/navigation/search.png" alt="Search">                  
+                <span>{{name}}</span>
+            </a>
+        </div>
+    </section>
+    <section>
+        <h3>Secondary Navigation</h3>
+        <div class="layout_grid col3">
+            {{#iterate 2}}
+            <a class="button blu" href="search.html#search">
+                <img src="./assets/strapless/images/UI_components/navigation/search.png" alt="Search">                  
+                <span>{{name}}</span>
+            </a>
+            {{/iterate}}
+        </div>
+    </section>
+    <section>
+        <h3>Tertiary Navigation</h3>
+        <div class="layout_grid col3">
+            {{#iterate 4}}
+            <a class="button blu" href="search.html#search">
+                <img src="./assets/strapless/images/UI_components/navigation/search.png" alt="Search">                  
+                <span>{{name}}</span>
+            </a>
+            {{/iterate}}
+        </div>
+    </section>
+    <section>
+        <h3>Search</h3>
+        <div class="layout_grid col3">
+            <a class="button blu" href="search.html#search">
+                <img src="./assets/strapless/images/UI_components/navigation/search.png" alt="Search">                  
+                <span>{{name}}</span>
+            </a>
+        </div>
+    </section> -->
+
+<!-- - **Secondary Navigation**
+    - Side Nav
+    - Sidebar Nav 
+- **Tertiary Navigation** 
+    - Pagination
+    - Breadcrumbs
+    - Buttons
+    - Hyperlinks
+- **Search**
+    - Search Input
+    - Search Results
+-->
+
+
+</div>
+
+
+
+
+{{#each materials.navigation.items}}
+     {{> f-item this}}
+{{/each}}

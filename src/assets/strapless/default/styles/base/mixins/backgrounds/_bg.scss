@@ -1,0 +1,34 @@
+//bg - implementation with darken
+@mixin bg($url, $shade, $bg-size){
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $bg-size;
+
+    // black
+    background-image:        -webkit-gradient(linear, 0 100%, 0 0,
+                                         from(rgba(0, 0, 0, $shade)), to( rgba(0,0,0,0.25) )), url($url);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade),      rgba(0,0,0,0.25) ), url($url);
+    background-image:         linear-gradient(rgba(0, 0, 0, $shade),      rgba(0,0,0,0.25) ), url($url);
+
+    // yellow
+    // background-image:        -webkit-gradient(linear, 0 100%, 0 0,
+    //                                      from(rgba(0, 0, 0, $shade)), to( rgba(255,224,102,0.25) )), url($url);
+    // background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade),      rgba(255,224,102,0.25) ), url($url);
+    // background-image:         linear-gradient(rgba(0, 0, 0, $shade),      rgba(255,224,102,0.25) ), url($url);
+
+    // peach
+    // background-image: -webkit-gradient(linear, 0 100%, 0 0, from( rgba(0, 0, 0, $shade) ), to( rgba(255,224,178,0.25) )), url($url);
+    // background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade), rgba(255,224,178,0.25) ), url($url);
+    // background-image: linear-gradient(rgba(0, 0, 0, $shade), rgba(255,224,178,0.25) ), url($url);
+}
+
+// bg - implementation with darken // dark color
+/* @mixin hero-bg-url($url, $shade){
+    background-image: -webkit-gradient(linear, 0 100%, 0 0, from(rgba(0, 0, 0, $shade)), to(rgba(0, 0, 0, $shade))), url($url),;
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, $shade), rgba(0, 0, 0, $shade)), url($url);
+    background-image: linear-gradient(rgba(0, 0, 0, $shade), rgba(0, 0, 0, $shade)), url($url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}*/

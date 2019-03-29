@@ -1,0 +1,48 @@
+---
+notes: |
+
+  These are notes written in `markdown`
+
+  ```css
+  //  3. labels
+  // ************************
+
+  label {
+      display: block;
+      margin-bottom: $base-horizontal-padding;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+      button, p {text-transform: none;}
+      font-size: small;
+      color: $slate;
+      @media #{$small-only} {
+          margin-bottom: $base-horizontal-small;
+           @include span(12 of 12);
+       }
+  }
+  ```
+
+---
+<form>
+    <label for="labelExample">
+        Label
+        <!--
+        Always nest inputs within a label
+        Applies to:
+            <input>
+            <textarea>
+            <select>
+        -->
+        <input type="text" id="labelExample" placeholder="Text input...">
+    </label>
+
+    <h2>Formgroup Title versus Input Label</h2>
+    <div class="formgroup">
+        <label for="labelExample">
+            Labels are only used in conjection with inputs
+            <input type="text" id="labelExample" placeholder="Whereas, Formgroup titles are h2 elements...">
+        </label>
+    </div>
+
+</form>

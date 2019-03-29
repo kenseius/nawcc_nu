@@ -1,0 +1,333 @@
+// ==========================
+//
+//   LAYOUT
+//  -----------------------------
+//   - styling central layout options
+//   - intended to work with direct descendants of the <body> element
+//   - used to layout: article, section, main, form, & other html5 container elements
+//   - try to use as few classes as you can, and use ">" to only affect immediate children elements (to allow nesting and avoid affecting non-targetting elements)
+//   - if you're using a grid, build it here
+//
+// ==========================
+
+
+body {
+
+    & > section {
+
+        // section widths
+        // ===================
+        // no padding - @include global-container(auto, 64rem, 3.157rem, 0);
+        // @include global-container(100%, 100%, 3.175rem, 0);
+        // margin-bottom: $base-vertical;
+        @include global-container(100%, 100%, 0, 0);
+
+        // targets just the immediate child elements
+        & > h1,
+        & > h2,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > ul,
+        & > blockquote,
+        & > .meta,
+        iframe {
+            @include wrap($base-max-width, auto);
+            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+            @media #{$medium-only} { max-width: $article-max-width; }
+        }
+
+        & > h1 {margin-bottom: $base-vertical;}
+
+        & > h2,
+        & > .meta,
+        & > pre,
+        & > code {margin-bottom: $base-horizontal-padding;}
+
+        & > img,
+        & > table,
+        & > p,
+        & > .pseudo-search  {
+            max-width: $base-max-width; 
+            margin-left: auto; 
+            margin-right: auto;
+            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+            @media #{$medium-only} { max-width: $article-max-width; }
+        } // todo --- adding clearfix to inline elements (p, etc), if they have psuedo styles, seems to break them....
+
+        & > article,
+        & > .article {@include article;}
+
+        &.full {@include global-container(100%, 100%, 3.157rem, 3.157rem);}
+
+        // mobile - excludes the jobsBar section
+        // &:not(.jobsBar), &:not(.cards_dates), &:not(section.card) {
+        //     @media #{$extra-large-down} { padding-left: $base-vertical; padding-right: $base-vertical; }
+        // }
+
+    }
+
+}
+
+
+
+
+// elements with consistent dimensions a global level
+// LISTS 
+section, article, .article {
+    ul {list-style: disc;}
+    ol {list-style-type: decimal}
+    ol, ul {
+        list-style-position: outside;
+        padding-left: $base-vertical;
+        margin-bottom: $base-vertical;;
+    }
+}
+
+
+
+
+
+// layouts
+
+
+
+.layout_grid {
+    @include clear();
+    @include container($base-max-width);
+    float: none;
+    & > *:not([data-balloon]),
+    & > * > *:not(.fa):not(.material-icons):not([data-balloon]) {@include clear();}
+    &.col1 { & > * {@include span(12 of 12);} }
+    &.col2 { & > * {@include span(6 of 12); &:nth-child(2n){@include last;} } }
+    &.col3 { & > * {@include span(4 of 12); &:nth-child(3n){@include last;} } }
+    &.col4 { & > * {@include span(3 of 12); &:nth-child(4n){@include last;} } }
+    &.col5 { & > * {@include span(2.4 of 12); &:nth-child(5n){@include last;} } }
+    &.col6 { & > * {@include span(2 of 12); &:nth-child(6n){@include last;} } }
+    &.col7 { & > * {@include span(1.7 of 12); &:nth-child(7n){@include last;} } }
+    &.col8 { & > * {@include span(1 of 8); &:nth-child(8n){@include last;} } }
+    &.col9 { & > * {@include span(1 of 9); &:nth-child(9n){@include last;} } }
+    &.col10 { & > * {@include span(3 of 12); &:nth-child(10n){@include last;} } }
+    &.col11 { & > * {@include span(2 of 12); &:nth-child(11n){@include last;} } }
+    &.col12 { & > * {@include span(1 of 12); &:nth-child(12n){@include last;} } }
+    
+    // mobile
+    &.col1,
+    &.col2,
+    &.col3, 
+    &.col4,
+    &.col5,
+    &.col6,
+    &.col7,
+    &.col8,
+    &.col9,
+    &.col10,
+    &.col11,
+    &.col12 { 
+        & > * { @media #{$small-only} {@include span(12 of 12);} }
+    } 
+}
+
+
+.layout_3col_9col {
+    @include clear();
+    @include container($base-max-width);
+    float: none;
+    & > *,
+    & > * > * {@include clear();}
+    & > * {
+        @include span(3 of 12); 
+        &:nth-child(2n){
+            @include span(9 of 12 last);
+            max-width: $article-max-width;
+            @media #{$medium-down} { @include span(12 of 12);}             
+        } 
+        @media #{$medium-down} { @include span(12 of 12);} 
+    } 
+}
+
+.layout_4col_8col {
+    @include clear();
+    @include container($base-max-width);
+    float: none;
+    & > *,
+    & > * > * {@include clear();}
+    & > * {
+        @include span(4 of 12); 
+        &:nth-child(2n){
+            @include span(8 of 12 last);
+            max-width: $article-max-width;
+            @media #{$medium-down} { @include span(12 of 12);}             
+        } 
+        @media #{$medium-down} { @include span(12 of 12);} 
+    } 
+}
+
+
+.layout_twoCol,
+.layout_sidenav {
+    // @include wrap($base-max-width, auto);
+    // max-width: $base-max-width;
+    // margin: auto;
+    @include clear();
+    article {
+        @include clear();
+        @include article;
+        margin:0 auto $base-vertical-padding;
+    }
+}
+
+// titles aligned to the side
+
+.layout_twoCol {
+    h2 {margin-bottom: 0px; width: 100%;}
+    article {
+        @include wrap($base-max-width, auto);
+        max-width: $base-max-width;
+        p, h2, h3, h4, blockquote, table, form, ul, ol, pre, code, img, p > img {@include clear();}
+        h3, h4 {@include span(4 of 12)}
+        hr {display: none;}
+        & > p, blockquote, table, form, ul, ol, pre, code {@include span(8 of 12 last);}
+    }
+    &.layout_deliverables {
+        h2 {margin-bottom: $base-vertical-padding;}
+    }
+}
+
+// sidenav 
+
+.layout_sidenav {
+    @include wrap($base-max-width, auto);
+    article,
+    .tabgroup {
+        @include span (8 of 12 last);
+        max-width: $article-max-width;
+        @media #{$medium-down} {@include span(12 of 12); padding-left: 1rem; padding-right: 1rem;}
+    }
+    .sidenav {
+        @include span(3 of 12);
+        @media #{$medium-down} {
+            @include span(12 of 12);
+            margin-bottom: 1.778rem;
+            a.is-active, a.active {&:before {display: none;}}
+            a { width:33%; float: left; }
+        }
+    }
+}
+.sidenav {
+    @include clear();
+    @include span(3 of 12);
+    width: 17.713em;
+
+    @media #{$medium-down} { @include span(12 of 12);} 
+    
+    &.accordion,
+    > .accordion,
+    .accordion > div {
+        margin: 0;
+        i:not(.fa){
+            margin-top: 1rem;
+            right: 1rem;
+            @include transform(translate( 0.6px , 0 ));
+            // transform: translate( 0, 0 );
+        }
+        input[type=checkbox]:checked {
+            &~.f-active,
+            &~.is-active {background-color:$slate; color: $wht;}
+        }
+        input[type=checkbox]:not(:checked) {
+            &~a {background-color:$slate; color: $wht;}
+            &~i:not(.fa) {
+                z-index: 100;
+                &:before , &:after {
+                    background-color: $gld;
+                }
+            }
+        }
+    }
+    a {
+        display: block;
+        position: relative;
+        padding: .5rem 0 .5rem 1rem !important;
+        line-height: 1.6em;
+        i.fa {
+            position: absolute;
+            top: .3745rem;
+            left: .85rem;
+            line-height: 1.6em;
+            font-size: 1.2em;
+        }
+        span {
+            vertical-align: middle;
+            display: block;
+            margin-left: 1.875em;
+            line-height: 1.6em;
+        }
+        @include anim($global-animation);
+        @include hover() {background: $pch;}
+        &.is-active,
+        &.active {
+            background: $slate; 
+            color: $wht;
+            span, i {color: $wht;}
+            &:before {
+                // arrow
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: inset .8em;
+                border-color: transparent transparent transparent $slate;
+                border-left-style: solid;
+                position: absolute;
+                top: .45rem;
+                right: -1.45rem;
+            }
+            @include hover() {background: $slate;}
+        }
+
+    }
+}
+
+
+
+// old layout styles 
+
+
+.col2, .col3 {@include clear;}
+
+.col2 {
+    max-width: $base-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    &.full {width: 100%;}
+    .left, .right {
+        @include span(6 of 12);
+        @include article;
+        // variations from article styles
+        margin: 0 auto $base-horizontal-padding;
+        h2, h4 {margin-bottom: $base-horizontal-padding;}
+        blockquote { p {margin-bottom: 0; @include type-setting(1);} }
+        @media #{$extra-large-down} {padding:0; }
+        @media #{$medium-down} { width: 100%; max-width: $article-max-width;}
+    }
+    .right {@include last;}
+    // @media #{$extra-large-down} { padding-left: $base-vertical; padding-right: $base-vertical; }
+    @media #{$medium-down} {
+        .left, .right {
+            float: none;
+            max-width: $article-max-width;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+// .col3 {
+//     @include span(12 of 12);
+//     section {
+//         @include span(4 of 12 0.7778);      
+//         &:last-child {@include last;}
+//         @media #{$small-only} {@include span(12 of 12);}
+//     }
+// }

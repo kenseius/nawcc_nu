@@ -1,0 +1,10 @@
+<article id="{{@key}}" {{#if articleClass}}class="{{articleClass}}"{{/if}}>
+    <h2>
+        {{#if icon}}
+            {{#if material_icons}}<i class="material-icons">{{icon}}</i>{{/if}}
+            {{#if fontAwesome_icons}}<i class="fa {{icon}}"></i>{{/if}}
+        {{/if}}
+        {{name}}
+    </h2>
+    {{{material @key @root}}}
+</article>

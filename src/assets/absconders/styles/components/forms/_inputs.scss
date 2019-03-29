@@ -1,0 +1,139 @@
+// ===========================================
+//
+//      FORMS - INPUTS
+//      -----------------------
+//          4. inputs - input, textarea, select
+//          5. textarea
+//          6. select
+//          7. placeholder text
+//
+// ===========================================
+
+//  4. inputs - input, textarea, select
+// ***************************************
+
+input, textarea, select {
+
+    // allows font awesome icons in placeholder text
+    font-family: FontAwesome, 'Montserrat', sans-serif;
+
+    // mobile fix - some browsers require forms to have line-height
+    // font-size: 1rem;
+    @include type-setting(0);
+
+    // positioning / spacial
+    display: block;
+    padding: 1rem; // space within input // $base-vertical 1.1rem // 1.3em 0.75em; // .5rem;
+
+    // TODO the native date controls are being hidden behind the :after of validation ,might be a better way to handle this
+    &::-webkit-calendar-picker-indicator {z-index: 111111111;}
+
+    margin-top: 0.33333rem; // space between label and input - MUST be margin, as padding effects space within the input itself  // 0.77778rem; // 0.5rem;
+    width: 100%;
+
+    // visual appearance of field + entered text
+    background-color: $wht;
+    border: 0.2rem solid $wht; // $grylite; // $gry; // 0.15rem = 3px ---  // 5px // none;
+
+    // remove browser styles
+    box-shadow: none;
+    outline: none;
+    border-radius: 0;
+    @include disable-mouse-outline;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+    @include anim($global-animation);
+
+} // end inputs
+
+// excludes select from global input hover colors
+input, textarea {
+    @include hover() { border-color: $slate; color: $slate; }
+}
+
+
+//  5. textarea
+// ************************
+textarea,
+label textarea,
+[type="textarea"] {
+    height: 6rem;
+    max-height: auto;
+    min-height: 6rem;
+    // resize:none;
+    overflow: auto; // removes scrollbar in IE
+}
+
+
+//  6. select
+// ************************
+
+// select field (mobile categories)
+select {
+    height: auto;
+    min-height: 61.2px; // 70px; // fix, cuz all the browsers be lame - http://stackoverflow.com/questions/20477823/select-html-element-with-height
+    cursor: pointer;
+    text-transform: none;
+
+    & option {
+        color: $placholderTextcolor; // lighten($slate, 40%);
+        background: $wht;
+        // &:not(:first-child){
+        //     color: $slate;
+        // }
+    }
+
+    @include triangle(lighten($slate, 55%));
+    // &:active, &:focus {
+    //     color: $slate;
+    //     // background-color: $pch;
+    //     border-color: $slate;
+    //     @include triangle(lighten($slate, 55%));
+    // }
+
+    // addresses down-arrow bug
+    &::-moz-focus-inner {border:0;}
+
+    // IE fix
+    &::-ms-expand { display: none; }
+
+    // down caret
+    // @include triangle(lighten($slate, 30%));
+    @include hover_only() {
+        color:$slate;
+        border-color:$slate;
+        // background-color: $pch;
+        @include triangle($slate);
+    }
+
+}
+
+
+//  7. placeholder text
+// ************************
+
+    // @mixin textarea-placeholder {
+    //     textarea::-webkit-input-placeholder,
+    //     textarea:     -ms-input-placeholder,
+    //     textarea::         -moz-placeholder,
+    //     textarea:          -moz-placeholder
+    // }
+
+    ::-webkit-input-placeholder,
+    :-ms-input-placeholder,
+    ::-moz-placeholder,
+    :-moz-placeholder,
+    ::placeholder,
+    :placeholder-shown {
+        opacity: 1; // firefox fix
+        color: lighten($placholderTextcolor, 15%); // #999;
+        &:focus, &:active {color: lighten($placholderTextcolor, 20%);}
+    }
+
+    // firefox fixes
+    // input::-moz-placeholder,
+    // textarea::-moz-placeholder {
+    //   opacity: 1;
+    // }

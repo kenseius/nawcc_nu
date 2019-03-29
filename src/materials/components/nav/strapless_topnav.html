@@ -1,0 +1,20 @@
+---
+title: Top Nav - Strapless
+navMenuLabel: Menu
+---
+<nav class="nav primary_navigation home_nav" role="navigation">
+    <a class="logo" href="index.html">{{> logos.logo_StraplessNav}}</a>
+    <div class="links">
+        {{#each strapless.navItems as |navURL navURLlabel|}}
+            {{#if ui_toolkit}} 
+                {{> nav.nav_item navItemActive="active"}} 
+                {{else}}
+                {{> nav.nav_item}} 
+            {{/if}}
+        {{/each}}
+    </div>
+    <a class="nav-trigger nav-open">
+        <div class="inner"></div>
+        <span class="menulabel">{{navMenuLabel}}</span>
+    </a>
+</nav>

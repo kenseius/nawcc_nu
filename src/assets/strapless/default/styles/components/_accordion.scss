@@ -1,0 +1,282 @@
+// ==========================================================
+//                      ACCORDIONS
+// ==========================================================
+
+// from mixins/interactions/hover.scss
+
+@mixin hover() {
+    // on page load, before input method has been detected
+    [data-whatinput="initial"] &:focus,
+    [data-whatinput="initial"] &:hover,
+    [data-whatinput="initial"] &:active,
+
+    // no :hover for touch input
+    [data-whatinput="touch"] &:focus,
+    [data-whatinput="touch"] &:active,
+
+    // standard mouse input
+    [data-whatinput="mouse"] &:focus,
+    [data-whatinput="mouse"] &:active,
+    [data-whatinput="mouse"] &:hover {@content;}
+}
+
+.transition {transition: all 0.25s ease-in-out;}
+.flipIn {animation: flipdown 0.5s ease both;}
+
+.no-select {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+// tr, // for accordion within a table
+ul.accordion li,  // for fabricator sidenav
+.accordion {
+    position: relative;
+    perspective: 900;
+    // padding: 18px 0 4px 0;
+    // &:not(&:last-child) {margin: 0 0 $base-horizontal-padding;}
+    // border-top: 1px dotted $grey;
+    @extend .flipIn;
+
+    &:nth-of-type(1){animation-delay: 0.5s;}
+    &:nth-of-type(2){animation-delay: 0.75s;}
+    &:nth-of-type(3){animation-delay: 1.0s;}
+    &:last-of-type{padding-bottom: 0;}
+
+    i:not(.fa){
+        position: absolute;
+        margin-top: 12px;
+        right: 0.333rem;
+        transform: translate( -6px , 0 );
+        &:before , &:after {
+            content: "";
+            @extend .transition;
+            position: absolute;
+            background-color: $gld;
+            width: 3px;
+            height: 9px;
+        }
+        &:before { transform: translate( -2px , 0 ) rotate(  45deg );}
+        &:after {  transform: translate(  2px , 0 ) rotate( -45deg );}
+    }
+
+    .accordion_title {
+        @include type-setting(2); 
+        font-weight: bold;
+    }
+
+    input[type=checkbox] {
+        position: absolute;
+        cursor: pointer;
+        right:0;
+        width: 100%;
+        height: 100%;
+        max-height: 1.778rem;
+        z-index: 5;
+        opacity: 0;
+        &:checked {
+            &~.f-active {background-color:$slate; color: $wht;}
+            &~div,
+            &~p:not(.accordion_title) {
+                margin: 0;
+                max-height: 0;
+                opacity: 0;
+                transform: translate( 0 , 50% );
+                @extend .transition;
+            }
+            &~i {
+                &:before {transform: translate(  2px , 0 ) rotate(  45deg );}
+                &:after { transform: translate( -2px , 0 ) rotate( -45deg );}
+            }
+        }
+        &:hover {
+            &~p.accordion_title {color: $org;}
+        }
+    }
+
+    &.accordion_uiComponents {
+        // border-top: 3px solid $gryslvr; 
+        // padding-top: 1.778rem;
+        .accordion_title {color: lighten($slate,20%);}
+    }
+
+    @media #{$extra-large-down} { padding-left: $base-vertical; padding-right: $base-vertical; }
+
+} 
+
+// this is the content container. adjust depending on your usage.
+// - If you have multiple types of content, use <section class="accordion"> <div> <!-- Whatever Content -->
+// - If you only have 1 paragraph of text, use <section class="accordion"> <p>
+// - to avoid conflicts, we use > to refer only to the immediate children
+// NOTE: this means(( div and p may be conflict points, if there's conflicting styles applied
+.accordion > div,
+.accordion > p:not(.accordion_title),
+.faqs .accordion > p:not(.accordion_title) {
+    position: relative;
+    max-height: 10000px;
+    margin: 0 0 $base-horizontal-padding;
+    z-index: 2;
+    transform: translate( 0 , 0 );
+    overflow: hidden;
+    opacity: 1;
+    @extend .transition;
+}
+
+// sidenav 
+// when using the accordion in the sidenav menu
+.accordion_sidenav {
+    .accordion > a,
+    &.accordion_sidenav_strapless .tabs > a {
+            // Change this depending on the number of tabs
+        // @include span(3 of 12);
+        // &:nth-of-type(4n){@include last;} // 4 tabs
+        // &:last-of-type{@include last;} // 4 tabs
+
+        padding: 1rem; // $base-vertical
+        text-align: left;
+        color: $slate;
+
+        display:block;
+        position : relative;
+
+        span, i {vertical-align: middle;}
+
+        span {
+            display : inline-block;
+            line-height: 1.778;
+        }  
+
+        i {
+            display : inline-block; // = .fa is already inline-block
+            font-size: $base-vertical;
+            margin-right: $base-horizontal-small;  // old: 30px
+            width: $base-vertical;
+        }
+
+        @include anim($global-animation);
+        @include hover() {
+            background-color:$gry;
+            border-bottom-color: $org;
+            @media #{$small-only} {
+                border-left:2px solid $org;
+                border-bottom-color: transparent;
+            }
+            i {color: $org;}
+        }
+
+        // @include anim($global-animation);
+        // @include hover() {
+        //     border-right: 0.2rem solid $org;
+        //     background: $gry;
+        //     color: $slate;
+        //     span {background: $slate;}
+        // }
+        
+        &.active {
+            background: $slate;
+            color: $wht;
+            span, label {color: $wht;} 
+            // font-weight: 700; // 400
+        }
+    }
+    .accordion { 
+        & > div {margin: 0;} 
+        @media #{$extra-large-down} { padding-left: 0; padding-right: 0; }
+    }
+    i:not(.fa) {
+        margin-top: 1.778rem;
+        right: 0.778rem;
+    }
+
+    // unique sidebar styles for strapless
+    &.accordion_sidenav_strapless {
+        input[type=checkbox] {width:0.75rem;}
+        .accordion > a,
+        .tabs > a {
+            @include hover() {
+                background-color:$slate;
+                color:$wht;
+                i {color: $org;}
+            }
+        }
+        .breadcrumbs {padding: 1.778rem 1rem;}
+    }
+
+    .accordion > div {background: $wht;}
+
+    .f-menu__heading {
+		padding-left: 0;
+		font-weight: normal;
+		font-size: 1rem;
+		// &:hover {color: color(normal);}
+	}
+
+    i {z-index: 5;}
+
+    input[type=checkbox] {
+        z-index: 1;
+        max-height:100%;
+        &:not(:checked) {
+            &~a.f-menu__heading {background: $slate; color: $wht;}
+        }
+        &:hover {
+            &~a.f-menu__heading {background: $slate; color: $wht;}
+        }
+    }
+
+    .buttonList a {padding-left: 1.333rem;}
+
+}
+
+// when using accordion with a list
+ul.accordion {
+    list-style: none;
+    perspective: 900;
+    padding: 0;
+    margin: 0;
+}
+
+// flex table variation
+.accordion.accordion_table {
+    h2, p:first-of-type {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        margin: auto;
+        span {flex-grow: 1;}
+    }
+    li {
+        display: block;
+        border-top: 2px solid $gry;
+        border-right: 2px solid $gry;
+        border-left: 2px solid $gry;
+        border-bottom: 2px solid $gry;
+        i {left: 2rem; margin: auto;}
+        p {padding: 1rem auto;}
+    }
+}
+
+// unqiue styles for Strapless nav
+$accordionIconWidth: 1rem;
+
+.accordion.navAccordion {
+    li {
+        i { width: $accordionIconWidth;}
+        input[type=checkbox] { right: 0.333rem; width: $accordionIconWidth + 0.333rem; }
+    }
+}
+
+@keyframes(flipdown) {
+      0% {opacity: 0; transform: rotateX(-90deg); transform-origin: top center;}
+      5% {opacity: 1;}
+     80% {transform: rotateX( 8deg);}
+     83% {transform: rotateX( 6deg);}
+     92% {transform: rotateX(-3deg);}
+    100% {transform: rotateX( 0deg); transform-origin: top center; }
+}

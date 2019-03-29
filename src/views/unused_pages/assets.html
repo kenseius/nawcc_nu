@@ -1,0 +1,28 @@
+---
+title: Assets
+subtitle: STRAPLESS - OUTPUT
+layout: strapless
+fabricator: true
+output: true
+bodyClass: body_Assets
+heroClass: hero_Assets
+---
+<section class="introSection">
+	<div>
+		<div class="intro">
+			<h1>{{title}}</h1>
+		</div>
+		<div class="buttonBar buttonBarUXplaybook">
+			{{#each materials.assets.items}}
+				<a class="iconButtonHyperlink" href="#{{@key}}">
+					<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+					<span>{{name}}</span>
+				</a>
+			{{/each}}
+		</div>
+	</div>
+</section>
+
+{{#each materials.assets.items}}
+    {{> f-item this}}
+{{/each}}

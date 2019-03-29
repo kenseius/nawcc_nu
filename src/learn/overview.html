@@ -1,0 +1,219 @@
+<h2 id="i-overview">I. Overview</h2>
+<p><strong>Strapless</strong>: Semantic, Accessable Markup + Style Asset Library  </p>
+<h3 id="learn-the-code-not-a-framework">Learn the code, not a framework</h3>
+<ol>
+<li>Prototyper<ul>
+<li>Any markup (HTML)</li>
+<li>Any styles (CSS)</li>
+<li>Markup + Styles = Must correlate</li>
+</ul>
+</li>
+<li>UI Toolkit<ul>
+<li>Compendium of Our Best Code</li>
+<li>Repeated patterns normalized</li>
+<li>Project-unique Variations, Materials, Data</li>
+</ul>
+</li>
+<li>Learn<ul>
+<li>Design System</li>
+<li>UX Princliples</li>
+<li>Code Standards</li>
+<li>Best Practices (Accessability, Semantics)</li>
+</ul>
+</li>
+<li>UX Platform<ul>
+<li>Means for providing UX info</li>
+<li>Reference </li>
+</ul>
+</li>
+</ol>
+<p>Strapless is a framework-independent UI toolkit, frontend asset library, design system &amp; static site generator.</p>
+<p>It&#39;s primary goal is to unite and centralize all the assests, from requirements gathering to project completion, within one highly-adaptable, visual system.</p>
+<p>It&#39;s secondary goal is to provide a transparent, open platform from which to communicate UX values as they apply throughout the website creation process. This includes:</p>
+<ul>
+<li>providing integration methods needed for the various applications<ul>
+<li>Requirements Gathering</li>
+<li>Wireframes</li>
+<li>Write Up  </li>
+<li>Mockups</li>
+<li>Frontend Code</li>
+<li>CMS Integration</li>
+<li>analyzing user usage patterns and feedback</li>
+<li><em>phase 2</em> changes and improvements</li>
+</ul>
+</li>
+<li>informing and educating stakeholders &amp; other team members  <ul>
+<li>style guide</li>
+<li>documentation</li>
+<li>tutorials</li>
+<li>resources</li>
+</ul>
+</li>
+</ul>
+<h3 id="communication-knowledge-accessability-semantics-design-user-experience">Communication + Knowledge + Accessability + Semantics + Design = User Experience</h3>
+<p>In other words, <strong>Questions + Design + Code = UX</strong></p>
+<p>The practice of good UX begins by <a href="link to article">asking questions</a> to idenity root issues.</p>
+<p>For <strong>design</strong>, this provides a basis from which to find colors, fonts, images, icons and other <em>Branding</em> elements.</p>
+<p>For <strong>developers</strong>, it takes the form of writing <em>Accessabile</em> code, which is accomplished through <em>Semantic</em> HTML5 and following <em>A11y</em> best practices. To make this easy, build modularly with partials both in the <em>SASS</em> and the HTML <em>materials</em>.</p>
+<p>For <strong>project managers</strong>, this means first: preparation; then, clear, constant communication. In general, this means project managers should continually work to  <em>increase their understanding</em> of the basics of the website creation process, <em>clearly and visibly define the roles and responsibilities</em> within a given project, <em>centralize all information</em> relating to the project, and <em>communicate often and with high visibility with other departments</em>, before, during and after a project.</p>
+<h3 id="built-for-everyone-by-all-of-us">Built For Everyone, By All Of US</h3>
+<p>Strapless was built out of the need for a point of reference for UX designers, graphic designers, frontend developers, and stakeholders. Anyone that&#39;s worked on COPA Metrics, PA.Gov, DGS: SCND, PBPP: Most Wanted Absconders, and now Employment has also contributed to this style and code base.</p>
+<h4 id="ui-toolkit">UI TOOLKIT</h4>
+<p><strong>What&#39;s inside?</strong></p>
+<p>This UI toolkit is a highly-modular design system for rapid web page development. It contains different materials that can be assembled into more complex page layouts.</p>
+<p>This guide contains real working examples, code snippets, documentation, and style guidelines.</p>
+<pre><code>strapless/
+    dist/
+    src/         
+        assets/
+        materials/
+        data/
+        docs/
+        views/
+    gulpfile.js
+    README.md
+</code></pre><ul>
+<li><strong><code>Components</code></strong> = All HTML and rendered CSS displayed</li>
+<li><strong><code>Assets</code></strong> = Easily add and organize all visual assets (Images, JS, and pre-rendered SCSS files)</li>
+<li><strong><code>Documentation</code></strong> = Written using Markdown. Notes and documentation can be added on each component, and in a dedicated /docs/ directory</li>
+<li><strong><code>Data</code></strong> = Using dot notation, you can call data stored in a list. For example: a list of colors or the topnav links.  </li>
+<li><strong><code>Views</code></strong> = Pages constructed using the assets and components, can be used to generate pages for the toolkit, a styleguide, front-facing pages.</li>
+</ul>
+<p><strong>Features:</strong></p>
+<ul>
+<li><strong>Rapid prototyping</strong> = sew individual components together with Handlebars.js partials to quickly construct templates and pages.</li>
+<li><strong>Instant Browser Refresh</strong></li>
+<li><strong>Front-matter</strong> = use frontmatter to add documentation within each component partial, and to designate content insertion points, for integrating with a database or CMS</li>
+<li><strong>Gulp</strong> = Gulp is used to acquire the dependencies, compile the Sass, compress and optimize images, construct element from partials, and pipe the assets into the /dist/ folder</li>
+</ul>
+<section class="tableOfContents">
+
+## Table Of Contents
+
+<section class="meta meta_article">
+    <p>Metadata</p>
+    <p class="meta_right">November 23, 2016</p>
+</section>
+
+<div class="tableOfContents_grid">
+
+
+### Build
+
+
+- <strong>Prototype</strong>
+- Data (Yaml)
+- Partials (Handlebars)
+- Front-matter
+- Gulp
+- /dist/
+- Components
+
+
+- <strong>Best Practices</strong>
+- Accessability
+- Cross-platform, Device-agnostic, Responsiveness
+- Semantics
+
+
+- <strong>Code</strong>
+- Standards
+- Nomenclature
+- File Structure
+- Dependencies
+- Javascript
+
+
+- <strong>DRY</strong>
+- Don&#39;t Repeat Yourself
+- mixins
+- materials &amp; prototyping
+
+### Style
+
+- <strong>Frontend Assets</strong>
+- SASS
+- Images
+- JS
+
+
+- <strong>Central Base</strong>
+- Modular Scale
+- Vertical Rhythm
+- Grid
+- Widths
+- Alignment
+- Output to single base.scss file
+
+
+- <strong>Unified Variables</strong>
+- SASS variables
+- Wireframes Template
+- P5 Template
+- Xd Template
+- Sketch Template
+
+
+- <strong>Atomic Design</strong>
+- Build modularly, and unify across the board
+    - HTML5
+    - CSS3
+    - Brand Assets
+
+
+### Output
+
+
+- <strong>Integration</strong>
+- Insertion points
+- Front-matter
+- Frontend Frameworks:
+    - Foundation
+    - Bootstrap
+- CMS
+    - Wordpress
+    - Sharepoint
+    - Drupal
+
+
+- <strong>Output For Partner</strong>
+- Styleguide
+- Pages
+- Hide internal documentation and code<br>
+
+- <strong>Sites</strong>
+- Styles, HTML5, Javascript
+- Use Templates to only display Relevant Materials
+- Downloads
+- pa.gov (default)
+- Employment
+- Most Wanted Absconders
+- SCND
+
+
+- <strong>Placeholder</strong>
+- placeholder
+
+
+### Learn
+
+
+- <strong>Docs</strong>
+- Markdown
+- Notes (materials)
+- How to:
+    -  Start
+    -  Style
+    -  Build
+    -  Modify
+    -  Write Docs
+
+
+- <strong>Additional Resources</strong>
+- Checklists
+- References
+
+
+</div>
+
+<p></section></p>

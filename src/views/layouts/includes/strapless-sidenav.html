@@ -1,0 +1,98 @@
+<!-- TOP NAV - MOBILE SIDE SLIDEOUT MENU -->
+<nav data-scroll-header class="accordion_sidenav accordion_sidenav_strapless f-menu sidenav_strapless_JSref">
+
+<div class="sidenav_header">
+    <!-- <a href="{{baseurl}}/webappstandards.html" data-balloon="Back to All Components" data-balloon-pos="bottom">
+        <i class="fa fa-chevron-left"></i>
+        <span>Back</span>
+    </a> -->
+    <p class="sidenav_title">
+        {{#if structure}}<i class="fa fa-paint-brush"></i> <span>Structure</span>{{/if}}
+        {{#if ui_toolkit}}<i class="fa fa-bars"></i> <span>UI Components</span>{{/if}}
+    </p> 
+</div> 
+
+{{#if structure}}
+    <div class="tabs" data-tabgroup="components_tabs">
+        <a href="#01-info" class="active">What Is This?</a>
+        {{#each materials.design.items}} 
+            {{#if items}}
+            <div class="accordion">
+                <input type="checkbox" checked> <i></i> 
+                <a href="#{{@key}}" class="f-menu__heading">
+                    {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                    {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                    {{/if}}
+                </a>
+                <div class="buttonList">
+                    {{#each items}}
+                        <a href="#{{@../key}}-{{@index}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <a href="#{{@key}}" class="f-menu__heading">
+                {{#if icon}} <i class="fa fa-{{icon}}"></i> <span>{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</span> 
+                {{else}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}}
+                {{/if}}
+            </a>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+
+{{#if ui_toolkit}}
+
+    <div class="tabs" data-tabgroup="components_tabs">
+        
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#navigation" class="f-menu__heading">
+                <i class="fa fa-bars"></i> <span>Navigation</span>
+            </a>
+            <div class="buttonList">
+                <a href="#01-info" class="active">What Is This?</a>
+                {{#each materials.navigation.items}} 
+                    <a href="#{{@key}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#layout" class="f-menu__heading">
+                <i class="fa fa-columns"></i> <span>Layout</span>
+            </a>
+            <div class="buttonList">
+                {{#each materials.layout.items}} 
+                    <a href="#{{@key}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#content" class="f-menu__heading">
+                <i class="fa fa-list"></i> <span>Content</span>
+            </a>
+            <div class="buttonList">
+                {{#each materials.content.items}} 
+                    <a href="#{{@key}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" checked> <i></i> 
+            <a href="#input" class="f-menu__heading">
+                <i class="fa fa-check-square-o"></i> <span>Forms</span>
+            </a>
+            <div class="buttonList">
+                {{#each materials.input.items}} 
+                    <a href="#{{@key}}" class="f-menu__heading strapless_accordion_subnav">{{#if title}}{{../title}}{{else}}{{name}}{{/if}}</a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+{{/if}}
+
+</nav>

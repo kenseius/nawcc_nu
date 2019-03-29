@@ -1,0 +1,5 @@
+@mixin wrapper( $bg-color, $max-width ){
+    @include base-wrapper();
+    @include container($max-width);
+    background: $bg-color;
+}

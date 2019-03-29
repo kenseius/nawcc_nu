@@ -1,0 +1,16 @@
+// ======================================
+//      h2 styles
+// ======================================
+
+// from ._wizard.scss - unique typography styling
+
+// h2 style
+@mixin h2_styles {
+    padding: $base-vertical;
+    margin-left: auto;
+    margin-right: auto;
+    @include type-setting(0);
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid $gry_muted;
+}

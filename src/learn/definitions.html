@@ -1,0 +1,59 @@
+<h2 id="iii-definitions">III. Definitions</h2>
+<p>Real quick, so we&#39;re all talking about the same thing, a few definitions:</p>
+<ul>
+<li><p><strong>Styles</strong> = Refers to CSS. There&#39;s 3 possbilities: CSS, CSS Compiled, and SCSS  </p>
+</li>
+<li><p><strong><code>CSS</code></strong> = The styles of a website. Accessed via a .css file. It&#39;s basically a set of instructions for a browser, telling it how to display the markup (HTML).</p>
+</li>
+<li><p><strong><code>SCSS</code></strong> = Otherwise referred to as Sass. Sass is a pre-processor, meaning it operates <em>before</em> a website would be using the styles. It outputs to a .css file, which is what the browser actually uses to genreate the styles.</p>
+<p>Sass breaks up vanilla CSS into managable, highly customizable and extendable chunks, such as:</p>
+<ul>
+<li>partials (<code>_topnav.scss</code>, <code>_footer.scss</code>, etc.)</li>
+<li>variables (<code>$slate</code>, <code>$topnavHeight</code>),</li>
+<li>mixins (<code>@include hover(){color: $hoverColor}</code>) then compiles them into one master <code>styles.css</code> file.</li>
+</ul>
+</li>
+<li><p><strong><code>CSS</code> Pre-Compiled</strong> = When developing CSS, it&#39;s written in a more readable, <em>expanded</em> format. Like so:</p>
+<pre><code class="lang-css">  .style {
+      display: block;
+      margin: 0 1rem;
+  }
+  .styleTwo {
+      background: $slate;
+      color: $wht;
+  }
+  .styleThree {
+      padding: 1rem;
+      color: $wht;
+  }
+</code></pre>
+</li>
+<li><p><strong><code>CSS</code> Compiled</strong> =  In order minimize load time, css is <em>compiled</em> down to remove extra spaces in order to save filesize. This is what the file SCSS files compress down into. It&#39;s <em>not</em> intended to be used during developing the styles, because it&#39;s nearly unreadable.</p>
+<pre><code class="lang-css">  .style{display:block;margin:0 16px} .styleTwo{background:#404040;color:#fafafa} .styleThree{padding:16px;color:#fafafa}
+</code></pre>
+</li>
+<li><p><strong>Markup</strong> = refers to the HTML.</p>
+<pre><code class="lang-html">  &lt;body&gt;
+      &lt;h1&gt;Title&lt;/h1&gt;
+      &lt;section&gt;
+          &lt;h2&gt;Section Title&lt;/h2&gt;
+          &lt;p&gt;Section Text&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;card&quot;&gt;
+          &lt;div class=&quot;outline&quot;&gt;
+              &lt;h3&gt;Card&lt;/h3&gt;
+          &lt;/div&gt;
+      &lt;/section&gt;
+  &lt;/body&gt;
+</code></pre>
+</li>
+<li><p><strong>Semantics</strong> = When writing markup (HTML), writing semantic code means using meaningful code tags (<code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>, etc.) that describe their function, instead of using non-descript, meaningless containers (<code>&lt;div&gt;</code> and (<code>&lt;span&gt;</code>).</p>
+<p>Note, this isn&#39;t to say you can&#39;t ever use <code>div</code>s or <code>span</code>s, but if there&#39;s a more meaningful tag, you should use it.</p>
+</li>
+<li><p><strong>Responsive Web Design</strong> = Given the massive variety of devices, screen sizes, operating systems, and browsers, it&#39;s better to build the website to adapt it&#39;s styles based on the screensize (via breakpoints), rather than forcing the users to access the site in specific way (&quot;This site will only run on IE8&quot; <em>shudder</em> ).</p>
+</li>
+<li><p><strong>Accessability</strong> = Hand-in-hand with the concept of a <em>Responsive</em> website, in additon to a variety of a11y coding best practices),  by coding semanticly we can ensure the site is truly responsive, and all of its content can be viewed and accessed through navigation by everyone, whether via mobile touch-screen, a mouse, a keyboard, a screenreader, or any other method. (for more on this, check out <a href="https://una.im/a11y-for-the-masses/#%F0%9F%92%81">A11y For The Masses</a> )</p>
+</li>
+</ul>
+<p>-<strong><code>Style Asset Library</code></strong> = The scss files from PA.Gov, and the js plugin, What-Input.</p>
+<p>--</p>

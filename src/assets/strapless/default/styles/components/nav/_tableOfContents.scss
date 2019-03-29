@@ -1,0 +1,70 @@
+// ===========================================
+//
+//      TABLE OF CONTENTS
+//      -----------------------
+//          1. .tableOfContents (wrapper)
+//          2. .tableOfContents_grid (grid wrapper)
+//
+// ===========================================
+
+// Table Of Contents
+// ==========================
+
+
+.tableOfContents {
+    display: block;
+    width: 100%;
+    max-width: $base-max-width;
+    padding: $base-vertical-padding 0;
+    margin: auto; 
+    & > div {
+        @include clear();
+        @include span(3 of 12); 
+        &:nth-child(4n) {@include last;}
+        margin-bottom: $base-horizontal-padding;
+        @media #{$medium-only} { @include span(6 of 12); &:nth-child(even) {@include last;} }
+        @media #{$small-only} { @include span(12 of 12); }
+        & > a {
+            display: block;
+            width: 100%;
+            background: none; 
+            @include hover() {background: $ylw;} 
+
+        }
+    }
+}
+
+
+
+// old 
+// .tableOfContents {
+//     background: $wht;
+//     padding: $base-vertical-padding 0;
+//     .tableOfContents_grid {
+//         max-width: $base-max-width;
+//         margin: auto;
+//         @include layout(4 0.333 after fluid border-box);
+//         @include clear();
+//         header, h2, h3, .meta, .meta_article {@include span(4 of 4); max-width: $base-max-width;}
+//         a { background: none; @include hover() {background: $ylw;} }
+//         // targets only the immediate child, to allow nested lists
+//         & > ul {
+//             @include clear();
+//             margin-bottom: $base-horizontal-padding;
+//             min-height: 300px;
+//             list-style-position: inside;
+//             @include span(1 of 4);
+//             li {list-style-position: inside; margin: 0; padding: 0;}
+//             & > li:first-child {
+//                 list-style: none;
+//                 list-style-position: outside;
+//                 margin-bottom: 1.333rem;
+//                 border-bottom: 2px solid $gry;
+//                 strong { @include type-setting(1); padding-bottom: 1.333rem; }
+//             }
+//             &:nth-child(4n) {@include last;}
+//             @media #{$medium-only} { @include span(2 of 4); &:nth-child(even) {@include last;} }
+//             @media #{$small-only} { @include span(4 of 4); }
+//         }
+//     }
+// }

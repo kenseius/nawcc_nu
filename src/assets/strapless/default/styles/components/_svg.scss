@@ -1,0 +1,181 @@
+// ==========================
+//  SVGs
+// ==========================
+
+svg.svg {
+    .dotgov path,
+    .paKeystone .keystone,
+    .paKeystone .pa {@include anim($global-animation);}
+}
+
+// everywhere but topnav
+// *:not(.nav),
+// *:not(.oldnav) {
+    .svg {
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-width: $article-max-width;
+        @media #{$medium-down} { padding: 0 0.778rem; }
+    }
+// }
+
+// topnav - SVG logo
+.nav, .oldnav {
+
+    .svg {
+        margin: 0;
+        width: 100%; // fix for IE
+        max-width: 110px;
+        max-height: 48px;
+        // height: 48px;
+        height: $navHeight;
+    }
+
+    // TOOD: Doesn't work yet.
+    // scaling the SVG logo
+    // .svg_wrapper {
+    //     // scaling SVGs
+    //     // (using padding-bottom hack)
+    //     // ******************************
+    //     //  - override this inline for aspect ratio other than square
+    //     //  - in this case: the aspect ratio is viewport="0 0 146.4 24"
+    //     //  - so, using the padding-bottom hack:
+    //     //    padding-bottom: 16.39% (100% x 24 / 146.4) was added inline to parent
+    //
+    //     position: relative;
+    //     height: 0;
+    //     width: 100%;
+    //     padding: 0;
+    //     padding-bottom: 100%;
+    //
+    //     // then using absolute positioning, and presto = the svg behaves like an image.
+    //     .svg {
+    //         position: absolute;
+    //         height: 100%;
+    //         width: 100%;
+    //         left: 0;
+    //         top: 0;
+    //     }
+    // }
+
+}
+
+// for pa.gov logo
+.nav .svg {
+    max-height: 48px;
+    max-width: 110px;
+}
+
+.primary_navigation {
+    .svg {
+        margin: 0;
+        width: 100%; // fix for IE
+        max-width: 220px;
+        max-height: 3rem; // = 48px
+        // height: $navHeight;
+    }
+}
+
+// unique styles for Web App Standards
+
+#paLogoWebAppStandards {
+    .logoTitle {font-family: 'Monterrat', sans-serif; font-size: 0.778rem; text-transform: none;}
+    .logoTitle {fill: $slate;}
+    .paKeystone .pa {fill: $wht;}
+    .paKeystone .keystoneWAS {fill: $org;}
+}
+
+// unique styles for employment
+#paLogoEmployment {
+    .logoTitle {font-family: 'Monterrat', sans-serif; font-size: 0.778rem; text-transform: none;}
+    .logoTitle, .logoSubTitle, .dotgov path {fill: $slate;}
+    .paKeystone .pa {fill: $wht;}
+    .paKeystone .employmentKeystone {fill: $org;}
+}
+
+// unique styles for hackathon
+#paLogoHackathon {
+    .logoTitle {font-family: 'Monterrat', sans-serif; font-size: 0.778rem; text-transform: none;}
+    .logoTitle, .logoSubTitle, .dotgov path {fill: $grn;}
+    .paKeystone .pa {fill: $wht;}
+    .paKeystone .hackathonKeystone {fill: $grn;}
+}
+
+
+
+
+
+
+// .nav.svg_logo .svg {
+//     max-height: 48px;
+//     max-width: 200px;
+// }
+
+// SVG - color styles
+// **********************************
+//  - hover effects in .topnav.scss
+// **********************************
+
+// hero
+.hero .svg {
+    .logoTitle, .logoSubTitle, .dotgov path, .paKeystone .keystone {fill: $wht;}
+    .paKeystone .pa {fill: $slate;}
+}
+
+
+// #straplessLogo {
+//     .heroLogo_text,
+//     .heroLogo_lines,
+//     .heroLogo_eyes {
+//         stroke: $slate;
+//         fill: $slate;
+//     }
+// }
+
+.body_Design,
+.body_Build,
+.body_Brand,
+.body_UItoolkit,
+.body_Assets {
+    #paLogoSubtitle {
+        .logoTitle, .logoSubTitle, .dotgov path, .paKeystone .keystone {fill: $wht;}
+        .paKeystone .pa {fill: $slate;}
+    }
+    #straplessLogo {
+        .heroLogo_text {
+            font-size: 21.12px;
+            font-family: Montserrat-Light, Montserrat, 'Monterserrat', sans-serif;
+            font-weight: 200;
+            letter-spacing: 0.5em; // 0.1em
+        }
+        .heroLogo_text,
+        .heroLogo_eyes,
+        .heroLogo_joint {fill: $wht;}
+        .heroLogo_lines, .heroLogo_smile, {
+            fill: none;
+            stroke-miterlimit: 10;
+            stroke: $wht;
+        }
+    }
+}
+
+
+
+.hero 
+
+// topnav NU
+.nav .svg {
+    .dotgov path, .paKeystone .keystone {fill: $slate;}
+    .paKeystone .pa {fill: $wht;}
+}
+
+// topnav OLD
+.oldnav .svg {
+    .dotgov path, .paKeystone .keystone {fill: $wht;}
+    .paKeystone .pa {fill: $slate;}
+    @include hover() {
+        .dotgov path, .paKeystone .keystone {fill: $slate;}
+        .paKeystone .pa {fill: $wht;}
+    }
+}

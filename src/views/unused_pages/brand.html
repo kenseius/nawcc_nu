@@ -1,0 +1,32 @@
+---
+title: Brand
+subtitle: THE COMMONWEALTH OF PENNSYLVANIA
+layout: strapless_transparent
+fabricator: true
+brandPage: true
+bodyClass: body_Brand
+heroClass: hero_Brand home_hero
+---
+
+{{> svg}}
+
+<section class="introSection introDeliverables">
+    <div>
+        <div class="intro">
+            <h2>Brand</h2>
+        </div>
+        <div class="buttonBar buttonBarUXplaybook">
+        {{#each materials.brand.items}}
+			<a class="iconButtonHyperlink" href="#{{@key}}">
+				<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+				<span>{{name}}</span>
+			</a>
+        {{/each}}
+        </div>
+	</div>
+</section>
+
+{{#each materials.brand.items}}
+    {{> f-item-noCode this}}
+{{/each}}
+

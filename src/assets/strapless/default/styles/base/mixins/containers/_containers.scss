@@ -1,0 +1,54 @@
+//  containers / wrappers
+// ==========================
+
+    // parent-level content wrappers, allows full-width backgrounds for a nested container
+
+    // basic block with width / max width
+    @mixin wrap($max-width, $margin) {
+        display:block;
+        max-width:$max-width;
+        margin-left: $margin;
+        margin-right: $margin;
+        @include clear();
+    }
+
+    @mixin base-container($width) {
+        display:block;
+        width:$width;
+        @include clear();
+    }
+
+    @mixin global-container($width, $max-width, $topbottom, $leftright) {
+        @include base-container($width);
+        max-width: $max-width;
+        margin: auto;
+        @include padding($topbottom, $leftright);
+    }
+
+    // most things will live inside this base-wrapper
+    // should also contain width / max-width...
+    @mixin base-wrapper($padding: $base-vertical-padding, $paddingMobile: $base-vertical-padding-small) {
+         display: block;
+         position: relative;
+         padding-top: $padding;
+         padding-bottom: $padding;
+         @include clear();
+
+         @media #{$small-only} {
+             padding-top : $paddingMobile;
+             padding-bottom : $paddingMobile;
+         }
+    }
+    // .wrapper {@include base-wrapper();}
+
+    @mixin wrapper( $bg-color, $max-width ){
+        @include base-wrapper();
+        @include container($max-width);
+        background: $bg-color;
+    }
+
+    @mixin wrapper-pad( $bg-color, $max-width, $padding ){
+        @include base-wrapper($padding);
+        @include container($max-width);
+        background: $bg-color;
+    }

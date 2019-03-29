@@ -1,0 +1,14 @@
+---
+notes: |
+
+    Images can be any number of things
+
+    - PNG
+    - JPG
+    - SVG
+    - PDF
+
+    The basic HTML for an image is `<img src="" alt="">` and there's no need to escape it (`<img />`) in HTML5.
+
+---
+<img src="{{imageSource}}" alt="{{imageAlt}}" {{~#if imageClass}}class="{{imageClass}}"{{/if}}>

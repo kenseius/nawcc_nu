@@ -1,0 +1,15 @@
+<section class="layout_4col_8col" id="{{@key}}">
+    <div>
+        <p>{{#if items}}{{#each items}}{{#if title}}{{../title}}{{else}}{{name}}{{/if}} {{/each}}{{/if}}</p>
+        <table>
+            <tr>
+                <td>semantics</td> <td>{{#if code}}{{material @key @root}}{{/if}}</td>
+                <td>font-size</td> <td>{{../font-size}}</td>
+                <td>line-height</td> <td>{{line-height}}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        {{{material @key @root}}}
+    </div>
+</section>

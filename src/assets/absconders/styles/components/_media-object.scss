@@ -1,0 +1,24 @@
+%media-object {
+	@include wrap($base-max-width, auto);
+	margin-bottom: $base-vertical;
+	figure {
+	    @include clear();
+		background: $grylite;
+		@include anim($global-animation);
+	    img {
+	        @include span(3 of 12);
+	        max-width: span(3 of 12);
+	        margin-bottom: 0;
+	    }
+	    figcaption {
+	        @include span(9 of 12 last);
+	        padding-top: $base-horizontal-padding;
+	        h3 {margin-bottom: $base-horizontal-small;}
+			@media #{$medium-only} {
+				padding-top: $base-font-size;
+				h3 {@include type-setting(1); line-height: 2.369rem;}
+			}
+			@media #{$small-only} { padding-top: $base-horizontal-small; }
+	    }
+	}
+}

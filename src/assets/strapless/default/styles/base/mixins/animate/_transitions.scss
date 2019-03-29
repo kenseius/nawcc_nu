@@ -1,0 +1,34 @@
+// TRANSITIONS
+// -----------------------------
+
+// one transition
+@mixin anim($animation) {
+   -webkit-transition: $animation;
+      -moz-transition: $animation;
+        -o-transition: $animation;
+           transition: $animation;
+}
+
+// two transitions
+@mixin anim_multi($animation, $animation_2) {
+   -webkit-transition: $animation, $animation_2;
+      -moz-transition: $animation, $animation_2;
+        -o-transition: $animation, $animation_2;
+           transition: $animation, $animation_2;
+}
+
+// 3 transitions
+@mixin anim_multi_3($animation, $animation_2, $animation_3) {
+   -webkit-transition: $animation, $animation_2, $animation_3;
+      -moz-transition: $animation, $animation_2, $animation_3;
+        -o-transition: $animation, $animation_2, $animation_3;
+           transition: $animation, $animation_2, $animation_3;
+}
+
+// 4 transitions
+@mixin anim_multi_4($animation, $animation_2, $animation_3, $animation_4) {
+   -webkit-transition: $animation, $animation_2, $animation_3, $animation_4;
+      -moz-transition: $animation, $animation_2, $animation_3, $animation_4;
+        -o-transition: $animation, $animation_2, $animation_3, $animation_4;
+           transition: $animation, $animation_2, $animation_3, $animation_4;
+}

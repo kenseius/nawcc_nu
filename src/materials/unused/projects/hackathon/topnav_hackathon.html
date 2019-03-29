@@ -1,0 +1,17 @@
+---
+title: Top Nav
+navURL: http://google.com
+navMenuLabel: MENU
+---
+<nav class="nav primary_navigation" role="navigation">
+    <a class="logo" href="#">{{> logos.logo}}</a>
+    <div class="links">
+    {{#each hackathon.navItems as |navURL navURLlabel|}}
+        {{> nav.nav_item}}
+    {{/each}}
+    </div>
+    <a class="nav-trigger nav-open">
+        <div class="inner"></div>
+        <span class="menulabel">{{navMenuLabel}}</span>
+    </a>
+</nav>

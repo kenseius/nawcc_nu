@@ -1,0 +1,181 @@
+---
+title: Components
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true
+navigation: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+linkURL: google.com
+icon: fa-star
+material_icons: false
+fontAwesome_icons: false
+
+pageClass: navigation
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+navMenuLabel: Menu
+
+---
+
+
+ 
+<div id="01-info-2" class="componentsIntro">
+	{{> svg}}
+	{{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Design home_hero"}}
+	<section class="introSection introIcons">
+		<div>
+			<div class="intro">
+				<h1>{{title}}</h1>
+				<p>The central design for the Commonwealth is built around accessability, modern web practices, and user-centered thinking.</p>
+				<p>Following these guidelines will allow you to implement the design system anywhere you wish.</p>
+			</div>
+			<div class="buttonBar buttonBarUXplaybook tabs" data-tabgroup="components_tabs">
+				{{#each materials.design.items}}
+					<a class="iconButtonHyperlink" href="#{{@key}}">
+						<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+						<span>{{name}}</span>
+					</a>
+				{{/each}}
+			</div>
+		</div>
+	</section>
+
+</div>
+
+<div id="navigation" class="navigation">
+    <div id="01-info" class="componentsIntro">
+        <!-- {{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Navigation home_hero"}} -->
+
+        <section class="layout_grid col2 whatIsthis">
+            <div class="article">
+                <h1>Navigation</h1>
+                <!-- {{!-- {{> logos.paLogo siteTitle="Navigation"}} --}} -->
+
+            {{#markdown}}
+
+Navigation is used to move a user from one part of a website to another.
+
+It's essential that users are able to access the parts of a website they're seeking, in the fewest steps possible, from any other part of the site. 
+
+            {{/markdown}}
+            </div>
+            <div>
+                
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_page.png"}} 
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/layout.png"}}
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/content.png"}}
+
+                <!-- {{> images.image imageSource="./assets/strapless/images/3d_demo_page/layout.png"}}
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_layout.png"}} 
+
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/content.png"}}
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_content.png"}}
+                
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/navigation.png"}}
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_navigation.png"}} 
+                
+                {{> images.image imageSource="./assets/strapless/images/3d_demo_page/bg_page.png"}} -->
+            </div>
+        </section>
+
+        <section class="layout_grid col3 tabs" data-tabgroup="components_tabs">
+            {{#each materials.navigation.items}}
+                <a class="button blu" href="#{{@key}}">
+                    <img src="./assets/strapless/images/UI_components/navigation/{{@key}}.png" alt="@key">                  
+                    <span>{{name}}</span>
+                </a>
+            {{/each}} 
+        </section>
+    </div>
+    {{#each materials.navigation.items}}
+        {{> f-item this}}
+    {{/each}}
+</div>
+<div id="content">
+    <div id="01-info" class="componentsIntro">
+        <section class="layout_grid col2 whatIsthis">
+            <div class="article">
+                <h1>Content</h1>
+                <!-- {{!-- {{> logos.paLogo siteTitle="Navigation"}} --}} -->
+
+    {{#markdown}}
+
+**Content** is half of the Informational UI Components, and the central point of emphasis for our site.
+
+Content includes: 
+
+- **titles**: `<h1> - <h5>` 
+- **body text**: `<p>`, `<ul>`, `<ol>`
+- **images**: `<img>`
+- **colors**
+- **icons**
+- **logos**
+                
+    {{/markdown}}
+
+            </div>
+            <div>
+                {{> images.image imageSource="./assets/strapless/images/UI_components/Content_1440.png"}}  
+            </div>
+        </section>
+
+        <section class="layout_grid col3 tabs" data-tabgroup="components_tabs">
+            {{#each materials.content.items}}
+            <a class="button slate" href="content.html#{{@../key}}">
+                <img src="./assets/strapless/images/UI_components/content/{{@key}}.png" alt="@key">                  
+                <span>{{name}}</span>
+            </a>
+            {{/each}} 
+        </section>
+    </div>
+    {{#each materials.content.items}}
+        {{> f-item this}}
+    {{/each}}
+</div>
+<div id="layout">
+    <div id="01-info" class="componentsIntro">
+        <section class="layout_grid col2 whatIsthis">
+            <div class="article">
+                <h1>Layout</h1>
+                <!-- {{!-- {{> logos.paLogo siteTitle="Navigation"}} --}} -->
+
+    {{#markdown}}
+
+    **Content Layout** is used to arrange the content on a page, and within sections. 
+
+    These components are used for laying out the content within a page or section. 
+
+    All content lives within one of the 6 content containers: `main`, `article`, `section`, `aside`, `header`, `footer`.
+
+    {{/markdown}}
+
+            </div>
+            <div>
+                {{> images.image imageSource="./assets/strapless/images/UI_components/layout_1440.png"}}  
+            </div>
+        </section>
+
+        <section class="layout_grid col3 tabs" data-tabgroup="components_tabs">
+            {{#each materials.layout.items}}
+            <a class="button red" href="layout.html#{{@../key}}">
+                <img src="./assets/strapless/images/UI_components/layout/{{@key}}.png" alt="@key">                  
+                <span>{{name}}</span>
+            </a>
+            {{/each}} 
+        </section>
+    </div>
+    {{#each materials.layout.items}}
+        {{> f-item this}}
+    {{/each}}
+</div>
+
+<div id="input">
+    {{#each materials.input.items}}
+        {{> f-item this}}
+    {{/each}}
+</div>

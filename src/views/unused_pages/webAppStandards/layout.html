@@ -1,0 +1,84 @@
+---
+title: Layout
+subtitle: PA WEB APP STANDARDS
+layout: layout_webAppStandards
+fabricator: true
+ui_layout: true
+ui_toolkit: true
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+linkURL: google.com
+icon: fa-star
+material_icons: true
+fontAwesome_icons: false
+
+bodyClass: body_UItoolkit
+heroClass: hero_UItoolkit home_hero
+navMenuLabel: Menu
+
+---
+<div id="01-info" class="componentsIntro">
+    {{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Layout home_hero"}}
+    <div class="layout_grid col2">
+        <div class="article">
+            <h1>{{title}}</h1>
+
+{{#markdown}}
+
+### What Are Content Layout Components?
+
+**Content Layout** is used to arrange the content on a page, and within sections. 
+
+These components are used for laying out the content within a page or section. 
+
+All content lives within one of the 6 content containers:
+
+- Main
+- Article
+- Section
+- Aside
+- Header
+- Footer
+
+Then, that content can be presented in a number ways, depending on the type of content, how the content is organized, and much content there is.
+
+Either a 1 column or 2 column layout is applied to all content: 
+
+- Layouts
+  - 1 col
+  - 2 col
+  - Full Screen
+
+The content can then be broken down into visual groupings, ans navigated through via secondary or tertiary navigation. 
+
+- Cards
+- Heros
+- Accordions
+- Tabs
+- Grids 
+- Media Objects
+- Tooltips
+- Tables
+- Modals
+- Alerts
+	
+
+
+{{/markdown}}
+
+        </div>
+        <div>
+            {{> images.image imageSource="/assets/strapless/images/UI_components/layout_1440.png"}}  
+        </div>
+    </div>
+</div>
+
+{{#each materials.layout.items}}
+    {{> f-item this}}
+{{/each}}

@@ -1,0 +1,11 @@
+---
+title: Sidebar Navigation
+---
+<nav class="buttonList">
+    {{#each materials.brand.items}}
+        <a href="#{{@key}}">
+			<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+			<span>{{name}}</span>
+        </a>
+    {{/each}}
+</nav>

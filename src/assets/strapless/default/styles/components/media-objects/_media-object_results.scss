@@ -1,0 +1,74 @@
+
+// ==========================
+//  MEDIA OBJECT - RESULTS
+//
+//      actually a media-object
+//
+//      for the .resultsMessage styles, go to pagination
+//
+// ==========================
+
+.results {
+    @extend %media-object;
+    max-width: 100%;
+    margin-bottom:0;
+    padding: $base-horizontal-padding 0;
+
+    & > a {
+        @include clear();
+        display: block;
+        @include span(12 of 12);
+        &:nth-of-type(even) {
+            figure {background: $wht; color: $slate;}
+            @include last;
+        }
+        // border-bottom: .125em solid $gry_bold;
+        @include anim($global-animation);
+        @include hover(){
+
+            // slate bg
+            figure {background: $slate; color: $wht;}
+            img {opacity:0.8; background: $slate;}
+
+            // yellow bg
+            // figure {background: $ylw;}
+            // img {opacity:0.8; background: $slate;}
+        }
+        @media #{$medium-800-down} { @include span(12 of 12); margin-bottom: $base-horizontal-small; }
+    }
+
+    // view more button (home page)
+    button, .button { margin-left: auto; margin-right: auto; }
+
+    // post results, pre paginstion message about results (no results, or "showing # of #")
+    .resultsMessage {
+        display: block;
+        margin: 0 auto $base-vertical;
+        padding-top: $base-vertical;
+        text-align: center;
+        font-style: italic;
+        span {font-style: none !important; font-weight: bold;}
+    }
+
+    // uniquely style the widths based on context: (media-objectClass)
+    &.spotlightJobList {
+        max-width: $base-max-width;
+        & > a {
+            margin-bottom: $base-vertical;
+            img {display: none;}
+            figcaption {@include span(12 of 12); padding: $base-vertical;}
+            figure {background: transparent; border:0.125rem solid $slate; color: $slate;}
+            @include hover(){
+                // slate bg
+                figure {background: $slate; color: $wht;}
+                img {opacity:0.8; background: $slate;}
+
+                // yellow bg
+                // figure {background: $ylw;}
+                // img {opacity:0.8; background: $slate;}
+            }
+            @media #{$medium-800-down} { @include span(12 of 12); margin-bottom: $base-horizontal-small; }
+        }
+    }
+
+}

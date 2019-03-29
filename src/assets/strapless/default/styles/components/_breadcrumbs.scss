@@ -1,0 +1,27 @@
+// ==========================================================
+//                      BREADCRUMBS
+// ==========================================================
+
+.breadcrumbs {
+    display: block;
+    width: 100%;
+    max-width: $base-max-width;
+    & > * {display: inline-block;}
+    & > p {color: lighten($slate,20%);}
+    & > i {
+        color: lighten($slate,20%); 
+        font-size: 1rem; 
+        padding: 0 0.333rem;
+    }
+    a {
+        @extend a;
+    }
+    // a {
+    //     border-bottom: 1.333px solid $org;
+    //     border-top: 1.333px solid transparent;
+    //     border-left: 1.333px solid transparent;
+    //     border-right: 1.333px solid transparent;
+    //     @include hover() { color: $wht; background: $org; border-color: $org; }
+    // }
+
+}

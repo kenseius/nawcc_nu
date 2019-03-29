@@ -1,0 +1,58 @@
+---
+title: 
+strapless: true
+buttonText: Submit
+---
+{{#if fabricator}}
+
+
+<section class="layout_grid col3 preview_info">
+    <div>
+        <h3 class="component_title">Default Hyperlink</h3>
+        <a href="#">Hyperlink</a>
+    </div>
+    <div>
+        <h3 class="component_title">On Hover</h3>
+        <a href="#">Hyperlink</a>
+    </div>
+
+</section>
+
+<!-- External Link -->
+<section class="layout_4col_8col">
+    <h3 class="component_title">External Link</h3>
+    <a href="#">
+        Hyperlink 
+        <i class="fa fa-external-link"></i> 
+    </a>
+</section>
+
+<!-- Hyperlink + Icon -->
+<section class="layout_4col_8col">
+    <h3 class="component_title">Hyperlink + Icon</h3>
+    <a href="#"><i class="fa fa-star"></i> Hyperlink</a>
+</section>
+
+<!-- Hyperlink + External Link -->
+<section class="layout_4col_8col">
+    <h3 class="component_title">External Link</h3>
+    <div>
+        <a href="#">
+            Hyperlink 
+            <i class="fa fa-external-link"></i> 
+        </a>
+    </div>
+</section>
+
+<!-- Example Usage -->
+<section class="layout_4col_8col">
+    <h3 class="component_title">Usage</h3>
+    <div>
+        <p>Check it out --- this <a href="#">Hyperlink</a> is in a sentence. The longer the example sentence content, the better.</p>
+    </div>
+</section>
+
+    {{else}}
+    <a href="#">Hyperlink</a>
+
+{{/if}}

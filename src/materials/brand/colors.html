@@ -1,0 +1,126 @@
+---
+title: Colors
+fabricator: true
+employmentMaterial: true
+icon: fa-tint 
+---
+{{#each toolkit.colors}}
+	<div class="f-color-chips">
+	{{#each this}}
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">{{@key}}</div>
+			<div class="f-color-chip__color">{{this}}</div>
+		</div>
+	{{/each}}
+	</div>
+{{/each}}
+
+<!--
+TODO: Segment out each color above, similar to below
+<section>
+    <h1>Colors</h1>
+    <div class="meta meta_article">
+        <p>Metadata</p>
+        <p class="meta_right">March 12, 2016</p>
+    </div>
+    <h2>All Colors</h2>
+    <div class="colorblocks allcolors">
+        <div class="bg-wht">
+            <p class="subtitle">white</p>
+            <p>#fafafa</p>
+        </div>
+        <div class="bg-slate">
+            <p class="subtitle">slate</p>
+            <p>#404040</p>
+        </div>
+        <div class="bg-ylw">
+            <p class="subtitle">yellow</p>
+            <p>#ffe0b2</p>
+        </div>
+        <div class="bg-gry">
+            <p class="subtitle">grey</p>
+            <p>#ebebeb</p>
+        </div>
+        <div class="bg-grylite">
+            <p class="subtitle">light grey</p>
+            <p>#e1e1e1</p>
+        </div>
+        <div class="bg-gry_muted">
+            <p class="subtitle">muted grey</p>
+            <p>#b8b7b4</p>
+        </div>
+        <div class="bg-grydrk">
+            <p class="subtitle">dark slate</p>
+            <p>#464646</p>
+        </div>
+        <div class="bg-blu">
+            <p class="subtitle">blue</p>
+            <p>#598db2</p>
+        </div>
+        <div class="bg-bludrk">
+            <p class="subtitle">blue - dark</p>
+            <p>#294c65</p>
+        </div>
+        <div class="bg-trq">
+            <p class="subtitle">turquoise</p>
+            <p>#006064</p>
+        </div>
+        <div class="bg-grn">
+            <p class="subtitle">green</p>
+            <p>#5a7f68</p>
+        </div>
+        <div class="bg-red">
+            <p class="subtitle">red</p>
+            <p>#c92a2a</p>
+        </div>
+    </div>
+    <h2>Brand Colors</h2>
+    <div class="colorblocks">
+        <div class="bg-wht">
+            <p class="subtitle">white</p>
+            <p>#fafafa</p>
+        </div>
+        <div class="bg-slate">
+            <p class="subtitle">slate</p>
+            <p>#404040</p>
+        </div>
+        <div class="bg-ylw">
+            <p class="subtitle">yellow</p>
+            <p>#ffe0b2</p>
+        </div>
+    </div>
+    <h2>Site Colors</h2>
+    <div class="colorblocks">
+        <div class="bg-gry">
+            <p class="subtitle">grey</p>
+            <p>#ebebeb</p>
+        </div>
+        <div class="bg-grylite">
+            <p class="subtitle">light grey</p>
+            <p>#e1e1e1</p>
+        </div>
+        <div class="bg-gry_muted">
+            <p class="subtitle">muted grey</p>
+            <p>#b8b7b4</p>
+        </div>
+        <div class="bg-grydrk">
+            <p class="subtitle">dark slate</p>
+            <p>#464646</p>
+        </div>
+        <div class="bg-blu">
+            <p class="subtitle">blue</p>
+            <p>#598db2</p>
+        </div>
+    </div>
+    <h2>Alert Colors</h2>
+    <div class="colorblocks">
+        <div class="bg-grn">
+            <p class="subtitle">green</p>
+            <p>#5a7f68</p>
+        </div>
+        <div class="bg-red">
+            <p class="subtitle">red</p>
+            <p>#c92a2a</p>
+        </div>
+    </div>
+</section> -->

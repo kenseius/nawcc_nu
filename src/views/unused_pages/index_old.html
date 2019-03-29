@@ -1,0 +1,182 @@
+---
+title: Overview
+fabricator: true
+---
+{{> heros.hero_Logo}}
+{{> nav.tableOfContents}}
+
+<!-- <div class="styleguide fabricate"> -->
+<article>
+    <!-- TODO: update this  -->
+{{#markdown}}
+I. Overview
+----
+
+**Strapless**: Semantic, Accessable Markup + Style Asset Library
+
+A framework-independent code toolkit + design asset library.
+
+**What's inside?**
+
+```
+strapless/
+	dist/
+	src/
+		assets/
+		components/
+		data/
+		docs/
+		views/
+	gulpfile.js
+	README.md
+```
+
+- **`Components`** = All HTML and rendered CSS displayed
+- **`Assets`** = Easily add and organize all visual assets (Images, JS, and pre-rendered SCSS files)
+- **`Documentation`** = Written using Markdown. Notes and documentation can be added on each component, and in a dedicated /docs/ directory
+- **`Data`** = Using dot notation, you can call data stored in a list. For example: a list of colors or the topnav links.
+- **`Views`** = Pages constructed using the assets and components, can be used to generate pages for the toolkit, a styleguide, front-facing pages.
+
+**Other features:**
+
+- **Rapid prototyping** = sew individual components together with Handlebars.js partials to quickly construct templates and pages.
+- **Instant Browser Refresh**
+- **Front-matter** = use frontmatter to add documentation within each component partial, and to designate content insertion points, for integrating with a database or CMS
+- **Gulp** = Gulp is used to acquire the dependencies, compile the Sass, compress and optimize images, construct element from partials, and pipe the assets into the /dist/ folder
+{{/markdown}}
+</article>
+
+    <article>
+        <p class="subheader">STRAPLESS</p>
+        <h1>Overview</h1>
+        <div class="meta meta_article">
+            <p>Styleguide > Overview</p>
+            <p class="meta_right">November 29, 2016</p>
+        </div>
+        <p>This styleguide is the first iteration of universal design &amp; code standards. This is built as a point of reference for UX designers, frontend developers, frontend designers, graphic designers, and anyone building wireframes.</p>
+        <p>It’ll be an iterative approach, and is subject to regular updates.</p>
+
+		<p>This UI toolkit is a highly-modular design system for rapid web page development. It contains different materials that can be assembled into more complex page layouts.</p>
+
+		<p>This guide contains real working examples, code snippets, documentation, and style guidelines.</p>
+
+		<h2>Usage</h2>
+
+		<p>Start by adding the following files to your page:</p>
+
+		<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
+
+		<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
+    </article>
+
+    <section class="bg-wht full">
+        <article class="tableofcontents">
+            <header>
+                <p class="subheader">THE SCND STYLEGUIDE</p>
+                <h1>Table of Contents</h1>
+                <div class="meta meta_article">
+                    <p>Metadata</p>
+                    <p class="meta_right">March 12, 2016</p>
+                </div>
+            </header>
+            <ul>
+                <li><h4><a>Overview</a></h4></li>
+                <li><a>Table of Contents</a></li>
+                <li><a>Principles &amp; Rationale</a></li>
+                <li><a>Design Philosophy</a></li>
+                <li><a>Resources</a></li>
+                <li><a>Checklists</a></li>
+                <li><a>References</a></li>
+                <li><a>Wishlist</a></li>
+            </ul>
+            <ul>
+                <li><h4><a>Brand</a></h4></li>
+                <li><a>Logo</a></li>
+                <li><a>Colors</a></li>
+                <li><a>Fonts</a></li>
+                <li><a>Typography</a></li>
+                <li><a>Icons</a></li>
+            </ul>
+            <ul>
+                <li><h4><a>Code</a></h4></li>
+                <li><a>html5 / css3</a></li>
+                <li><a>SASS</a></li>
+                <li><a>Semantics</a></li>
+                <li><a>Accessability</a></li>
+                <li><a>File Structure</a></li>
+                <li><a>Class Nomenclature</a></li>
+                <li><a>Mixins</a></li>
+            </ul>
+            <ul>
+                <li><h4><a>Layout</a></h4></li>
+                <li><a>Quick Reference / Variables</a></li>
+                <li><a>Modular Scale</a></li>
+                <li><a>Vertical Rhythm</a></li>
+                <li><a>Widths</a></li>
+                <li><a>Alignment</a></li>
+                <li><a>Grid / Susy</a></li>
+            </ul>
+            <ul>
+                <li><h4><a>Components</a></h4></li>
+                <li><a>navigation</a></li>
+                    <li><a>top nav</a></li>
+                    <li><a>side nav</a></li>
+                    <li><a>mobile nav</a></li>
+                <li><a>buttons</a></li>
+                <li><a>forms</a></li>
+                    <li><a>inputs </a></li>
+                    <li><a>text</a></li>
+                    <li><a>textfield</a></li>
+                    <li><a>select</a></li>
+                    <li><a>checkboxes</a></li>
+                    <li><a>search</a></li>
+                <li><a>hero + banners</a></li>
+                <li><a>backgrounds</a></li>
+                <li><a>images</a></li>
+                <li><a>embedded media</a></li>
+                <li><a>modals</a></li>
+                <li><a>quicklinks</a></li>
+                <li><a>tabs</a></li>
+                <li><a>accordion</a></li>
+                <li><a>tables</a></li>
+                <li><a>cards</a></li>
+            </ul>
+        </article>
+    </section>
+<!--
+        <article>
+            <h1>Principles</h1>
+            <blockquote>
+                “Consistency is important because it creates trust. And design is all about creating relationships between products and users.”
+                <span>- Designing a stylguide: elements that go into building compelling products</span>
+            </blockquote>
+            <section>
+                <h2>Consistency</h2>
+                <p>The central goal of this styleguide is to ensure consistency. Whenever a project re quires a common, often-repeated UX element (top nav, for example), rather than looking to prior projects or creating something from scratch, this will provide a central usage position.</p>
+            </section>
+            <section>
+                <h2>Accessibility &amp; Semantics first</h2>
+                <p>The major goals for the code in this style guide include an emphasis on simple, direct, semantic-focused markup. The idea is to enforce Information Architecture leads the way when organizing the layout and content of your website.</p>
+            </section>
+            <section>
+                <h2>Where’s the Grid?</h2>
+                <p>Because we’re taking a semantics-first approach, as much of the layout and design appearance as possible is hoisted out of the markup (ie. “div soup”) and into the CSS, enabled largely through SASS. SASS also provides an easy way to implement standards via variables and to break down the complicated code elements into bite-sized chunks via partials.</p>
+                <p>Practically speaking, this means that when building your web pages, the first focus is simply on creating the HTML scaffolding, and provided it’s semanticly sound and consistent, it will automatically incorporate these universal style elements.</p>
+            </section>
+            <section>
+                <h2>Built for Vertical Growth</h2>
+                <p>By building the grid to accommodate the semantic markup (versus the "div soup" thats commonly found in frameworks like bootstrap and foundation), updating code to meet improving standards will be an intuitive adaption path. </p>
+            </section>
+        </article>
+
+    <section>
+        <article>
+            <h1>Design Philosophy</h1>
+            <p>- Flat design with elements of Material Design</p>
+            <p>- to improve readability, and a buffer for increasing contrast, no absolute blacks or whites are used </p>
+            <p>- most colors are muted, to emphasize content (especially images), and to appear inviting and unaggressive, plus it allows one main color to standout where appropriate </p>
+            <p>- Colors derived from old pa.gov colors, existing colorschemes, and reflects the governors site </p>
+        </article>
+    </section>-->
+
+<!--</div>--> <!-- /end .styleguide -->

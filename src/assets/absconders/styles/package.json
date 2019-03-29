@@ -1,0 +1,26 @@
+{
+  "name": "@pai/brianstrap",
+  "version": "0.0.7",
+  "description": "Brianstrap node module",
+  "main": "index.js",
+  "scripts": {
+    "publishpatch": "npm version patch && npm publish",
+    "publishminor": "npm version minor && npm publish",
+    "publishmajor": "npm version major && npm publish"
+  },
+  "publishConfig": {
+    "registry": "https://painteractive.pkgs.visualstudio.com/_packaging/pai-private/npm/registry"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://painteractive.visualstudio.com/DefaultCollection/PAI%20Internal%20Projects/_git/Brianstrap"
+  },
+  "keywords": [
+    "brianstrap"
+  ],
+  "dependencies": {
+    "susy": "2.2.12"
+  },
+  "author": "PAI Dev Team",
+  "license": "ISC"
+}

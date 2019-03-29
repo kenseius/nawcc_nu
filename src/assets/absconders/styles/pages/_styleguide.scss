@@ -1,0 +1,497 @@
+
+
+
+// ==========================
+//  I. styleguide
+// ==========================
+
+// styles to apply vertical rhythm to codepen embeds
+.cp_embed_wrapper {margin-bottom: $base-vertical-padding;}
+
+// article styles - moved to _layout.scss
+// @mixin article {
+//
+//     // & > article,
+//     // & > .article {
+//         margin:3.157rem auto;
+//
+//         h2 {@include type-setting(2)}
+//
+//         // undoes scnd global styles
+//         h1, h2, h4, p {padding-bottom: 0;}
+//
+//         // intended global typography styles
+//         h1, .meta, p, ul {margin-bottom: $base-vertical;}
+//         h2, h4, pre {margin-bottom: $base-horizontal-small;}
+//         section {margin-bottom: $base-horizontal-padding;}
+//
+//         // unique intended exceptions to global styles
+//         .meta p {margin-bottom: 0;}
+//
+//         &.tableofcontents {
+//             a {
+//                 background: none;
+//                 @include hover() {background: $ylw;}
+//             }
+//             max-width: $base-max-width;
+//             @include layout(4 0.333 after fluid border-box);
+//             @include clear();
+//             header {
+//                 @include span(12 of 12);
+//                 .meta {max-width: $base-max-width;}
+//             }
+//             ul {
+//                 margin-bottom: $base-horizontal-padding;
+//                 @include span(1 of 4);
+//                 &:nth-child(4) {@include last;}
+//                 &:last-child {
+//                     @include span(4 of 4);
+//                     li {
+//                         @include span(1 of 4);
+//                         &:first-child {@include span(4 of 4);}
+//                         &:nth-child(4n+4) {@include last;}
+//                     }
+//                 }
+//                 @media #{$medium-only} {
+//                     @include span(2 of 4);
+//                     &:nth-child(even) {@include last;}
+//                     &:last-child {
+//                         @include span(4 of 4);
+//                         li{
+//                             @include span(2 of 4);
+//                             &:first-child {@include span(4 of 4);}
+//                             &:nth-child(even) {@include last;}
+//                         }
+//                     }
+//                 }
+//                 @media #{$small-only} {
+//                     @include span(4 of 4);
+//                     &:last-child {
+//                         li {@include span(4 of 4);}
+//                     }
+//                 }
+//             }
+//         }
+//
+//         // max-width: container vrs children
+//         &.base_width {max-width: $base-max-width;}
+//         // 1. max-width: 42.81rem; // forces everything nested within articles to fit into it's max-width
+//         // 2. active. allows only child elements to have the max-width of article text, allowing some article content to extend past max line-width for article text
+//         max-width: $base-max-width;
+//         & > h1, & > h2, & > h3, & > h4, & > h5,
+//         & > p,
+//         & > a,
+//         & > ul,
+//         & > blockquote,
+//         & > iframe,
+//         // & > section,
+//         & > pre,
+//         .meta_article {
+//             max-width: 42.81rem; margin-left: auto; margin-right:auto;
+//             &.meta_baseWidth {max-width: $base-max-width;}
+//         }
+//         & > a {display: block;}
+//
+//     // }
+//
+// }
+
+
+
+// styleguide wrapper
+.styleguide {
+    position:relative;
+    @include span(80% last);
+    &.fabricate {@include span(12 of 12);}
+    @media #{$medium-down} {@include span(12 of 12);}
+
+    // hyperlinks
+    a {
+        // color: $bluer;
+        // background: lighten($ylw,25%); color: $slate;
+        // @include hover() {background: $wht; color: darken($slate,15%);}
+        border-bottom: 2px solid $ylw; color: $slate;
+        @include hover() {background: $ylw; color: darken($slate,15%);}
+    }
+
+    .logos {
+        width: 100%;
+        padding: $base-vertical-padding 0;
+        background: $slate;
+        & > img {
+            width: auto;
+            @include anim($global-animation);
+        }
+    }
+
+    // images
+    img {margin:auto auto $base-horizontal-padding;}
+    .imagery { img {max-width: $base-max-width * 0.77778;} } // just for styleguide
+
+    // elements with consistent dimensions a global level
+    ul {
+        list-style: disc;
+        list-style-position: outside;
+        padding-left: $base-vertical;
+        margin-bottom: $base-vertical;;
+    }
+    h2 {@include type-setting(2)}
+
+    .col2 {
+        @include wrap($base-max-width, auto);
+        &.full {width: $base-max-width;}
+        // @include global-container(auto, 64rem, 3.157rem, 0);
+        // margin-bottom: $base-vertical;
+        // padding-top: $base-vertical;
+        // padding-bottom: $base-vertical;
+        .left, .right {
+            @include clear();
+            @include span(6 of 12);
+        }
+        p {@include clear();}
+        .right {@include last;}
+        // .left {@include span(5 of 12);}
+        // .right {@include span(7 of 12 last);}
+        pre {
+            @include span(12 of 12 last);
+            padding: 1rem;
+            background: $wht;
+        }
+
+        @media #{$medium-down} {
+            .left, .right { @include span(12 of 12); }
+        }
+    }
+
+    & > article,
+    & > .article {@include article;}
+
+    .col2 .left, .col2 .right {
+        @include article;
+
+        // variations from article styles
+        margin: 0 auto $base-horizontal-padding;
+        h2, h4 {margin-bottom: $base-horizontal-padding;}
+
+    }
+
+    & > article,
+    & > .article {@include global-container(100%, 100%, 3.175rem, 0);}
+
+    & > section {
+
+        // section widths
+        // ===================
+        // no padding - @include global-container(auto, 64rem, 3.157rem, 0);
+        @include global-container(100%, 100%, 3.175rem, 0);
+        margin-bottom: 1.33333rem;
+
+        // targets just the immediate child elements
+        & > h1,
+        & > h2,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > ul,
+        & > blockquote,
+        & > .meta,
+        iframe {@include wrap($base-max-width, auto);}
+
+        & > h1 {margin-bottom: $base-vertical;}
+
+        & > h2,
+        & > .meta,
+        & > pre {margin-bottom: $base-horizontal-padding;}
+
+        & > img,
+        & > table,
+        & > p {max-width: $base-max-width; margin-left: auto; margin-right: auto;} // todo --- adding clearfix to inline elements (p, etc), if they have psuedo styles, seems to break them....
+
+        & > article,
+        & > .article {@include article;}
+
+        // these are now unnecessary?
+        .top, .bottom {
+            margin-bottom: $base-horizontal-padding;
+            @include span(12 of 12);
+        }
+
+        .left, .right, .top, .bottom {
+            margin-left:auto;
+            margin-right: auto;
+            max-width: 64rem;
+        }
+
+        &.full {@include global-container(100%, 100%, 3.157rem, 3.157rem);}
+
+        &.forms {
+            form .formgroup section {
+                @include wrap(100%, auto);
+                padding: 0;
+                // @include global-container(100%, 100%, 0, 0);
+            }
+        }
+
+        @media #{$medium-only} { padding: 3.157rem; }
+        @media #{$small-only} { padding: 2.369rem; }
+
+    }
+
+}
+
+// stolen directly from topnav
+nav.styleguide_navigation {
+    // position: fixed;
+    // position: relative;
+    @include span(20%);
+    margin-right: 0;
+    height: 100%;
+    // min-height: 100vh;
+    background: $wht;
+    // border-right: 2px solid $grylite;
+    // background: transparent;
+    // background: $grylite;
+    @media #{$medium-down} {
+        @include span(12 of 12 no-gutters);
+        height: auto;
+        // max-height: 100%;
+        // sticky navbar overrides
+        position: relative !important; // overrides sticky navbar behavior
+        top:0 !important; // overrides sticky navbar top offset
+    }
+
+    //  NAV ITEMS - stolen directly
+    // **********************
+    .styleguide_subnav a,
+    a {
+        display:block;
+        position : relative;
+        // padding: 0.778rem 0.778 0.778 $base-vertical;
+        padding: $base-vertical;
+
+        // dgs sidebar styles (with parent bg = slate)
+        color: $slate;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        // styleguide sidebar (with parent bg = transparent)
+        // color: $slate;
+        // font-weight: 400;
+        // text-transform: none;
+
+        @include anim($global-animation);
+        @include hover() {
+            background: $grylite;
+            color: $slate;
+            // background: $slate; color: $wht;
+        }
+
+        // @include anim(all 150ms ease);
+        // @include hover() {color: lighten($grn, 10%);}
+
+        // adds arrow
+        &.active {
+
+            // @include type-setting(0);
+            background: $grylite; // $slate
+            color: $slate; // $wht
+            font-weight: 700; // 400
+
+            &:after, &:before {
+            	left: 100%;
+            	top: 50%;
+            	border: solid transparent;
+            	content: " ";
+            	height: 0;
+            	width: 0;
+            	position: absolute;
+            	pointer-events: none;
+            }
+
+            &:after {
+            	// border-color: rgba(64,64,64, 0);
+            	border-left-color: $grylite;
+            	border-width: 10px;
+            	margin-top: -10px;
+            }
+            &:before {
+            	// border-color: rgba(64, 64, 64, 0);
+            	border-left-color: $grylite;
+            	border-width: 13px;
+            	margin-top: -13px;
+            }
+        }
+    }
+    // subnav
+    .styleguide_subnav {
+        padding-top:$base-horizontal-small;
+        a {
+            padding:0.333rem 0.333rem 0.333rem $base-horizontal-padding;
+            text-transform: none;
+        }
+    }
+
+}
+
+
+// typography > headings styles
+
+.typography_wrapper {
+    @include wrap($base-max-width, auto);
+    padding-top: $base-vertical;
+    padding-bottom: $base-vertical;
+    .left, .right {@include span(6 of 12);}
+    .right {@include last;}
+    @media #{$medium-down} {
+        .left, .right { @include span(12 of 12); }
+    }
+}
+.typography > h1,
+.typography > p,
+.typography > hr {@include wrap($base-max-width, auto);}
+.typography {
+
+    hr:nth-of-type(2) { margin-bottom:$base-horizontal-padding; }
+
+    .typography_headings {
+
+        @include wrap($base-max-width, auto);
+
+        div {
+
+            @include wrap($base-max-width, auto);
+            margin: auto;
+
+            h1, h2, h3, h4, h5, p {
+                display: block;
+                @include span(2 of 12);
+                &:last-of-type {@include span(10 of 12 last);}
+                @media #{$medium-down} {
+                    @include span(12 of 12);
+                    &:last-of-type {@include span(12 of 12);}
+                }
+            }
+
+        }
+
+    }
+
+    .font_display {
+        font-size: 7.478rem; // 9.969em 7.478em 5.61em | old: 9em
+        line-height: 7.478rem;
+        letter-spacing: -0.15em;
+        padding-bottom:$base-vertical;
+    }
+
+    &.sourcesans {
+        font-family: "Source Sans Pro", sans-serif;
+        h1, p {font-family: inherit;}
+        .font_display {letter-spacing: -0.1em;}
+    }
+
+}
+
+// allows nesting navigation within parent
+nav.styleguide_nav {position: relative !important;}
+
+// #colors {
+//     // @include container(64rem);
+//     @include layout(12 (60px 20px) split static);
+// }
+.colorblocks {
+    // width: 100%;
+    @include wrap($base-max-width, auto);
+    margin-bottom: $base-horizontal-padding;
+    @include layout(12 0.333 after fluid border-box);
+    div,
+    .colorblock {
+        @include span(2 of 12);
+        display: block;
+        height: 10em;
+        padding: 1.3333rem; // 20px
+        margin-bottom: 0.7778rem; // 1.778em
+        p {
+            text-align: left;
+            &.subtitle {margin-top: 6em; margin-bottom: 0.5em;}
+        }
+        &.bg-slate, &.bg-grydrk, &.bg-blu, &.bg-bludrk, &.bg-trq, &.bg-red, &.bg-grn {
+            p {color:$wht;}
+        }
+        @media #{$medium-only} {
+            @include span(3 of 12);
+            &:nth-child(4), &:nth-child(8),  &:last-child {@include last;}
+        }
+        @media #{$small-only} {
+            @include span(6 of 12);
+            &:nth-child(even) {@include last;}
+        }
+    }
+    &.allcolors {
+        div,
+        .colorblock {
+            // the 6th colorblock is the furthest to the right for each row
+            &:nth-child(6), &:last-child {@include last;}
+        }
+    }
+}
+
+
+
+// pre styling
+
+// code, samp, kbd {
+//     font-family: "Courier New", Courier, monospace, sans-serif;
+//     text-align: left;
+//     font-weight: normal;
+//     color: #555;
+//     article, h1, h2, p {
+//         font-family: "Courier New", Courier, monospace, sans-serif;
+//         @include type-setting(0);
+//     }
+// }
+// code, pre {background: $wht;}
+// code {
+//     display: inline-block;
+//     padding: $base-horizontal-small;
+//     // margin-left: 0.333rem;
+//     // margin-right: 0.333rem;
+// }
+// pre {
+//     white-space: pre-wrap;
+//     white-space: -moz-pre-wrap;
+//     white-space: -o-pre-wrap;
+//     word-wrap: break-word;
+//     overflow: auto;
+//     // width: 93%;
+//     code {
+//         // @include type-setting(0);
+//         font-size: 14px; line-height: 1.778em;
+//     }
+// }
+/* target IE7 and IE6 */
+*:first-child+html pre {
+    padding-bottom: 2em;
+    overflow-y: hidden;
+    overflow: visible;
+    overflow-x: auto;
+}
+* html pre {
+    margin-bottom: $base-horizontal-padding;
+    padding-bottom: 2em;
+    overflow: visible;
+    overflow-x: auto;
+}
+
+
+// pre {
+//     white-space: pre-wrap;       /* css-3 */
+//     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+//     white-space: -pre-wrap;      /* Opera 4-6 */
+//     white-space: -o-pre-wrap;    /* Opera 7 */
+//     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+// }
+//
+// code {
+//     font-family: Courier, 'New Courier', monospace;
+//     font-size: 12px;
+// }

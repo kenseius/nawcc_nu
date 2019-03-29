@@ -1,0 +1,7 @@
+.sass-cache/
+*.css.map
+npm-debug.log
+node_modules
+dist
+sites
+.vscode/

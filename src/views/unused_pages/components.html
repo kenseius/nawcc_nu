@@ -1,0 +1,52 @@
+---
+title: Components
+subtitle: The Employment.PA.GOV Toolkit
+fabricator: true
+
+title_aboutPA: About PA
+
+title_Internships: Internships
+
+title_Veterans: Veterans
+
+title_Spotlight: Spotlight
+subtitle_Spotlight: Seasonal, Trades, Hard to Fill, Recent Grads, Success Stories
+CTA_Spotlight: Learn More
+
+title_SpotlightJobs: Spotlight Jobs
+subtitle_SpotlightJobs: Seasonal, Trades, Hard to Fill, Recent Grads, Success Stories
+CTA_SpotlightJobs: Learn More
+
+title_JobCards: Job Cards
+subtitle_JobCards: Fill out a job card, & receive email notifications about available jobs that interest you.
+CTA_JobCards: View Jobs & Apply
+
+title_OpenJobs: Open Jobs
+subtitle_OpenJobs: Opportunities across a wide variety of occupations.
+CTA_OpenJobs: View Jobs & Apply
+
+title_benefits: Benefits
+subtitle_benefits: Total Rewards, Work Life Balance, Career Development, Giving Back
+CTA_benefits: Learn More
+
+title_Video: Featured Video
+subtitle_Video: Working In PA
+
+class: hero_internships
+
+labelTitle: Text Input
+inputID: textInput
+inputPlaceholder: Text Input...
+
+navURL: http://google.com
+navURLlabel: Nav Item
+navURLicon: fa-star
+
+accordionTitle: Accordion Title
+accordionContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+{{> heros.hero_Logo}}
+{{#each materials.components.items}}
+    {{> f-item this}}
+{{/each}}

@@ -1,0 +1,31 @@
+---
+strapless: true
+employmentMaterial: true
+buttonText: Submit
+tagline: Buttons are used to activate something on a page.
+---
+
+{{#if fabricator}}
+    <div class="layout_grid col3 preview_info">
+        <div>
+            <h3 class="component_title">Default Button</h3>
+            <button class="button slate">Default Button</button>
+        </div>
+        <div>
+            <h3 class="component_title">On Hover</h3>
+            <button class="button outline">On Hover</button>
+        </div>
+    </div>
+    <section class="preview_info">
+        <h3 class="component_title">Color Variations</h3>
+        <p>The button's background color is determined by the active theme.</p>
+        <div class="layout_grid col4">
+            {{#each strapless.colors as |buttonClass buttonText|}}
+            <button class="button {{buttonClass}}">{{@key}}</button>
+            {{/each}}
+        </div>
+    </section>
+    {{else}}
+    <button class="button {{buttonClass}}">{{buttonText}}</button>
+{{/if}}
+

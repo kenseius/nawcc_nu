@@ -1,0 +1,68 @@
+/* BACKGROUNDS
+========================================= */
+
+// for reference yo
+// background: color image position/size repeat origin clip attachment initial|inherit;
+
+// @mixin bg()
+.bg {
+    // allows :before to have full screen bg
+    position: relative;
+    //z-index:2;
+    display: block;
+
+    // Fullscreen bg
+    &.full {
+        color: $wht;
+        height: 100vh;
+        max-height: 100%; /* 100vh */
+        width: 100%;
+    }
+
+    @include bg-no_url(center center, no-repeat, scroll);
+    @include bg-size(cover);
+    @include filter(contrast(1.1));
+    @include anim(all ease 1s);
+
+    // bg - dev
+    // &.bg-dev       {@include bg-url('../img/background/whiteprint.jpg');}
+    &.bg-dev       {@include bg-url('../img/background/whiteprint.jpg');}
+    &.bg-blueprint {@include bg-url('../img/background/blueprint_2.jpg');} // blueprint_2.jpg
+
+    &.wrapp-search {background-attachment: fixed;} // ensure header images are fixed
+
+    &::before {
+        // allows multi-bg
+        position: absolute;
+        z-index: -1;
+        top: 0; left: 0; bottom: 0; right: 0;
+        width:100%;
+        height: 100%;
+        max-height: 100%;
+        @include linear-gradient(0,0,0,0.75,255,224,102,0.25);    // black top + yellow bottom
+        // @include linear-gradient(0,0,0,0.75,255,224,178,0.25); // black top + peach bottom
+        // @include linear-gradient(76,76,76,0.75,76,76,76,0.75); // grey darker
+        // @include linear-gradient(68,68,68,0.75,68,68,68,0.75); // grey
+    }
+
+    &.bg-overlay {
+        &::before {
+        background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                    linear-gradient(rgba(0,0,0,0.75), rgba(255,224,178,0.25));
+        }
+    }
+
+    @media screen and (max-width: 39.9375em) {
+        background-attachment: scroll !important;
+        .wrapp-search {background-attachment: scroll !important;}
+    }
+    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        background-attachment: scroll !important;
+        .wrapp-search {background-attachment: scroll !important;}
+    }
+    // fixes fixed bg on mobile issue when device is in landscape mode on medium-sized screens, like phablets / tablets
+    @media screen and (orientation: landscape) { background-attachment: scroll !important; }
+
+}
+
+// .bg { @include bg(); }

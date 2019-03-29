@@ -1,0 +1,70 @@
+---
+buttonTitle: Button Title
+buttonIcon: fa-star
+buttonBar: true
+notes: |
+    ```css
+    // wrapper
+    .buttonBar {
+        @include clear();
+        background: $gry;
+        padding: $base-horizontal-padding;
+        div {@include wrap($base-max-width, auto)}
+        &.buttonBarSpotlights {
+            //2 tabs
+        }
+    }
+    ```
+---
+{{#if fabricator}}
+    {{#each toolkit.tabButtonBar}}
+        <!-- Button Bar - Tab-like SubNavbar -->
+        <section class="buttonBar {{@key}}">
+            <div>
+                {{#each this}}
+                    {{> buttons.icon_Button_Hyperlink buttonBar="true"}}
+                {{/each}}
+            </div>
+        </section>
+    {{/each}}
+{{/if}}
+
+
+{{#if benefits}}
+    {{#each toolkit.buttonBarBenefits}}
+        <!-- Button Bar: Employment - Benfits -->
+        <section class="iconBar {{@key}}">
+            <div>
+                {{#each this}}
+                    {{> buttons.icon_Button_Hyperlink buttonBar="true"}}
+                {{/each}}
+            </div>
+        </section>
+    {{/each}}
+    {{else}}
+        {{#if spotlights}}
+            {{#each toolkit.buttonBarSpotlights}}
+                <!-- Button Bar: Employment - Spotlights -->
+                <section class="buttonBar {{@key}}">
+                    <div>
+                        {{#each this}}
+                            {{> buttons.icon_Button_Hyperlink buttonBar="true"}}
+                        {{/each}}
+                    </div>
+                </section>
+            {{/each}}
+            {{else}}
+            {{#if strapless}}
+                {{#each strapless.buttonBarStrapless}}
+                    <!-- Button Bar: Strapless-->
+                    <section class="buttonBar {{@key}}">
+                        <div>
+                            {{#each this}}
+                                {{> buttons.icon_Button_Hyperlink buttonBar="true"}}
+                            {{/each}}
+                        </div>
+                    </section>
+                {{/each}}
+            {{/if}}
+        {{/if}}
+{{/if}}

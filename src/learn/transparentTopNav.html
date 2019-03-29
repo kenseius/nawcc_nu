@@ -1,0 +1,53 @@
+<pre><code class="lang-javascript">$(document).ready(function() {
+
+    //this measures how far down the sticky element is from the top
+    var stickyTop = $(&quot;.home_nav&quot;);
+
+    if (stickyTop)
+        stickyTop = stickyTop.offset().top;
+
+    //whenever the user scrolls, measure how far we have scrolled
+    $(window).scroll(function() {
+        var windowTop = $(window).scrollTop();
+
+        //check to see if we have scrolled past the original location of the sticky element
+        if (windowTop &gt; stickyTop) {
+
+            //if so, change the sticky element to fixed positioning
+            $(&quot;.home_nav&quot;).css({
+                &quot;background-color&quot;: &quot;#333&quot;,
+            });
+            $(&quot;.logo&quot;).css({
+                &quot;display&quot;: &quot;block&quot;,
+            });
+        } else {
+            $(&quot;.home_nav&quot;).css({
+                &quot;background-color&quot;: &quot;transparent&quot;
+            });
+            $(&quot;.logo&quot;).css({
+                &quot;display&quot;: &quot;none&quot;,
+            });
+        }
+    });
+
+});
+</code></pre>
+<pre><code class="lang-html">&lt;section class=&quot;hero hero_home&quot;&gt;
+    &lt;!-- hero content --&gt; 
+&lt;/section&gt;
+</code></pre>
+<p>In global.scss: </p>
+<pre><code class="lang-css">
+body { padding-top: $navHeight; }
+</code></pre>
+<p>and in topnav.scss: </p>
+<pre><code class="lang-css">
+.nav {
+
+    &amp;.home_nav {
+        background: transparent;
+        border: 0;
+        .logo {display: none;}
+    }
+}
+</code></pre>

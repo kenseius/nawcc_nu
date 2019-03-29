@@ -1,0 +1,5 @@
+@mixin wrapper-pad( $bg-color, $max-width, $padding ){
+    @include base-wrapper($padding);
+    @include container($max-width);
+    background: $bg-color;
+}

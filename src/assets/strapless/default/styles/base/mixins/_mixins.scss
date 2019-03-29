@@ -1,0 +1,84 @@
+// ===============================================
+//
+//      MIXINS
+//     ..................
+//
+//      1. Strapless - Mixin Library 
+//      2. Additional mixin libraries Entry Point
+//
+// ===============================================
+
+
+//  STRAPLESS
+// ************************
+
+    @import 'clearfix'; 
+    @import 'filter';
+    @import 'links';
+    @import 'box-sizing';
+    @import 'box-shadow';
+    @import 'breakpoints';
+    @import 'grid';
+    @import 'border-radius';
+    @import 'font-smoothing';
+    @import 'hidden';
+    @import 'navigation-list';
+    @import 'flexbox';
+    @import 'triangle';
+
+    // animate
+    @import 'animate/transitions';
+    @import 'animate/transforms';
+    @import 'animate/animation';
+
+    // interaction
+    @import 'interaction/hover';
+    // @import 'interaction/hover_only';
+    // @import 'interaction/hover_visited';
+    // @import 'interaction/hover-style';
+
+    // centering
+    @import 'centering/centering';
+    // @import 'centering/content_centered';
+    // @import 'centering/absolute_center';
+    // @import 'centering/center_1';
+    // @import 'centering/center_2';
+
+    // backgrounds
+    @import 'backgrounds/bg';
+    @import 'backgrounds/bg-all';
+    @import 'backgrounds/bg-url';
+    @import 'backgrounds/bg-no_url';
+    @import 'backgrounds/bg-size';
+    @import 'backgrounds/rgba';
+    @import 'backgrounds/linear-gradient';
+
+    // padding
+    @import 'padding/padded';
+    @import 'padding/padding';
+
+    // containers / wrappers
+    // @import 'containers/containers';
+    @import 'containers/wrap';
+    @import 'containers/base-container';
+    @import 'containers/global-container';
+    @import 'containers/base-wrapper';
+    @import 'containers/wrapper';
+    @import 'containers/wrapper-pad';
+
+    // style
+    @import 'styles/titles/title'; 
+    @import 'styles/titles/h2_styles'; 
+
+
+
+//  ADDITIONAL MIXIN LIBRARIES
+// ************************
+
+// Use this as an entry point for any additional mixin libraries you'd like to Use
+
+    // library name
+    // @import 'path/to/library'; 
+
+
+

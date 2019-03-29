@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1600px" viewBox="0 0 1440 1600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FAFAFA;">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Content_1440_svg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <pattern id="pattern-1" width="96" height="96" x="-96" y="-30" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-2" transform="scale(2,2)"></use>
+        </pattern>
+        <image id="image-2" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAV9JREFUaAXt2O0NgjAQBmBrt4DoDiawEHEQB1F3MK7BHKxR+2oKQfnseXCX0B/SEr3zucZIz+R57nZ+OOfuZVmeMcWaOEyWZVdjTBHicMW3aZpekMQnOyVJcqiq6hmSUq6Ig3iIyxnf+iRH7iSc8e1SleJCWGyvZsQboBlRA7QiWgCNiB+ANkQnQBOiF6AFMQjQgBgFSEdMAkhGTAZIRcwCSETMBkhDRAEkIaIBUhAkgAQEGbA2AgCDL0Edax2KrO8e3JCcCsDn10CgK/HQ2I0IZ+w9KucXBfo4mGJNHA79JfSBQhzO+FtfKFS567rEb2LrC3VV/vse507Uf2ScSQDiil8DOJOEHeFAtAAaET8AbYhOgCZEL0ALYhCgATEKkI6YBJCMmAyQipgFkIiYDZCGiAJIQkQDpCBIAAkIMmBtBAD/OMizPe+jQBh9j+JbX+hTn+a1r1K437wrfvYd/wV+UgblD/bGFgAAAABJRU5ErkJggg=="></image>
+        <pattern id="pattern-3" width="96" height="96" x="282" y="655" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-4" transform="scale(2,2)"></use>
+        </pattern>
+        <image id="image-4" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAV9JREFUaAXt2O0NgjAQBmBrt4DoDiawEHEQB1F3MK7BHKxR+2oKQfnseXCX0B/SEr3zucZIz+R57nZ+OOfuZVmeMcWaOEyWZVdjTBHicMW3aZpekMQnOyVJcqiq6hmSUq6Ig3iIyxnf+iRH7iSc8e1SleJCWGyvZsQboBlRA7QiWgCNiB+ANkQnQBOiF6AFMQjQgBgFSEdMAkhGTAZIRcwCSETMBkhDRAEkIaIBUhAkgAQEGbA2AgCDL0Edax2KrO8e3JCcCsDn10CgK/HQ2I0IZ+w9KucXBfo4mGJNHA79JfSBQhzO+FtfKFS567rEb2LrC3VV/vse507Uf2ScSQDiil8DOJOEHeFAtAAaET8AbYhOgCZEL0ALYhCgATEKkI6YBJCMmAyQipgFkIiYDZCGiAJIQkQDpCBIAAkIMmBtBAD/OMizPe+jQBh9j+JbX+hTn+a1r1K437wrfvYd/wV+UgblD/bGFgAAAABJRU5ErkJggg=="></image>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Content_1440">
+            <g id="Wireframe---Hero" transform="translate(0.000000, 65.000000)"></g>
+            <g id="Wireframe---Top-Nav" fill="#D8D8D8">
+                <rect id="Rectangle" x="0" y="0" width="1440" height="65"></rect>
+            </g>
+            <rect id="Rectangle" fill="#EBEBEB" x="0" y="1492" width="1440" height="376"></rect>
+            <g id="content" transform="translate(378.000000, 520.000000)" fill-rule="nonzero" fill="#404040">
+                <rect id="Rectangle_5" x="0" y="693" width="684.96" height="26"></rect>
+                <rect id="Rectangle_6" x="0" y="735" width="684.96" height="26"></rect>
+                <rect id="Rectangle_7" x="0" y="777" width="684.96" height="26"></rect>
+                <rect id="Rectangle_8" x="0" y="819" width="300" height="26"></rect>
+                <rect id="Rectangle_11" x="0" y="651" width="684.96" height="26"></rect>
+                <rect id="Rectangle_10" x="0" y="609" width="684.96" height="26"></rect>
+                <rect id="Rectangle_4" x="0" y="102" width="684.96" height="26"></rect>
+                <rect id="Rectangle_9" x="0" y="186" width="684.96" height="26"></rect>
+                <rect id="Rectangle_12" x="0" y="144" width="684.96" height="26"></rect>
+                <rect id="Rectangle_3" x="0" y="0" width="684.96" height="86"></rect>
+            </g>
+            <rect id="Rectangle-10" fill="url(#pattern-1)" x="0" y="66" width="1440" height="340"></rect>
+            <rect id="Rectangle-10" fill="url(#pattern-3)" x="378" y="751" width="685" height="358"></rect>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,72 @@
+// METADATA STYLE
+// used on frontpage w/ news cards, on media with news cards, single posts, and pages
+.article .meta,
+.meta {
+    display:block;
+    width: 100%;
+    @include clear();
+    @include anim(all ease-in-out 0.3s);
+    p {
+        float: left;
+        text-align: left;
+        text-transform: capitalize;
+        margin-bottom: 0;
+        &:nth-child(1) {padding-right: 1em;}
+        &.meta_right {float:right;}
+        @include anim(all ease-in-out 0.3s);
+        @media #{$small-only} {
+            line-height: 1.75em;
+            &.meta_right{float: left;}
+        }
+    }
+
+    &.meta_newsfeed {
+        padding: 0.9375em 0; // 0.9375em // 0.625em // = 15px 10px
+        p {
+            font-size: 0.7rem; // 0.85rem;
+            color: $gry_muted;
+        }
+        @media #{$small-only} {padding: 0.625em 0 0;}
+    }
+
+    &.meta_article {
+        padding: 0.75em 0;
+        border-top: 0.125em solid $grylite;
+        border-bottom: 0.125em solid $grylite;
+        p {
+            font-size: 0.75rem;
+            color: $gry_muted;
+        }
+    }
+
+    &.meta_top {
+        border-bottom: 0.125em solid $gry; // = 2px
+        padding: 0.9375em 1.5625em; // = 15px 25px;
+        div p, p {
+            font-size: 0.65rem; // 0.85rem;
+            color: $gry_muted;
+        }
+        @include anim(all ease-in-out 0.3s);
+        &.noborder {
+            p {padding-top: 0; margin-top: 0;}
+            border-bottom-color: transparent;
+        }
+    }
+
+    &.meta_wide {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border-bottom: 0.125em solid $grylite;
+        div p, p {
+            font-size: 0.85em;
+            color: lighten($slate, 10%);
+            margin-bottom: 0;
+            @include anim(all ease-in-out 0.3s);
+        }
+        @include anim(all ease-in-out 0.3s);
+        &.noborder {
+            p {padding-top: 0; margin-top: 0;}
+            border-bottom-color: transparent;
+        }
+    }
+}

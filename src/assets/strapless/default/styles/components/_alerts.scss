@@ -1,0 +1,42 @@
+// CALLOUTS
+// ========================================
+.callout, .alert {
+    @include clear();
+    display: block;
+    padding: 1rem;
+    border-radius: 0;
+    position: relative;
+    color: $wht; // #0a0a0a;
+    background: $slate; // $wht
+
+    // callout styles - for embedding in content
+    // border: 1px solid rgba(10, 10, 10, 0.25);
+    // margin: 0 0 $base-vertical 0;
+
+    p {
+        @include span(11 of 12);
+        padding-bottom: 0;
+        vertical-align: middle;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0;
+        margin: 0;
+
+        border: 0;
+        background: transparent;
+        color: $wht;
+        @include type-setting(0);
+        line-height: 2.369rem;
+        @include hover() {color: $slate; background: transparent;}
+    }
+
+    &.alt {     color: $ylw;    background: $slate; .close-button{color: $ylw;} }
+    &.wht {     color: $slate;  background: $wht;   .close-button{color: $slate;} }
+    &.caution { color: $slate;  background: $ylw;   .close-button{color: $slate; @include hover(){color: lighten($slate, 20%);}} }
+    &.warn {    color: $slate;  background: $red;   .close-button{color: $slate;} }
+
+}

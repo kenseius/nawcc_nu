@@ -1,0 +1,570 @@
+// ==========================
+//  TABLES
+// ==========================
+
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto $base-horizontal-padding;
+
+    // border: $base-border; // 0.2rem solid $grylite; // 2px solid $grylite;
+    // text-align: left;
+    // background: $wht;
+
+    // table head
+    thead tr th {
+        text-transform: uppercase;
+        font-size: 0.778rem;
+        letter-spacing: 0.0778rem;
+        font-weight: 700;
+        text-align: left; // center;
+        color: $slate; //lighten($slate, 25%);
+        border-bottom: $base-border;
+        background: $grylite;
+    }
+
+    button {
+        @include button($wht, $blu, $blu, $slate, $wht);
+        padding : .5rem;
+        margin : 0;
+    }
+
+    // table body
+    // allow a table to take a class disabling hover and clickable rows
+    &:not(.disabled) {
+        tbody tr {
+            cursor: pointer;
+            @include hover() {
+                background:$slate; // background: lighten($blu, 90%);
+                td, ul li {color: $wht;}
+            }
+        }
+    }
+
+    tbody tr {
+        // border-bottom: $base-border; // 0.2em solid $grylite; // 1px solid $gry;
+        &:nth-child(even){background: $grylite;} // gry bg on every other row
+        &:last-child {border-bottom: 0;}
+        // border-top: $base-border; // 0.2em solid $grylite; // 1px solid $gry;
+        background: transparent; // tr:nth-child(even) {background-color: #f1f1f1;}
+        color: $slate;
+        @include anim($global-animation);
+
+        ul li {
+            padding: 1.33333rem 0;  // 1rem 0; // 0.75rem 0;
+            @include type-setting(0);
+            // color: lighten($slate, 25%);
+            text-align: left;
+            label, label input { margin: auto; }
+        }
+    }
+
+    // positioning checkbox within
+    tbody.checkbox tr td { &:first-child {padding-left: 0;} }
+
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+
+    td {
+        font-family : $table-font;
+        font-size : 1rem; //.9rem;
+        padding: $base-padding / 2;
+    }
+
+    // keeps table heading cells consistent with tbody cells, and adds space to the left so it isn't smack against the edge
+    th,
+    td {
+        padding-left: $base-horizontal-small; // .5rem; --- in keeping with consistent spacing rhythm
+        vertical-align: top; // middle;
+        &:before {
+            display : none;
+        }
+    }
+    th {
+        padding-top : $base-padding;
+        padding-bottom : $base-padding;
+    }
+}
+
+
+// ======================================
+// Unique project-specific style variations and overrides
+//  - there's also responsive solutions commented out. they require some custom styling.
+//  - TODO: explain responsive tables 
+// ======================================
+
+
+// actions buttons --- the last 3 columns
+// table.notices {
+//     tbody tr td {
+//         &:nth-child(n+7) {
+//             text-align: center;
+//             @include anim(all 0.3s ease-in-out);
+//             @include hover() { background: lighten($gry_muted, 90%); }
+//         }
+//         &:last-child        { background: $gry_muted; } // notice of completion
+//         &:nth-last-child(2) { background: $pch; }       // notice of nonpayment
+//         &:nth-last-child(3) { background: $grylite; }   // notice of furnishing
+//     }
+// }
+
+// table.completion {
+//     tbody tr td {
+//         &:last-child {
+//             text-align: center; background:$gry_muted; color: $wht;
+//             @include anim(all 0.3s ease-in-out);
+//             @include hover() { background: lighten($gry_muted, 90%); }
+//         }
+//     }
+// }
+
+
+// /*===== Page Table Overrides ======*/
+// /*  CART PAGE */
+// #cart {
+//     form {
+
+//         // max-width : 100%;
+
+//         button[type="submit"] {
+//             float : right;
+//             background-color : $slate;
+//             border-width : 0;
+//             margin : 0;
+//             color : $wht;
+//             // padding: 0;
+//             padding: 0.77778rem 1.33333rem;
+
+//             @include hover() {
+//                 background-color : $wht;
+//                 color : $slate;
+//             }
+
+//             @media #{$medium-down} {
+//                 float : none;
+//                 @include span(12 of 12);
+//                 margin-bottom : $base-padding;
+//             }
+//         }
+
+//         table {
+//             margin-bottom : $base-horizontal-padding;
+
+//             td {
+//                 line-height : 2.369rem; // 2.7rem
+
+//                 @media #{$small-only} {line-height : 1rem;}
+
+//                 &:last-child {
+//                     vertical-align: middle;
+//                     padding : 0;
+//                     button {
+//                         width : 90%;
+//                         float : none;
+//                         padding: 0 $base-horizontal-small;
+//                         height: auto;
+//                         width: auto;
+//                         // padding: 0.77778rem 1.33333rem;
+//                         // padding : 1rem; // margin : 5%;
+//                         @include clear();
+//                         @include type-setting(-1);
+//                         border: none;
+//                         background: transparent;
+//                         color: $slate;
+//                         margin-top: 0;
+//                         margin-bottom: 0;
+//                         text-transform: uppercase;
+//                         line-height: 2.369rem;
+//                         i {margin-left: 0.333rem;}
+//                         @include hover() {background: $slate; color: $wht;}
+//                         // @media #{$medium-only} {
+//                         //     // margin-right: 1rem;
+//                         //     i {
+//                         //         font-size: 1rem;
+//                         //         display: block;
+//                         //         margin: auto;
+//                         //         padding: $base-horizontal-small;
+//                         //     }
+//                         //     span {display: none;}
+//                         //  }
+//                         // @media #{$small-only} {margin: auto; width: 77.778%;}
+
+//                         // hides label before mobile table
+//                         @media only screen and (min-width:54.69rem) {
+//                             i {
+//                                 font-size: 1rem;
+//                                 display: block;
+//                                 margin: auto;
+//                                 padding: $base-horizontal-small;
+//                             }
+//                             span {display: none;}
+//                         }
+//                         // displays label before
+//                         @media only screen and (max-width:54.6875rem) { // = 875px
+//                             margin: auto;
+//                             span { display: inline-block; }
+//                         }
+//                     }
+//                 }
+
+//                 button {
+//                     // float : right;
+
+//                     @media #{$small-only} {
+//                         float : none;
+//                     }
+//                 }
+
+// 	            &:nth-of-type(1):before { content: "Description"; }
+// 	            &:nth-of-type(2):before { content: "Price"; }
+//             }
+//         }
+//     }
+
+//     .after-form-links {
+//         float : left;
+
+//         @media #{$medium-down} {
+//             float : none;
+//             @include span(12 of 12);
+//             text-align : center;
+
+//         }
+
+//         // icon { display : inline-block; }
+//         a { display : inline-block; float : none; width : auto; }
+//     }
+// }
+
+// #searchResults {
+
+
+//     p {
+//         max-width: $base-max-width;
+//         margin: 0 auto $base-vertical;
+//         padding-left: 0;
+//         font-weight: bold;
+//     }
+
+//     // .title{
+//     //     max-width: 64rem;
+//     //     margin: 0 auto;
+//     //
+//     //     p {
+//     //         margin: 0;
+//     //         padding-left: 0;
+//     //         font-size: 1rem;
+//     //         font-weight: 700;
+//     //     }
+//     // }
+
+
+//     table {
+//         // max-width: 64rem !important;
+//         max-width: $base-max-width;
+//         button {
+//             display : none;
+//             @media #{$small-only} {
+//                 display : block;
+//                 width : 90%;
+//                 display : block;
+//                 margin : 0 auto;
+//             }
+//         }
+//         .info-link {
+//             display : block;
+//             color : $blu;
+//             font-size : 1rem;
+//             cursor : pointer;
+//             border : 2px solid $blu;
+//             padding : .2rem .1rem;
+//             border-radius : 1rem;
+//             width : 1.8rem;
+//             @include hover() {
+//                 background-color : $blu;
+//                 color : $wht;
+//             }
+//         }
+//         &.has-checkbox {
+//             td {
+// 	            &:nth-of-type(1):before { content: "Selected"; }
+// 	            &:nth-of-type(2):before { content: "Id"; }
+// 	            &:nth-of-type(3):before { content: "Name"; }
+// 	            &:nth-of-type(4):before { content: "Owner"; }
+// 	            &:nth-of-type(5):before { content: "Date"; }
+// 	            &:nth-of-type(6):before { content: "Address"; }
+//                 &:nth-of-type(6):before { content: "Counties"; }
+//                 &:nth-of-type(7):before { content: "Details"; }
+//             }
+//         }
+//         td {
+// 	        &:nth-of-type(1):before { content: "Id"; }
+// 	        &:nth-of-type(2):before { content: "Name"; }
+// 	        &:nth-of-type(3):before { content: "Owner"; }
+// 	        &:nth-of-type(4):before { content: "Date"; }
+// 	        &:nth-of-type(5):before { content: "Address"; }
+//             &:nth-of-type(6):before { content: "Counties"; }
+//             &:nth-of-type(7):before { content: "Details"; }
+
+//             &:last-child {
+//                 text-align : center;
+//                 vertical-align : middle;
+//             }
+
+//             button {
+//                 font-weight : normal;
+//                 font-size : 1rem;
+//                 text-align : center;
+//                 font-family : $base-font;
+//             }
+//         }
+
+//     //     a {
+//     //        display : table-cell;
+//     //        text-align : center;
+//     //        background : $blu;
+//     //        padding : $base-horizontal-small;
+//     //        color : white;
+//     //        margin : $base-margin;
+//        //
+//     //        @media #{$small-only} {
+//     //            width : 90%;
+//     //            display : block;
+//     //            margin-bottom : 0;
+//     //        }
+//     //    }
+
+//     }
+
+// }
+
+// #furnishingResults {
+//     table {
+//         // max-width: 64rem !important;
+//         max-width: $base-max-width;
+
+//         .info-link {
+//             display : block;
+//             color : $blu;
+//             font-size : 1rem;
+//             cursor : pointer;
+//             border : 2px solid $blu;
+//             padding : .2rem .1rem;
+//             border-radius : 1rem;
+//             width : 1.8rem;
+
+//             @include hover() {
+//                 background-color : $blu;
+//                 color : $wht;
+//             }
+//         }
+//         td {
+// 	        &:nth-of-type(1):before { content: "Id"; }
+// 	        &:nth-of-type(2):before { content: "Description"; }
+// 	        &:nth-of-type(3):before { content: "Project Name"; }
+// 	        &:nth-of-type(4):before { content: "Date Filed"; }
+// 	        &:nth-of-type(5):before { content: "Hiring Entity"; }
+//             &:nth-of-type(6):before { content: "Details"; }
+
+//             &:last-child {
+//                 text-align : center;
+//                 vertical-align : middle;
+//             }
+//             button {
+//                 font-weight : normal;
+//                 font-size : 1rem;
+//                 text-align : center;
+//                 font-family : $base-font;
+//             }
+//         }
+//     }
+// }
+
+// .project-detail-modal {
+//     table {
+//         margin : auto auto $base-horizontal-padding;
+//         //max-width : 77.77778%;
+//         max-width: $base-max-width * 0.77778;
+
+//         @media #{$medium-only} {
+//             //max-width : 80%;
+//             max-width: $base-max-width * 0.77778;
+//         }
+//         @media #{$small-only} {
+//             // max-width : 90%;
+//             max-width: $base-max-width * 0.77778;
+//         }
+//         td {
+// 	        &:nth-of-type(1):before { content: "Date"; }
+// 	        &:nth-of-type(2):before { content: "Notice Type"; }
+// 	        &:nth-of-type(3):before { content: "Filed By"; }
+// 	        &:nth-of-type(4):before { content: "File Type"; }
+// 	        &:nth-of-type(5):before { content: "Address"; }
+//         }
+//     }
+// }
+
+// // projects with tables
+// // #nonpayment
+// // #furnishing
+// // #completion
+
+// #merge {
+//     table {
+//         th, td {
+//             // 4 cols
+//             &:nth-child(n+1) { width: 15%; }    // check
+//             &:nth-child(n+2) { width: 20%; }    // entry number
+//             &:nth-child(n+3) { width: 30%; }    // name
+//             &:nth-child(n+4) { width: 35%; }    // filing type
+//         }
+//     }
+// }
+
+// #projects {
+//     table {
+//         th, td {
+//             // 10cols
+//             &:nth-child(n+1) { width: 10%; }    // date
+//             &:nth-child(n+2) { width: 10%; }    // project name
+//             &:nth-child(n+3) { width: 10%; }    // street
+//             &:nth-child(n+4) { width: 10%; }    // city
+//             &:nth-child(n+5) { width: 10%; }    // state
+//             &:nth-child(n+6) { width: 10%; }    // zip
+//             &:nth-child(n+7) { width: 10%; }    // type
+//             &:nth-child(n+8) { width: 10%; }    // actions
+//             &:nth-child(n+9) { width: 10%; }     // visbility toggle
+//             &:nth-child(n+9) { width: 10%; }
+
+//             // 9cols
+//             // &:nth-child(n+1) { width: 8%; }    // date
+//             // &:nth-child(n+2) { width: 16%; }    // project name
+//             // &:nth-child(n+3) { width: 16%; }    // street
+//             // &:nth-child(n+4) { width: 15%; }    // city
+//             // &:nth-child(n+5) { width: 8%; }    // state
+//             // &:nth-child(n+6) { width: 8%; }    // zip
+//             // &:nth-child(n+7) { width: 12%; }    // type
+//             // &:nth-child(n+8) { width: 8%; }    // actions
+//             // &:nth-child(n+9) { width: 8%;}     // visbility toggle
+//         }
+//     }
+// }
+
+// #search {
+//     table {
+//         th, td {
+//             // 8cols
+//             &:nth-child(n+1) { width: 10%; }    // Entry #
+//             &:nth-child(n+2) { width: 20%; }    // project name
+//             &:nth-child(n+3) { width: 15%; }    // Owner
+//             &:nth-child(n+4) { width: 15%; }    // Date
+//             &:nth-child(n+5) { width: 30%; }    // address
+//             &:nth-child(n+6) { width: 10%; }    // actions
+//         }
+//     }
+
+//     // condensed address fields
+//     table.condensed {
+//         th, td {
+//             // 5cols
+//             &:nth-child(n+1) { width: 10%; }    // date
+//             &:nth-child(n+2) { width: 30%; }    // project name
+//             &:nth-child(n+3) { width: 30%; }    // street
+//             &:nth-child(n+4) { width: 15%; }    // county
+//             &:nth-child(n+5) { width: 15%; }    // actions
+//         }
+//     }
+
+// }
+
+// @media #{$small-only}  {
+//     /* Force table to not be like tables anymore */
+//     // table {
+//     //     background: transparent;
+//     //     &, thead, tbody, th, td, tr {display: block;}
+//     //
+//     //     /* Hide table headers (but not display: none;, for accessibility) */
+//     //     thead tr { position: absolute; top: -9999px; left: -9999px; }
+//     //     tr {
+//     //         border: 1px solid #ccc;
+//     //         margin-bottom: $base-horizontal-small;
+//     //     }
+//     //     td {
+//     //         /* Behave  like a "row" */
+//     //         border: none;
+//     //         border-bottom: 1px solid #eee;
+//     //         position: relative;
+//     //         padding : .5rem .5rem .5rem 50%;
+//     //     }
+//     //     thead tr th {
+//     //         padding-left : .5rem;
+//     //     }
+//     //     td:before {
+//     //         font-weight : bold;
+//     //         font-size: $base-font-size * 0.778;
+//     //         text-transform: uppercase;
+//     //         display : block;
+//     //         /* Now like a table header */
+//     //         position: absolute;
+//     //         /* Top/left values mimic padding */
+//     //         top: .5rem;
+//     //         left: 6px;
+//     //         width: 45%;
+//     //         padding-right: 10px;
+//     //         white-space: nowrap;
+//     //     }
+//     // }
+// }
+
+// // searchResults = same as above under @media #{$small-only}
+
+// #cart,
+// #furnishingResults,
+// #merge,
+// #projects,
+// #search,
+// #searchResults,
+// #dashboard_search {
+//     // @media only screen and (max-width:42.5rem) {
+//     @media only screen and (max-width:54.6875rem) { // = 875px
+//         /* Force table to not be like tables anymore */
+//         table {
+
+//             background: transparent;
+//             &, thead, tbody, th, td, tr {display: block;}
+
+//             /* Hide table headers (but not display: none;, for accessibility) */
+//             thead tr { position: absolute; top: -9999px; left: -9999px; }
+//             tr {
+//                 border: 1px solid #ccc;
+//                 margin-bottom: $base-horizontal-small;
+//             }
+//             td {
+//                 /* Behave  like a "row" */
+//                 border: none;
+//                 border-bottom: 1px solid #eee;
+//                 position: relative;
+//                 padding : .5rem .5rem .5rem 30%;
+//             }
+//             thead tr th {padding-left : .5rem;}
+//             td:before {
+//                 font-weight : bold;
+//                 font-size: $base-font-size * 0.9;
+//                 text-transform: uppercase;
+//                 display : block;
+//                 /* Now like a table header */
+//                 position: absolute;
+//                 /* Top/left values mimic padding */
+//                 top: .5rem;
+//                 left: 6px;
+//                 width: 30%;
+//                 padding-right: 10px;
+//                 white-space: nowrap;
+//                 text-align: left;
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,469 @@
+// ==========================
+//  I. LAYOUT
+// ==========================
+
+// article styles
+
+@mixin article {
+
+    margin:3.157rem auto;
+
+    // undoes scnd global styles
+    // h1, h2, h4, p {padding-bottom: 0;}
+    p {line-height: 1.778rem;}
+
+    // intended global typography styles
+    h1, .meta, p, ul {margin-bottom: $base-vertical;}
+    h2, h4, pre {margin-bottom: $base-horizontal-small;}
+    section {margin-bottom: $base-horizontal-padding;}
+    li {margin-bottom: 0.333em;}
+
+    // max-width: container vrs children
+    // &.base_width {max-width: $base-max-width;}
+    // 1. max-width: 42.81rem; // forces everything nested within articles to fit into it's max-width
+    // 2. active. allows only child elements to have the max-width of article text, allowing some article content to extend past max line-width for article text
+    max-width: $base-max-width;
+    & > h1, & > h2, & > h3, & > h4, & > h5,
+    & > p,
+    & > a,
+    & > ul,
+    & > blockquote,
+    & > iframe,
+    & > img,
+    & > pre,
+    .meta_article {
+        max-width: $article-max-width; margin-left: auto; margin-right:auto;
+        &.baseWidth {max-width: $base-max-width;}
+    }
+
+    // widths for nested sections
+    & > section {
+        & > h1, & > h2, & > h3, & > h4, & > h5,
+        & > p,
+        & > a,
+        & > ul,
+        & > blockquote,
+        & > iframe,
+        & > img,
+        & > pre,
+        .meta_article {
+            max-width: $article-max-width; margin-left: auto; margin-right:auto;
+            &.baseWidth {max-width: $base-max-width;}
+        }
+    }
+
+    section.baseWidth {max-width: $base-max-width; margin-left: auto; margin-right: auto;}
+
+    // unique intended exceptions to global styles
+    .meta p {margin-bottom: 0;}
+
+    &.tableofcontents {
+        a {
+            background: none;
+            @include hover() {background: $ylw;}
+        }
+        max-width: $base-max-width;
+        @include layout(4 0.333 after fluid border-box);
+        @include clear();
+        header {
+            @include span(12 of 12);
+            .meta {max-width: $base-max-width;}
+        }
+        ul {
+            margin-bottom: $base-horizontal-padding;
+            @include span(1 of 4);
+            &:nth-child(4) {@include last;}
+            &:last-child {
+                @include span(4 of 4);
+                li {
+                    @include span(1 of 4);
+                    &:first-child {@include span(4 of 4);}
+                    &:nth-child(4n+4) {@include last;}
+                }
+            }
+            @media #{$medium-only} {
+                @include span(2 of 4);
+                &:nth-child(even) {@include last;}
+                &:last-child {
+                    @include span(4 of 4);
+                    li{
+                        @include span(2 of 4);
+                        &:first-child {@include span(4 of 4);}
+                        &:nth-child(even) {@include last;}
+                    }
+                }
+            }
+            @media #{$small-only} {
+                @include span(4 of 4);
+                &:last-child {
+                    li {@include span(4 of 4);}
+                }
+            }
+        }
+    }
+
+    // @media #{$medium-only} { padding: 3.157rem; }
+    // @media #{$small-only} { padding: 2.369rem; }
+
+    // & > a {display: block;}
+
+    // }
+
+}
+
+body {
+
+    // hyperlinks
+    // a {
+    //     // color: $bluer;
+    //     // background: lighten($ylw,25%); color: $slate;
+    //     // @include hover() {background: $wht; color: darken($slate,15%);}
+    //     // border-bottom: 2px solid $ylw; color: $slate;
+    //     color: $slate;
+    //     &.underline {
+    //         text-decoration: underline;
+    //     }
+    //     @include hover() {background-color: $ylw; color: darken($slate,15%);}
+    // }
+
+    // images
+    // img {margin-bottom: $base-horizontal-padding;}
+    img {margin:auto auto $base-horizontal-padding;}
+    .imagery { img {max-width: $base-max-width * 0.77778;} } // just for styleguide
+
+    // elements with consistent dimensions a global level
+    .col2,
+    section,
+    article,
+    .article {
+        ul {
+            list-style: disc;
+            list-style-position: outside;
+            padding-left: $base-vertical;
+            margin-bottom: $base-vertical;;
+        }
+    }
+
+    .col2 {
+        // @include wrap($base-max-width, auto);
+        &.full {width: 100%;}
+        // @include global-container(auto, 64rem, 3.157rem, 0);
+        // margin-bottom: $base-vertical;
+        // padding-top: $base-vertical;
+        // padding-bottom: $base-vertical;
+        .left, .right {
+            @include span(6 of 12);
+            @include article;
+            // variations from article styles
+            margin: 0 auto $base-horizontal-padding;
+            h2, h4 {margin-bottom: $base-horizontal-padding;}
+        }
+        .right {@include last;}
+        // .left {@include span(5 of 12);}
+        // .right {@include span(7 of 12 last);}
+        pre {
+            @include span(12 of 12 last);
+            padding: 1rem;
+            background: $wht;
+        }
+
+        @media #{$medium-down} {
+            .left, .right { float: none; max-width: $article-max-width; margin-left: auto; margin-right: auto; }
+        }
+    }
+
+    & > article,
+    & > .article {@include article;}
+
+    .about {
+        max-width: $article-max-width;
+        h1, h2, p {margin-bottom: $base-vertical;}
+        p {
+            font-family: $base-font;
+            line-height: 1.778rem;
+            &:last-of-type{margin-bottom: 0;}
+        }
+        // hyperlinks
+        a {
+            // appearance
+            display: inline-block;
+            padding: 2px 2px 0 2px;
+            border-bottom: 2px solid $gld;
+            color: $slate;
+            font-weight: bold;
+            @include hover() {background: $slate; color: $wht; border-bottom: 2px solid $slate;}
+            // &:hover {background: $slate; color: $wht; border-bottom: 2px solid $slate;}
+            // TODO: why doesn't the normal hover mixin work?
+            // @include hover() {background: $wht; color: darken($slate,15%);}
+        }
+
+    }
+
+    //search - invert header colors
+    .search {
+        @include wrap(100%, auto);
+        @include base-wrapper();
+        background: $slate;
+        h1, h2 {
+            color: $wht;
+            i {color: $slate; background: $wht;}
+        }
+    }
+
+    // for grid
+    // .3col {
+    //     @include span(12 of 12);
+    //     label {
+    //         @include span(4 of 12 0.7778);             // if 3 columns (city state zip)
+    //         &.address { @include span(12 of 12); } // margin-bottom: 0.7778em;
+    //         &:last-child {@include last;}
+    //     }
+    //     @media #{$small-only} {
+    //         &.county { label {@include span(12 of 12);} }
+    //         label {@include span(12 of 12);}
+    //     }
+    // }
+    //
+    // .2col {
+    //     @include span(12 of 12);
+    //     label {
+    //         @include span(6 of 12);
+    //         &:last-child { @include last; }
+    //         @media #{$small-only} { @include span(12 of 12); }
+    //     }
+    // }
+
+    .submitAtip { max-width: $article-max-width; }
+
+    .absconder_identification  {
+        .left {
+            @include span(4 of 12);
+            // max-width: 177.167px;
+            height: auto;
+            margin-bottom: $base-horizontal-padding;
+        }
+        .right {
+            @include span(8 of 12 last);
+        }
+    }
+
+
+    .messageScreen {
+        position: relative;
+        min-height: 100vh;
+         min-width: 100vw;
+            height: 100%;
+             width: 100%;
+
+        max-width: $article-max-width;
+        padding: 0;
+
+        // to un-offset the topnav, allowing it to fill the entire screen
+        margin: -65px auto 65px;
+
+        div {
+            @include absolute_center;
+            text-align: center;
+        }
+        h1, p {margin-bottom: $base-horizontal-padding;}
+        button {margin: auto;}
+    }
+
+    // ==========================
+    //  SVGs
+    // ==========================
+
+    svg.svg {
+        .dotgov path,
+        .paKeystone .keystone,
+        .paKeystone .pa {@include anim($global-animation);}
+    }
+
+    // everywhere but topnav
+    & :not(.nav),
+    & :not(.oldnav) {
+        .svg {
+            display: block;
+            margin: auto;
+            width: 100%;
+            max-width: $article-max-width;
+            @media #{$medium-down} { padding: 0 0.778rem; }
+        }
+    }
+
+    // topnav - SVG logo
+    .nav, .oldnav {
+
+        .svg {
+            margin: 0;
+            width: 100%; // fix for IE
+            max-width: 110px;
+            max-height: 48px;
+            // height: 48px;
+            height: $navHeight;
+        }
+
+        // TOOD: Doesn't work yet.
+        // scaling the SVG logo
+        // .svg_wrapper {
+        //     // scaling SVGs
+        //     // (using padding-bottom hack)
+        //     // ******************************
+        //     //  - override this inline for aspect ratio other than square
+        //     //  - in this case: the aspect ratio is viewport="0 0 146.4 24"
+        //     //  - so, using the padding-bottom hack:
+        //     //    padding-bottom: 16.39% (100% x 24 / 146.4) was added inline to parent
+        //
+        //     position: relative;
+        //     height: 0;
+        //     width: 100%;
+        //     padding: 0;
+        //     padding-bottom: 100%;
+        //
+        //     // then using absolute positioning, and presto = the svg behaves like an image.
+        //     .svg {
+        //         position: absolute;
+        //         height: 100%;
+        //         width: 100%;
+        //         left: 0;
+        //         top: 0;
+        //     }
+        // }
+
+    }
+    .nav .svg {
+        max-height: 48px;
+        max-width: 110px;
+    }
+
+    // SVG - color styles
+    // **********************************
+    //  - hover effects in .topnav.scss
+    // **********************************
+
+    // hero
+    .hero svg.svg {
+        .logoTitle, .logoSubTitle, .dotgov path, .paKeystone .keystone {fill: $wht;}
+        .paKeystone .pa {fill: $slate;}
+    }
+
+    // topnav NU
+    .nav .svg {
+        .dotgov path, .paKeystone .keystone {fill: $slate;}
+        .paKeystone .pa {fill: $wht;}
+    }
+
+    // topnav OLD
+    .oldnav .svg {
+        .dotgov path, .paKeystone .keystone {fill: $wht;}
+        .paKeystone .pa {fill: $slate;}
+        @include hover() {
+            .dotgov path, .paKeystone .keystone {fill: $slate;}
+            .paKeystone .pa {fill: $wht;}
+        }
+    }
+
+    // fabricator / styleguide styles
+    .f-container {
+        & > * {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        & > h1, & > .meta, & > p, & > ul {margin-bottom: $base-vertical; max-width: $article-max-width;}
+        & > h2, & > h3, & > pre {margin-bottom: $base-horizontal-small;}
+        & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 { font-family: $base-font; font-weight: 700; max-width:$article-max-width;}
+        & > h1 { @include type-setting(4); }
+        & > pre { max-width:$article-max-width;}
+        .f-item-heading-group {
+            & > h2 { @include type-setting(3); text-transform: none;}
+            & > h3 { @include type-setting(1); text-transform: uppercase;}
+        }
+        // .nav {position:relative;}
+
+        .f-color-chips {max-width: $base-max-width;}
+
+        .f-item-preview {
+            .oldnav {position: relative;}
+        }
+        .f-item-notes {
+           ul {list-style: disc;}
+           ol {list-style: decimal;}
+           ul, ol, p {margin-bottom: $base-horizontal-padding;}
+        }
+
+        .f-item-group {
+            & > .f-item-heading-group,
+            & > .f-item-preview,
+            & > .f-item-code { @include wrap($base-max-width, auto) }
+            & > .f-item-notes { @include wrap($article-max-width, auto) }
+            // &:nth-child(odd){background-color: $wht;}
+        }
+
+        & > article {@include article;}
+
+    }
+
+    & > section {
+
+        // section widths
+        // ===================
+        // no padding - @include global-container(auto, 64rem, 3.157rem, 0);
+        @include global-container(100%, 100%, 3.175rem, 0);
+        margin-bottom: $base-vertical;
+
+        // targets just the immediate child elements
+        & > h1,
+        & > h2,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > ul,
+        & > blockquote,
+        & > .meta,
+        iframe {@include wrap($base-max-width, auto);}
+
+        & > h1 {margin-bottom: $base-vertical;}
+
+        & > h2,
+        & > .meta,
+        & > pre,
+        & > code {margin-bottom: $base-horizontal-padding;}
+
+        & > img,
+        & > table,
+        & > p,
+        & > .pseudo-search  {max-width: $base-max-width; margin-left: auto; margin-right: auto;} // todo --- adding clearfix to inline elements (p, etc), if they have psuedo styles, seems to break them....
+
+        & > article,
+        & > .article {@include article;}
+
+        &.full {@include global-container(100%, 100%, 3.157rem, 3.157rem);}
+
+        // mobile - excludes the profile section
+        &:not(.profile) {
+            @media #{$extra-large-down} { padding-left: $base-vertical; padding-right: $base-vertical; }
+        }
+
+    }
+
+
+    // About max-width
+    & > section {
+        & > h1,
+        & > p {max-width: $article-max-width;}
+        p {line-height: 1.778rem;}
+    }
+
+
+    @media #{$extra-large-down} {
+        .submitAtip,
+        // .search,
+        .about,
+        .searchResults  {
+            padding-left: $base-vertical;
+            padding-right: $base-vertical;
+        }
+    }
+
+
+}

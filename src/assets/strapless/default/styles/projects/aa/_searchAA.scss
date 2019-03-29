@@ -1,0 +1,20 @@
+// ==========================
+//  
+//   Absconder's Most Wanted 
+//  -----------------------------
+//   - "Search" section
+//      - home page
+//      - search results page.
+//
+// ==========================
+
+//search - invert header colors
+.search {
+    @include wrap(100%, auto);
+    @include base-wrapper();
+    background: $slate;
+    h1, h2 {
+        color: $wht;
+        i {color: $slate; background: $wht;}
+    }
+}

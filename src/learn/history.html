@@ -1,0 +1,94 @@
+<h2 id="iv-how-we-got-here">IV. How We Got Here</h2>
+<ol>
+<li><p><strong>COPA Metrics:</strong></p>
+<ul>
+<li><strong>Frontend Framework</strong>: built using Foundation, with styles customized on top of Foundation&#39;s <em>Pre-Compiled CSS</em>.  </li>
+<li><strong>Styles</strong>: CSS, non-compiled. It was decided to code this using .css early on, which proved unmnagable by the end.</li>
+<li><strong>Markup</strong>: Bulky, unsemantic (in order to use foundation, the markup doe not denote meaning on its own, and is mostly used for styling)</li>
+<li><strong>CMS</strong>: Wordpress</li>
+<li><strong>Lessons learned</strong>:<ul>
+<li>coding in pure CSS is entirely too slow and cumbersome.</li>
+<li>Preserve code used to counter Foundation&#39;s boiled in styles.  </li>
+<li>There was no guidelines or codebase to build from --- I needed to learn, decide, or build as I went.</li>
+<li>In the end, the project was a success.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>PA.GOV</strong>:</p>
+<ul>
+<li><strong>Frontend Framework</strong>: built using Foundation, customized on top of Foundation&#39;s <em>Pre-Compiled CSS</em>.  </li>
+<li><strong>Styles</strong>: SCSS, on top of the newest build of Foundation&#39;s <em>Pre-Compiled CSS</em>, with code brought over from COPA Metrics where appropriate and to counter Foundation&#39;s styles</li>
+<li><strong>Markup</strong>: Cleaner, due to an effort to minimize markup where-ever possible. Not completely semantic, as there wasn&#39;t time to wrangle with Foundation&#39;s styles to adapt to a more semantic markup.</li>
+<li><strong>CMS</strong>: Wordpress</li>
+<li><p><strong>Lessons learned</strong>:</p>
+<ul>
+<li>Many of the issues from COPA Metrics were solved by using SASS. A project that size and prone to sudden change coulnd&#39;t have been built using anything else.</li>
+<li>Early on, a lesson learned from COPA Metrics was the need to organize and systemize the design assets. Because nothing of the sort existed yet, building our framework with Foundation is the best choice available.</li>
+<li><p>It also made several things clear about working with Foundation:  </p>
+<pre><code>  - Foundation is excellent for rapid prototyping, but as a project matures, becomes cumbersome, then entirely unnecessary.  
+  - We were unable to safely work with Foundation&#39;s _scss_, because it would get overwritten everytime they updated the codebase.
+  - near the end, it became increasingly difficult to manage, and ironning out the finer points of mobile styling became very time-consumming.
+  - Our style base had matured to the point that the only thing we were using from Foundation was a hand-full of mixins and a plugin called What-Input (which we&#39;re still using because it&#39;s amazing). We used their grid for some positioning, but ultimately relied on it very minimally. At mobile, other than supplying the breakpoints, Foundation made no difference to the appearance whatsoever.
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p><strong>Agency Template</strong>:</p>
+<ul>
+<li><strong>Frontend Framework</strong>: built using Foundation, customized on top of Foundation&#39;s <em>Compiled CSS</em>  </li>
+<li><strong>Styles</strong>: CSS, build on Foundations <em>compiled CSS</em>, and built to adapt to Sharepoint&#39;s built-in markup &amp; styles</li>
+<li><strong>Markup</strong>: Bulky, unsemantic, difficult to manage</li>
+<li><strong>CMS</strong>: Sharepoint 2010</li>
+<li><p><strong>Lessons learned</strong>:</p>
+<ul>
+<li><p>The massive maintainability issues were caused by two things:</p>
+<ul>
+<li>Building on the <em>Compiled CSS</em> was a huge error. Immensely difficult to modify.</li>
+<li>Letting Sharepoint control the markup. Sharepoint markup is <em>not</em> accessable, and carries a large blame for our accessability failure last summer.</li>
+</ul>
+</li>
+<li><p>Until fixing the two causes of the maintainability issue, no matter what framework we use, these problem will persist.</p>
+</li>
+<li>Regardless of framework, it would be quicker to start from scratch than to &#39;fix&#39; the old template.</li>
+<li>Avoid re-using the old agency template</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>DGS: State Construction Notices Directory</strong></p>
+<ul>
+<li><strong>Frontend Framework</strong>: built using our <code>Style Asset Library</code>. In other words, framework-free.</li>
+<li><strong>Styles</strong>: SCSS. The <code>Style Asset Library</code> = the styles brought over from PA.Gov, without Foundation. The decision was made during this project to move away from Foundation entirely. From Foundation, we kept &#39;What-Input&#39;, about 5 mixins, and to replace Foundation&#39;s grid, we&#39;re used a Sass-based tool called Susy. Other than those things, Foundation brought nothing to the table that our <code>Style Asset Library</code> wasn&#39;t already handling.</li>
+<li><strong>Markup</strong>: Semantic, clean, and minimal. Built in VSTS, using Razor (MVC ?) to generate partials</li>
+<li><p><strong>Lessons learned</strong>:</p>
+<ul>
+<li>making the move away from Foundation came with growing pains, and wasn&#39;t immediately accepted.</li>
+<li>In addition to standardizing the styles, the choice was made to begin standardizing the HTML5 markup as well. However, without a centralized and definitive resource to define the markup, this could lead to confusion.</li>
+<li>The need to have a central authority on &#39;correct&#39; markup comes up : for it, I&#39;m referring to HTML5&#39;s latest docs, the latest Accessability best practices, and one prevalent rule: Use The Least Amount Of Markup Possible</li>
+<li>the <code>Style Asset Library</code> is incomplete without also standardizing the markup; in other words, everything needs to be more modular.</li>
+<li>began building this standardize library via a Styleguide, stored in a directory within the site</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>PBPP: Most Wanted Absconders</strong></p>
+<ul>
+<li><strong>Frontend Framework</strong>: built using the matured <code>Style Asset Library</code> from DGS. This time, adapted to include standardized semantic / accessability markup.</li>
+<li><strong>Styles</strong>: SCSS. The <code>Style Asset Library</code> +</li>
+<li><strong>Markup</strong>: Semantic, clean, and minimal. Built in VSTS, using Razor (MVC ?) to generate partials</li>
+<li><p><strong>Lessons learned</strong>:</p>
+<ul>
+<li>Though unnamed, this was the test implementation of <code>Strapless</code>: semantic, assessable markup + <code>Style Asset Library</code></li>
+<li>The project was built rapidly, with a rapid bug-fixing phase.</li>
+<li>Also stores a &#39;Styleguide&#39; directory within the site, a more mature (though very early) version of Strapless&#39;s styleguide output</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Strapless, PSP, Employment, and Beyond</strong></p>
+</li>
+</ol>

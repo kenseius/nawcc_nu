@@ -1,0 +1,13 @@
+// ======================================
+//      background triangle mixin 
+// ======================================
+
+// NOTE: Uses Foundation's bg triangle mixin
+
+// background triangle
+@mixin triangle($triangleColor){
+    @include background-triangle($triangleColor);
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-size: 0.625em; // = 10px
+}
