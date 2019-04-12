@@ -2,16 +2,33 @@
 // ===============================================
 //@import "susy";
 
-// 12 cols with 1.778em (28.45px) gutters (margin-right + float)
+
+// 12 cols with 1.999rem (31.990px) gutters (margin-right + float)
 $susy: (
     columns: 12,
-    gutters: 1.778,
+    gutters: 1.999,
     gutter-position: after,
     math: fluid,
     // container: $base-max-width
     global-box-sizing: border-box,
-    column-width : 50.512px //  old: 50px
+    column-width : 45.234px // 63.961px // 50.512px 
 );
+
+
+
+
+// 12 cols with 1.778em (28.45px) gutters (margin-right + float)
+//$susy: (
+//    columns: 12,
+//    gutters: 1.778,
+//    gutter-position: after,
+//    math: fluid,
+//    // container: $base-max-width
+//    global-box-sizing: border-box,
+//    column-width : 50.512px //  old: 50px
+//);
+
+
 
 /* USAGE
 // ===================

@@ -1,0 +1,60 @@
+
+
+// button list, using <a> styles from .sidenav
+
+.buttonList {
+    &.buttonListcontainer {
+        background: $gry;
+        padding: 1rem;
+    }
+    &.buttonList_uiToolkit {
+        width: 100%;
+        display: block;
+        margin: auto; 
+        a {@include span(3 of 12)}
+        h4 a {border-bottom: 0;}
+    }
+    a {
+        display: block;
+        position: relative;
+        width: 100%;
+        border: 0;
+        padding: 0.707rem 0 0.707rem 1rem; // .5rem 0 .5rem 1rem
+        line-height: $base-line-height; //1.6em
+        i.fa,
+        .material-icons {
+            position: absolute;
+            top: 0.69671875rem;
+            left: $base-padding;
+            line-height: $base-line-height;
+            font-size: $scale_1;
+        }
+        span {
+            vertical-align: middle;
+            display: block;
+            margin-left: $scale_3; // 1.875em;
+            line-height: $base-line-height;
+        }
+        @include anim($global-animation);
+        @include hover() {color: $slate; background: $pch;}
+        &.is-active {
+            background: $slate; 
+            color: $wht;
+            span {color: $wht;}
+            &:before {
+                // arrow
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: inset .8em;
+                border-color: transparent transparent transparent $slate;
+                border-left-style: solid;
+                position: absolute;
+                top: .45rem;
+                right: -1.45rem;
+            }
+            @include hover() {background: $slate;}
+        }
+    }
+}

@@ -1,6 +1,13 @@
 // ===========================================
+//  
+//      1. Strapless / Fabricator styles 
+//      -----------------------------
+//      - styling for how strapless portrays materials 
+//      - fabricator styles 
+//      - docs
 //
-//      STYELGUIDE
+//
+//      2. STYLEGUIDE
 //      -----------------------
 //
 //      I.   styleguide wrapper
@@ -14,6 +21,716 @@
 //      V.   code styles
 //
 // ===========================================
+
+
+
+
+
+
+// ============================================
+//  
+//   Strapless / Fabricator styles 
+//
+// ============================================
+
+
+// fabricator / styleguide styles
+.f-container {
+    // background-color: $gryliter;
+    & > * {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    & > h1, & > .meta, & > p, & > ul {
+        margin-bottom: $base-vertical; 
+        max-width: $article-max-width;
+    }
+    & > h2, & > h3, & > pre {margin-bottom: $base-horizontal-small;}
+    & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 { 
+        // font-family: $base-font; 
+        font-weight: 700; 
+        max-width:$article-max-width;
+    }
+    & > h1 { @include type-setting(4); }
+    & > pre { max-width:$article-max-width;}
+    .f-item-heading-group {
+        & > h2 { @include type-setting(3); text-transform: none;}
+        & > h3 { @include type-setting(1); text-transform: uppercase;}
+    }
+
+    .f-color-chips {max-width: $base-max-width;}
+
+    .f-item-preview {
+        .oldnav, .nav {position: relative;}
+
+        // styles content within <sections> when displayed via f-item-preview 
+        & > section {
+            .col2,
+            pre {@include wrap($base-max-width, auto);}
+        }
+
+
+    }
+
+    .f-item-notes {
+       ul {list-style: disc;}
+       ol {list-style: decimal;}
+       ul, ol, p {margin-bottom: $base-horizontal-padding;}
+    }
+
+    .f-item-group {
+        & > h2,
+        & > .f-item-heading,
+        & > .f-item-heading-group,
+        & > .f-item-preview,
+        & > .f-item-code { 
+            max-width: $base-max-width;
+            margin-left: auto;
+            margin-right: auto;
+            // @include wrap($base-max-width, auto) 
+        }
+        & > .f-item-notes { @include wrap($article-max-width, auto) }
+        // &:nth-child(odd){background-color: $wht;}
+    }
+
+    p > img {max-width:$article-max-width; background: $blu;}
+
+    // & > article,
+    article,
+    .article {
+        @include article;
+        margin: 0 auto $base-vertical-padding; // $base-vertical-padding auto ($base-vertical-padding * 1.778);
+        
+        // adds padding for the first element
+        & > *:not(img):first-child {padding-top: $base-vertical-padding;}
+        
+        & > h1, & > h2, img, pre {
+            // max-width: $base-max-width;
+            @media #{$medium-down} {max-width: $article-max-width;}
+        }
+        & > h2, 
+        // & > h3, 
+        & > pre {margin-bottom: $base-vertical-padding; }
+        &> h1, & > h2, & > h3, & > h4, & > h5, & > h6 { 
+            font-family: $base-font; 
+            font-weight: 700; 
+            // max-width:$article-max-width;
+        }
+        // & > h1 { @include type-setting(4); }
+        pre {
+            @include clear;
+            display: block;
+            width: 100%;
+        }
+        // & > h1, & > h2, pre {max-width: $base-max-width;}
+        .col2 { img {max-width: 100%;} }
+    }
+
+}
+
+
+// styling for documentation pages
+.docs {
+    table {max-width: $article-max-width;}
+    article {
+        & > h1:first-child,
+        & > .meta,
+        & > .meta_article {max-width: $base-max-width;}
+    }
+}
+
+
+
+.f-item-group {
+    @media #{$medium-down} {
+        padding-left: 1.333rem;
+        padding-right: 1.333rem;
+    }
+}
+
+
+
+// typography
+
+main,
+.main {
+    h2 {
+        // @include type-setting(4);
+//        @include wrap($base-max-width, auto);
+//        @include clear();
+//        margin-bottom: $base-vertical-padding;
+//        &.f-item-heading {
+//            display: block;
+//            margin: 0 auto;
+//        }
+//        padding-bottom: 1.333rem;
+//        border-bottom: $base-border;
+//        border-bottom-color: $org;
+    }
+    // h3 {@include type-setting(3);}
+    article {
+        margin:0 auto $base-vertical-padding;
+        table {max-width: $base-max-width;}
+    }
+    & > .f-item-group h2.f-item-heading {
+        display: block;
+        margin-bottom: 0px;
+        padding-top: $base-vertical-padding;
+        // width: 100%;
+        // border-bottom: 0;
+    }
+    .f-item-heading-group {margin-bottom: 0;}
+}
+
+
+
+.layout_strapless_material {
+
+    .f-item-preview,
+    .f-item-notes,
+    .f-item-code {@include clear();}
+
+    // when either is present alone
+    .f-item-notes,
+    .f-item-code {
+        display: block;
+        margin-left: auto;
+        margin-right:auto;
+        @include container($base-max-width);
+    }
+
+    // 2 col when
+    .layout_strapless_material_twoColumns {
+        @include container($base-max-width);
+        .f-item-notes,
+        .f-item-code {@include span(6 of 12);}
+        .f-item-code {@include last;}
+    }
+    .f-item-preview {
+
+        // full width grey bg
+        // --------------------
+        // width: 100%;
+        padding: $base-vertical-padding 0;
+        background: $whtlite;
+
+        // centered block
+        // -----------------
+        // display: block;
+        // margin-left: auto;
+        // margin-right: auto;
+        // float: none;
+        // max-width: $base-max-width;
+        // // max-width: ($base-max-width + $base-vertical-padding + $base-vertical-padding);
+        // padding: $base-vertical-padding 0;
+        // background: $wht;
+
+        // with borders
+        // border-bottom: $base-border;
+        // border-bottom-color: $grylite;
+
+        margin-bottom: $base-vertical;
+        & > * {
+            &:not(table),
+            &:not(div.f-color-chips) {display: block;}
+            &:not([data-balloon]):not(.line-title) {@include container($base-max-width);}
+            margin-left: auto;
+            margin-right:auto;
+        }
+        & > div.pagination {display: flex; float:none;}
+        & > table {@include container($base-max-width);}
+        & > nav {float: none;}
+        & > form:not(#aspnetForm).search {max-width: $base-max-width;}
+        & > a {@include wrap($base-max-width, auto);}
+        & > .buttonList {@include span(3 of 12);}
+    }
+}
+
+// non-card-based f-item-group styling
+
+// .f-container .f-item-group {
+//     max-width: 100%;
+//     margin: 0 auto 6.25rem;
+//     border: 0;
+// }
+
+.f-container .main .f-item-group {
+    max-width: 100%;
+    margin: 6.25rem;
+}
+
+
+.f-container .f-item-group {
+    @include article_cards;
+    margin-left: auto;
+    margin-right: auto;
+    @media #{$largest-down} { padding-left: 0; padding-right: 0; margin-left: $base-horizontal-padding; margin-right: $base-horizontal-padding; }
+    & > section,
+    & > article {
+        @media #{$largest-down} { padding-left: 0; padding-right: 0; }
+    }
+    .hero_strapless_materials h1,
+    .f-item-code {
+        @media #{$largest-down} { padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+    }
+    // max-width: $base-max-width;
+    &:first-of-type {margin-top: calc(65px + 1.778rem);}
+    &:last-of-type {margin-bottom: calc(65px + 1.778rem);}
+    // &:nth-child(1) { & > .hero_strapless_materials { background: $slate; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(2) { & > .hero_strapless_materials { background: $org; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(3) { & > .hero_strapless_materials { background: $blu; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(4) { & > .hero_strapless_materials { background: $bludrk; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(5) { & > .hero_strapless_materials { background: $blulite; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(6) { & > .hero_strapless_materials { background: $grn; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(7) { & > .hero_strapless_materials { background: $red; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
+    // &:nth-child(8) { & > .hero_strapless_materials { background: $ylw; h1 {padding-bottom: 0; border: 0; color: $slate;} } }
+    // &:nth-child(9) { & > .hero_strapless_materials { background: $pch; h1 {padding-bottom: 0; border: 0; color: $slate;} } }
+    // &:nth-child(10) { & > .hero_strapless_materials { background: $gld; h1 {padding-bottom: 0; border: 0; color: $slate;} } }
+}
+
+// card header color
+// =================================
+// - unique for each component page
+// =================================
+
+// structure
+.structure .f-container .f-item-group {
+    & > .hero_strapless_materials { background: $blulite; h1 {padding-bottom: 0; border: 0; color: $wht;} }
+}
+
+// navigation
+.navigation .f-container .f-item-group {
+    & > .hero_strapless_materials { background: $blu; h1 {padding-bottom: 0; border: 0; color: $wht;} }
+}
+
+// layout
+.layout .f-container .f-item-group {
+    & > .hero_strapless_materials { background: $red; h1 {padding-bottom: 0; border: 0; color: $wht;} }
+}
+
+.content .f-container .f-item-group {
+    & > .hero_strapless_materials { background: $slate; h1 {padding-bottom: 0; border: 0; color: $wht;} }
+}
+
+.forms .f-container .f-item-group {
+    & > .hero_strapless_materials { background: $grn; h1 {padding-bottom: 0; border: 0; color: $wht;} }
+}
+
+.sharing .f-container .f-item-group {
+    & > .hero_strapless_materials { background: $bludrk; h1 {padding-bottom: 0; border: 0; color: $wht;} }
+}
+
+
+// demo pages
+// ====================
+
+.demo {
+    .hero {margin-top:65px;}
+    main {
+        margin: $base-horizontal-padding auto;
+        & > section {max-width: $base-max-width; margin: auto;}
+    }
+    form.search {
+        input[type="search"], button, select, select > option {
+            color: $wht;
+        }
+    }
+    .results > a:last-of-type {margin-bottom: $base-horizontal-padding;}
+}
+
+
+
+
+
+// embedding stuff
+
+// imgur
+iframe#imgur-embed-iframe-pub-wUcgIBZ {
+    display: block;
+    max-width: $article-max-width;
+
+    // these lines help us overide the built in styles imgur's embed brings to the table, which causes it to float left.
+    // centered by forcing margin: auto; (or margin: auto auto $base-vertical-rhythm;)
+    margin: auto auto $base-vertical !important;
+    width: 100%;
+    // margin: auto !important;
+    // margin-left: auto;
+    // margin-right:auto;
+    &.baseWidth {max-width: $base-max-width;}
+}
+
+
+
+// styles for ui components
+
+.body_UItoolkit {
+    background: $gry;
+    .f-container {background: $gry;}
+    main {background: $gry;}
+    h2 {border-bottom: 0;}
+    .introSection {@include wrap($base-max-width, auto)}
+}
+
+
+
+// styles for component page intro sections
+
+.componentsIntro {
+    // .whatIsthis img {margin: 4.86111rem auto 8.64306rem;}]
+    .whatIsthis {
+        position: relative;
+        height: auto;
+        // overflow: hidden;
+        p {@include type-setting(1); margin-bottom: 2.369rem;}
+        &:hover img {
+            transform: perspective( 0 ) rotateZ( 0deg );
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                transform: perspective( 0 ) rotateZ( 0deg ) translateZ(0);
+            }
+            // &:nth-child(3) {z-index: -1;}
+
+            // &:nth-child(2),
+            // &:nth-child(4),
+            // &:nth-child(6) {
+            //     opacity: 0;
+            //     transform: perspective( 0 ) rotateZ( 0deg ) translateZ(0);
+            // }
+
+            // &:nth-child(3),
+            // &:nth-child(5),
+            // &:nth-child(7),
+            // &:nth-child(8) {
+            //     transform: perspective( 0 ) rotateZ( 0deg ) translateZ(0);
+            // }
+            // &:nth-child(9) {z-index: -1;}
+        }
+    }
+    .whatIsthis img {
+        margin: 4.86111rem + 3.157rem auto 0;
+        max-width: 400px;
+
+        transform: perspective( 1000px ) rotateY( -35deg ) rotateZ( 0deg ) rotateX( 0deg );
+        perspective-origin: 20% 50%;
+        position: absolute;
+
+        @include anim($global-animation);
+
+        // &:nh-child(2),
+        // &:90p-p,/
+        // &:nth-child(6) {
+        //     opacity: 0;
+        //     // filter: brightness(0%);
+        //     // background: $slate;
+        //     // border: 2px solid $blu;
+        // }
+
+        // &:nth-child(odd) {}
+
+        &:nth-child(2) {
+            position: absolute;
+            transform: perspective( 1000px ) rotateY( -35deg ) rotateZ( 0deg ) rotateX( 0deg ) translateZ( 80px );
+            perspective-origin: 20% 50%;
+        }
+
+        &:nth-child(3) {
+            position: absolute;
+            transform: perspective( 1000px ) rotateY( -35deg ) rotateZ( 0deg ) rotateX( 0deg ) translateZ( 70px );
+            perspective-origin: 20% 50%;
+        }
+
+        // &:nth-child(5),
+        // &:nth-child(6) {
+        //     position: absolute;
+        //     transform: perspective( 1600px ) rotateY( 35deg ) rotateX( 10deg ) translateZ(45px + 45px);
+        // }
+
+        // &:nth-child(5) {
+        //     z-index: -1;
+        //     position: absolute;
+        //     transform: perspective( 1600px ) rotateY( 35deg ) rotateX( 10deg ) translateZ( -90px );
+        //     perspective-origin: 20% 50%;
+        // }
+
+        // -webkit-transform: rotateX(200deg) rotateY(200deg) rotateZ(200deg);
+        // -webkit-transform: scale3d(0.9, 1, 1);
+        // -webkit-transform: translate3d(0px, 0px, 0px);
+        // -webkit-transform: skew(20deg, 15deg);
+
+        @media #{$small-only} {display: none;}
+
+    }
+    & > section {
+        @include wrap($base-max-width, auto);
+        margin-bottom: $base-horizontal-padding;
+    }
+    .article {margin: 3.157rem auto 0;}
+}
+
+
+
+.f-container,
+.f-item-notes {
+table {
+    a {
+        display: block;
+        position: relative;
+        width: 100%;
+        border: 0 !important;
+        padding: .5rem 0 .5rem 1rem !important;
+        line-height: 1.6em;
+        .fa,
+        .material-icons {
+            position: absolute;
+            top: .3745rem;
+            left: .85rem;
+            line-height: 1.6em;
+            font-size: 1.2em;
+        }
+        .material-icons {
+            font-size: 1.333rem;
+        }
+        span {
+            vertical-align: middle;
+            display: block;
+            margin-left: 1.875em;
+            line-height: 1.6em;
+        }
+        @include anim($global-animation);
+        @include hover() {background: $pch;}
+        &.is-active {
+            background: $slate;
+            color: $wht;
+            &:before {
+                // arrow
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: inset .8em;
+                border-color: transparent transparent transparent $slate;
+                border-left-style: solid;
+                position: absolute;
+                top: .45rem;
+                right: -1.45rem;
+            }
+            @include hover() {background: $slate;}
+        }
+    }
+
+    // unique style overrides
+    td {
+        // font-family: $base-font;
+        // padding-top: $base-horizontal-padding;
+        // padding-bottom: $base-horizontal-padding;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    thead {
+        & > tr th {
+            background: transparent;
+            // padding-left: 1.875em;
+            color: $gry_muted;
+            // &:not(:first-child) {
+            //     text-transform: none;
+            //     @include type-setting(0);
+            // }
+            // &:first-child {visibility: hidden;}
+        }
+    }
+    tbody tr {
+        background: transparent;
+        &:nth-child(even) {background: transparent;}
+    }
+    // disable hover
+    tbody tr {
+        @include hover() {
+            a, td {color: $blk !important;}
+            background: $gry !important;
+            cursor: initial;
+        }
+    }
+
+}
+
+}
+
+.typography_example {
+    // p:first-child {@include type-setting(2);}
+    table {
+        padding-top: 1rem;
+        thead {display: none;}
+        tbody {border-top: $base-border;}
+        tbody td:first-of-type {color: lighten($slate, 15%);}
+    }
+    .accordion_uiComponents {padding-top: 0;}
+}
+
+.body_UItoolkit,
+.main_home {
+    .accordion_title {
+        font-weight: normal;
+        @include type-setting(1);
+    }
+}
+
+.component_title {
+    margin-bottom: 1.778rem;
+    font-weight: normal;
+    @include type-setting(1);
+}
+
+// used to style notes and titles placed in the component preview space
+.preview_info {
+   // padding-bottom: $base-horizontal-padding;
+   p,
+   & > div {margin-bottom: 1.778rem;}
+
+   & > div > h3 {margin-bottom: 1.778rem !important;}
+
+}
+
+
+
+
+// Topnav Active Page Styles
+
+.structure {
+    .nav .links a:first-child {background: $gry;}
+}
+.navigation {
+    .nav .links a:nth-child(2) {background: $gry;}
+}
+.content {
+    .nav .links a:nth-child(3) {background: $gry;}
+}
+.layout {
+    .nav .links a:nth-child(4) {background: $gry;}
+}
+.forms {
+    .nav .links a:last-child {background: $gry;}
+}
+
+
+
+
+// home page
+// ===========================
+
+
+.main_home {
+    width: 100%;
+    background: $gry;
+}
+
+
+
+// button grid
+
+.intro_buttons {
+    a {
+        @include span(33.333%);
+        margin: 0;
+        @include type-setting(1);
+        img {
+            max-width: 50%;
+            @media #{$small-only} { max-width: 95%; }
+        }
+    }
+}
+
+.intro_greeting {
+    margin-top: 65px + (1.778 * 16px);
+    .accordion {max-width: $article-max-width; margin-left: auto; margin-right: auto;}
+}
+
+.main_home {
+    background: $gry;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    // @media #{$small-only} { height: auto; }
+}
+
+.main_home .whatIsthis {
+    width: 100%;
+    height: auto;
+    @media #{$small-only} { img {margin: 0;} }
+    img {
+        margin: 4rem auto 0;
+        max-width: 550px;
+        @media #{$medium-down} {max-width: 300px;}
+    }
+    .article {
+        // .svg {margin-top: 2.369rem;}
+        margin: 0 auto;
+        p {margin-bottom: 1.333rem;}
+        a {
+            display: block !important;
+            width: 100%;
+            padding: 1.333rem 1rem !important;
+            @include type-setting(3);
+            border: 0 !important;
+            color: $slate;
+            font-weight: bold !important;
+            span {padding-left: 1rem;}
+            i {
+                font-size: 2.369rem; color: lighten($slate,20%);
+                @include anim($global-animation);
+            }
+
+            @media #{$medium-only} {@include type-setting(2);}
+
+            &:first-of-type {color: $blulite !important;}
+            &:nth-child(4n) {color: $slate !important;}
+            &:last-child {color: $red !important;}
+
+            @include hover() {
+                i {color: $wht;}
+                color: $wht !important;
+                &:first-of-type {background: $blulite !important;}
+                &:nth-child(4n) {background: $slate !important;}
+                &:last-child {background: $red !important;}
+            }
+
+        }
+    }
+
+}
+
+
+// heros
+// =====================
+
+.hero_strapless_materials {
+    img {@include span(3 of 12);}
+    p {text-align: left;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===================================================================================
+
+
+
+
+
+
+
+
 
 // ==========================
 //  I. styleguide wrapper

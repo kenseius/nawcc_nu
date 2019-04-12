@@ -7,6 +7,8 @@
 //
 // ===========================================
 
+
+
     @charset 'utf-8';
 
     // @import '../node_modules/foundation-sites/dist/css/foundation-sites.min.css';
@@ -16,740 +18,119 @@
     // css reset
     @import 'base/reset';
 
+
     // vendor dependencies
     // @import 'susy'; // Susy 3 - TODO: migrate
     @import 'vendor/susy-susytwo/sass/susy'; // TODO: susy 2
     @import 'vendor/foundation/mixins'; // TODO: incorporate into _mixins
     // @import 'vendor/foundation/foundation';
-    //@import '../bower_components/font-awesome/scss/font-awesome.scss';
+
+
 
 //  BASE + LAYOUT
 // ************************
 
+
     // base
     @import 'base/base';
 
-    // // base
-    // @import 'base/variables';
+    //    // variables
+    //    @import 'variablesNAWCC';
+    //
+    //    // mixins
+    //    @import 'mixins/mixins'; 
+    //
+    //    // layout + grids
+    //    @import 'layout/vertical-rhythm';
+    //    @import 'layout/susy';
+    //    @import 'layout/breakpoints';
+    //    @import '../components/articles/article'; // TODO: move
+    //    @import 'layout/layout';
+    //
+    //    // global
+    //    @import 'global/global';
+    //
+    //    // helpers (.bold, .italic, .line-title, etc)
+    //    @import 'helpers';
 
-    // // mixins
-    // // @import 'base/mixins';
-    // @import 'base/mixins/mixins'; // todo: turn into its own directory and parse out contents
 
-    // // layout + grids
-    // @import 'base/layout/vertical-rhythm';
-    // @import 'base/layout/susy';
-    // @import 'base/layout/breakpoints';
-    // @import 'components/articles/article'; // article styles, TODO: temporarily here because it's a mixin referenced by layout
-    // @import 'base/layout/layout';
-
-    // // global
-    // @import 'base/global/typography';
-    // @import 'base/global/global';
-
-    // // helpers (.bold, .italic, .line-title, etc)
-    // @import 'base/helpers';
-    // @import 'base/strapless';
 
 
 //  COMPONENTS
 // ************************
 
-    // components
-    @import 'components/hyperlinks';
-    @import 'components/buttons';
-    @import 'components/tiles';
-    @import 'components/footer';
-    @import 'components/hero';
-    @import 'components/alerts'; // previously called _callouts
-    @import 'components/tables';
-    @import 'components/icons';
-    @import 'components/images';
-    @import 'components/messageScreen';
-    @import 'components/svg';
 
-    // media-objects
-    @import 'components/media-objects/media-object';
-    @import 'components/media-objects/media-object_results';
+    // content
+    @import 'components/content/typography';
+    @import 'components/content/hyperlinks';
+    @import 'components/content/icons';
+    @import 'components/content/images';
+    @import 'components/content/svg';
 
-    // forms
-    @import 'components/forms/forms';
-    @import 'components/forms/labels';
-    @import 'components/forms/inputs';
-    @import 'components/forms/checkboxes';
-    @import 'components/forms/formgroup';
-    @import 'components/forms/validation';
 
-    // search
-    @import 'components/search/search';
-    @import 'components/search/searchResults';
-    @import 'components/search/pagination';
-
-    // components - navigation
-    @import 'components/nav/topnav'; // TODO: parse out to topnav, sidenav
+    // navigation 
+    @import 'components/nav/topnav'; 
+    @import 'components/nav/sidenav'; 
+    @import 'components/nav/buttons';
+    @import 'components/nav/search';
+    @import 'components/nav/pagination';
+    @import 'components/nav/breadcrumbs';
     @import 'components/nav/backToTop';
-    @import 'components/nav/tableOfContents';
-
-    // components - article styles
-    @import 'components/articles/metadata';
-    // @import 'components/articles/article'; // TODO: moved above base/layout/layout, because it's a mixin... should figure out a better way to package these styles
-
-    // components - cards
-    @import 'components/cards/cards';
-    @import 'components/cards/outline';
-
-    // components - general
-    @import 'components/accordion';
-    @import 'components/breadcrumbs';
-    @import 'components/buttonList';
-
-    // tabs
-    @import 'components/tabs';
-    @import 'components/buttonBar';
-
-    @import 'components/tooltips';
-    @import 'components/loading-spinners';
-    @import 'components/modals';
-    @import 'components/updown-caret';
 
 
-//  PAGES
+    // layout
+    @import 'components/layout/tiles';
+    @import 'components/layout/alerts'; // previously called _callouts
+    @import 'components/layout/tables';
+    @import 'components/layout/media-objects/media-object';
+    @import 'components/layout/media-objects/media-object_results';
+    @import 'components/layout/searchResults'; 
+    @import 'components/layout/metadata';
+    @import 'components/layout/cards/cards';
+    @import 'components/layout/cards/outline';
+    @import 'components/layout/accordion';
+    @import 'components/layout/buttonList';
+    @import 'components/layout/tabs/tabs';
+    @import 'components/layout/tabs/buttonBar';
+    @import 'components/layout/tooltips';
+    @import 'components/layout/loading-spinners';
+    @import 'components/layout/modals';
+    @import 'components/layout/updown-caret';
+
+
+    // input
+    @import 'components/input/forms';
+    @import 'components/input/labels';
+    @import 'components/input/inputs';
+    @import 'components/input/checkboxes';
+    @import 'components/input/formgroup';
+    @import 'components/input/validation';
+
+
+
+//  SECTIONS  & PAGES
 // ************************
-//  - pages are where most of your site-specific code will reside
+//  - pages are where most of your page & section specific code will reside
 //  - this will overwrite pre-existing components default values, so just be sure to specify through css heirarchy (avoid !important as much as possibe).
 // ************************
+
+
+    // sections
+    @import 'sections/intro';
+    @import 'sections/hero';
+    @import 'sections/footer';
+    @import 'sections/messageScreen';
+    @import 'sections/tableOfContents';
+
 
     // pages
     @import 'pages/styleguide';
 
 
-//  PROJECTS
-// ************************
 
-    // // aa
-    // @import 'projects/aa/about';
-    // @import 'projects/aa/profile';
-    // @import 'projects/aa/search';
-    // @import 'projects/aa/submitAtip';
-    // @import 'projects/aa/aa-body';
 
-    // // code4pa
-    // @import 'projects/code4pa/code4pa';
 
 
-//  UX PLAYBOOK
-// ************************
-
-
-// BODY
-// ==========================
-//  - offsets equal to the topnav height (65px) to allow room for the fixed topnav.
-// ========================
-
-body {
-    padding: 0;
-    margin: 0; // 65px 0 0; set to 0 when using transparent nav
-}
-
-.f-item-group {
-    @media #{$medium-down} {
-        padding-left: 1.333rem;
-        padding-right: 1.333rem;
-    }
-}
-
-
-// blockquotes
-
-blockquote {
-    p {margin: 0 !important;}
-    a {
-        display: block;
-        margin-top: 1rem;
-        @include type-setting(0);
-    }
-}
-
-// typography
-
-main,
-.main {
-    h2 {
-        // @include type-setting(4);
-        @include wrap($base-max-width, auto);
-        @include clear();
-        margin-bottom: $base-vertical-padding;
-        &.f-item-heading {
-            display: block;
-            margin: 0 auto;
-        }
-        padding-bottom: 1.333rem;
-        border-bottom: $base-border;
-        border-bottom-color: $org;
-    }
-    // h3 {@include type-setting(3);}
-    article {
-        margin:0 auto $base-vertical-padding;
-        table {max-width: $base-max-width;}
-    }
-    & > .f-item-group h2.f-item-heading {
-        display: block;
-        margin-bottom: 0px;
-        padding-top: $base-vertical-padding;
-        // width: 100%;
-        // border-bottom: 0;
-    }
-    .f-item-heading-group {margin-bottom: 0;}
-}
-
-
-.iconbarSubnav {margin-top: 65px;}
-
-
-
-// intro section
-
-.introSection {
-    @include clear();
-    background: $gry;
-    padding: $base-horizontal-padding;
-    margin-bottom: $base-vertical-padding;
-    @media #{$small-only} {padding: 0 1.333rem; margin: 0 auto;}
-    & > div {@include wrap($base-max-width, auto)}
-    .intro {
-        @include span(4 of 12);
-        @include article;
-        @media #{$medium-down} {@include span(6 of 12); padding: 0 1.333rem;}
-        @media #{$small-only} {@include span(12 of 12 0.333); padding: 0 1.333rem;}
-    }
-    .buttonList,
-    .buttonBar.buttonBarUXplaybook {
-        @include span(8 of 12 last);
-        @media #{$medium-down} {@include span(6 of 12 last); padding: 0 1.333rem;}
-        @media #{$small-only} {@include span(12 of 12 0.333); padding: 0 1.333rem;}
-    }
-    &.introDeliverables {
-        padding-top: $base-vertical-padding;
-        h2 {margin-bottom: $base-vertical;}
-        p {
-            @include type-setting(2);
-            text-transform: capitalize;
-            font-weight: bold;
-        }
-    }
-    &.introIcons {
-        .buttonBar .iconButtonHyperlink {
-            // min-height: 195px; // 177.98px;
-            text-transform: none; //capitalize;
-
-            // @include span(4 of 12);
-            &:nth-of-type(3n){@include last;} // 3 tabs
-            padding: 1.333rem;
-            // @media #{$medium-down} {@include span(6 of 12); &:nth-child(even){@include last;} }
-            // @media #{$small-only} {@include span(12 of 12 0.333);}
-            @media #{$medium-down} {@include span(4 of 12); &:nth-child(3n){@include last;} }
-            @media #{$small-only} {
-                min-height: 200px;
-                @include span(3 of 12 0.333);
-                &:nth-child(4n){@include last;}
-            }
-
-            i {margin-bottom: 1rem;}
-            span {
-                @include type-setting(0);
-                line-height: 1;
-            }
-        }
-    }
-}
-
-
-// button bar
-
-.introSection {
-    .iconButtonHyperlink {
-        @include span(4 of 12);
-        &:nth-of-type(3n){@include last;} // 3 tabs
-        padding: 1.333rem;
-        @media #{$medium-down} {@include span(6 of 12); &:nth-child(even){@include last;} }
-        @media #{$small-only} {@include span(12 of 12 0.333);}
-    }
-}
-
-
-
-
-
-.main_uiToolkit, .main_home {
-    .introSection {
-        &:first-child {padding-top: 4.86111rem;}
-    }
-}
-.main_home {
-    width: 100%;
-    background: $gry;
-}
-
-.layout_strapless_material {
-
-    .f-item-preview,
-    .f-item-notes,
-    .f-item-code {@include clear();}
-
-    // when either is present alone
-    .f-item-notes,
-    .f-item-code {
-        display: block;
-        margin-left: auto;
-        margin-right:auto;
-        @include container($base-max-width);
-    }
-
-    // 2 col when
-    .layout_strapless_material_twoColumns {
-        @include container($base-max-width);
-        .f-item-notes,
-        .f-item-code {@include span(6 of 12);}
-        .f-item-code {@include last;}
-    }
-    .f-item-preview {
-
-        // full width grey bg
-        // --------------------
-        // width: 100%;
-        padding: $base-vertical-padding 0;
-        background: $whtlite;
-
-        // centered block
-        // -----------------
-        // display: block;
-        // margin-left: auto;
-        // margin-right: auto;
-        // float: none;
-        // max-width: $base-max-width;
-        // // max-width: ($base-max-width + $base-vertical-padding + $base-vertical-padding);
-        // padding: $base-vertical-padding 0;
-        // background: $wht;
-
-        // with borders
-        // border-bottom: $base-border;
-        // border-bottom-color: $grylite;
-
-        margin-bottom: $base-vertical;
-        & > * {
-            &:not(table),
-            &:not(div.f-color-chips) {display: block;}
-            &:not([data-balloon]):not(.line-title) {@include container($base-max-width);}
-            margin-left: auto;
-            margin-right:auto;
-        }
-        & > div.pagination {display: flex; float:none;}
-        & > table {@include container($base-max-width);}
-        & > nav {float: none;}
-        & > form:not(#aspnetForm).search {max-width: $base-max-width;}
-        & > a {@include wrap($base-max-width, auto);}
-        & > .buttonList {@include span(3 of 12);}
-    }
-}
-
-// non-card-based f-item-group styling
-
-// .f-container .f-item-group {
-//     max-width: 100%;
-//     margin: 0 auto 6.25rem;
-//     border: 0;
-// }
-
-.f-container .main .f-item-group {
-    max-width: 100%;
-    margin: 6.25rem;
-}
-
-
-.f-container .f-item-group {
-    @include article_cards;
-    margin-left: auto;
-    margin-right: auto;
-    @media #{$largest-down} { padding-left: 0; padding-right: 0; margin-left: $base-horizontal-padding; margin-right: $base-horizontal-padding; }
-    & > section,
-    & > article {
-        @media #{$largest-down} { padding-left: 0; padding-right: 0; }
-    }
-    .hero_strapless_materials h1,
-    .f-item-code {
-        @media #{$largest-down} { padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
-    }
-    // max-width: $base-max-width;
-    &:first-of-type {margin-top: calc(65px + 1.778rem);}
-    &:last-of-type {margin-bottom: calc(65px + 1.778rem);}
-    // &:nth-child(1) { & > .hero_strapless_materials { background: $slate; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(2) { & > .hero_strapless_materials { background: $org; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(3) { & > .hero_strapless_materials { background: $blu; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(4) { & > .hero_strapless_materials { background: $bludrk; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(5) { & > .hero_strapless_materials { background: $blulite; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(6) { & > .hero_strapless_materials { background: $grn; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(7) { & > .hero_strapless_materials { background: $red; h1 {padding-bottom: 0; border: 0; color: $wht;} } }
-    // &:nth-child(8) { & > .hero_strapless_materials { background: $ylw; h1 {padding-bottom: 0; border: 0; color: $slate;} } }
-    // &:nth-child(9) { & > .hero_strapless_materials { background: $pch; h1 {padding-bottom: 0; border: 0; color: $slate;} } }
-    // &:nth-child(10) { & > .hero_strapless_materials { background: $gld; h1 {padding-bottom: 0; border: 0; color: $slate;} } }
-}
-
-// card header color
-// =================================
-// - unique for each component page
-// =================================
-
-// structure
-.structure .f-container .f-item-group {
-    & > .hero_strapless_materials { background: $blulite; h1 {padding-bottom: 0; border: 0; color: $wht;} }
-}
-
-// navigation
-.navigation .f-container .f-item-group {
-    & > .hero_strapless_materials { background: $blu; h1 {padding-bottom: 0; border: 0; color: $wht;} }
-}
-
-// layout
-.layout .f-container .f-item-group {
-    & > .hero_strapless_materials { background: $red; h1 {padding-bottom: 0; border: 0; color: $wht;} }
-}
-
-.content .f-container .f-item-group {
-    & > .hero_strapless_materials { background: $slate; h1 {padding-bottom: 0; border: 0; color: $wht;} }
-}
-
-.forms .f-container .f-item-group {
-    & > .hero_strapless_materials { background: $grn; h1 {padding-bottom: 0; border: 0; color: $wht;} }
-}
-
-.sharing .f-container .f-item-group {
-    & > .hero_strapless_materials { background: $bludrk; h1 {padding-bottom: 0; border: 0; color: $wht;} }
-}
-
-
-// demo pages
-// ====================
-
-.demo {
-    .hero {margin-top:65px;}
-    main {
-        margin: $base-horizontal-padding auto;
-        & > section {max-width: $base-max-width; margin: auto;}
-    }
-    form.search {
-        input[type="search"], button, select, select > option {
-            color: $wht;
-        }
-    }
-    .results > a:last-of-type {margin-bottom: $base-horizontal-padding;}
-}
-
-
-
-// sidenav background
-
-.f-menu {background: $gry;}
-
-
-// embedding stuff
-
-// imgur
-iframe#imgur-embed-iframe-pub-wUcgIBZ {
-    display: block;
-    max-width: $article-max-width;
-
-    // these lines help us overide the built in styles imgur's embed brings to the table, which causes it to float left.
-    // centered by forcing margin: auto; (or margin: auto auto $base-vertical-rhythm;)
-    margin: auto auto $base-vertical !important;
-    width: 100%;
-    // margin: auto !important;
-    // margin-left: auto;
-    // margin-right:auto;
-    &.baseWidth {max-width: $base-max-width;}
-}
-
-
-// sidenav
-
-// .sidenav_strapless_JSref {
-//     @include span(20%);
-// }
-
-.sidenav_header {
-    .sidenav_title, a {
-        text-align: left;
-        display: block;
-        position: relative;
-        transition: all 0.33333s ease-in-out;
-        span, i {vertical-align: middle;}
-        span {display: inline-block;}
-        i {
-            display: inline-block;
-            margin-right: 0.77778rem;
-            width: 1.33333rem;
-        }
-    }
-    a {
-        // font-size: 0.75rem;
-        padding: 0.333rem 1rem;
-        i {
-            font-size: 1rem;
-            color: lighten($slate,20%);
-            line-height: 1.7778rem;
-        }
-        & > span {line-height: 1.7778rem; display: inline-block;}
-        @include hover() {
-            background-color:$slate;
-            color:$wht;
-            i {color: $org;}
-        }
-    }
-    .sidenav_title {
-        @include type-setting(1);
-        // border: 0;
-        font-weight: 700;
-        // background: $gryslvr;
-        border-top: 1px solid $gry_muted;
-        border-bottom: 1px solid $gry_muted;
-        padding: 1rem;
-        i {font-size: 1.33333rem; color: lighten($slate,20%);}
-    }
-}
-
-
-
-// styles for ui components
-
-.body_UItoolkit {
-    background: $gry;
-    .f-container {background: $gry;}
-    main {background: $gry;}
-    h2 {border-bottom: 0;}
-    .introSection {@include wrap($base-max-width, auto)}
-}
-
-
-
-// styles for component page intro sections
-
-.componentsIntro {
-    // .whatIsthis img {margin: 4.86111rem auto 8.64306rem;}]
-    .whatIsthis {
-        position: relative;
-        height: auto;
-        // overflow: hidden;
-        p {@include type-setting(1); margin-bottom: 2.369rem;}
-        &:hover img {
-            transform: perspective( 0 ) rotateZ( 0deg );
-
-            &:nth-child(2),
-            &:nth-child(3) {
-                transform: perspective( 0 ) rotateZ( 0deg ) translateZ(0);
-            }
-            // &:nth-child(3) {z-index: -1;}
-
-            // &:nth-child(2),
-            // &:nth-child(4),
-            // &:nth-child(6) {
-            //     opacity: 0;
-            //     transform: perspective( 0 ) rotateZ( 0deg ) translateZ(0);
-            // }
-
-            // &:nth-child(3),
-            // &:nth-child(5),
-            // &:nth-child(7),
-            // &:nth-child(8) {
-            //     transform: perspective( 0 ) rotateZ( 0deg ) translateZ(0);
-            // }
-            // &:nth-child(9) {z-index: -1;}
-        }
-    }
-    .whatIsthis img {
-        margin: 4.86111rem + 3.157rem auto 0;
-        max-width: 400px;
-
-        transform: perspective( 1000px ) rotateY( -35deg ) rotateZ( 0deg ) rotateX( 0deg );
-        perspective-origin: 20% 50%;
-        position: absolute;
-
-        @include anim($global-animation);
-
-        // &:nh-child(2),
-        // &:90p-p,/
-        // &:nth-child(6) {
-        //     opacity: 0;
-        //     // filter: brightness(0%);
-        //     // background: $slate;
-        //     // border: 2px solid $blu;
-        // }
-
-        // &:nth-child(odd) {}
-
-        &:nth-child(2) {
-            position: absolute;
-            transform: perspective( 1000px ) rotateY( -35deg ) rotateZ( 0deg ) rotateX( 0deg ) translateZ( 80px );
-            perspective-origin: 20% 50%;
-        }
-
-        &:nth-child(3) {
-            position: absolute;
-            transform: perspective( 1000px ) rotateY( -35deg ) rotateZ( 0deg ) rotateX( 0deg ) translateZ( 70px );
-            perspective-origin: 20% 50%;
-        }
-
-        // &:nth-child(5),
-        // &:nth-child(6) {
-        //     position: absolute;
-        //     transform: perspective( 1600px ) rotateY( 35deg ) rotateX( 10deg ) translateZ(45px + 45px);
-        // }
-
-        // &:nth-child(5) {
-        //     z-index: -1;
-        //     position: absolute;
-        //     transform: perspective( 1600px ) rotateY( 35deg ) rotateX( 10deg ) translateZ( -90px );
-        //     perspective-origin: 20% 50%;
-        // }
-
-        // -webkit-transform: rotateX(200deg) rotateY(200deg) rotateZ(200deg);
-        // -webkit-transform: scale3d(0.9, 1, 1);
-        // -webkit-transform: translate3d(0px, 0px, 0px);
-        // -webkit-transform: skew(20deg, 15deg);
-
-        @media #{$small-only} {display: none;}
-
-    }
-    & > section {
-        @include wrap($base-max-width, auto);
-        margin-bottom: $base-horizontal-padding;
-    }
-    .article {margin: 3.157rem auto 0;}
-}
-
-.introSection {
-    .iconButtonHyperlink,
-    .iconButton {min-height: 200px;}
-}
-
-.f-container,
-.f-item-notes {
-table {
-    a {
-        display: block;
-        position: relative;
-        width: 100%;
-        border: 0 !important;
-        padding: .5rem 0 .5rem 1rem !important;
-        line-height: 1.6em;
-        .fa,
-        .material-icons {
-            position: absolute;
-            top: .3745rem;
-            left: .85rem;
-            line-height: 1.6em;
-            font-size: 1.2em;
-        }
-        .material-icons {
-            font-size: 1.333rem;
-        }
-        span {
-            vertical-align: middle;
-            display: block;
-            margin-left: 1.875em;
-            line-height: 1.6em;
-        }
-        @include anim($global-animation);
-        @include hover() {background: $pch;}
-        &.is-active {
-            background: $slate;
-            color: $wht;
-            &:before {
-                // arrow
-                content: '';
-                display: block;
-                width: 0;
-                height: 0;
-                border: inset .8em;
-                border-color: transparent transparent transparent $slate;
-                border-left-style: solid;
-                position: absolute;
-                top: .45rem;
-                right: -1.45rem;
-            }
-            @include hover() {background: $slate;}
-        }
-    }
-
-    // unique style overrides
-    td {
-        // font-family: $base-font;
-        // padding-top: $base-horizontal-padding;
-        // padding-bottom: $base-horizontal-padding;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-    thead {
-        & > tr th {
-            background: transparent;
-            // padding-left: 1.875em;
-            color: $gry_muted;
-            // &:not(:first-child) {
-            //     text-transform: none;
-            //     @include type-setting(0);
-            // }
-            // &:first-child {visibility: hidden;}
-        }
-    }
-    tbody tr {
-        background: transparent;
-        &:nth-child(even) {background: transparent;}
-    }
-    // disable hover
-    tbody tr {
-        @include hover() {
-            a, td {color: $blk !important;}
-            background: $gry !important;
-            cursor: initial;
-        }
-    }
-
-}
-
-}
-
-.typography_example {
-    // p:first-child {@include type-setting(2);}
-    table {
-        padding-top: 1rem;
-        thead {display: none;}
-        tbody {border-top: $base-border;}
-        tbody td:first-of-type {color: lighten($slate, 15%);}
-    }
-    .accordion_uiComponents {padding-top: 0;}
-}
-
-.body_UItoolkit,
-.main_home {
-    .accordion_title {
-        font-weight: normal;
-        @include type-setting(1);
-    }
-}
-
-.component_title {
-    margin-bottom: 1.778rem;
-    font-weight: normal;
-    @include type-setting(1);
-}
-
-// used to style notes and titles placed in the component preview space
-.preview_info {
-   // padding-bottom: $base-horizontal-padding;
-   p,
-   & > div {margin-bottom: 1.778rem;}
-
-   & > div > h3 {margin-bottom: 1.778rem !important;}
-
-}
 
 
 
@@ -757,149 +138,8 @@ table {
 
  
 
-// cards
-// ======================
-
-.card {
-
-    display: block;
-    margin-bottom: 1.778rem;
-    background: $wht;
-
-    &.gry {background: $gry;}
-    & > p,
-    & > h1,
-    & > h2,
-    & > h3,
-    & > h4,
-    & > h5,
-    & > ul,
-    & > ol,
-    & > hr {
-        &:first-child {padding-top: 1.778rem;}
-        &:last-child {padding-bottom: 1.778rem;}
-        padding-left: 1.778rem;
-        padding-right: 1.778rem;
-    }
-    &.buttonList {
-        a > i {left: 1.778rem;}
-        a > span {margin-left: 3.157rem; margin-right: 1.778rem;}// 3.653rem = 1.875rem + 1.778rem
-    }
-    & > button,
-    & > .button {margin-bottom: 0;}
-
-    // from helpers.scss > .shadow-center
-    -webkit-box-shadow: 0 8px 6px -6px rgba(153, 153, 153, 0.83);
-       -moz-box-shadow: 0 8px 6px -6px rgba(153, 153, 153, 0.83);
-            box-shadow: 0 8px 6px -6px rgba(153, 153, 153, 0.83);
-
-}
-
-
-// heros
-// =====================
-
-.hero_strapless_materials {
-    img {@include span(3 of 12);}
-    p {text-align: left;}
-}
 
 
 
-// home page
-// ===========================
 
 
-// button grid
-
-.intro_buttons {
-    a {
-        @include span(33.333%);
-        margin: 0;
-        @include type-setting(1);
-        img {
-            max-width: 50%;
-            @media #{$small-only} { max-width: 95%; }
-        }
-    }
-}
-
-.intro_greeting {
-    margin-top: 65px + (1.778 * 16px);
-    .accordion {max-width: $article-max-width; margin-left: auto; margin-right: auto;}
-}
-
-.main_home {
-    background: $gry;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    // @media #{$small-only} { height: auto; }
-}
-
-.main_home .whatIsthis {
-    width: 100%;
-    height: auto;
-    @media #{$small-only} { img {margin: 0;} }
-    img {
-        margin: 4rem auto 0;
-        max-width: 550px;
-        @media #{$medium-down} {max-width: 300px;}
-    }
-    .article {
-        // .svg {margin-top: 2.369rem;}
-        margin: 0 auto;
-        p {margin-bottom: 1.333rem;}
-        a {
-            display: block !important;
-            width: 100%;
-            padding: 1.333rem 1rem !important;
-            @include type-setting(3);
-            border: 0 !important;
-            color: $slate;
-            font-weight: bold !important;
-            span {padding-left: 1rem;}
-            i {
-                font-size: 2.369rem; color: lighten($slate,20%);
-                @include anim($global-animation);
-            }
-
-            @media #{$medium-only} {@include type-setting(2);}
-
-            &:first-of-type {color: $blulite !important;}
-            &:nth-child(4n) {color: $slate !important;}
-            &:last-child {color: $red !important;}
-
-            @include hover() {
-                i {color: $wht;}
-                color: $wht !important;
-                &:first-of-type {background: $blulite !important;}
-                &:nth-child(4n) {background: $slate !important;}
-                &:last-child {background: $red !important;}
-            }
-
-        }
-    }
-
-}
-
-
-
-// Topnav Active Page Styles
-
-.structure {
-    .nav .links a:first-child {background: $gry;}
-}
-.navigation {
-    .nav .links a:nth-child(2) {background: $gry;}
-}
-.content {
-    .nav .links a:nth-child(3) {background: $gry;}
-}
-.layout {
-    .nav .links a:nth-child(4) {background: $gry;}
-}
-.forms {
-    .nav .links a:last-child {background: $gry;}
-}

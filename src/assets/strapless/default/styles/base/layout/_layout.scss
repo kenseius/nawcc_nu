@@ -13,14 +13,23 @@
 
 body {
 
-    & > section {
+    main,
+    .main {
+    
+        
+    & > section,
+    & > article, 
+    & > section > div,
+    & > article > div {
 
         // section widths
         // ===================
         // no padding - @include global-container(auto, 64rem, 3.157rem, 0);
         // @include global-container(100%, 100%, 3.175rem, 0);
         // margin-bottom: $base-vertical;
+        
         @include global-container(100%, 100%, 0, 0);
+        min-height: $default-height;
 
         // targets just the immediate child elements
         & > h1,
@@ -28,11 +37,13 @@ body {
         & > h3,
         & > h4,
         & > h5,
+        & > p,
         & > ul,
         & > blockquote,
         & > .meta,
         iframe {
-            @include wrap($base-max-width, auto);
+            @include wrap($article-max-width, auto);
+            // @include wrap($base-max-width, auto);
             @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
             @media #{$medium-only} { max-width: $article-max-width; }
         }
@@ -46,7 +57,7 @@ body {
 
         & > img,
         & > table,
-        & > p,
+        // & > p,
         & > .pseudo-search  {
             max-width: $base-max-width; 
             margin-left: auto; 
@@ -65,6 +76,8 @@ body {
         //     @media #{$extra-large-down} { padding-left: $base-vertical; padding-right: $base-vertical; }
         // }
 
+    }
+        
     }
 
 }
@@ -89,6 +102,28 @@ section, article, .article {
 
 
 // layouts
+
+
+.twoCol {
+    
+    @include global-container(100%, 100%, 0, 0);
+    
+    & > div,
+    & > section,
+    & > article {
+        
+        width: 50%;
+        float: left;
+        &:nth-child(even) {float: right;}
+        
+        padding-top: $scale_2;
+        
+    }
+    
+}
+
+
+
 
 
 

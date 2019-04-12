@@ -1,0 +1,84 @@
+
+.iconbarSubnav {margin-top: 65px;}
+
+
+// intro section
+
+.introSection {
+    @include clear();
+    background: $gry;
+    padding: $base-horizontal-padding;
+    margin-bottom: $base-vertical-padding;
+    @media #{$small-only} {padding: 0 1.333rem; margin: 0 auto;}
+    & > div {@include wrap($base-max-width, auto)}
+    .intro {
+        @include span(4 of 12);
+        @include article;
+        @media #{$medium-down} {@include span(6 of 12); padding: 0 1.333rem;}
+        @media #{$small-only} {@include span(12 of 12 0.333); padding: 0 1.333rem;}
+    }
+    .buttonList,
+    .buttonBar.buttonBarUXplaybook {
+        @include span(8 of 12 last);
+        @media #{$medium-down} {@include span(6 of 12 last); padding: 0 1.333rem;}
+        @media #{$small-only} {@include span(12 of 12 0.333); padding: 0 1.333rem;}
+    }
+    &.introDeliverables {
+        padding-top: $base-vertical-padding;
+        h2 {margin-bottom: $base-vertical;}
+        p {
+            @include type-setting(2);
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+    }
+    &.introIcons {
+        .buttonBar .iconButtonHyperlink {
+            // min-height: 195px; // 177.98px;
+            text-transform: none; //capitalize;
+
+            // @include span(4 of 12);
+            &:nth-of-type(3n){@include last;} // 3 tabs
+            padding: 1.333rem;
+            // @media #{$medium-down} {@include span(6 of 12); &:nth-child(even){@include last;} }
+            // @media #{$small-only} {@include span(12 of 12 0.333);}
+            @media #{$medium-down} {@include span(4 of 12); &:nth-child(3n){@include last;} }
+            @media #{$small-only} {
+                min-height: 200px;
+                @include span(3 of 12 0.333);
+                &:nth-child(4n){@include last;}
+            }
+
+            i {margin-bottom: 1rem;}
+            span {
+                @include type-setting(0);
+                line-height: 1;
+            }
+        }
+    }
+}
+
+
+// button bar
+
+.introSection {
+    .iconButtonHyperlink {
+        @include span(4 of 12);
+        &:nth-of-type(3n){@include last;} // 3 tabs
+        padding: 1.333rem;
+        @media #{$medium-down} {@include span(6 of 12); &:nth-child(even){@include last;} }
+        @media #{$small-only} {@include span(12 of 12 0.333);}
+    }
+}
+
+.main_uiToolkit, .main_home {
+    .introSection {
+        &:first-child {padding-top: 4.86111rem;}
+    }
+}
+
+.introSection {
+    .iconButtonHyperlink,
+    .iconButton {min-height: 200px;}
+}
+

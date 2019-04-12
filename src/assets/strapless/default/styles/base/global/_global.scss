@@ -10,7 +10,8 @@
 //      5.  responsive images
 //
 // =========================================
-body { padding-top: $navHeight; }
+
+
 html, body {
     margin: 0;
     // height: 100%;
@@ -32,24 +33,15 @@ html, body {
 // clearfix
 body, section, aside, main, .sidebar, .main {@include clear();}
 
-// hyperlinks
-a {
-    cursor: pointer;
-    outline: 0;
-    text-decoration: none !important; // !important to override sharepoint
-    @include anim($global-animation);
 
-    // appearance
-    // background-color: transparent;
-    // border-bottom: 2px solid $grylite;
-    color: $slate;
-    // @include hover() { background-color: $wht; color: darken($slate,15%);}
 
-}
+// BODY
+// ==========================
+//  - offsets equal to the topnav height (65px) to allow room for the fixed topnav.
+// ========================
 
-// responsive images - excludes img with svg sources
-img {
-    &:not(.svg){
-        display: block; max-width: 100%; height: auto;
-    }
+body {
+    // padding: 0;
+    padding-top: $navHeight;
+    margin: 0; // 65px 0 0; set to 0 when using transparent nav
 }

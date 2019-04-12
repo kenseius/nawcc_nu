@@ -1,0 +1,212 @@
+﻿/*  COLORS
+--------------------------------------
+
+white       =   #fafafa
+slate       =   #404040
+yellow      =   #ffe0b2
+grey        =   #ebebeb
+light grey  =   #e1e1e1
+muted grey  =   #bdbdbd
+dark slate  =   #464646
+blue        =   #598db2
+blue - dark =   #294c65
+turquoise   =   #006064
+green       =   #5a7f68
+red         =   #c92a2a
+
+// Employment (OA) colors
+blue: #15397F
+orange: #D49E0F;
+
+-------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+
+@import url('https://fonts.googleapis.com/css?family=Arvo:400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,800');
+
+
+// STANDARD COLORS
+$wht:       #fafafa; // rgb - 250,250,250
+$whtalt:    #fefefe; // slightly brighter off white
+$whtlite:   #ffffff; // pure white
+$blk:       #111; //  #000222 |
+$blkalt:    #3c4245;
+$blkdrk:    #000000; // pure black
+
+// PRIMARY BODY COLOR: SLATE
+// ===========================
+// VARIATIONS:
+// TODO: give #333 its own variable
+// TODO: give #464646 its own variable - slate is normally: darken(#595959, 10%); // = #404040 | rgb - 64, 64, 64
+// ===========================
+$slate:     #464646;
+
+// SHADES OF GREY
+$gryliter:  #f2f2f2; // = lighten($gry, 2.639%)
+$gry:       #ebebeb;
+$grylite:   #e0e0e0;
+$gryslvr:   #dadada;
+$gry_bold:  #e9e9e9;
+$gry_muted: #bdbdbd;
+$grydrk:    #464646; // #777
+
+// UNIQUE COLORS
+$ylw:     #ffe066; // yellow 3 - rgb: 255 224 102	 - via open color (https://yeun.github.io/open-color/swatches.html)
+$grn:     #00853f; // #5A7F68; // #598
+$valid:   $grn;
+$red:     #bf311a; // #c92a2a; // = oc | old: #f03e3e;
+
+// BRAND COLORS
+$blu:     #2a578d; // employement: #15397F // usually: #598db2  // rgb(89,141,178)
+$bludrk:  #15397F; // #294c65;
+$blulite: #346aad;
+$bluer:   #1155cc; // pa.gov hyperlinks
+$navy:    #192857; // GOVERNOR'S SITE, HACKATHON
+$org:     #D49E0F; // EMPLOYMENT / OA
+$gld:     #ffb74d;
+$pch:     #ffe0b2;
+$trq:     #006064;
+
+// SOCIAL MEDIA COLORS
+$facebook:  #3b5998;
+$twitter:   #00aced;
+$linkedin:  #0077b5;
+$google:    #dd4b39;
+$instagram: #517fa4;
+$pinterest: #cb2027;
+$flickr:    #ff0084;
+$vimeo:     #1ab7ae;
+$youtube:   #bb0000;
+
+// Base Styles used throughout site
+
+// fonts
+$base-font:             'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+$title-font:            'Arvo', 'Rockwell', serif;
+$table-font:            'Source Sans Pro';
+$base-font-size:        1rem; // = 16px
+
+// dimensions
+// ======================
+//
+// 255.382em 4086.115px
+// 180.61em 2889.756px
+// 127.73em 2043.674px
+// 90.332em 1445.314px
+// 63.884em 1022.146px
+// 45.18em  722.875px
+// 31.952em 511.227px
+// 22.597em   361.547
+// 15.981em  255.691px
+// 11.302em 180.828px
+// 7.993em 127.884px
+//
+// 5.653em 90.441px
+// 3.998em 63.961px
+// 2.827em 45.234px
+// 1.999em 31.99px
+// 1.414em 22.624px
+// 16px 1em
+//
+// 0.707em 11.315px
+// 0.5em 8.002px
+
+$base-width:            100%;
+$base-max-width:        64rem;
+$article-max-width:     31.952rem; // 511.227px
+$text-max-width:        $article-max-width;
+$base-border:           0.2rem solid $gry_muted;// $grylite;
+
+
+$default-height:        31.952rem; // 511.227px
+
+
+
+// type scale = augmented 4th - 1.414
+// ---------------------------------------
+
+
+$scale-value_5: 5.653; // 90.441px
+$scale-value_4: 3.998; // 63.961px
+$scale-value_3: 2.827; // 45.234px
+$scale-value_2: 1.999; // 31.99px
+$scale-value_1: 1.414; // 22.624px
+$scale-value_0: 1;     // 16px
+
+$scale_5: ($scale-value_5) * 1rem; // 90.441px
+$scale_4: ($scale-value_4) * 1rem; // 63.961px
+$scale_3: ($scale-value_3) * 1rem; // 45.234px
+$scale_2: ($scale-value_2) * 1rem; // 31.99px
+$scale_1: ($scale-value_1) * 1rem; // 22.624px
+$scale_0: ($scale-value_0) * 1rem; // 16px
+
+$h1: $scale_5; // 5.653 = 90.441px
+$h2: $scale_4; // 3.998 = 63.961px
+$h3: $scale_3; // 2.827 = 45.234px
+$h4: $scale_2; // 1.999 = 31.99px
+$h5: $scale_1; // 1.414 = 22.624px
+$pLead: $scale_1; // 1.414 = 22.624px
+$p1: $scale_0; // 16px
+
+
+//$h1: 5.653; // 90.441px
+//$h2: 3.998; // 63.961px
+//$h3: 2.827; // 45.234px
+//$h4: 1.999; // 31.99px
+//$h5: 1.414; // 22.624px
+//$pLead: 1.414; // 22.624px
+//$p1: 1; // 16px
+
+
+// animations
+$global-animation:      all 0.33333s ease-in-out;
+$base-hover-color:      $ylw;
+
+// colors
+$global-background:     $wht;
+// absconders
+// $global-background:     $gryliter;
+
+
+// Vertical Rhythm
+$base-horizontal-value:         1.999;
+$base-horizontal-padding:       1.999rem;
+$base-horizontal-small:         0.707rem;
+$base-vertical-padding:         $base-font-size * 5.653;
+$base-vertical-padding-small:   $base-font-size * 2.827; // 2;
+$base-vertical-scale:           1.414;                                
+$base-vertical:                 1.414rem;
+
+$base-padding-value:            $scale-value_1; // 1.414
+$base-padding:                  ($base-padding-value) * 1rem;
+$base-margin:                   0 auto $base-horizontal-padding;
+
+$base-ratio:                    $scale-value_1;
+$base-line-height:              $base-ratio * $base-font-size;
+
+// $line-height:                   $base-line-height * 1.414em
+
+
+
+/* Font Awesome Variable override */
+// TODO, should not come from bower_components probably
+// $fa-font-path : "../../bower_components/font-awesome/fonts";
+
+// unused variables (that should be used probably at some point)
+$border-size: 0.125em;
+$bg-url: "../img/background/test/blueprint_2.jpg";
+$bg-shade: 1; // .5;
+
+
+// topnav
+$navHeight: 65px;
+$navZIndex : 1005;
+$navBackground: $wht;
+$navLinkColor: $slate;
+$navHamburger-color: $grylite;
+$navHamburger-menuColor: $grylite;
+
+// forms
+$placholderTextcolor: #909090; // search, inputs

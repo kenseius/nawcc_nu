@@ -1,0 +1,26 @@
+// ==========================
+//  I. Images
+// ==========================
+
+// images
+// img {margin-bottom: $base-horizontal-padding;}
+img {margin:auto auto $base-horizontal-padding;}
+.imagery { img {max-width: $base-max-width * 0.77778;} } // just for styleguide
+
+// responsive images - excludes img with svg sources
+img {
+    &:not(.svg){
+        display: block; max-width: 100%; height: auto;
+    }
+}
+
+
+
+.background-img {
+    @include bg('https://images.unsplash.com/photo-1485356824219-4bc17c2a2ea7?dpr=1&auto=format&fit=crop&w=1500&h=1002&q=80&cs=tinysrgb&crop=', 0.8, cover);
+    //    @include bg-no_url(center, no-repeat, fixed);
+    //    background-size: $size;
+    //    @include linear-gradient(0, 0, 0, 0.8, 0, 0, 0, 0.25,)
+    color: $wht;
+}
+

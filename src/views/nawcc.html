@@ -1,0 +1,151 @@
+---
+title: NAWCC
+subtitle: National Association Of Watch & Clock Collectors
+layout: nawcc
+fabricator: false
+structure: false
+ui_toolkit: false
+
+pageClass: structure
+bodyClass: body_UItoolkit
+heroClass: hero_Design
+navMenuLabel: Menu
+
+---
+
+            <!-- Featured Post -->
+            <article class="post twoCol">
+                <div>
+                    {{> typography.h2}}
+                    {{> typography.paragraph}}
+                    {{> button}}
+                </div>
+                <div>
+                    {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
+                </div>
+            </article>
+            
+            <!-- Two Col -->
+            <div class="twoCol">
+                <article>
+                    {{> typography.h2}}
+                    {{> typography.paragraph}}
+                    {{> button}}
+                </article>
+                <article>
+                    {{> typography.h2}}
+                    {{> typography.paragraph}}
+                    {{> button}}
+                </article>
+            </div>
+
+            <!-- Two Col -->
+            <div class="twoCol background-img">
+                <article>
+                    {{> typography.h2}}
+                    {{> typography.paragraph}}
+                    {{> button}}
+                </article>
+                <article>
+                    {{> typography.h2}}
+                    {{> typography.paragraph}}
+                    {{> button}}
+                </article>
+            </div>
+
+            <!-- Two Col -->
+            <div class="twoCol background-img">
+                <article>
+                    {{> typography.h2}}
+                </article>
+                <article>
+                    {{> typography.h2}}
+                </article>
+            </div>
+
+            <!-- Featured Post -->
+            <article class="post twoCol background-img">
+<!--            <article class="post twoCol background-img" style="background-image: url('/assets/strapless/images/background/code.jpg');">-->
+                <div>
+                    {{> typography.h2}}
+                    {{> typography.paragraph}}
+                    {{> button}}
+                </div>
+                <div>
+
+                </div>
+            </article>
+            
+            
+            <!-- Business Member Ad Spot -->
+            <section class="ads">
+                <!-- Featured -->
+                <article class="twoCol">
+                    <div>
+                        <h2></h2>
+                        <p></p>
+                        <a href=""></a>
+                    </div>
+                    <div>
+                        <img>
+                    </div>
+                </article>
+            </section>
+            
+            <!-- NAWCC Promotion Spot -->
+            <section class="promo">
+                <!-- Featured -->
+                <article class="twoCol">
+                    <div>
+                        <h2></h2>
+                        <p></p>
+                        <a href=""></a>
+                    </div>
+                    <div>
+                        <img>
+                    </div>
+                </article>
+            </section>
+            
+            <!-- Call To Action -->
+            <section class="cta twoCol">
+                <div>
+                    <h2></h2>
+                    <p></p>
+                    <a href=""></a>
+                </div>
+                <div>
+                    <img>
+                </div>
+            </section>
+
+<div id="01-info" class="componentsIntro">
+	
+	{{> svg}}
+	{{> heros.hero_Logo SVG_xlink="paLogoSubtitle" heroClass="hero_Design home_hero"}}
+	<section class="introSection introIcons">
+		<div>
+			<div class="intro">
+				<h1>{{title}}</h1>
+				<p>The central design for the Commonwealth is built around accessability, modern web practices, and user-centered thinking.</p>
+				<p>Following these guidelines will allow you to implement the design system anywhere you wish.</p>
+			</div>
+			<div class="buttonBar buttonBarUXplaybook tabs" data-tabgroup="components_tabs">
+				{{#each materials.design.items}}
+					<a class="iconButtonHyperlink" href="#{{@key}}">
+						<i class="fa {{#each this}}{{icon}}{{/each}}"></i> 
+						<span>{{name}}</span>
+					</a>
+				{{/each}}
+			</div>
+		</div>
+	</section>
+
+</div>
+
+{{#each materials.design.items}}
+     {{> f-item_article this}}
+{{/each}}
+
+
+	

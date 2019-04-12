@@ -10,24 +10,21 @@
 //  BASE + LAYOUT
 // ************************
  
-    // base
+    // variables
     @import 'variablesNAWCC';
 
     // mixins
-    // @import 'mixins';
-    @import 'mixins/mixins'; // todo: turn into its own directory and parse out contents
+    @import 'mixins/mixins'; 
 
     // layout + grids
     @import 'layout/vertical-rhythm';
     @import 'layout/susy';
     @import 'layout/breakpoints';
-    @import '../components/articles/article'; // article styles, TODO: temporarily here because it's a mixin referenced by layout
+    @import '../components/article'; // TODO: move
     @import 'layout/layout';
 
     // global
-    @import 'global/typography';
     @import 'global/global';
 
     // helpers (.bold, .italic, .line-title, etc)
     @import 'helpers';
-    @import 'strapless';
