@@ -13,6 +13,88 @@ navMenuLabel: Menu
 
 ---
 
+
+<!-- Featured Post -->
+<article class="twoCol bg_clockwork">
+    <div>
+        {{> typography.subtitle subtitleText="Events"}}
+        {{> typography.h2 headingText="The Clockwork Festival"}}
+        {{> buttons.button buttonText="Event Details"}}
+    </div>
+    <div>
+        {{> images.image imageSource="./assets/strapless/images/dev/clockworkfest_logo.png"}}
+    </div>
+</article>
+
+<!-- Featured Post -->
+<article class="post twoCol">
+    <div>
+        {{> images.image imageSource="./assets/strapless/images/dev/clockworkfest_logo.png"}}
+    </div>
+    <div>
+        {{> typography.subtitle subtitleText="Events"}}
+        {{> typography.h2 headingText="The Clockwork Festival"}}
+        {{> buttons.button buttonText="Event Details"}}
+    </div>
+</article>
+
+<!-- Two Col -->
+<div class="twoCol">
+    <article class="bg_clockwork">
+        <div>
+            {{> typography.subtitle subtitleText="Events"}}
+            {{> typography.h2 headingText="The Clockwork Festival"}}
+            {{> buttons.button buttonText="Event Details"}}
+        </div>
+    </article>
+    <article class="bg_demo">
+        <div>
+            {{> typography.subtitle subtitleText="Events"}}
+            {{> typography.h2 headingText="The Clockwork Festival"}}
+            {{> buttons.button buttonText="Event Details"}}
+        </div>
+    </article>
+</div>
+
+
+
+
+
+
+<!-- 
+==========================================
+ DEV / TEST STUFF  
+==========================================
+--> 
+
+
+
+
+
+<!-- Two Col -->
+<div class="twoCol">
+    <article>
+        {{> typography.h2}}
+        {{> typography.paragraph}}
+        {{> button}}
+    </article>
+    <article class="bg_demo">
+        {{> typography.h2}}
+        {{> typography.paragraph}}
+        {{> button}}
+    </article>
+</div>
+
+            <!-- Two Col -->
+            <div class="twoCol bg_demo">
+                <article>
+                    {{> typography.h2}}
+                </article>
+                <article>
+                    {{> typography.h2}}
+                </article>
+            </div>
+
             <!-- Featured Post -->
             <article class="post twoCol">
                 <div>
@@ -24,47 +106,9 @@ navMenuLabel: Menu
                     {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
                 </div>
             </article>
-            
-            <!-- Two Col -->
-            <div class="twoCol">
-                <article>
-                    {{> typography.h2}}
-                    {{> typography.paragraph}}
-                    {{> button}}
-                </article>
-                <article>
-                    {{> typography.h2}}
-                    {{> typography.paragraph}}
-                    {{> button}}
-                </article>
-            </div>
-
-            <!-- Two Col -->
-            <div class="twoCol background-img">
-                <article>
-                    {{> typography.h2}}
-                    {{> typography.paragraph}}
-                    {{> button}}
-                </article>
-                <article>
-                    {{> typography.h2}}
-                    {{> typography.paragraph}}
-                    {{> button}}
-                </article>
-            </div>
-
-            <!-- Two Col -->
-            <div class="twoCol background-img">
-                <article>
-                    {{> typography.h2}}
-                </article>
-                <article>
-                    {{> typography.h2}}
-                </article>
-            </div>
 
             <!-- Featured Post -->
-            <article class="post twoCol background-img">
+            <article class="post twoCol bg_demo">
 <!--            <article class="post twoCol background-img" style="background-image: url('/assets/strapless/images/background/code.jpg');">-->
                 <div>
                     {{> typography.h2}}

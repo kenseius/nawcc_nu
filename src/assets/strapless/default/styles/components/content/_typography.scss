@@ -96,6 +96,20 @@ ul {
 }
 
 
+// elements with consistent dimensions a global level
+// LISTS 
+section, article, .article {
+    ul {list-style: disc;}
+    ol {list-style-type: decimal}
+    ol, ul {
+        list-style-position: outside;
+        padding-left: $base-vertical;
+        margin-bottom: $base-vertical;;
+    }
+}
+
+
+
 // ITALICS
 em {font-style: italic;}
 

@@ -36,7 +36,7 @@
 button:not(.nav-trigger),
 .button,
 [type="submit"] {
-    @include button($slate, transparent, $slate, $wht, $slate);
+    @include button($wht, $org, $org, $slate, $gry);
     &.iconButton {
 
         // old styles
@@ -81,8 +81,8 @@ button:not(.nav-trigger),
     // line-height: 65px;
     
     @include hover() { 
-        background: $slate; 
-        color: $wht; 
+        // background: $slate; 
+        // color: $wht; 
         img { @include filter(brightness(80%)) }
     }
 

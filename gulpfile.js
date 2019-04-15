@@ -90,9 +90,9 @@ const config = {
         watch: 'src/assets/fabricator/images/**/*',
       },
     strapless: {
-      src: ['src/assets/strapless/default/images/**/*', 'src/favicon.ico'],
+      src: ['src/assets/nawcc/images/**/*', 'src/favicon.ico'],
       dest: 'dist/assets/strapless/images',
-      watch: 'src/assets/strapless/default/images/**/*',
+      watch: 'src/assets/nawcc/images/**/*',
     },
     // strapless_absconders: {
     //   src: ['src/assets/absconders/images/**/*', 'src/favicon.ico'],

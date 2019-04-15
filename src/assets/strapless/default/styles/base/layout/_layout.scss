@@ -29,7 +29,6 @@ body {
         // margin-bottom: $base-vertical;
         
         @include global-container(100%, 100%, 0, 0);
-        min-height: $default-height;
 
         // targets just the immediate child elements
         & > h1,
@@ -48,9 +47,9 @@ body {
             @media #{$medium-only} { max-width: $article-max-width; }
         }
 
-        & > h1 {margin-bottom: $base-vertical;}
+        // & > h1 {margin-bottom: $base-vertical;}
 
-        & > h2,
+        // & > h2,
         & > .meta,
         & > pre,
         & > code {margin-bottom: $base-horizontal-padding;}
@@ -85,17 +84,6 @@ body {
 
 
 
-// elements with consistent dimensions a global level
-// LISTS 
-section, article, .article {
-    ul {list-style: disc;}
-    ol {list-style-type: decimal}
-    ol, ul {
-        list-style-position: outside;
-        padding-left: $base-vertical;
-        margin-bottom: $base-vertical;;
-    }
-}
 
 
 
@@ -107,16 +95,27 @@ section, article, .article {
 .twoCol {
     
     @include global-container(100%, 100%, 0, 0);
+    min-height: $default-height;
+
+    // vertically centers child elements 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     
     & > div,
     & > section,
     & > article {
         
+        margin: auto;
+        // padding-top: $scale_2;
         width: 50%;
+        
+        flex: 1;
+        
+        // fallback for flexbox
         float: left;
         &:nth-child(even) {float: right;}
-        
-        padding-top: $scale_2;
         
     }
     
