@@ -117,7 +117,9 @@
         text-align: left;
         // float: left;
         width: auto;
-        padding: 8.5px $base-horizontal-small; // 8.5px $base-horizontal-small 0 // img styles: 8.5px 0;
+        height: 65px;
+        padding-left: 0.5rem;
+        // padding: 8.5px $base-horizontal-small; // 8.5px $base-horizontal-small 0 // img styles: 8.5px 0;
 
         line-height: 2.24rem;
         vertical-align: middle;

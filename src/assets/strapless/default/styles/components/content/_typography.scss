@@ -170,6 +170,11 @@ body > .article,
 // ====================================
 
 .subtitle {
+    font-size: $scale_3;
+    color: $gry;
+}
+
+.subtitle_small {
     text-transform: uppercase;
     font-size: 77.7778%;
     line-height: 0.8em;

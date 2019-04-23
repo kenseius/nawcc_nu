@@ -1,10 +1,9 @@
 navItems:
-  Structure: "structure.html"
-  Navigation: "navigation.html"
-  Content: "content.html"
-  Layout: "layout.html"
-  Forms: "forms.html"
-  # Sharing: "sharing.html"
+  Join: "join.html"
+  About: "about.html"
+  Shop: "shop.html"
+  Donate: "donate.html"
+  Log In: "login.html"
 
 sideNavItems:
   Dashboard: "dashboard.html"
@@ -13,7 +12,7 @@ sideNavItems:
   Publications: "publications.html"
   Museum: "museum.html"
   Research: "research.html"
-  Message Board: "message oard.html"
+  Message Board: "messageboard.html"
   Resources: "resources.html"
 
 heroContent:

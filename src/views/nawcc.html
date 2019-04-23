@@ -8,18 +8,23 @@ ui_toolkit: false
 
 pageClass: structure
 bodyClass: body_UItoolkit
-heroClass: hero_Design
+heroClass: hero_nawcc_home
 navMenuLabel: Menu
 
 ---
 
 
+{{> heros.hero heroClass="hero_nawcc_home"}}
+
 <!-- Featured Post -->
-<article class="twoCol bg_clockwork">
+<article class="post twoCol bg_clockwork">
     <div>
         {{> typography.subtitle subtitleText="Events"}}
         {{> typography.h2 headingText="The Clockwork Festival"}}
-        {{> buttons.button buttonText="Event Details"}}
+        <div class="btnBar">
+            {{> buttons.button buttonText="Event Details"}}
+            {{> buttons.button buttonText="Register"}}
+        </div>
     </div>
     <div>
         {{> images.image imageSource="./assets/strapless/images/dev/clockworkfest_logo.png"}}
@@ -29,29 +34,35 @@ navMenuLabel: Menu
 <!-- Featured Post -->
 <article class="post twoCol">
     <div>
-        {{> images.image imageSource="./assets/strapless/images/dev/clockworkfest_logo.png"}}
+        {{> images.image imageSource="./assets/strapless/images/dev/clock.png"}}
     </div>
     <div>
-        {{> typography.subtitle subtitleText="Events"}}
-        {{> typography.h2 headingText="The Clockwork Festival"}}
-        {{> buttons.button buttonText="Event Details"}}
+        {{> typography.subtitle subtitleText="Bulletin"}}
+        {{> typography.h2 headingText="Rufus Porter &amp; His Clock"}}
+        <div class="btnBar">
+            {{> buttons.button buttonText="Read The Article"}}
+        </div>
     </div>
 </article>
 
 <!-- Two Col -->
 <div class="twoCol">
-    <article class="bg_clockwork">
+    <article class="post bg_clockwork">
         <div>
             {{> typography.subtitle subtitleText="Events"}}
             {{> typography.h2 headingText="The Clockwork Festival"}}
-            {{> buttons.button buttonText="Event Details"}}
+            <div class="btnBar">
+                {{> buttons.button buttonText="Event Details"}}
+            </div>
         </div>
     </article>
-    <article class="bg_demo">
+    <article class="post bg_demo">
         <div>
             {{> typography.subtitle subtitleText="Events"}}
             {{> typography.h2 headingText="The Clockwork Festival"}}
-            {{> buttons.button buttonText="Event Details"}}
+            <div class="btnBar">
+                {{> buttons.button buttonText="Event Details"}}
+            </div>
         </div>
     </article>
 </div>
@@ -71,97 +82,6 @@ navMenuLabel: Menu
 
 
 
-<!-- Two Col -->
-<div class="twoCol">
-    <article>
-        {{> typography.h2}}
-        {{> typography.paragraph}}
-        {{> button}}
-    </article>
-    <article class="bg_demo">
-        {{> typography.h2}}
-        {{> typography.paragraph}}
-        {{> button}}
-    </article>
-</div>
-
-            <!-- Two Col -->
-            <div class="twoCol bg_demo">
-                <article>
-                    {{> typography.h2}}
-                </article>
-                <article>
-                    {{> typography.h2}}
-                </article>
-            </div>
-
-            <!-- Featured Post -->
-            <article class="post twoCol">
-                <div>
-                    {{> typography.h2}}
-                    {{> typography.paragraph}}
-                    {{> button}}
-                </div>
-                <div>
-                    {{> images.image imageSource="/assets/strapless/images/background/code.jpg"}}
-                </div>
-            </article>
-
-            <!-- Featured Post -->
-            <article class="post twoCol bg_demo">
-<!--            <article class="post twoCol background-img" style="background-image: url('/assets/strapless/images/background/code.jpg');">-->
-                <div>
-                    {{> typography.h2}}
-                    {{> typography.paragraph}}
-                    {{> button}}
-                </div>
-                <div>
-
-                </div>
-            </article>
-            
-            
-            <!-- Business Member Ad Spot -->
-            <section class="ads">
-                <!-- Featured -->
-                <article class="twoCol">
-                    <div>
-                        <h2></h2>
-                        <p></p>
-                        <a href=""></a>
-                    </div>
-                    <div>
-                        <img>
-                    </div>
-                </article>
-            </section>
-            
-            <!-- NAWCC Promotion Spot -->
-            <section class="promo">
-                <!-- Featured -->
-                <article class="twoCol">
-                    <div>
-                        <h2></h2>
-                        <p></p>
-                        <a href=""></a>
-                    </div>
-                    <div>
-                        <img>
-                    </div>
-                </article>
-            </section>
-            
-            <!-- Call To Action -->
-            <section class="cta twoCol">
-                <div>
-                    <h2></h2>
-                    <p></p>
-                    <a href=""></a>
-                </div>
-                <div>
-                    <img>
-                </div>
-            </section>
 
 <div id="01-info" class="componentsIntro">
 	

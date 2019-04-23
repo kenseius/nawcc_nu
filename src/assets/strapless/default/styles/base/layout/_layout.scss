@@ -20,7 +20,8 @@ body {
     & > section,
     & > article, 
     & > section > div,
-    & > article > div {
+    & > article > div,
+    & > .twoCol > article > div {
 
         // section widths
         // ===================
@@ -40,7 +41,8 @@ body {
         & > ul,
         & > blockquote,
         & > .meta,
-        iframe {
+        iframe,
+        & > .btnBar {
             @include wrap($article-max-width, auto);
             // @include wrap($base-max-width, auto);
             @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
@@ -97,6 +99,14 @@ body {
     @include global-container(100%, 100%, 0, 0);
     min-height: $default-height;
 
+    & > article {
+        min-height: $default-height;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
     // vertically centers child elements 
     display: flex;
     flex-direction: row;
@@ -106,7 +116,6 @@ body {
     & > div,
     & > section,
     & > article {
-        
         margin: auto;
         // padding-top: $scale_2;
         width: 50%;
@@ -117,7 +126,10 @@ body {
         float: left;
         &:nth-child(even) {float: right;}
         
+        & > img {max-width: $article-max-width;}
+        
     }
+    
     
 }
 
