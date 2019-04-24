@@ -158,7 +158,7 @@ $p1: $scale_0; // 16px
 
 
 $base-width:            100%;
-$base-max-width:        64rem;
+$base-max-width:        $scale_11; //64rem;
 $article-max-width:     31.952rem; // 511.227px
 $text-max-width:        $article-max-width;
 $base-border:           0.2rem solid $gry_muted;// $grylite;

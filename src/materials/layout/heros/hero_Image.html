@@ -1,0 +1,9 @@
+<header {{~#if heroID}}id="{{heroID}}"{{/if~}}>
+    <section class="hero {{heroClass}}">
+        {{> images.image}}
+    </section>
+    <section class="hero article_title">
+        <h1>{{title}}</h1>
+        {{> containers.metadata}}
+    </section>
+</header>

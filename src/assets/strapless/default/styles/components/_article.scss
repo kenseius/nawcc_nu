@@ -103,3 +103,8 @@
 
 // & > article, & > .article,
 article, .article {@include article;}
+
+.post_content {
+    @include article;
+    margin: 0 auto $scale_3;
+}
