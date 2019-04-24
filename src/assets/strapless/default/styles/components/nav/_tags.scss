@@ -1,0 +1,171 @@
+/* ==========================
+
+    TAGS
+    ------------
+
+========================== */
+
+
+.tag {
+    display: block;
+    width: $scale_5;
+    height: $scale_2;
+    
+    text-align: center;
+    color: $slate;
+    background: $gry;
+
+    border-radius: 6px;
+    
+}
+
+
+
+
+
+//
+//@mixin button($color, $bg, $border_color, $hover_color, $hover_bg) {
+//    display: block;
+//    margin: $base-vertical 0;
+//    padding: 0 $base-horizontal-padding;
+//    border: 0.1875rem solid $border_color;
+//    background:$bg; 
+//    color: $color;
+//    @include type-setting(0);
+//    font-size: $base-font-size;
+//    font-weight: bold;
+//    letter-spacing: 0.1rem;
+//    cursor:pointer;
+//
+//    @include anim ($global-animation);
+//    @include hover() {background: $hover_bg; color: $hover_color;} // outline: 0;
+//
+//    // remove blue glowing input style - doesn't need to use the hover mixin
+//    outline: 0;
+//    &::-moz-focus-inner {border:0;}
+//
+//}
+//
+//button:not(.nav-trigger),
+//.button,
+//[type="submit"] {
+//    @include button($wht, $org, $org, $slate, $gry);
+//    &.iconButton {
+//
+//        // old styles
+//        // border-top: 0.1875rem solid transparent;
+//        // border-left: 0.1875rem solid transparent;
+//        // border-right: 0.1875rem solid transparent;
+//        // border-bottom: 0.1875rem solid #888;
+//        // @include hover() { border-bottom: 0.1875rem solid $org; }
+//
+//        padding-top: 1rem;
+//        padding-bottom: 1rem; 
+//
+//        i {
+//            display: block;
+//            margin: auto;
+//            font-size: 4.209rem;
+//            padding-bottom: 10px;// 0.625em - = 10px
+//            // @include anim($global-animation);
+//            @media #{$small-only} {font-size: 2.369rem;}
+//            @media #{$medium-only} {font-size: 3.157rem;}
+//        }
+//    
+//        // @include anim($global-animation);
+//        // @include hover() {
+//        //     background-color:$gry;
+//        //     border-color: $org;
+//        //     @media #{$small-only} {
+//        //         border-left:2px solid $org;
+//        //         border-bottom-color: transparent;
+//        //     }
+//        //     i {color: $org;}
+//        // }
+//
+//    }
+//
+//    text-align: center;
+//    max-width: $article-max-width;
+//
+//    //SP2013
+//    min-height: 65px; // = navbar height
+//    // max-height: 65px;
+//    // line-height: 65px;
+//    
+//    @include hover() { 
+//        // background: $slate; 
+//        // color: $wht; 
+//        img { @include filter(brightness(80%)) }
+//    }
+//
+//    &.inverted {
+//        background: transparent;
+//        color: $wht;
+//        border: 0.1875rem solid $wht;
+//        @include hover() { background: $wht; color: $slate; }
+//    }
+//
+//    &.slate {
+//        background: $slate; border-color: $slate; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $slate; color: $slate; }
+//    }
+//    &.gry {
+//        background: $gry; border-color: $gry; color: $slate;
+//        @include hover_no-whatinput() { background: $wht; border-color: $gry; color: $slate; }        
+//    }
+//    &.wht {
+//        background: $wht; border-color: $wht; color: $slate;
+//        @include hover_no-whatinput() { background: $wht; border-color: $slate; color: $slate; }        
+//    }
+//    &.blu {
+//        background: $blu; border-color: $blu; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $blu; color: $blu; }        
+//    }
+//    &.bludrk {
+//        background: $bludrk; border-color: $bludrk; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $bludrk; color: $bludrk; }        
+//    }
+//    &.blulite {
+//        background: $blulite; border-color: $blulite; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $blulite; color: $blulite; }        
+//    }
+//    &.grn {
+//        background: $grn; border-color: $grn; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $grn; color: $grn; }    
+//    }
+//    &.red {
+//        background: $red; border-color: $red; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $red; color: $red; }        
+//    }
+//    &.org {
+//        background: $org; border-color: $org; color: $wht;
+//        @include hover_no-whatinput() { background: $wht; border-color: $org; color: $org; }        
+//    }
+//    &.gld {
+//        background: $gld; border-color: $gld; color: $slate;
+//        @include hover_no-whatinput() { background: $wht; border-color: $gld; color: $slate; }                
+//    }
+//    &.pch {
+//        background: $pch; border-color: $pch; color: $slate;
+//        @include hover_no-whatinput() { background: $wht; border-color: $pch; color: $slate; }                
+//    }
+//    &.ylw {
+//        background: $ylw; border-color: $ylw; color: $slate;
+//        @include hover_no-whatinput() { background: $wht; border-color: $ylw; color: $slate; }                
+//    }
+//
+//    // oulined
+//    &.outlined { background: transparent; color: $slate; border: 0.1875rem solid $slate;  @include hover() {background: $slate; color: $wht;} }
+//
+//}
+//
+//// style fixes for hyperlinks using the .button class
+//a.button {padding: 1rem;}
+//
+//// dropdown arrow
+//.dropdown_arrow { &::before {
+//        // @include background-triangle($gry_muted);
+//        @extend .updown_caret::before !optional;
+//    }
+//}
