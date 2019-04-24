@@ -6,7 +6,7 @@ const gulp = require('gulp');
 const argv = require('minimist')(process.argv.slice(2));
 const log = require('fancy-log');
 const gulpif = require('gulp-if');
-const imagemin = require('gulp-imagemin');
+// const imagemin = require('gulp-imagemin');
 const prefix = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
@@ -25,90 +25,60 @@ function reload(done) {
 // configuration
 // ==========================================
 const config = {
-  dev: !!argv.dev,
-  styles: {
-    browsers: [
-      'ie 11',
-      'edge >= 16',
-      'chrome >= 70',
-      'firefox >= 63',
-      'safari >= 11',
-      'iOS >= 12',
-      'ChromeAndroid >= 70',
-    ],
-    fabricator: {
-      src: 'src/assets/fabricator/styles/fabricator.scss',
-      dest: 'dist/assets/fabricator/styles',
-      watch: 'src/assets/fabricator/styles/**/*.scss',
+    dev: !!argv.dev,
+    styles: {
+        browsers: [
+          'ie 11',
+          'edge >= 16',
+          'chrome >= 70',
+          'firefox >= 63',
+          'safari >= 11',
+          'iOS >= 12',
+          'ChromeAndroid >= 70',
+        ],
+        fabricator: {
+          src: 'src/assets/fabricator/styles/fabricator.scss',
+          dest: 'dist/assets/fabricator/styles',
+          watch: 'src/assets/fabricator/styles/**/*.scss',
+        },
+        strapless: {
+            src: 'src/assets/strapless/default/styles/strapless.scss',
+            dest: 'dist/assets/strapless/styles',
+            watch: 'src/assets/strapless/default/styles/**/*.scss',
+        },
     },
-    strapless: {
-        src: 'src/assets/strapless/default/styles/strapless.scss',
-        dest: 'dist/assets/strapless/styles',
-        watch: 'src/assets/strapless/default/styles/**/*.scss',
+    scripts: {
+        fabricator: {
+          src: './src/assets/fabricator/scripts/fabricator.js',
+          dest: 'dist/assets/fabricator/scripts',
+          watch: 'src/assets/fabricator/scripts/**/*',
+        },
+        strapless: {
+          src: [
+            './node_modules/what-input/dist/what-input.js',
+            //'./src/assets/strapless/default/scripts/what-input.js',
+            './src/assets/strapless/default/scripts/strapless.js'
+          ],
+          dest: 'dist/assets/strapless/scripts',
+          watch: 'src/assets/strapless/default/scripts/**/*',
+        }
     },
-    // strapless_absconders: {
-    //     src: 'src/assets/absconders/styles/strapless.scss',
-    //     dest: 'dist/assets/absconders/styles',
-    //     watch: 'src/assets/absconders/styles/**/*.scss',
-    // },
-    // strapless_Employment: {
-    //     src: 'src/assets/employment/styles/strapless.scss',
-    //     dest: 'dist/assets/employment/styles',
-    //     watch: 'src/assets/employment/styles/**/*.scss',
-    // }
-  },
-  scripts: {
-    fabricator: {
-      src: './src/assets/fabricator/scripts/fabricator.js',
-      dest: 'dist/assets/fabricator/scripts',
-      watch: 'src/assets/fabricator/scripts/**/*',
+    images: {
+        fabricator: {
+            src: ['src/assets/fabricator/images/**/*', 'src/favicon.ico'],
+            dest: 'dist/assets/fabricator/images',
+            watch: 'src/assets/fabricator/images/**/*',
+        },
+        strapless: {
+            src: ['src/assets/nawcc/images/**/*', 'src/favicon.ico'],
+            dest: 'dist/assets/strapless/images',
+            watch: 'src/assets/nawcc/images/**/*',
+        }
     },
-    strapless: {
-      src: [
-        './node_modules/what-input/dist/what-input.js',
-        //'./src/assets/strapless/default/scripts/what-input.js',
-        './src/assets/strapless/default/scripts/strapless.js'
-      ],
-      dest: 'dist/assets/strapless/scripts',
-      watch: 'src/assets/strapless/default/scripts/**/*',
+    templates: {
+        watch: 'src/**/*.{html,md,json,yml}',
     },
-    // strapless_absconders: {
-    //   src: './src/assets/absconders/scripts/strapless.js',
-    //   dest: 'dist/assets/absconders/scripts',
-    //   watch: 'src/assets/absconders/scripts/**/*',
-    // },
-    // strapless_employment: {
-    //   src: './src/assets/employment/scripts/strapless.js',
-    //   dest: 'dist/assets/employment/scripts',
-    //   watch: 'src/assets/employment/scripts/**/*',
-    // }
-  },
-  images: {
-      fabricator: {
-        src: ['src/assets/fabricator/images/**/*', 'src/favicon.ico'],
-        dest: 'dist/assets/fabricator/images',
-        watch: 'src/assets/fabricator/images/**/*',
-      },
-    strapless: {
-      src: ['src/assets/nawcc/images/**/*', 'src/favicon.ico'],
-      dest: 'dist/assets/strapless/images',
-      watch: 'src/assets/nawcc/images/**/*',
-    },
-    // strapless_absconders: {
-    //   src: ['src/assets/absconders/images/**/*', 'src/favicon.ico'],
-    //   dest: 'dist/assets/absconders/images',
-    //   watch: 'src/assets/absconders/images/**/*',
-    // },
-    // strapless_employment: {
-    //   src: ['src/assets/employment/images/**/*', 'src/favicon.ico'],
-    //   dest: 'dist/assets/employment/images',
-    //   watch: 'src/assets/employment/images/**/*',
-    // }
-  },
-  templates: {
-    watch: 'src/**/*.{html,md,json,yml}',
-  },
-  dest: 'dist',
+    dest: 'dist'
 };
 
 
@@ -194,7 +164,7 @@ function imgFavicon() {
 function imgMinification() {
   return gulp
     .src(config.images.strapless.src)
-    .pipe(imagemin())
+    // .pipe(imagemin())
     .pipe(gulp.dest(config.images.strapless.dest));
 }
 const images = gulp.series(imgFavicon, imgMinification);

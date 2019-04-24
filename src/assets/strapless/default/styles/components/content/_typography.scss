@@ -35,6 +35,8 @@ h5 { @include type-setting(0); }
 p  { @include type-setting(0); }
 li { @include type-setting(0); }
 
+p.lead { @include type-setting(1); }
+
 
 //  2. article
 // *************************
@@ -170,8 +172,9 @@ body > .article,
 // ====================================
 
 .subtitle {
-    font-size: $scale_3;
-    color: $gry;
+    font-family: $title-font;
+    font-size: $scale_2;
+    color: #999;
 }
 
 .subtitle_small {

@@ -21,7 +21,8 @@ body {
     & > article, 
     & > section > div,
     & > article > div,
-    & > .twoCol > article > div {
+    & > .twoCol > article > div,
+    & > article.post_article > div {
 
         // section widths
         // ===================
