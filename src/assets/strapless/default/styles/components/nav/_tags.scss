@@ -6,15 +6,22 @@
 ========================== */
 
 
-.tag {
-    display: block;
-    width: $scale_5;
-    height: $scale_2;
-    
+//  a[rel~="tag"]  < -- is for if there might be more rel entries than just "tag"
+
+.tag,
+a[rel="tag"] {
+
+    min-width: $scale_5;
+    padding: 0 0.5rem;
+    height: $scale_2;   
+    line-height: $scale_2;
+    vertical-align: middle;
     text-align: center;
     color: $slate;
     background: $gry;
 
+    @include hover() {background: $org; color: $wht;}
+    
     border-radius: 6px;
     
 }

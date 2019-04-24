@@ -25,23 +25,34 @@
             if (!empty($thumbnail)) {
 ?>
 <?php } else { ?><?php } ?>
-	<header class="hero" style="background-image:url(<?php if ($thumbnail) { echo $thumbnail ;} ?>)">
-		<div>
-	    	<h1><?php the_title(); ?></h1>
-		</div>
-	</header>
-	<article>
-	    <p class="subheader"><?php  get_bloginfo('name'); ?></p>
-	    <h1><?php the_title(); ?></h1>
-	    <div class="meta meta_article">
-	        <p>
-				<?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?>
-				<?php $the_tags = the_tags(' '); if ($the_tags) { echo '<span class="pipe">|</span>' . $the_tags . '';} ?>
-			</p>
-	        <p class="meta_right"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>
-	    </div>
-	    <?php the_content(); ?>
-	</article>
+
+    <header>
+        <!-- <section class="hero hero_bg" style="background-image:url(<?php if ($thumbnail) { echo $thumbnail ;} ?>)">-->
+        <section class="hero hero_bg">
+            <?php $post_logo = get_field( 'post_logo' ); ?>
+            <?php if ( $post_logo ) { ?>
+                <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
+            <?php } ?>
+            <!-- <img src="./assets/strapless/images/dev/clockworkfest_logo.png" alt=""> -->
+        </section>
+        <section class="hero article_title">
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h1><?php the_title(); ?></h1>
+            <section class="meta meta_article">
+                <p>Written by <?php the_author(); ?></p>
+                <p><time><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></time></p>
+            </section>        
+            <div class="btnBar">
+                <?php $the_tags = the_tags(' ',' '); if ($the_tags) { echo $the_tags;} ?> 
+            </div>
+        </section>
+    </header>
+
+    <section class="post_content">
+        <p class="lead"><?php the_excerpt(); ?></p>
+        <?php the_content(); ?>
+    </section>
+
 <?php endwhile; else: ?>
   <p><?php _e('Sorry, there are no posts.'); ?></p>
 <?php endif; ?>

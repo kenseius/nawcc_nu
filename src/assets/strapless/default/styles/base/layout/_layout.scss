@@ -41,7 +41,7 @@ body {
         & > p,
         & > ul,
         & > blockquote,
-        & > .meta,
+        // & > .meta,
         iframe,
         & > .btnBar {
             @include wrap($article-max-width, auto);

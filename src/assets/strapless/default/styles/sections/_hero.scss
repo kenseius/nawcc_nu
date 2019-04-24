@@ -124,7 +124,10 @@
     color: #252525;
     background-color: #fafafa;
 
-    &.hero_strapless_preview {background-color: $blu;}
+    &.hero_strapless_preview {
+        display: block;
+        background-color: $blu;
+    }
 
     text-align: left;
     h1, h2, p {text-align: left;}
@@ -132,12 +135,14 @@
     &.article_title {
         
         min-height: $scale_9;
+        
         h1, .subtitle, .meta {
             
             width: 100%;
+            max-width: $base-max-width;
             margin-bottom: $scale_2;
             
-            @include wrap($base-max-width, auto);
+            // @include wrap($base-max-width, auto);
             @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
             @media #{$medium-only} { max-width: $article-max-width; }
         }

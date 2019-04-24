@@ -13,9 +13,12 @@
 
 
 .btnBar {
-    button,
-    .button,
-    .btn {display: inline-block;}
+    
+    @include wrap($base-max-width, auto);
+        
+    button, .button, .btn,
+    .tag, a[rel="tag"] {display: inline-block;}
+    
 }
 
 

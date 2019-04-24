@@ -2,23 +2,31 @@
 // used on frontpage w/ news cards, on media with news cards, single posts, and pages
 .article .meta,
 .meta {
-    display:block;
+    
+    display:flex;
+    flex-flow: row;
+    justify-content: space-between;
+    
     width: 100%;
     @include clear();
     @include anim(all ease-in-out 0.3s);
-    p {
-        float: left;
-        text-align: left;
-        text-transform: capitalize;
-        margin-bottom: 0;
-        &:nth-child(1) {padding-right: 1em;}
-        &.meta_right {float:right;}
-        @include anim(all ease-in-out 0.3s);
-        @media #{$small-only} {
-            line-height: 1.75em;
-            &.meta_right{float: left;}
-        }
-    }
+    
+    p {flex-grow: 1;}
+    p:last-child {text-align: right; align-self: flex-end;}
+    
+    //    p {
+    //        float: left;
+    //        text-align: left;
+    //        text-transform: capitalize;
+    //        margin-bottom: 0;
+    //        &:nth-child(1) {padding-right: 1em;}
+    //        &.meta_right {float:right;}
+    //        @include anim(all ease-in-out 0.3s);
+    //        @media #{$small-only} {
+    //            line-height: 1.75em;
+    //            &.meta_right{float: left;}
+    //        }
+    //    }
 
     &.meta_newsfeed {
         padding: 0.9375em 0; // 0.9375em // 0.625em // = 15px 10px
