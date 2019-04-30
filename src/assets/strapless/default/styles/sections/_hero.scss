@@ -13,17 +13,24 @@
 .hero {
     
     // display: block;
+    
+    //    padding: $base-vertical-padding 0;
+    //    margin: auto;
+    //    min-height: $default-height;
+    
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    
-    padding: $base-vertical-padding 0;
-    margin: auto;
-    
+
     min-height: $default-height;
     
-
+    &.hero_tall {min-height: $section-height-tall;}
+    &.hero_short {min-height: $section-height-short;}
+    
+    text-align: left;
+    h1, h2, p {text-align: left;}
+    
     .outline, div {margin: auto;}
     & > div:not(.search) {max-width: $article-max-width;}
 
@@ -32,18 +39,84 @@
         // margin-top: -65px;
         padding: 65px + 77.78px 0 $base-vertical-padding; // 77.78 = $base-vertical-padding
     }
-
-
-    // default bg: if no images appear
-    background-color: $slate;
-    color: $wht;
+ 
+    & > .hero_image,
+    & > .article_title {
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        
+        min-height: $default-height;
+        padding: $base-vertical-padding 0;
+        margin: auto;
+        
+    }
 
     // bg images
+    // ======================================
 
-    // strapless
-    // ************************
-    //  - use nth-of-type to specify different styles per section
-    // ************************
+    // default bg: if no images appear
+    background-color: $wht;
+    color: $slate;
+    // @extend %bg_image; 
+
+    
+    & > .hero_image {
+        @extend %bg_image; 
+        // background-attachment: fixed;
+        img {
+            position: relative;
+            z-index: 99999;
+        }
+    }
+    & > .article_title {
+        
+        min-height: $scale_9;
+        
+        h1, .subtitle, .meta {
+            
+            width: 100%;
+            max-width: $base-max-width;
+            margin-bottom: $scale_2;
+            
+            // @include wrap($base-max-width, auto);
+            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+            @media #{$medium-only} { max-width: $article-max-width; }
+        }
+        & > h1 {font-size: $h1;}
+        
+    }
+    
+    &.bg_clockwork {color: $wht;}
+    
+    img,
+    object {
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-width: $article-max-width;
+        // height: auto;
+        @media #{$medium-only} { width: 80%;}
+        @media #{$small-only} { width: 90%;}
+    }
+    @media #{$small-only} {padding: $base-horizontal-padding 0;}
+    
+    
+} // end header .hero
+    
+    
+    
+    
+    
+// 1.2 strapless
+// ************************
+//  - use nth-of-type to specify different styles per section
+// ************************
+    
+ .hero {   
+    
     &.hero_Strapless {
 
         // default, header
@@ -120,54 +193,17 @@
         // sky gradient: @include bg('https://images.unsplash.com/photo-1495206255513-257bdf652e26?dpr=1&auto=format&fit=crop&w=1500&h=844&q=80&cs=tinysrgb&crop=', 0.8, cover);   
         background: $slate;
     }
-
-    color: #252525;
-    background-color: #fafafa;
-
+    
     &.hero_strapless_preview {
         display: block;
         background-color: $blu;
     }
-
-    text-align: left;
-    h1, h2, p {text-align: left;}
     
-    &.article_title {
-        
-        min-height: $scale_9;
-        
-        h1, .subtitle, .meta {
-            
-            width: 100%;
-            max-width: $base-max-width;
-            margin-bottom: $scale_2;
-            
-            // @include wrap($base-max-width, auto);
-            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
-            @media #{$medium-only} { max-width: $article-max-width; }
-        }
-        & > h1 {font-size: $h1;}
-        
-    }
-    
-    &.bg_clockwork {color: $wht;}
-    
-    img,
-    object {
-        display: block;
-        margin: auto;
-        width: 100%;
-        max-width: $article-max-width;
-        // height: auto;
-        @media #{$medium-only} { width: 80%;}
-        @media #{$small-only} { width: 90%;}
-    }
-    @media #{$small-only} {padding: $base-horizontal-padding 0;}
 
 } // end header .hero
 
 
-//  1.2 aboutPA hero-like sections
+//  1.3 aboutPA hero-like sections
 // ************************
 
 .heroAboutPA {

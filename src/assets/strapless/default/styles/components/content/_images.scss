@@ -2,7 +2,11 @@
 //  I. Images
 // ==========================
 
+
+
 // images
+// ======================
+
 // img {margin-bottom: $base-horizontal-padding;}
 img {margin:auto auto $base-horizontal-padding;}
 .imagery { img {max-width: $base-max-width * 0.77778;} } // just for styleguide
@@ -14,6 +18,56 @@ img {
     }
 }
 
+
+
+// background images
+// ======================
+
+
+%bg_image {
+    
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    //    webkit-filter: contrast(1.1);
+    //    -moz-filter: contrast(1.1);
+    //    -ms-filter: contrast(1.1);
+    //    -o-filter: contrast(1.1);
+    //    filter: contrast(1.1);
+    transition: all ease 1s;
+
+    &:before {
+        
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+        max-height: 100%;
+        z-index: 0;
+        
+        // background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+        // opacity: .6; 
+        // background: linear-gradient(transparent,transparent,rgba(0,0,0,0.4),rgba(0,0,0,0.6));
+        
+        @include linear-gradient(0, 0, 0, 0.6, 0, 0, 0, 0.5,);
+
+    }
+    
+}
+
+.bg_image {
+    @extend %bg_image; 
+}
 
 
 .background-img {

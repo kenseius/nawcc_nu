@@ -122,11 +122,18 @@
     @import 'sections/footer';
     @import 'sections/messageScreen';
     @import 'sections/tableOfContents';
-
+ 
 
     // pages
     @import 'pages/styleguide';
 
+
+.post {
+    
+    @extend %bg_image;
+    color: $wht;
+    
+}
 
 
 

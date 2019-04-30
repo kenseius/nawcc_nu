@@ -44,23 +44,38 @@ body {
         // & > .meta,
         iframe,
         & > .btnBar {
+            position: relative;
+            line-height: 1.414em;
             @include wrap($article-max-width, auto);
-            // @include wrap($base-max-width, auto);
             @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
             @media #{$medium-only} { max-width: $article-max-width; }
         }
 
+        a {
+            display: inline-block;
+            border-top: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-left: 3px solid transparent;
+            border-bottom: 2px solid $org;
+            color: #999;
+            @include hover() {background: $org; color: $wht;}
+        }
+        
         // & > h1 {margin-bottom: $base-vertical;}
-
+        
         // & > h2,
         & > .meta,
         & > pre,
-        & > code {margin-bottom: $base-horizontal-padding;}
+        & > code {
+            position: relative;
+            margin-bottom: $base-horizontal-padding;
+        }
 
         & > img,
         & > table,
         // & > p,
         & > .pseudo-search  {
+            position: relative;
             max-width: $base-max-width; 
             margin-left: auto; 
             margin-right: auto;
@@ -106,6 +121,7 @@ body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        flex: 1;
     }
     
     // vertically centers child elements 
@@ -113,15 +129,14 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     
     & > div,
     & > section,
-    & > article {
+    & > article + article  {
         margin: auto;
         // padding-top: $scale_2;
         width: 50%;
-        
-        flex: 1;
         
         // fallback for flexbox
         float: left;

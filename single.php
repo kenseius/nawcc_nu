@@ -26,16 +26,15 @@
 ?>
 <?php } else { ?><?php } ?>
 
-    <header>
-        <!-- <section class="hero hero_bg" style="background-image:url(<?php if ($thumbnail) { echo $thumbnail ;} ?>)">-->
-        <section class="hero hero_bg">
+    <header class="hero">
+        <section class="hero_image" style="background-image:url(<?php if ($thumbnail) { echo $thumbnail ;} ?>)">
             <?php $post_logo = get_field( 'post_logo' ); ?>
             <?php if ( $post_logo ) { ?>
                 <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
             <?php } ?>
             <!-- <img src="./assets/strapless/images/dev/clockworkfest_logo.png" alt=""> -->
         </section>
-        <section class="hero article_title">
+        <section class=" article_title">
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
             <h1><?php the_title(); ?></h1>
             <section class="meta meta_article">
