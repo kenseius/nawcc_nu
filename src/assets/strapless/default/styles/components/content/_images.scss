@@ -41,6 +41,8 @@ img {
     //    -o-filter: contrast(1.1);
     //    filter: contrast(1.1);
     transition: all ease 1s;
+    
+    color: $wht;
 
     &:before {
         
@@ -59,7 +61,7 @@ img {
         // opacity: .6; 
         // background: linear-gradient(transparent,transparent,rgba(0,0,0,0.4),rgba(0,0,0,0.6));
         
-        @include linear-gradient(0, 0, 0, 0.6, 0, 0, 0, 0.5,);
+        @include linear-gradient(0, 0, 0, 0.75, 0, 0, 0, 0.5,);
 
     }
     

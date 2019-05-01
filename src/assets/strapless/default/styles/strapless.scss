@@ -129,12 +129,14 @@
 
 
 .post {
-    
     @extend %bg_image;
     color: $wht;
-    
 }
 
+.post_content {
+    @include article;
+    margin: 0 auto $scale_3;
+}
 
 
 

@@ -34,7 +34,7 @@
             <?php } ?>
             <!-- <img src="./assets/strapless/images/dev/clockworkfest_logo.png" alt=""> -->
         </section>
-        <section class=" article_title">
+        <section class="article_title">
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
             <h1><?php the_title(); ?></h1>
             <section class="meta meta_article">
@@ -48,7 +48,9 @@
     </header>
 
     <section class="post_content">
-        <p class="lead"><?php the_excerpt(); ?></p>
+        <?php if( get_field('lead') ): ?>
+            <p class="lead"><?php the_field('lead'); ?></p>
+        <?php endif; ?>
         <?php the_content(); ?>
     </section>
 

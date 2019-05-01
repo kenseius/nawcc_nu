@@ -27,11 +27,11 @@
 
 //  1. main
 // *************************
-h1 { @include type-setting(4); }
-h2 { @include type-setting(3); }
-h3 { @include type-setting(2); }
-h4 { @include type-setting(1); }
-h5 { @include type-setting(0); }
+h1 { @include type-setting(5); }
+h2 { @include type-setting(4); }
+h3 { @include type-setting(3); }
+h4 { @include type-setting(2); }
+h5 { @include type-setting(1); }
 p  { @include type-setting(0); }
 li { @include type-setting(0); }
 

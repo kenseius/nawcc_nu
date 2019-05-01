@@ -203,7 +203,7 @@ $base-padding:                  ($base-padding-value) * 1rem;
 $base-margin:                   0 auto $base-horizontal-padding;
 
 $base-ratio:                    $scale-value_1;
-$base-line-height:              $base-ratio * $base-font-size;
+$base-line-height:              $scale-value_2; // $base-ratio * $base-font-size;
 
 // $line-height:                   $base-line-height * 1.414em
 

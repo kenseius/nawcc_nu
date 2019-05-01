@@ -36,12 +36,17 @@
     <?php endif; ?>
     
 </head>
+    
+<!--
 <body 
       <?php if ( is_front_page() && is_home() ) { ?> id="particles"<?php } 
             elseif ( is_page_template( 'page-thankyou.php' ) ) { ?> id="particles"<?php } 
             else { ?> style="margin-top:0;padding-top: 0;" <?php } 
       ?> 
 >
+-->   
+    
+<body>   
 
 <nav class="nav primary_navigation" role="navigation">
     <a class="logo" href="index.html">

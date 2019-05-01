@@ -28,7 +28,7 @@
 
     // undoes scnd global styles
     // h1, h2, h4, p {padding-bottom: 0;}
-    p {line-height: 1.778rem;}
+    // p {line-height: 1.778rem;}
     & > p:last-child {margin-bottom: $base-horizontal-padding;}
 
     a {
@@ -104,8 +104,3 @@
 // & > article, & > .article,
 // article, 
 .article {@include article;}
-
-.post_content {
-    @include article;
-    margin: 0 auto $scale_3;
-}

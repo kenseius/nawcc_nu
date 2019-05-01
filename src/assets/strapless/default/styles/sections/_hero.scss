@@ -63,6 +63,7 @@
     // @extend %bg_image; 
 
     
+    &.hero_image,
     & > .hero_image {
         @extend %bg_image; 
         // background-attachment: fixed;
@@ -71,6 +72,7 @@
             z-index: 99999;
         }
     }
+    &.article_title,
     & > .article_title {
         
         min-height: $scale_9;

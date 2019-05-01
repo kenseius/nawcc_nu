@@ -24,14 +24,21 @@
             if (!empty($thumbnail)) {
 ?>
 <?php } else { ?><?php } ?>
-	<header class="hero" style="background-image:url(<?php if ($thumbnail) { echo $thumbnail ;} ?>)">
-		<div>
-	    	<h1><?php the_title(); ?></h1>
-		</div>
+	<header 
+        <?php if( get_field('background_color') ): ?>
+            class="hero" style="background-color:<?php the_field('background_color'); ?>"
+        <?php else : ?>
+            class="hero hero_image" style="background-image:url(<?php if ($thumbnail) { echo $thumbnail ;} ?>)"
+        <?php endif; ?>       
+    >
+	   <h1><?php the_title(); ?></h1>
 	</header>
-	<article>
+	<section class="article">
+        <?php if( get_field('lead') ): ?>
+            <p class="lead"><?php the_field('lead'); ?></p>
+        <?php endif; ?>
 	    <?php the_content(); ?>
-	</article>
+	</section>
 <?php endwhile; else: ?>
   <p><?php _e('Sorry, there are no posts.'); ?></p>
 <?php endif; ?>

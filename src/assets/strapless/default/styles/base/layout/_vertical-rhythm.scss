@@ -61,6 +61,7 @@
 // ---------------------------------------
 
 
+
 $scale-value_5: 5.653; // 90.441px
 $scale-value_4: 3.998; // 63.961px
 $scale-value_3: 2.827; // 45.234px
@@ -68,13 +69,15 @@ $scale-value_2: 1.999; // 31.99px
 $scale-value_1: 1.414; // 22.624px
 $scale-value_0: 1;     // 16px
 
+
 $scale_5: $scale-value_5 * 1rem; // 90.441px
 $scale_4: $scale-value_4 * 1rem; // 63.961px
 $scale_3: $scale-value_3 * 1rem; // 45.234px
 $scale_2: $scale-value_2 * 1rem; // 31.99px
 $scale_1: $scale-value_1 * 1rem; // 22.624px
 $scale_0: $scale-value_0 * 1rem; // 16px
-//
+
+
 $h1: $scale_5; // 5.653 = 90.441px
 $h2: $scale_4; // 3.998 = 63.961px
 $h3: $scale_3; // 2.827 = 45.234px
@@ -89,9 +92,9 @@ $p1: $scale_0; // 16px
 // ---------------------------
 
 $type-settings: (
-    -1: ( font-size: $base-font-size * 0.707,           line-height: $base-line-height ),         // -1 | small text
-     0: ( font-size: $base-font-size,                   line-height: $base-line-height ),         //  0 | base font size (16px)
-     1: ( font-size: $base-font-size * $scale-value_1,  line-height: $base-font-size * $scale-value_2 ),   //  1 | h5
+    -1: ( font-size: $base-font-size * 0.707,           line-height: $scale_1 ),            // -1 | small text
+     0: ( font-size: $base-font-size,                   line-height: $base-line-height ),   //  0 | base font size (16px)
+     1: ( font-size: $base-font-size * $scale-value_1,  line-height: $base-line-height ),   //  1 | h5
      2: ( font-size: $base-font-size * $scale-value_2,  line-height: $base-font-size * $scale-value_3 ),   //  2 | h4
      3: ( font-size: $base-font-size * $scale-value_3,  line-height: $base-font-size * $scale-value_4 ),   //  3 | h3
      4: ( font-size: $base-font-size * $scale-value_4,  line-height: $base-font-size * $scale-value_5 ),   //  4 | h2
