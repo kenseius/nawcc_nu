@@ -119,6 +119,7 @@ $base-font-size:        1rem; // = 16px
 // ---------------------------------------
 
 
+$scale-value_12: 63.884; // 1022.146px
 $scale-value_11: 45.18;  //  722.875px
 $scale-value_10: 31.952; //  511.227px
 $scale-value_9: 22.597; //  361.547px
@@ -132,7 +133,7 @@ $scale-value_2: 1.999; // 31.99px
 $scale-value_1: 1.414; // 22.624px
 $scale-value_0: 1;     // 16px
 
-
+$scale_12: ($scale-value_12) * 1rem; 
 $scale_11: ($scale-value_11) * 1rem; 
 $scale_10: ($scale-value_10) * 1rem; // 31.952rem; // 511.227px
 $scale_9: ($scale-value_9) * 1rem; 
@@ -158,8 +159,8 @@ $p1: $scale_0; // 16px
 
 
 $base-width:            100%;
-$base-max-width:        $scale_11; //64rem;
-$article-max-width:     31.952rem; // 511.227px
+$base-max-width:        $scale_11; 
+$article-max-width:     $scale_10; // 31.952rem = 511.227px
 $text-max-width:        $article-max-width;
 $base-border:           0.2rem solid $gry_muted;// $grylite;
 

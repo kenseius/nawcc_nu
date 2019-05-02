@@ -13,13 +13,28 @@
   //
   // use Abraham\TwitterOAuth\TwitterOAuth;
 
+//  if ( function_exists('register_sidebar') )
+//    register_sidebar(array(
+//      'before_widget' => '',
+//      'after_widget' => '',
+//      'before_title' => '',
+//      'after_title' => '',
+//    ));
+
   if ( function_exists('register_sidebar') )
-    register_sidebar(array(
-      'before_widget' => '',
-      'after_widget' => '',
-      'before_title' => '',
-      'after_title' => '',
-    ));
+    register_sidebar( array(
+       'name' => __( 'Main Sidebar', 'theme-slug' ),
+
+       'id' => 'sidebar-1',  // Add only this line
+
+       'description' => __( 'Widgets in this area will be shown on all posts and pages.', 'theme-slug' ),
+       'before_widget' => '',
+       'after_widget'  => '',
+       'before_title'  => '',
+       'after_title'   => '',
+    ) );
+
+
 
   // Registers menus:
   function register_my_menu() {

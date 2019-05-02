@@ -22,6 +22,7 @@ body {
     & > section > div,
     & > article > div,
     & > .twoCol > article > div,
+    & > .twoCol_grid > article > div,
     & > article.post_article > div {
 
         // section widths
@@ -30,8 +31,16 @@ body {
         // @include global-container(100%, 100%, 3.175rem, 0);
         // margin-bottom: $base-vertical;
         
-        @include global-container(100%, 100%, 0, 0);
+        // TODO: revise global-container 
+        
+        // @include global-container(100%, 100%, 0, 0);
+        // display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+        // padding: 0 0;
 
+        
         // targets just the immediate child elements
         & > h1,
         & > h2,
@@ -101,7 +110,9 @@ body {
 
 
 
-
+.post {
+    & > div {padding: $scale_2 0;}
+}
 
 
 
@@ -112,16 +123,25 @@ body {
 
 .twoCol {
     
-    @include global-container(100%, 100%, 0, 0);
+    // @include global-container(100%, 100%, 0, 0);
+    // display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    // padding: 0 0;
+    
     min-height: $default-height;
 
     & > article {
         min-height: $default-height;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        flex: 1;
+        // flex-direction: row;
+        // justify-content: space-between;
+        // align-items: center;
+        // flex: 1;
+        // flex-wrap: wrap;
+        // align-self: stretch;
+        flex-basis: 50%;
     }
     
     // vertically centers child elements 
@@ -146,7 +166,24 @@ body {
         
     }
     
-    
+}
+
+
+.twoCol_grid {
+    display: flex;
+    // flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    // flex: 1;
+    flex-wrap: wrap;
+    // align-self: stretch;
+    // flex-basis: 50%;
+    & > article {
+        min-height: $default-height;
+        flex: 1 0 50%;
+        display: flex;
+        align-items: center;
+    }
 }
 
 

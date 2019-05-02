@@ -64,6 +64,19 @@ small, .small, .sml {font-size: 77.778%;}
   margin: -1px; padding: 0; border: 0;
 }
 
+// VISUALLY HIDDEN, VISIBLE TO SCREEN READERS - https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html
+/* ie9+ */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+
 // IMG - RESPONSIVE
 img.responsive { display: block; max-width: 100%; height: auto; }
 

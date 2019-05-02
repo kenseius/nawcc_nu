@@ -1,10 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Hackathon</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php }
+            elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php }
+            else { echo get_the_title(); ?> | NAWCC <?php } ?>
+    </title>
+    
+    <!-- METADATA -->
+    <meta name="description" content="<?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC <?php } ?>" />
+	<meta name="keywords"    content="<?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC <?php } ?>" />
+    
+    <!-- METADATA - facebook -->
+	<meta property="fb:page_id" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:description" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The Official Website for the State of Pennsylvania<?php } else { echo get_the_title(); ?><?php } ?>"/>
+	<meta property="og:title" content="PA.GOV"/>
+    
+	<!-- METADATA - google+ -->
+	<meta itemprop="name" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC<?php } ?>"/>
+	<meta itemprop="description" content="The National Association Of Watch &amp; Clock Collectors">
+	<meta itemprop="image" content="">
+    
+<!--    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />-->
+
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/strapless/styles/strapless.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     
@@ -49,7 +71,7 @@
 <body>   
 
 <nav class="nav primary_navigation" role="navigation">
-    <a class="logo" href="index.html">
+    <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
         <svg width="370" height="65" viewBox="0 0 370 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="Logo">
                 <g id="Logo Icon">

@@ -7,7 +7,7 @@
     </header>
     
     <!-- Two Col -->
-    <div class="twoCol">
+    <div class="twoCol_grid">
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <?php

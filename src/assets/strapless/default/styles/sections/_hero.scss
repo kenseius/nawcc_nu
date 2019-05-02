@@ -32,7 +32,7 @@
     h1, h2, p {text-align: left;}
     
     .outline, div {margin: auto;}
-    & > div:not(.search) {max-width: $article-max-width;}
+    // & > div:not(.search) {max-width: $article-max-width;}
 
     // for use when building the transparent nav
     &.home_hero {
@@ -89,6 +89,24 @@
         }
         & > h1 {font-size: $h1;}
         
+    }
+    
+    // two Column hero - for NAWCC
+    &.hero_frontpage {
+        & > .twoCol {
+            flex-direction: row; 
+            justify-content: space-between;
+            flex-wrap: nowrap;
+        }
+        div {max-width: $scale_12; margin: auto;}
+        svg, p {max-width: $article-max-width;}
+        svg {width: 100%; height: 100%; padding: 1rem $scale_2 1rem 1rem;}
+        p {
+            font-family: $title-font; 
+            font-size: $scale_2;
+            padding: 1rem 1rem 1rem $scale_2;
+            border-left: 3px solid $gry; 
+        }
     }
     
     &.bg_clockwork {color: $wht;}
