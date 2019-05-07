@@ -1,4 +1,7 @@
 <!-- LOOKIT DIS CRAZY JS OMG! -->
+
+<script src="<?php echo get_template_directory_uri(); ?>/dist/assets/fabricator/scripts/f.js"></script>
+
 <script src="<?php echo get_template_directory_uri(); ?>/dist/assets/strapless/default/scripts/strapless.js"></script>
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(event) {

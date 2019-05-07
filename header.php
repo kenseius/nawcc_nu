@@ -25,8 +25,8 @@
 	<meta itemprop="description" content="The National Association Of Watch &amp; Clock Collectors">
 	<meta itemprop="image" content="">
     
-<!--    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />-->
-
+    <!--    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />-->
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/fabricator/styles/f.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/strapless/styles/strapless.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     
