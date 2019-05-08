@@ -17,7 +17,7 @@ body {
     .main {
     
         
-    & > section,
+    & > section:not(.postList),
     & > article, 
     & > section > div,
     & > article > div,

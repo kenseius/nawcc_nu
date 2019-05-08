@@ -1,3 +1,32 @@
+
+
+%media_objects {
+    
+    & > a {
+        
+        display: flex;
+        align-items: flex-start;
+        padding: 1rem;
+        margin: 0 0 $scale_2 0;
+        & > img {margin: 0 $scale_2 0 0;}
+        & > div {flex: 1;}
+    
+        @include hover() {
+            background: $gry; 
+            color: lighten($blk, 30%);
+        }
+        
+    }
+    
+    &.circleImages > a > img {border-radius: 50%;}
+    
+}
+
+
+
+// float approach
+
+
 %media-object {
 	@include wrap($base-max-width, auto);
 	margin-bottom: $base-vertical;

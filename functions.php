@@ -84,6 +84,18 @@
     }
 
 
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+
 //===============================================
 //  ----- CUSTOM POST TYPES + TAXONOMIES  ------
 //-----------------------------------------------
@@ -120,75 +132,6 @@
     register_post_type( 'collections', $args );
     }
     add_action( 'init', 'cp_collections' );
-
-
-//------------------------------------------
-// ------ CUSTOM DASHBOARD WIDGETS -------
-//------------------------------------------
-
-    // ------ WIDGET #1 -------
-    // Function that outputs the contents of the dashboard widget
-    function dashboard_widget_function() {
-        $theme_root = get_template_directory_uri();
-        echo '
-            <h2>NAWCC Dashboard</h2>
-            <img src="' . $theme_root . '/screenshot.png" style="display:block; width: 100%; height: auto;" alt="NAWCC">
-            <p>Welcome to the NAWCC Dashboard! From here, you can create and edit posts, add media, interact with users, and keep up with tasks</p>
-            <h4>You Can:</h4>
-            <ul>
-                <li> - Edit Comments</li>
-                <li> - Edit Posts</li>
-                <li> - Manage Media</li>
-                <li> ... and more.</li>
-            </ul>
-        ';
-    }
-    // Function used in the action hook
-    function add_dashboard_widgets() {
-        wp_add_dashboard_widget('dashboard_widget', 'Welcome!', 'dashboard_widget_function');
-    }
-    // Register the new dashboard widget with the 'wp_dashboard_setup' action
-    add_action('wp_dashboard_setup', 'add_dashboard_widgets' );
-
-
-//===============================================
-//  ----- REMOVE ADMIN MENUS FOR USERS ------
-//-----------------------------------------------
-
-function remove_admin_menu_links(){
-    $user = wp_get_current_user();
-    if( $user && isset($user->user_email) && 'krbonner@pa.gov' == $user->user_email ) {
-        remove_menu_page('admin.php?page=jetpack');               // jetpack - doesn't work for some reason
-        remove_menu_page('edit-comments.php');                    // comments
-        remove_menu_page('edit.php?post_type=feedback');          // feedback
-        remove_menu_page('themes.php');                           // appearance
-        remove_menu_page('plugins.php');                          // plugins
-        remove_menu_page('tools.php');                            // tools
-        remove_menu_page('options-general.php');                  // settings
-        remove_menu_page('edit.php?post_type=acf-field-group');   // advanced custom fields
-        remove_menu_page('admin.php?page=snapshots_edit_panel');  // snapshots
-    }
-}
-add_action('admin_menu', 'remove_admin_menu_links');
-
-function remove_admin_menu_links_2(){
-    $user = wp_get_current_user();
-    if( $user && isset($user->user_email) && 'dpaz@pa.gov' == $user->user_email ) {
-        remove_menu_page('admin.php?page=jetpack');               // jetpack - doesn't work for some reason
-        remove_menu_page('edit-comments.php');                    // comments
-        remove_menu_page('edit.php?post_type=feedback');          // feedback
-        remove_menu_page('themes.php');                           // appearance
-        remove_menu_page('plugins.php');                          // plugins
-        remove_menu_page('tools.php');                            // tools
-        remove_menu_page('options-general.php');                  // settings
-        remove_menu_page('edit.php?post_type=acf-field-group');   // advanced custom fields
-        remove_menu_page('admin.php?page=snapshots_edit_panel');  // snapshots
-    }
-}
-add_action('admin_menu', 'remove_admin_menu_links_2');
-
-
-
 
 
 
@@ -279,6 +222,208 @@ class EA_Testimonials {
 new EA_Testimonials();
 
 
+
+/**
+ * Exhibits
+**/
+class EA_Exhibits {
+	/**
+	 * Initialize all the things
+	 *
+	 * @since 1.2.0
+	 */
+	function __construct() {
+		// Actions
+		add_action( 'init', array( $this, 'register_cpt' ) );
+	}
+	/**
+	 * Register the custom post type
+	 *
+	 * @since 1.2.0
+	 */
+	function register_cpt() {
+		$labels = array(
+			'name'               => 'Exhibits',
+			'singular_name'      => 'Exhibit',
+			'add_new'            => 'Add New',
+			'add_new_item'       => 'Add New Exhibit',
+			'edit_item'          => 'Edit Exhibit',
+			'new_item'           => 'New Exhibit',
+			'view_item'          => 'View Exhibit',
+			'search_items'       => 'Search Exhibits',
+			'not_found'          => 'No Exhibits found',
+			'not_found_in_trash' => 'No Exhibits found in Trash',
+			'parent_item_colon'  => 'Parent Exhibit:',
+			'menu_name'          => 'Exhibits',
+		);
+		$args = array(
+			'labels'              => $labels,
+			'hierarchical'        => true,
+			'supports'            => array( 'editor' ),
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_rest'        => true,
+			'publicly_queryable'  => false,
+			'exclude_from_search' => true,
+			'has_archive'         => false,
+			'query_var'           => true,
+			'can_export'          => true,
+			'rewrite'             => array( 'slug' => 'exhibit', 'with_front' => false ),
+			'menu_icon'           => 'dashicons-format-quote',
+			'template'            => array( array( 'core/paragraph' ), array( 'core/paragraph' ), ),
+			'template_lock'      => 'all',
+		);
+		register_post_type( 'exhibit', $args );
+	}
+
+}
+new EA_Exhibits();
+
+
+
+
+//------------------------------------------
+//     ------ BLOCK TEMPLATES -------
+//------------------------------------------
+
+
+
+/**
+ * Display Post Blocks 
+ *
+ */
+function ea_display_post_blocks() {
+	global $post;
+	ea_pp( esc_html( $post->post_content ) );
+}
+add_action( 'wp_footer', 'ea_display_post_blocks' );
+
+
+
+function my_acf_init() {
+	
+	// check function exists
+	if( function_exists('acf_register_block') ) {
+		
+		// register a testimonial block
+		acf_register_block(array(
+			'name'				=> 'hero',
+			'title'				=> __('Hero'),
+			'description'		=> __('Customize your post Hero Banner here.'),
+			'render_callback'	=> 'my_acf_block_render_callback',
+			// 'render_template'	=> 'partials/blockTemplates/block-hero.php',
+            'category'			=> 'formatting',
+			'icon'				=> 'admin-comments',
+			// 'keywords'			=> array( 'hero', 'banner' ),
+		));
+	}
+}
+add_action('acf/init', 'my_acf_init');
+
+
+
+function my_acf_block_render_callback( $block ) {
+	
+	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
+	$slug = str_replace('acf/', '', $block['name']);
+	
+	// include a template part from within the "template-parts/block" folder
+	if( file_exists( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") ) ) {
+		include( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") );
+	}
+}
+
+
+//function be_post_block_template() {
+//  $post_type_object = get_post_type_object( 'post' );
+//  $post_type_object->template = array( 'acf/hero' );
+//}
+//add_action( 'init', 'be_post_block_template' );
+
+
+/**
+ * Block template for posts
+ * @see https://www.billerickson.net/gutenberg-block-templates/
+ *
+*/
+//function be_post_block_template() {
+//  $post_type_object = get_post_type_object( 'post' );
+//  $post_type_object->template = array(
+//    array( 'core/paragraph' ),
+//    array( 'core/paragraph' ),
+//    array( 'core/paragraph' ),
+//  );
+//}
+//add_action( 'init', 'be_post_block_template' );
+
+
+
+
+
+//------------------------------------------
+// ------ CUSTOM DASHBOARD WIDGETS -------
+//------------------------------------------
+
+    // ------ WIDGET #1 -------
+    // Function that outputs the contents of the dashboard widget
+    function dashboard_widget_function() {
+        $theme_root = get_template_directory_uri();
+        echo '
+            <h2>NAWCC Dashboard</h2>
+            <img src="' . $theme_root . '/screenshot.png" style="display:block; width: 100%; height: auto;" alt="NAWCC">
+            <p>Welcome to the NAWCC Dashboard! From here, you can create and edit posts, add media, interact with users, and keep up with tasks</p>
+            <h4>You Can:</h4>
+            <ul>
+                <li> - Edit Comments</li>
+                <li> - Edit Posts</li>
+                <li> - Manage Media</li>
+                <li> ... and more.</li>
+            </ul>
+        ';
+    }
+    // Function used in the action hook
+    function add_dashboard_widgets() {
+        wp_add_dashboard_widget('dashboard_widget', 'Welcome!', 'dashboard_widget_function');
+    }
+    // Register the new dashboard widget with the 'wp_dashboard_setup' action
+    add_action('wp_dashboard_setup', 'add_dashboard_widgets' );
+
+
+//===============================================
+//  ----- REMOVE ADMIN MENUS FOR USERS ------
+//-----------------------------------------------
+
+function remove_admin_menu_links(){
+    $user = wp_get_current_user();
+    if( $user && isset($user->user_email) && 'krbonner@pa.gov' == $user->user_email ) {
+        remove_menu_page('admin.php?page=jetpack');               // jetpack - doesn't work for some reason
+        remove_menu_page('edit-comments.php');                    // comments
+        remove_menu_page('edit.php?post_type=feedback');          // feedback
+        remove_menu_page('themes.php');                           // appearance
+        remove_menu_page('plugins.php');                          // plugins
+        remove_menu_page('tools.php');                            // tools
+        remove_menu_page('options-general.php');                  // settings
+        remove_menu_page('edit.php?post_type=acf-field-group');   // advanced custom fields
+        remove_menu_page('admin.php?page=snapshots_edit_panel');  // snapshots
+    }
+}
+add_action('admin_menu', 'remove_admin_menu_links');
+
+function remove_admin_menu_links_2(){
+    $user = wp_get_current_user();
+    if( $user && isset($user->user_email) && 'dpaz@pa.gov' == $user->user_email ) {
+        remove_menu_page('admin.php?page=jetpack');               // jetpack - doesn't work for some reason
+        remove_menu_page('edit-comments.php');                    // comments
+        remove_menu_page('edit.php?post_type=feedback');          // feedback
+        remove_menu_page('themes.php');                           // appearance
+        remove_menu_page('plugins.php');                          // plugins
+        remove_menu_page('tools.php');                            // tools
+        remove_menu_page('options-general.php');                  // settings
+        remove_menu_page('edit.php?post_type=acf-field-group');   // advanced custom fields
+        remove_menu_page('admin.php?page=snapshots_edit_panel');  // snapshots
+    }
+}
+add_action('admin_menu', 'remove_admin_menu_links_2');
 
 
 

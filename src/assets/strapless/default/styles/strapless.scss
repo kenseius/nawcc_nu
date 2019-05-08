@@ -138,6 +138,13 @@
     margin: 0 auto $scale_3;
 }
 
+.postList {
+    @include global-container(100%, $base-max-width, $scale_3, 0);
+    @extend %media_objects;
+    // h4 {margin-bottom: 1rem;}
+    & > a .meta.meta_article {border: none;}
+}
+
 
 
 // ATOMIC BLOCKS STYLES 
