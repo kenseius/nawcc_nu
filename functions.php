@@ -48,6 +48,11 @@
 //     ----- IMAGES / GALLERIES ------
 //-----------------------------------------------
 
+// Editor Styles
+add_theme_support( 'editor-styles' );
+add_editor_style( '' . $theme_root . '/dist/assets/strapless/styles/strapless.css' );
+
+
   // Adds featured images (aka thumbnails):
   add_theme_support( 'post-thumbnails' );
 
@@ -64,9 +69,9 @@
 //-----------------------------------------------
 
     // ACF OPTIONS PAGES (bascially custom post types)
-    if( function_exists('acf_add_options_page') ) {
-        acf_add_options_page('Apps');
-    }
+//    if( function_exists('acf_add_options_page') ) {
+//        acf_add_options_page('Apps');
+//    }
 
     // Allows you to summon an excerpt from a custom field
     function custom_field_excerpt($title) {
@@ -292,11 +297,11 @@ new EA_Exhibits();
  * Display Post Blocks 
  *
  */
-function ea_display_post_blocks() {
-	global $post;
-	ea_pp( esc_html( $post->post_content ) );
-}
-add_action( 'wp_footer', 'ea_display_post_blocks' );
+//function ea_display_post_blocks() {
+//	global $post;
+//	ea_pp( esc_html( $post->post_content ) );
+//}
+//add_action( 'wp_footer', 'ea_display_post_blocks' );
 
 
 
@@ -310,7 +315,7 @@ function my_acf_init() {
 			'name'				=> 'hero',
 			'title'				=> __('Hero'),
 			'description'		=> __('Customize your post Hero Banner here.'),
-			'render_callback'	=> 'my_acf_block_render_callback',
+			'render_callback'	=> 'my_acf_block_render_callback_2',
 			// 'render_template'	=> 'partials/blockTemplates/block-hero.php',
             'category'			=> 'formatting',
 			'icon'				=> 'admin-comments',
@@ -322,7 +327,7 @@ add_action('acf/init', 'my_acf_init');
 
 
 
-function my_acf_block_render_callback( $block ) {
+function my_acf_block_render_callback_2( $block ) {
 	
 	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
 	$slug = str_replace('acf/', '', $block['name']);
@@ -357,8 +362,84 @@ function my_acf_block_render_callback( $block ) {
 //add_action( 'init', 'be_post_block_template' );
 
 
+add_action('acf/init', 'my_register_blocks');
+function my_register_blocks() {
+
+    // check function exists.
+    if( function_exists('acf_register_block_type') ) {
+
+        // register a testimonial block.
+        acf_register_block_type(array(
+            'name'              => 'test',
+            'title'             => __('test'),
+            'description'       => __('A custom test block.'),
+            'render_callback'   => 'my_acf_block_render_callback',
+            // 'render_template'   => get_template_directory() . '/template-parts/blocks/testimonial/testimonial.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+        ));
+    }
+}
+
+/**
+ * Testimonial Block Callback Function.
+ *
+ * @param   array $block The block settings and attributes.
+ * @param   string $content The block inner HTML (empty).
+ * @param   bool $is_preview True during AJAX preview.
+ * @param   (int|string) $post_id The post ID this block is saved to.
+ */
+function my_acf_block_render_callback( $block, $content = '', $is_preview = false, $post_id = 0 ) {
+
+    // Create id attribute allowing for custom "anchor" value.
+    $id = 'testimonial-' . $block['id'];
+    if( !empty($block['anchor']) ) {
+        $id = $block['anchor'];
+    }
+
+    // Create class attribute allowing for custom "className" and "align" values.
+    $className = 'testimonial';
+    if( !empty($block['className']) ) {
+        $className .= ' ' . $block['className'];
+    }
+    if( !empty($block['align']) ) {
+        $className .= ' align' . $block['align'];
+    }
+
+    // Load values and assing defaults.
+    $text = get_field('testimonial') ?: 'Your testimonial here...';
+    $author = get_field('author') ?: 'Author name';
+    $role = get_field('role') ?: 'Author role';
+    $image = get_field('image') ?: 295;
+    $background_color = get_field('background_color');
+    $text_color = get_field('text_color');
+
+    ?>
+    <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+        <blockquote class="testimonial-blockquote">
+            <span class="testimonial-text"><?php echo $text; ?></span>
+            <span class="testimonial-author"><?php echo $author; ?></span>
+            <span class="testimonial-role"><?php echo $role; ?></span>
+        </blockquote>
+        <div class="testimonial-image">
+            <?php echo wp_get_attachment_image( $image, 'full' ); ?>
+        </div>
+        <style type="text/css">
+            #<?php echo $id; ?> {
+                background: <?php echo $background_color; ?>;
+                color: <?php echo $text_color; ?>;
+            }
+        </style>
+    </div>
+    <?php
+}
 
 
+acf_register_block_type(array(
+    'name'              => 'testimonial',
+    'title'             => __('Testimonial'),
+    'description'       => __('A custom testimonial block.'),
+    ));
 
 //------------------------------------------
 // ------ CUSTOM DASHBOARD WIDGETS -------

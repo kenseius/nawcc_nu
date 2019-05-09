@@ -1,0 +1,22 @@
+/*
+
+NAWCC GUTENBERG STYLES
+
+*/
+
+
+
+blockquote {
+    
+    display: block;
+    margin: 0 auto 1.999rem;
+    padding: 1.414rem;
+    width: 100%;
+    max-width: 511px;
+    
+    font-size: 1.414rem;
+    line-height: 1.999;
+    
+    background: #e0e0e0;
+    
+}
