@@ -141,148 +141,148 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 
 
-/**
- * Testimonials
- *
- * @package      CoreFunctionality
- * @author       Bill Erickson
- * @since        1.0.0
- * @license      GPL-2.0+
-**/
-class EA_Testimonials {
-	/**
-	 * Initialize all the things
-	 *
-	 * @since 1.2.0
-	 */
-	function __construct() {
-		// Actions
-		add_action( 'init', array( $this, 'register_cpt' ) );
-		add_filter( 'wp_insert_post_data', array( $this, 'set_testimonial_title' ), 99, 2 );
-	}
-	/**
-	 * Register the custom post type
-	 *
-	 * @since 1.2.0
-	 */
-	function register_cpt() {
-		$labels = array(
-			'name'               => 'Testimonials',
-			'singular_name'      => 'Testimonial',
-			'add_new'            => 'Add New',
-			'add_new_item'       => 'Add New Testimonial',
-			'edit_item'          => 'Edit Testimonial',
-			'new_item'           => 'New Testimonial',
-			'view_item'          => 'View Testimonial',
-			'search_items'       => 'Search Testimonials',
-			'not_found'          => 'No Testimonials found',
-			'not_found_in_trash' => 'No Testimonials found in Trash',
-			'parent_item_colon'  => 'Parent Testimonial:',
-			'menu_name'          => 'Testimonials',
-		);
-		$args = array(
-			'labels'              => $labels,
-			'hierarchical'        => true,
-			'supports'            => array( 'editor' ),
-			'public'              => true,
-			'show_ui'             => true,
-			'show_in_rest'        => true,
-			'publicly_queryable'  => false,
-			'exclude_from_search' => true,
-			'has_archive'         => false,
-			'query_var'           => true,
-			'can_export'          => true,
-			'rewrite'             => array( 'slug' => 'testimonial', 'with_front' => false ),
-			'menu_icon'           => 'dashicons-format-quote',
-			'template'            => array( array( 'core/quote', array( 'className' => 'is-style-large' ) ) ),
-			'template_lock'      => 'all',
-		);
-		register_post_type( 'testimonial', $args );
-	}
-	/**
-	 * Set testimonial title
-	 *
-	 */
-	function set_testimonial_title( $data, $postarr ) {
-		if( 'testimonial' == $data['post_type'] ) {
-			$title = $this->get_citation( $data['post_content'] );
-			if( empty( $title ) )
-				$title = 'Testimonial ' . $postarr['ID'];
-			$data['post_title'] = $title;
-		}
-		return $data;
-	}
-	/**
-	 * Get Citation
-	 *
-	 */
-	function get_citation( $content ) {
-		$matches = array();
-		$regex = '#<cite>(.*?)</cite>#';
-		preg_match_all( $regex, $content, $matches );
-		if( !empty( $matches ) && !empty( $matches[0] ) && !empty( $matches[0][0] ) )
-			return strip_tags( $matches[0][0] );
-	}
-}
-new EA_Testimonials();
-
-
-
-/**
- * Exhibits
-**/
-class EA_Exhibits {
-	/**
-	 * Initialize all the things
-	 *
-	 * @since 1.2.0
-	 */
-	function __construct() {
-		// Actions
-		add_action( 'init', array( $this, 'register_cpt' ) );
-	}
-	/**
-	 * Register the custom post type
-	 *
-	 * @since 1.2.0
-	 */
-	function register_cpt() {
-		$labels = array(
-			'name'               => 'Exhibits',
-			'singular_name'      => 'Exhibit',
-			'add_new'            => 'Add New',
-			'add_new_item'       => 'Add New Exhibit',
-			'edit_item'          => 'Edit Exhibit',
-			'new_item'           => 'New Exhibit',
-			'view_item'          => 'View Exhibit',
-			'search_items'       => 'Search Exhibits',
-			'not_found'          => 'No Exhibits found',
-			'not_found_in_trash' => 'No Exhibits found in Trash',
-			'parent_item_colon'  => 'Parent Exhibit:',
-			'menu_name'          => 'Exhibits',
-		);
-		$args = array(
-			'labels'              => $labels,
-			'hierarchical'        => true,
-			'supports'            => array( 'editor' ),
-			'public'              => true,
-			'show_ui'             => true,
-			'show_in_rest'        => true,
-			'publicly_queryable'  => false,
-			'exclude_from_search' => true,
-			'has_archive'         => false,
-			'query_var'           => true,
-			'can_export'          => true,
-			'rewrite'             => array( 'slug' => 'exhibit', 'with_front' => false ),
-			'menu_icon'           => 'dashicons-format-quote',
-			'template'            => array( array( 'core/paragraph' ), array( 'core/paragraph' ), ),
-			'template_lock'      => 'all',
-		);
-		register_post_type( 'exhibit', $args );
-	}
-
-}
-new EA_Exhibits();
+///**
+// * Testimonials
+// *
+// * @package      CoreFunctionality
+// * @author       Bill Erickson
+// * @since        1.0.0
+// * @license      GPL-2.0+
+//**/
+//class EA_Testimonials {
+//	/**
+//	 * Initialize all the things
+//	 *
+//	 * @since 1.2.0
+//	 */
+//	function __construct() {
+//		// Actions
+//		add_action( 'init', array( $this, 'register_cpt' ) );
+//		add_filter( 'wp_insert_post_data', array( $this, 'set_testimonial_title' ), 99, 2 );
+//	}
+//	/**
+//	 * Register the custom post type
+//	 *
+//	 * @since 1.2.0
+//	 */
+//	function register_cpt() {
+//		$labels = array(
+//			'name'               => 'Testimonials',
+//			'singular_name'      => 'Testimonial',
+//			'add_new'            => 'Add New',
+//			'add_new_item'       => 'Add New Testimonial',
+//			'edit_item'          => 'Edit Testimonial',
+//			'new_item'           => 'New Testimonial',
+//			'view_item'          => 'View Testimonial',
+//			'search_items'       => 'Search Testimonials',
+//			'not_found'          => 'No Testimonials found',
+//			'not_found_in_trash' => 'No Testimonials found in Trash',
+//			'parent_item_colon'  => 'Parent Testimonial:',
+//			'menu_name'          => 'Testimonials',
+//		);
+//		$args = array(
+//			'labels'              => $labels,
+//			'hierarchical'        => true,
+//			'supports'            => array( 'editor' ),
+//			'public'              => true,
+//			'show_ui'             => true,
+//			'show_in_rest'        => true,
+//			'publicly_queryable'  => false,
+//			'exclude_from_search' => true,
+//			'has_archive'         => false,
+//			'query_var'           => true,
+//			'can_export'          => true,
+//			'rewrite'             => array( 'slug' => 'testimonial', 'with_front' => false ),
+//			'menu_icon'           => 'dashicons-format-quote',
+//			'template'            => array( array( 'core/quote', array( 'className' => 'is-style-large' ) ) ),
+//			'template_lock'      => 'all',
+//		);
+//		register_post_type( 'testimonial', $args );
+//	}
+//	/**
+//	 * Set testimonial title
+//	 *
+//	 */
+//	function set_testimonial_title( $data, $postarr ) {
+//		if( 'testimonial' == $data['post_type'] ) {
+//			$title = $this->get_citation( $data['post_content'] );
+//			if( empty( $title ) )
+//				$title = 'Testimonial ' . $postarr['ID'];
+//			$data['post_title'] = $title;
+//		}
+//		return $data;
+//	}
+//	/**
+//	 * Get Citation
+//	 *
+//	 */
+//	function get_citation( $content ) {
+//		$matches = array();
+//		$regex = '#<cite>(.*?)</cite>#';
+//		preg_match_all( $regex, $content, $matches );
+//		if( !empty( $matches ) && !empty( $matches[0] ) && !empty( $matches[0][0] ) )
+//			return strip_tags( $matches[0][0] );
+//	}
+//}
+//new EA_Testimonials();
+//
+//
+//
+///**
+// * Exhibits
+//**/
+//class EA_Exhibits {
+//	/**
+//	 * Initialize all the things
+//	 *
+//	 * @since 1.2.0
+//	 */
+//	function __construct() {
+//		// Actions
+//		add_action( 'init', array( $this, 'register_cpt' ) );
+//	}
+//	/**
+//	 * Register the custom post type
+//	 *
+//	 * @since 1.2.0
+//	 */
+//	function register_cpt() {
+//		$labels = array(
+//			'name'               => 'Exhibits',
+//			'singular_name'      => 'Exhibit',
+//			'add_new'            => 'Add New',
+//			'add_new_item'       => 'Add New Exhibit',
+//			'edit_item'          => 'Edit Exhibit',
+//			'new_item'           => 'New Exhibit',
+//			'view_item'          => 'View Exhibit',
+//			'search_items'       => 'Search Exhibits',
+//			'not_found'          => 'No Exhibits found',
+//			'not_found_in_trash' => 'No Exhibits found in Trash',
+//			'parent_item_colon'  => 'Parent Exhibit:',
+//			'menu_name'          => 'Exhibits',
+//		);
+//		$args = array(
+//			'labels'              => $labels,
+//			'hierarchical'        => true,
+//			'supports'            => array( 'editor' ),
+//			'public'              => true,
+//			'show_ui'             => true,
+//			'show_in_rest'        => true,
+//			'publicly_queryable'  => false,
+//			'exclude_from_search' => true,
+//			'has_archive'         => false,
+//			'query_var'           => true,
+//			'can_export'          => true,
+//			'rewrite'             => array( 'slug' => 'exhibit', 'with_front' => false ),
+//			'menu_icon'           => 'dashicons-format-quote',
+//			'template'            => array( array( 'core/paragraph' ), array( 'core/paragraph' ), ),
+//			'template_lock'      => 'all',
+//		);
+//		register_post_type( 'exhibit', $args );
+//	}
+//
+//}
+//new EA_Exhibits();
 
 
 
@@ -305,61 +305,39 @@ new EA_Exhibits();
 
 
 
-function my_acf_init() {
-	
-	// check function exists
-	if( function_exists('acf_register_block') ) {
-		
-		// register a testimonial block
-		acf_register_block(array(
-			'name'				=> 'hero',
-			'title'				=> __('Hero'),
-			'description'		=> __('Customize your post Hero Banner here.'),
-			'render_callback'	=> 'my_acf_block_render_callback_2',
-			// 'render_template'	=> 'partials/blockTemplates/block-hero.php',
-            'category'			=> 'formatting',
-			'icon'				=> 'admin-comments',
-			// 'keywords'			=> array( 'hero', 'banner' ),
-		));
-	}
-}
-add_action('acf/init', 'my_acf_init');
-
-
-
-function my_acf_block_render_callback_2( $block ) {
-	
-	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
-	$slug = str_replace('acf/', '', $block['name']);
-	
-	// include a template part from within the "template-parts/block" folder
-	if( file_exists( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") ) ) {
-		include( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") );
-	}
-}
-
-
-//function be_post_block_template() {
-//  $post_type_object = get_post_type_object( 'post' );
-//  $post_type_object->template = array( 'acf/hero' );
+//function my_acf_init() {
+//	
+//	// check function exists
+//	if( function_exists('acf_register_block') ) {
+//		
+//		// register a testimonial block
+//		acf_register_block(array(
+//			'name'				=> 'hero',
+//			'title'				=> __('Hero'),
+//			'description'		=> __('Customize your post Hero Banner here.'),
+//			'render_callback'	=> 'my_acf_block_render_callback_2',
+//			// 'render_template'	=> 'partials/blockTemplates/block-hero.php',
+//            'category'			=> 'formatting',
+//			'icon'				=> 'admin-comments',
+//			// 'keywords'			=> array( 'hero', 'banner' ),
+//		));
+//	}
 //}
-//add_action( 'init', 'be_post_block_template' );
-
-
-/**
- * Block template for posts
- * @see https://www.billerickson.net/gutenberg-block-templates/
- *
-*/
-//function be_post_block_template() {
-//  $post_type_object = get_post_type_object( 'post' );
-//  $post_type_object->template = array(
-//    array( 'core/paragraph' ),
-//    array( 'core/paragraph' ),
-//    array( 'core/paragraph' ),
-//  );
+//add_action('acf/init', 'my_acf_init');
+//
+//
+//
+//function my_acf_block_render_callback_2( $block ) {
+//	
+//	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
+//	$slug = str_replace('acf/', '', $block['name']);
+//	
+//	// include a template part from within the "template-parts/block" folder
+//	if( file_exists( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") ) ) {
+//		include( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") );
+//	}
 //}
-//add_action( 'init', 'be_post_block_template' );
+
 
 
 add_action('acf/init', 'my_register_blocks');
@@ -378,6 +356,19 @@ function my_register_blocks() {
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'formatting',
         ));
+        
+        // register a hero block.
+        acf_register_block_type(array(
+            'name'              => 'hero',
+            'title'             => __('hero'),
+            'description'       => __('A custom hero banner block.'),
+            // 'render_callback'   => 'my_acf_block_render_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+        ));
+        
     }
 }
 
@@ -435,11 +426,89 @@ function my_acf_block_render_callback( $block, $content = '', $is_preview = fals
 }
 
 
-acf_register_block_type(array(
-    'name'              => 'testimonial',
-    'title'             => __('Testimonial'),
-    'description'       => __('A custom testimonial block.'),
-    ));
+//------------------------------------------
+//     ------ BLOCK TEMPLATE -------
+//------------------------------------------
+
+// takes the above acf blocks, and assigns them to appear by default on certain posts
+
+
+function myplugin_register_template() {
+    $post_type_object = get_post_type_object( 'post' );
+    $post_type_object->template = array(
+        array( 'acf/hero' ),
+        array( 'core/heading' ),
+        array( 'acf/test' ),
+        array( 'core/paragraph', array(
+            'placeholder' => 'Add a root-level paragraph',
+        ) ),
+        array( 'core/columns', array(), array(
+            array( 'core/column', array(), array(
+                array( 'core/image', array() ),
+            ) ),
+            array( 'core/column', array(), array(
+                array( 'core/paragraph', array(
+                    'placeholder' => 'Add a inner paragraph'
+                ) ),
+            ) ),
+        ) ),
+        array( 'acf/hero', array(), array(
+            array( 'core/column', array(), array(
+                array( 'core/image', array() ),
+            ) ),
+            array( 'core/column', array(), array(
+                array( 'core/paragraph', array(
+                    'placeholder' => 'Add a inner paragraph'
+                ) ),
+            ) ),
+        ) ),
+    );
+}
+add_action( 'init', 'myplugin_register_template' );
+
+//function myplugin_register_template() {
+//    $post_type_object = get_post_type_object( 'post' );
+//    $post_type_object->template = array(
+//        array( 'acf/hero', array(), array(
+//            array( 'core/heading' ),
+//            array( 'acf/test' ),
+//        ) ),
+//        array( 'core/title', array(
+//            'placeholder' => 'Add a root-level paragraph',
+//        ) ),
+//        array( 'core/heading' ),
+//        array( 'acf/test' ),
+//        array( 'core/columns', array(), array(
+//            array( 'core/column', array(), array(
+//                array( 'core/image', array() ),
+//            ) ),
+//            array( 'core/column', array(), array(
+//                array( 'core/paragraph', array(
+//                    'placeholder' => 'Add a inner paragraph'
+//                ) ),
+//            ) ),
+//        ) )
+//    );
+//}
+//add_action( 'init', 'myplugin_register_template' );
+
+
+/**
+ * Block template for posts
+ * @see https://www.billerickson.net/gutenberg-block-templates/
+ *
+*/
+//function be_post_block_template() {
+//  $post_type_object = get_post_type_object( 'post' );
+//  $post_type_object->template = array(
+//    array( 'core/paragraph' ),
+//    array( 'core/paragraph' ),
+//    array( 'core/paragraph' ),
+//  );
+//}
+//add_action( 'init', 'be_post_block_template' );
+
+
 
 //------------------------------------------
 // ------ CUSTOM DASHBOARD WIDGETS -------

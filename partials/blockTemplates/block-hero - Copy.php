@@ -6,18 +6,18 @@
  */
 
 // Set up fields.
-$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$logo             = get_field( 'post_logo' );
 $icon             = get_field( 'post_icon' );
-$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-$background_color = get_field( 'background_color' ) ?: '#fafafa';
+$background_image = get_field( 'background_image' );
+$background_color = get_field( 'background_color' );
 ?>
     
 <?php if ( $logo ): ?>
 
 <header class="hero">
-    <section class="hero_image" style="background-image:url(<?php echo $background_image; ?>)">?>
+    <section class="hero_image" style="background-image:url(<?php the_field('background_image'); ?>)">?>
         <?php if ( $logo ) { ?>
-            <img src="<?php echo $logo; ?>" alt="<?php echo $logo; ?>" />
+            <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt']; ?>" />
         <?php } ?>
     </section>
     <section class="article_title">
@@ -35,9 +35,9 @@ $background_color = get_field( 'background_color' ) ?: '#fafafa';
 <?php else : ?> 
     
 <?php if( $background_color ): ?>
-<header class="hero" style="background-color:<?php echo $background_image; ?>">
+<header class="hero" style="background-color:<?php the_field('background_color'); ?>">
 <?php else : ?>
-<header class="hero hero_image" style="background-image:url(<?php echo $background_image; ?>)">
+<header class="hero hero_image" style="background-image:url(<?php the_field('background_image'); ?>)">
 <?php endif; ?>  
 <h1><?php the_title(); ?></h1>
         
