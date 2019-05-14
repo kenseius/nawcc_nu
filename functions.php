@@ -363,10 +363,11 @@ function my_register_blocks() {
             'title'             => __('hero'),
             'description'       => __('A custom hero banner block.'),
             // 'render_callback'   => 'my_acf_block_render_callback',
-            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero_article.php',
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'layout',
             'icon'              => 'archive',
+            'mode'              => 'edit',
         ));
         
     }
@@ -437,31 +438,31 @@ function myplugin_register_template() {
     $post_type_object = get_post_type_object( 'post' );
     $post_type_object->template = array(
         array( 'acf/hero' ),
-        array( 'core/heading' ),
-        array( 'acf/test' ),
-        array( 'core/paragraph', array(
-            'placeholder' => 'Add a root-level paragraph',
-        ) ),
-        array( 'core/columns', array(), array(
-            array( 'core/column', array(), array(
-                array( 'core/image', array() ),
-            ) ),
-            array( 'core/column', array(), array(
-                array( 'core/paragraph', array(
-                    'placeholder' => 'Add a inner paragraph'
-                ) ),
-            ) ),
-        ) ),
-        array( 'acf/hero', array(), array(
-            array( 'core/column', array(), array(
-                array( 'core/image', array() ),
-            ) ),
-            array( 'core/column', array(), array(
-                array( 'core/paragraph', array(
-                    'placeholder' => 'Add a inner paragraph'
-                ) ),
-            ) ),
-        ) ),
+//        array( 'core/heading' ),
+//        array( 'acf/test' ),
+//        array( 'core/paragraph', array(
+//            'placeholder' => 'Add a root-level paragraph',
+//        ) ),
+//        array( 'core/columns', array(), array(
+//            array( 'core/column', array(), array(
+//                array( 'core/image', array() ),
+//            ) ),
+//            array( 'core/column', array(), array(
+//                array( 'core/paragraph', array(
+//                    'placeholder' => 'Add a inner paragraph'
+//                ) ),
+//            ) ),
+//        ) ),
+//        array( 'acf/hero', array(), array(
+//            array( 'core/column', array(), array(
+//                array( 'core/image', array() ),
+//            ) ),
+//            array( 'core/column', array(), array(
+//                array( 'core/paragraph', array(
+//                    'placeholder' => 'Add a inner paragraph'
+//                ) ),
+//            ) ),
+//        ) ),
     );
 }
 add_action( 'init', 'myplugin_register_template' );
