@@ -6,6 +6,12 @@ NAWCC GUTENBERG STYLES
 
 
 
+p.lead {
+    font-size: 1.414rem;
+    line-height: 1.999;
+}
+
+
 blockquote {
     
     display: block;
@@ -20,6 +26,42 @@ blockquote {
     background: #e0e0e0;
     
 }
+
+
+
+
+
+.postList {
+    display: block;
+    width: 100%;
+    max-width: 45.18rem;
+    margin: auto;
+    padding: 2.827rem 0;
+}
+
+
+.postList > a {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    margin: 0 0 $scale_2 0;
+}
+.postList > a > img {margin: 0 $scale_2 0 0;}
+.postList > a > div {flex: 1;}
+.postList > a:hover {
+        background: #ebebeb;
+        color: #5e5e5e;
+    }
+.postList > a .meta.meta_article {border: none;}
+
+
+.postList.circleImages > a > img {border-radius: 50%;}
+    
+
+
+
+
+/* HEROS */
 
 .hero {
     

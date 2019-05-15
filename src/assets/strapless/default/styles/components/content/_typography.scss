@@ -38,6 +38,7 @@ li { @include type-setting(0); }
 p.lead { @include type-setting(1); }
 
 
+
 //  2. article
 // *************************
 // article h1 { @include type-setting(5); }
@@ -184,3 +185,23 @@ body > .article,
     line-height: 0.8em;
     &.mb {margin-bottom: 0.5em;}
 }
+
+
+
+
+//.article {
+//    p.has-drop-cap::first-letter {font-size:125px !important;}
+//    p.has-drop-cap:before,
+//    p.has-drop-cap:after{content:'';display:table}
+//    p.has-drop-cap:after{clear:both}
+//    p.has-drop-cap a{
+//        color:inherit;
+//        -webkit-box-shadow:0 -1px 0 inset;
+//        box-shadow:0 -1px 0 inset;
+//        text-decoration:none}
+//    p.has-drop-cap a:hover{
+//        color:inherit;
+//        -webkit-box-shadow:0 -2px 0 inset;
+//        box-shadow:0 -2px 0 inset
+//    }
+//}
