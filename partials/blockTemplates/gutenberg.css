@@ -44,9 +44,12 @@ blockquote {
     display: flex;
     align-items: flex-start;
     padding: 1rem;
-    margin: 0 0 $scale_2 0;
+    margin: 0 0 1.999rem 0; /* $scale_2 = 1.999 = 31.99px */
 }
-.postList > a > img {margin: 0 $scale_2 0 0;}
+.postList > a > img {
+    margin: 0 1.999rem 0 0; /* $scale_2 = 1.999 = 31.99px */
+    max-width: 11.302rem; /* $scale-value_7: 11.302; // 180.828px */
+}
 .postList > a > div {flex: 1;}
 .postList > a:hover {
         background: #ebebeb;
@@ -55,7 +58,7 @@ blockquote {
 .postList > a .meta.meta_article {border: none;}
 
 
-.postList.circleImages > a > img {border-radius: 50%;}
+.postList.circleImages > a > img { border-radius: 50%; }
     
 
 

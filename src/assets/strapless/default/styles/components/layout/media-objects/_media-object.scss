@@ -8,7 +8,10 @@
         align-items: flex-start;
         padding: 1rem;
         margin: 0 0 $scale_2 0;
-        & > img {margin: 0 $scale_2 0 0;}
+        & > img {
+            margin: 0 $scale_2 0 0;
+            max-width: $scale_7;
+        }
         & > div {flex: 1;}
     
         @include hover() {
@@ -24,8 +27,12 @@
 
 
 
-// float approach
 
+
+
+
+// old: float approach
+// ===========================
 
 %media-object {
 	@include wrap($base-max-width, auto);

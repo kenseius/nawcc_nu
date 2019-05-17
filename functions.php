@@ -60,7 +60,7 @@
 
 // Editor Styles
 add_theme_support( 'editor-styles' );
-add_editor_style( '' . $theme_root . '/dist/assets/strapless/styles/strapless.css' );
+add_editor_style( '' . get_template_directory_uri() . '/dist/assets/strapless/styles/strapless.css' );
 
 
   // Adds featured images (aka thumbnails):
@@ -233,7 +233,7 @@ function my_register_blocks() {
             'mode'              => 'edit',
         ));
         
-        // lead sentence 
+        // post list 
         acf_register_block_type(array(
             'name'              => 'postList',
             'title'             => __('postList'),
@@ -393,11 +393,11 @@ function cp_publications() {
         'description'   => 'Holds content used for Publications',
         'rewrite'       => array('slug' => 'publications'),
         'public'        => true,
-        'menu_icon'     => 'dashicons-star-filled',
+        'menu_icon'     => 'dashicons-book-alt',
         'menu_position' => 5,
         'show_in_rest'  => true,
-        'supports'      => array('editor', 'title'),
-        'template'      => array('acf/hero'),
+        'supports'      => array('editor', 'title', 'thumbnail'),
+        // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in publications
         'taxonomies' => array('category')
@@ -408,7 +408,41 @@ add_action( 'init', 'cp_publications' );
 
 
 
-
+// ------ CUSTOM POST TYPE - PUBLICATIONS -------
+// Custom Post types - WOOT! This creates a new menu in the wp admin section
+function cp_events() {
+    $labels = array(
+      'name'               => _x( 'Events', 'post type general name' ),
+      'singular_name'      => _x( 'Event', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'event' ),
+      'add_new_item'       => __( 'Add new event' ),
+      'edit_item'          => __( 'Edit event' ),
+      'new_item'           => __( 'New event' ),
+      'all_items'          => __( 'All events' ),
+      'view_item'          => __( 'View event' ),
+      'search_items'       => __( 'Search events' ),
+      'not_found'          => __( 'No events found' ),
+      'not_found_in_trash' => __( 'No events found in the Trash' ),
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Events'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds content used for events',
+        'rewrite'       => array('slug' => 'events'),
+        'public'        => true,
+        'menu_icon'     => 'dashicons-tickets-alt',
+        'menu_position' => 5,
+        'show_in_rest'  => true,
+        'supports'      => array('editor', 'title'),
+        // 'template'      => array('acf/hero'),
+        'has_archive'   => true,
+        // displays categories in events
+        'taxonomies' => array('category')
+    );
+    register_post_type( 'events', $args );
+}
+add_action( 'init', 'cp_events' );
 
 
 
@@ -422,12 +456,21 @@ add_action( 'init', 'cp_publications' );
 function publications_register_template() {
     $post_type_object = get_post_type_object( 'publications' );
     $post_type_object->template = array(
-        array( 'acf/hero_article' ),
+        array( 'acf/hero' ),
         array( 'acf/lead' ),
     );
 }
 add_action( 'init', 'publications_register_template' );
 
+
+function events_register_template() {
+    $post_type_object = get_post_type_object( 'events' );
+    $post_type_object->template = array(
+        array( 'acf/hero' ),
+        array( 'acf/lead' ),
+    );
+}
+add_action( 'init', 'events_register_template' );
 
 function myplugin_register_template() {
     $post_type_object = get_post_type_object( 'post' );

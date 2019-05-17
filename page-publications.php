@@ -60,21 +60,27 @@
 <?php get_template_part( 'partials/blockTemplates/block', 'hero' ); ?>
 
 <?php
-$args = array(
-    'post_type'   => 'publications',
-    'post_status' => 'publish',
-    'post_count'  => '1',
-    //  'tax_query'   => array(
-    //  	array(
-    //  		'taxonomy' => 'testimonial_service',
-    //  		'field'    => 'slug',
-    //  		'terms'    => 'diving'
-    //  	)
-    //  )
- ); 
- 
-$publications = new WP_Query( $args );
-if( $publications->have_posts() ) :
+    $args = array(
+        'post_type'   => 'publications',
+        'post_status' => 'publish',
+        'post_count'  => '1',
+        //  'tax_query'   => array(
+        //  	array(
+        //  		'taxonomy' => 'testimonial_service',
+        //  		'field'    => 'slug',
+        //  		'terms'    => 'diving'
+        //  	)
+        //  )
+     ); 
+    
+    // Set up fields.
+    $logo             = get_field( 'post_logo' );
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image' );
+    $background_color = get_field( 'background_color' );
+
+    $publications = new WP_Query( $args );
+    if( $publications->have_posts() ) :
 ?>
 
     <?php
@@ -109,36 +115,61 @@ endif;
 ?>
 
 <?php
-$args = array(
-    'post_type'   => 'publications',
-    'post_status' => 'publish',
-    'post_count'  => '10',
-    'offset'      => '1',      // skip over the first post.
-    //  'tax_query'   => array(
-    //  	array(
-    //  		'taxonomy' => 'testimonial_service',
-    //  		'field'    => 'slug',
-    //  		'terms'    => 'diving'
-    //  	)
-    //  )
- ); 
- 
-$publications = new WP_Query( $args );
-if( $publications->have_posts() ) :
+    $args = array(
+        'post_type'   => 'publications',
+        'post_status' => 'publish',
+        'post_count'  => '10',
+        'offset'      => '1',      // skip over the first post.
+        // 'post_parent' => '$post->ID',
+        //  'tax_query'   => array(
+        //  	array(
+        //  		'taxonomy' => 'testimonial_service',
+        //  		'field'    => 'slug',
+        //  		'terms'    => 'diving'
+        //  	)
+        //  )
+     ); 
+
+    $publications = new WP_Query( $args );
+    if( $publications->have_posts() ) :
+    
 ?>
+    
+    <section class="postList circleImages">
 
     <?php
       while( $publications->have_posts() ) :
         $publications->the_post();
         ?>
     
-    
-        <section class="postList circleImages">
+            <?php 
+        
+                // Set up fields.
+                $logo             = get_field( 'post_logo' );
+                $icon             = get_field( 'post_icon' );
+                $background_image = get_field( 'background_image' );
+                $background_color = get_field( 'background_color' );
 
+                $size             = 'thumbnail';
+                $thumb_id         = get_post_thumbnail_id('$post-&gt;ID');
+        
+            ?>
+            
             <a href="<?php the_permalink(); ?>">
+                
+                <?php the_post_thumbnail('thumbnail'); ?>
+                
                 <?php if( $background_image ): ?>
-                    <img src="<?php echo $background_image; ?>)">
-                <?php endif; ?>  
+
+                    <?php echo wp_get_attachment_image( $background_image, $size ); ?>
+                
+                <?php else : ?> 
+                
+                    <!-- Featured Image = [ img ] -->
+                    <?php echo wp_get_attachment_image( $thumb_id, 'thumbnail' ); ?>
+                
+                <?php endif; ?>
+
                 <div>
                     <!-- <p class="subtitle"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>-->
                     <h4><?php the_title(); ?></h4>
@@ -148,14 +179,32 @@ if( $publications->have_posts() ) :
                     </div> 
                     <p><?php the_excerpt(); ?></p>
                 </div>
+                
             </a>
 
-        </section>
+            <!--
+            <a href="<?php the_permalink(); ?>">
+                <?php if( $background_image ): ?>
+                    <img src="<?php echo $background_image; ?>)">
+                <?php endif; ?>  
+                <div>
+                     <p class="subtitle"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>
+                    <h4><?php the_title(); ?></h4>
+                    <div class="meta meta_article">
+                        <p>Written by <?php the_author(); ?></p>
+                        <p><time><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></time></p>
+                    </div> 
+                    <p><?php the_excerpt(); ?></p>
+                </div>
+            </a>
+    -->
 
         <?php
       endwhile;
       wp_reset_postdata();
     ?>
+    
+    </section>
 
 <?php
 else :
