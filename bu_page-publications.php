@@ -1,128 +1,106 @@
-<?php /* Template Name: Publications */ ?>
+<?php /* Template Name: Publications BackUp */ ?>
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'partials/material', 'sidenav' ); ?>
+<!-- SIDENAV - MOBILE SIDE SLIDEOUT MENU -->
+<nav data-scroll-header class="accordion_sidenav accordion_sidenav_strapless f-menu sidenav_strapless_JSref">
+	
+	<div class="sidenav_header">
+	    <!-- <a href="/webappstandards.html" data-balloon="Back to All Components" data-balloon-pos="bottom">
+	        <i class="fa fa-chevron-left"></i>
+	        <span>Back</span>
+	    </a> -->
+	    <p class="sidenav_title">
+	        <i class="fa fa-paint-brush"></i> <span>Structure</span>
+        </p> 
+	</div> 
+    
+    <div class="tabs" data-tabgroup="components_tabs">
+	   <a href="#01-info" class="active">What Is This?</a>
+        <?php
+            $args = array(
+              'orderby' => 'name',
+              'parent' => 0
+              );
+            $categories = get_categories( $args );
+            foreach ( $categories as $category ) {
+                echo '<a href="<?php the_permalink(); ?>" class="f-menu__heading">' . $category->name . '</a>';
+            }
+        ?>
+        <a href="#02-page" class="f-menu__heading">
+            Page
+        </a>
+        <a href="#03-templates" class="f-menu__heading">
+            Templates
+        </a>
+        <a href="#04-content_containers" class="f-menu__heading">
+            Content Containers
+        </a>
+        <a href="#05-hierarchy" class="f-menu__heading">
+            Hierarchy
+        </a>
+        <a href="#06-specifications" class="f-menu__heading">
+            Specifications
+        </a>
+    </div>
+	
+</nav>
+
+<div class="f-control-bar">
+    <div class="f-control f-menu-toggle">
+        <svg>
+            <use xlink:href="#f-icon-menu" />
+        </svg>
+    </div>
+</div>
+
 
 <main class="f-container">
-    
-<!-- ==============================
-    Hero
-=================================== -->   
-<?php $background_color = get_field( 'background_color' ) ?: '#fafafa'; ?>
-<?php if($background_color): ?>
-<header class="hero hero_color hero_loggedInPages" style="background-color:<?php echo $background_color; ?>">
-<?php endif; ?>
-    <h1><?php the_title(); ?></h1>   
-</header>    
-    
 
-<?php 
+<!-- HERO BLOCK TEMPLATE   
 
-// args
-$args = array(
-	'numberposts'	=> -1,
-	'post_type'		=> 'publications',
-//	'meta_key'		=> 'location',
-//	'meta_value'	=> 'Melbourne'
-);
+<?php get_template_part( 'partials/blockTemplates/block', 'hero' ); ?>
 
-
-// query
-$the_query = new WP_Query( $args );
-    
-$background_image = get_field( 'background_image' );
-
-?>
-<?php if( $the_query->have_posts() ): ?>
-	<ul>
-	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-		<li>
-			<a href="<?php the_permalink(); ?>">
-				<img src="<?php echo $background_image; ?>" />
-				<?php the_title(); ?>
-			</a>
-		</li>
-	<?php endwhile; ?>
-	</ul>
-<?php endif; ?>
-
-<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>    
-    
-    
+/HERO BLOCK TEMPLATE -->    
 
     
-<?php 
+<?php
+/**
+ * The template used for displaying a Hero block.
+ *
+ * @package _s
+ */
 
-$posts = get_posts(array(
-	'posts_per_page'	=> -1,
-	'post_type'			=> 'publications'
-));
-
-$post_id = false;
-    
 // Set up fields.
-$logo             = get_field( 'post_logo' );
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
 $icon             = get_field( 'post_icon' );
-$background_image = get_field( 'background_image', $post_id );
-$background_color = get_field( 'background_color' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+    
+?>
 
-$size             = 'full';
-$thumb_id         = get_post_thumbnail_id('$post-&gt;ID');
-
-
-
-if( $posts ): ?>
-	
-    <!-- wrapper HTML -->
-    <section class="article">
-		
-	<?php foreach( $posts as $post ): 
-		
-		setup_postdata( $post );
-		
-		?>
-        
-        <!-- Featured Post -->
-        <?php if( $background_image ): ?>
-            <!-- background_image = true -->
-            <article class="post twoCol" style="background-image:url(<?php echo $background_image; ?>)">
-        <?php else : ?> 
-            <!-- background_image = false - thumbnail -->
-            <article class="post twoCol" style="background-image:url(<?php echo wp_get_attachment_image( $thumb_id, 'thumbnail' ); ?>)">
-        <?php endif; ?>
-            <div>   
-                <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-                <h2><?php the_title(); ?></h2>    
-                <div class="btnBar">
-                    <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
-                </div>
-            </div>
-            <?php $post_logo = get_field( 'post_logo' ); ?>
-            <?php if ( $post_logo ) { ?>
-            <div>
-                <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
-            </div>
-            <?php } ?>
-        </article>
-	
-	<?php endforeach; ?>
-	
-    </section>
-	
-	<?php wp_reset_postdata(); ?>
-
+<?php if($background_image): ?>
+<header class="hero hero_image" style="background-image:url(<?php echo $background_image; ?>)">
+<?php elseif($background_color): ?>
+<header class="hero hero_color" style="background-color:<?php echo $background_color; ?>">
 <?php endif; ?>
     
+<!--
+<?php if( $background_image ): ?>
+<header class="hero hero_image" style="background-image:url(<?php echo $background_image; ?>)">
+<?php endif; ?>
+
+<?php if( $background_color ): ?>
+<header class="hero hero_color" style="background-color:<?php echo $background_color; ?>">
+<?php endif; ?>
+-->
     
-</section>    
+    <h1><?php the_title(); ?></h1>   
+    
+</header>
     
     
-    
-<!-- ==============================
-    Featured Article
-=================================== -->
-            
+<!-- HERO BLOCK TEMPLATE -->        
 <?php
     $args = array(
         'post_type'     => 'publications',
@@ -137,6 +115,12 @@ if( $posts ): ?>
         //  	)
         //  )
      ); 
+    
+    // Set up fields.
+    $logo             = get_field( 'post_logo' );
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image' );
+    $background_color = get_field( 'background_color' );
 
     $publications = new WP_Query( $args );
     if( $publications->have_posts() ) :
@@ -146,27 +130,8 @@ if( $posts ): ?>
       while( $publications->have_posts() ) :
         $publications->the_post();
         ?>
-    
-            
-            <?php 
-        
-                // Set up fields.
-                $logo             = get_field( 'post_logo' );
-                $icon             = get_field( 'post_icon' );
-                $background_image = get_field( 'background_image' );
-                $background_color = get_field( 'background_color' );
-
-                $size             = 'full';
-                $thumb_id         = get_post_thumbnail_id('$post-&gt;ID');
-        
-            ?>
-    
             <!-- Featured Post -->
-            <?php if( $background_image ): ?>
-                <article class="post twoCol" style="background-image:url(<?php echo $background_image; ?>)">
-            <?php else : ?> 
-                <article class="post twoCol" style="background-image:url(<?php echo wp_get_attachment_image( $thumb_id, 'thumbnail' ); ?>)">
-            <?php endif; ?>
+            <article class="post twoCol" style="background-image:url(<?php if ($background_image) { echo $background_image ;} ?>)">
                 <div>   
                     <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
                     <h2><?php the_title(); ?></h2>    
@@ -191,11 +156,7 @@ else :
   esc_html_e( 'For some reason, there is nothing here. idk', 'text-domain' );
 endif;
 ?>
-    
-    
-<!-- ==============================
-    Post List 
-=================================== -->
+
 <?php
     $args = array(
         'post_type'   => 'publications',

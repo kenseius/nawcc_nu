@@ -112,6 +112,10 @@
         }
     }
     
+    &.hero_loggedInPages {
+        min-height: $scale_9;
+    }
+    
     &.bg_clockwork {color: $wht;}
     
     img,
