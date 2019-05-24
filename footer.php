@@ -23,5 +23,6 @@
 		intro.style.marginTop = - intro.offsetHeight / 2 + 'px';
 	}, false);
 </script>
+
 </body>
 </html>

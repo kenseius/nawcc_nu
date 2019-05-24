@@ -327,10 +327,6 @@ function lead_block_callback( $block, $content = '', $is_preview = false) {
 
 
 
-
-
-
-
 //===============================================
 //  ----- CUSTOM POST TYPES + TAXONOMIES  ------
 //-----------------------------------------------
@@ -475,8 +471,20 @@ add_action( 'init', 'events_register_template' );
 function myplugin_register_template() {
     $post_type_object = get_post_type_object( 'post' );
     $post_type_object->template = array(
+        array( 'mdlr/featured-image' ),
         array( 'acf/hero' ),
         array( 'acf/lead' ),
+        array( 'core/columns', array(), array(
+            array( 'core/column', array(), array(
+                array( 'core/paragraph', array(
+                    'placeholder' => 'Add a inner paragraph'
+                ) ),
+            ) ),
+            array( 'core/column', array(), array(
+                array( 'mdlr/featured-image', array() ),
+            ) ),
+            
+        ) ),
 //        array( 'core/heading' ),
 //        array( 'acf/test' ),
 //        array( 'core/paragraph', array(
@@ -705,6 +713,32 @@ add_action( 'init', 'myplugin_register_template' );
 //
 //}
 //new EA_Exhibits();
+
+
+
+
+//
+//function acf_set_featured_image( $value, $post_id, $field  ){
+//    
+//    if($value != ''){
+//	    //Add the value which is the image ID to the _thumbnail_id meta data for the current post
+//	    add_post_meta($post_id, '_thumbnail_id', $value);
+//    }
+// 
+//    return $value;
+//}
+//
+//// acf/update_value/name={$field_name} - filter for a specific field based on it's name
+//add_filter('acf/update_value/name=background_image', 'acf_set_featured_image', 10, 3);
+ 
+
+
+
+
+
+
+
+
 
 
 

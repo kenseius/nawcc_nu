@@ -52,10 +52,13 @@
 <main>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    
-<?php if (has_post_thumbnail ( $post->ID ) ): ?>
-   <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); ?>
-    <article class="post twoCol" style="background-image:url('<?php echo $image[0]; ?>')">
+
+<?php 
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+    $background_image = get_field( 'background_image', $post->ID );
+?>
+   
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
         <div>   
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
             <h2><?php the_title(); ?></h2>    
@@ -70,8 +73,6 @@
         </div>
         <?php } ?>
     </article>
-<?php endif; ?>
-    
  
 <?php endwhile; else: ?>
   <p><?php _e('Sorry, there are no posts.'); ?></p>
