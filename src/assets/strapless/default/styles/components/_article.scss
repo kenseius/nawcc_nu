@@ -84,6 +84,10 @@
         @media #{$extra-large-down} {padding: 0;}
     }
 
+    //    & > .wp-block-columns {
+    //        max-width: $base-max-width; margin-left: auto; margin-right:auto;
+    //    }
+
     section.baseWidth {max-width: $base-max-width; margin-left: auto; margin-right: auto;}
 
     // unique intended exceptions to global styles

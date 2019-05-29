@@ -206,6 +206,19 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
+
+        // hero_test
+        acf_register_block_type(array(
+            'name'              => 'heroTest',
+            'title'             => __('heroTest'),
+            'description'       => __('A custom hero banner block.'),
+            // 'render_callback'   => 'my_acf_block_render_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
         
         // hero_article
         acf_register_block_type(array(
@@ -442,6 +455,43 @@ add_action( 'init', 'cp_events' );
 
 
 
+// ------ CUSTOM POST TYPE - PUBLICATIONS -------
+// Custom Post types - WOOT! This creates a new menu in the wp admin section
+function cp_exhibits() {
+    $labels = array(
+      'name'               => _x( 'Exhibits', 'post type general name' ),
+      'singular_name'      => _x( 'Exhibit', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'exhibit' ),
+      'add_new_item'       => __( 'Add new exhibit' ),
+      'edit_item'          => __( 'Edit exhibit' ),
+      'new_item'           => __( 'New exhibit' ),
+      'all_items'          => __( 'All exhibits' ),
+      'view_item'          => __( 'View exhibit' ),
+      'search_items'       => __( 'Search exhibits' ),
+      'not_found'          => __( 'No exhibits found' ),
+      'not_found_in_trash' => __( 'No exhibits found in the Trash' ),
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Exhibits'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds content used for exhibits',
+        'rewrite'       => array('slug' => 'exhibits'),
+        'public'        => true,
+        'menu_icon'     => 'dashicons-money',
+        'menu_position' => 5,
+        'show_in_rest'  => true,
+        'supports'      => array('editor', 'title', 'thumbnail'),
+        // 'template'      => array('acf/hero'),
+        'has_archive'   => true,
+        // displays categories in exhibits
+        'taxonomies' => array('category')
+    );
+    register_post_type( 'exhibits', $args );
+}
+add_action( 'init', 'cp_exhibits' );
+
+
 //------------------------------------------
 //     ------ BLOCK TEMPLATE -------
 //------------------------------------------
@@ -476,12 +526,10 @@ function myplugin_register_template() {
         array( 'acf/lead' ),
         array( 'core/columns', array(), array(
             array( 'core/column', array(), array(
-                array( 'core/paragraph', array(
-                    'placeholder' => 'Add a inner paragraph'
-                ) ),
+                array( 'mdlr/featured-image', array () ),
             ) ),
             array( 'core/column', array(), array(
-                array( 'mdlr/featured-image', array() ),
+                array( 'acf/hero', array() ),
             ) ),
             
         ) ),
