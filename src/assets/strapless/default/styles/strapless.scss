@@ -134,8 +134,31 @@
 }
 
 .post_content {
+    
     @include article;
+    
+    & > a {
+        display: inline-block;
+        border-right: 3px solid transparent;
+        border-left: 3px solid transparent;
+        border-bottom: 2px solid $org;
+        color: $slate;
+        @include hover() {background: $org; color: $wht;}
+    }
+    
     margin: 0 auto $scale_3;
+
+    h3 {margin: 0 auto $scale_2;}
+    
+    &.wide_content {
+        & > p,
+        & > h1,
+        & > h2, 
+        & > h3, 
+        & > h4, 
+        & > h5 { max-width: $scale_12; }
+    }
+
 }
 
 .postList {
@@ -176,9 +199,11 @@
     
     background: #eaeaea;
     
+    // max-width: $scale_8;
+    
     h3 {
         display: block; 
-        margin: auto 0;
+        margin: 0 auto $scale_1;
         padding: 1rem; 
         background: #252525; 
         color: #fafafa;
@@ -187,6 +212,8 @@
     
     & > ul, 
     & > p {padding-left: 1rem; padding-right: 1rem;}
+
+    & > *:last-child {padding-bottom: $scale_1;}
 
 }
  
@@ -202,6 +229,7 @@
 .wp-block-columns .has-2-columns,
 .wp-block-columns {
     display: flex;
+    justify-content: center;
     // flex-direction: column;
     // flex: 1;
     padding-left: 0;
@@ -209,9 +237,9 @@
     //    margin-left: -14px;
     //    margin-right: -14px;
 
-    max-width: $scale_12; // $base-max-width; 
-    margin-left: auto; 
-    margin-right:auto;
+    // max-width: $scale_12; // $base-max-width; 
+    margin: 0 auto $scale_3;
+    
     
     // min-width: 0;
     // word-break: break-word;
@@ -222,9 +250,11 @@
         flex: 1;
         margin-left: 14px;
         margin-right: 14px;
+        max-width: 483.08px; // $article-max-width;
         //        flex-basis: calc(50% - 44px);
         //        flex-grow: 0;
     }
+    
 }
 
 
@@ -245,30 +275,44 @@ ul.wp-block-gallery,
 .wp-block-gallery {
     
     list-style: none;
+    padding-left: 0;
     
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: $scale_12;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto $scale_3;
     
     .blocks-gallery-item {
         // flex: 1;
         display: flex;
+        margin: 0;
         img {
-            flex: 2;
+            height: 300px; // 100%;
+            max-height: 300px;
+            width: 100%;
             object-fit: cover;
+            margin: auto 0;
+            transition: all 0.33333s ease-in-out;
         }
-        a {border-color: none;}
+        a {
+            display: block;
+            position: relative;
+            border: 3px solid transparent;
+            &:hover { 
+                background: $org;
+                border: 3px solid $org; 
+                img { opacity: 0.8; } 
+            }
+        }
     }
     &.columns-3 {
         .blocks-gallery-item {
-            width: 30%;
-            height: 30%;
-            max-width: 30%;
-            max-height: 30%;
+            width: 33.333%;
+            height: 33.333%;
+            max-width: 33.333%;
+            max-height: 33.333%;
         }
     }
     
@@ -290,21 +334,57 @@ ul.wp-block-gallery,
 
 
 
+
+
+
 .wp-block-cover {
     @extend .hero;
     @extend .hero_image;
+    margin: 0 auto $scale_3;
+    .wp-block-cover__inner-container {
+        z-index: 999999;
+        color: #fafafa;
+        width: 100%;
+        max-width: $scale_12;
+        padding: $scale_4 0;
+        & > p,
+        & > h1,
+        & > h2, 
+        & > h3 {
+            max-width: $article-max-width;
+            margin-left: 0;
+            // float: left;
+        }
+    }
 }
-.wp-block-button {@extend .button}
 
+
+
+
+.wp-block-button .wp-block-button__link {
+    @extend .button;
+    line-height: $scale_2;
+    color: $wht;
+}
+
+
+.has-medium-font-size {font-size: $scale_1;}
+.has-large-font-size {font-size: $scale_2;}
 
 
 
 // unique styling for exhibits
 
 .hero.wideTitle > .article_title {
-    padding: $scale_1 0;
+    
+    padding: $scale_2 0 $scale_1;
+    
     & > p,
-    & > h1 { max-width: $scale_12; }
+    & > h1,
+    & > h2, 
+    & > h3, 
+    & > h4, 
+    & > h5 { max-width: $scale_12; }
     
     & > h1 {
         @include type-setting(4); 
@@ -318,4 +398,12 @@ ul.wp-block-gallery,
 }
 
 
+.bg_grey {
+    background: #eaeaea;
+    width: 100%;
+    height: 100%;
+    min-height: $default-height;
+    align-items: flex-start;
+    padding-top: $scale_4;
+}
 

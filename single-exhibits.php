@@ -33,7 +33,7 @@
 
     </header>
 
-    <section class="post_content">
+    <section class="post_content wide_content">
         <?php the_content(); ?>
     </section>
 
