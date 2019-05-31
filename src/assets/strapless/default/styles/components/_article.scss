@@ -62,8 +62,11 @@
     & > pre,
     & > hr,
     .meta_article {
-        max-width: $article-max-width; margin-left: auto; margin-right:auto;
+        max-width: $article-max-width; 
+        margin-left: auto; 
+        margin-right:auto;
         &.baseWidth {max-width: $base-max-width;}
+        @media #{$extra-large-down} { padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
     }
 
     // widths for nested sections
@@ -98,7 +101,7 @@
 
     &.article_cards {@include article_cards;}
 
-    @media #{$extra-large-down} { padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+    // @media #{$extra-large-down} { padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
     // @media #{$medium-only} { padding: 3.157rem; }
     // @media #{$small-only} { padding: 2.369rem; }
 

@@ -17,8 +17,8 @@
     <!-- METADATA - facebook -->
 	<meta property="fb:page_id" content="" />
 	<meta property="og:image" content="" />
-	<meta property="og:description" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The Official Website for the State of Pennsylvania<?php } else { echo get_the_title(); ?><?php } ?>"/>
-	<meta property="og:title" content="PA.GOV"/>
+	<meta property="og:description" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?><?php } ?>"/>
+	<meta property="og:title" content="NAWCC"/>
     
 	<!-- METADATA - google+ -->
 	<meta itemprop="name" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC<?php } ?>"/>

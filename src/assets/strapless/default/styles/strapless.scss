@@ -246,6 +246,13 @@
     // overflow-wrap: break-word;
     // flex-basis: 100%;
     
+    @media #{$small-only} { 
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    
+    
     .wp-block-column {
         flex: 1;
         margin-left: 14px;
@@ -283,6 +290,11 @@ ul.wp-block-gallery,
     max-width: $scale_12;
     width: 100%;
     margin: 0 auto $scale_3;
+    
+    @media #{$small-only} { 
+        flex-direction: column; 
+        align-items: center;
+    }
     
     .blocks-gallery-item {
         // flex: 1;
@@ -354,6 +366,10 @@ ul.wp-block-gallery,
             max-width: $article-max-width;
             margin-left: 0;
             // float: left;
+            @media #{$extra-large-down} { 
+                padding-left: $base-horizontal-padding; 
+                padding-right: $base-horizontal-padding; 
+            }
         }
     }
 }
