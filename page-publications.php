@@ -38,32 +38,28 @@ $args = array(
 // query
 $the_query = new WP_Query( $args );
 
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
 ?>
 <?php if( $the_query->have_posts() ): ?>
 
 	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        
-     <?php 
 
-        // Set up fields.
-        $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
-        $icon             = get_field( 'post_icon' );
-        $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-        $background_color = get_field( 'background_color' ) ?: '#fafafa';
-    
-        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
-    
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
     ?>
     
     <!-- Featured Post --> 
-<!--
-    <?php if( $background_image ): ?>
-        <article class="post twoCol" style="background-image:url('<?php echo $background_image; ?>')">
-    <?php else : ?> 
-        <article class="post twoCol" style="background-image:url('<?php if ($background_image) { echo $background_image; } else { echo $image[0]; } ?>')">
-    <?php endif; ?>
--->
-    <article class="post twoCol" style="background-image:url('<?php echo $background_image; ?>')">
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
         <div>   
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
             <h2><?php the_title(); ?></h2>    

@@ -79,10 +79,10 @@
                 </g>
                 <g id="National Association Of Watch &#38; Clock Collectors">
                     <text fill="#252525" xml:space="preserve" style="white-space: pre" font-family="Arvo" font-size="22.624" font-weight="bold" letter-spacing="0em">
-                        <tspan x="66" y="45.1504">Watch &#38; Clock Collectors</tspan>
+                        <tspan x="66" y="45.1504">Watch &amp; Clock Collectors</tspan>
                     </text>
                     <text fill="#252525" xml:space="preserve" style="white-space: pre" font-family="Arvo" font-size="16" letter-spacing="0em">
-                        <tspan x="66" y="19.0273">National Association Of &#10;</tspan>
+                        <tspan x="66" y="19.0273">National Association Of</tspan>
                     </text>
                 </g>
             </g>

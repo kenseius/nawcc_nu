@@ -19,74 +19,66 @@
     Featured Article
 =================================== -->
             
-<?php
-    $args = array(
-        'post_type'     => 'publications',
-        'post_status'   => 'publish',
-        'post_count'    => '1',
-        'posts_per_page' => '1',
-        //  'tax_query'   => array(
-        //  	array(
-        //  		'taxonomy' => 'testimonial_service',
-        //  		'field'    => 'slug',
-        //  		'terms'    => 'diving'
-        //  	)
-        //  )
-     ); 
+<?php 
 
-    $publications = new WP_Query( $args );
-    if( $publications->have_posts() ) :
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'publications',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
 ?>
+<?php if( $the_query->have_posts() ): ?>
 
-    <?php
-      while( $publications->have_posts() ) :
-        $publications->the_post();
-        ?>
-    
-            
-            <?php 
-        
-                // Set up fields.
-                $logo             = get_field( 'post_logo' );
-                $icon             = get_field( 'post_icon' );
-                $background_image = get_field( 'background_image' );
-                $background_color = get_field( 'background_color' );
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-                $size             = 'full';
-                $thumb_id         = get_post_thumbnail_id('$post-&gt;ID');
-        
-            ?>
-    
-            <!-- Featured Post -->
-            <?php if( $background_image ): ?>
-                <article class="post twoCol" style="background-image:url(<?php echo $background_image; ?>)">
-            <?php else : ?> 
-                <article class="post twoCol" style="background-image:url(<?php echo wp_get_attachment_image( $thumb_id, 'thumbnail' ); ?>)">
-            <?php endif; ?>
-                <div>   
-                    <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-                    <h2><?php the_title(); ?></h2>    
-                    <div class="btnBar">
-                        <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
-                    </div>
-                </div>
-                <?php $post_logo = get_field( 'post_logo' ); ?>
-                <?php if ( $post_logo ) { ?>
-                <div>
-                    <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
-                </div>
-                <?php } ?>
-            </article>
-        <?php
-      endwhile;
-      wp_reset_postdata();
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
     ?>
+    
+    <!-- Featured Post --> 
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php the_title(); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo' ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+      
+	<?php endwhile; ?>
+        
+	</section>
+    
+<?php endif; ?>
 
-<?php
-else :
-  esc_html_e( 'For some reason, there is nothing here. idk', 'text-domain' );
-endif;
-?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>    
     
     
 <!-- ==============================

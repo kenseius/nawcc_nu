@@ -182,7 +182,7 @@ function my_register_blocks() {
     if( function_exists('acf_register_block_type') ) {
 
         // registers blocks
-        
+         
         // testimonial (initial test) 
         acf_register_block_type(array(
             'name'              => 'test',
@@ -214,6 +214,19 @@ function my_register_blocks() {
             'description'       => __('A custom hero banner block.'),
             // 'render_callback'   => 'my_acf_block_render_callback',
             'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+        
+        // heroOptions
+        acf_register_block_type(array(
+            'name'              => 'options',
+            'title'             => __('Hero Options'),
+            'description'       => __('A custom hero banner block.'),
+            'render_callback'   => 'options_block_callback',
+            // 'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'layout',
             'icon'              => 'archive',
@@ -338,45 +351,50 @@ function lead_block_callback( $block, $content = '', $is_preview = false) {
 
 
 
+function options_block_callback( $block, $content = '', $is_preview = false) {
+
+    // Load values and assing defaults.
+    $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    $background_color = get_field( 'background_color' ) ?: '#fafafa';
+    
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+
+    ?>
+
+    <header 
+        class="hero 
+            <?php if($background_color): ?> hero_color <?php endif; ?> 
+            <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
+        style="
+            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
+            <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
+    >
+
+    <?php if ( $logo ) { ?>
+        <div>
+            <img src="<?php echo $logo; ?>" alt="<?php the_title(); ?>" />
+        </div>
+    <?php } elseif ( $icon ) { ?> 
+        <div>
+            <?php echo $icon; ?>
+        </div>
+    <?php } ?>
+        
+    </header>    
+    
+    <?php
+}
+
+
+
 
 
 //===============================================
 //  ----- CUSTOM POST TYPES + TAXONOMIES  ------
 //-----------------------------------------------
 
-
-// ------ CUSTOM POST TYPE - TOPICS -------
-// Custom Post types - WOOT! This creates a new menu in the wp admin section
-function cp_collections() {
-    $labels = array(
-      'name'               => _x( 'Topics', 'post type general name' ),
-      'singular_name'      => _x( 'Topic', 'post type singular name' ),
-      'add_new'            => _x( 'Add new', 'topic' ),
-      'add_new_item'       => __( 'Add new topic' ),
-      'edit_item'          => __( 'Edit topic' ),
-      'new_item'           => __( 'New topic' ),
-      'all_items'          => __( 'All topics' ),
-      'view_item'          => __( 'View topic' ),
-      'search_items'       => __( 'Search topics' ),
-      'not_found'          => __( 'No topics found' ),
-      'not_found_in_trash' => __( 'No topics found in the Trash' ),
-      'parent_item_colon'  => '',
-      'menu_name'          => 'Topics'
-    );
-    $args = array(
-        'labels'        => $labels,
-        'description'   => 'Holds content used for Topics',
-        'public'        => true,
-        'menu_icon'     => 'dashicons-star-filled',
-        'menu_position' => 5,
-        'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
-        'has_archive'   => true,
-        // displays categories in collections
-        'taxonomies' => array('category')
-    );
-    register_post_type( 'collections', $args );
-}
-add_action( 'init', 'cp_collections' );
 
 
 // ------ CUSTOM POST TYPE - PUBLICATIONS -------
@@ -409,7 +427,7 @@ function cp_publications() {
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in publications
-        'taxonomies' => array('category')
+        'taxonomies' => array('category', 'tags')
     );
     register_post_type( 'publications', $args );
 }
@@ -443,11 +461,11 @@ function cp_events() {
         'menu_icon'     => 'dashicons-tickets-alt',
         'menu_position' => 5,
         'show_in_rest'  => true,
-        'supports'      => array('editor', 'title'),
+        'supports'      => array('editor', 'title', 'thumbnail'),
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in events
-        'taxonomies' => array('category')
+        'taxonomies' => array('category', 'tags')
     );
     register_post_type( 'events', $args );
 }
@@ -485,11 +503,89 @@ function cp_exhibits() {
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in exhibits
-        'taxonomies' => array('category')
+        'taxonomies' => array('category', 'tags')
     );
     register_post_type( 'exhibits', $args );
 }
 add_action( 'init', 'cp_exhibits' );
+
+
+
+
+// ------ CUSTOM POST TYPE - PUBLICATIONS -------
+// Custom Post types - WOOT! This creates a new menu in the wp admin section
+function cp_classes() {
+    $labels = array(
+      'name'               => _x( 'Classes', 'post type general name' ),
+      'singular_name'      => _x( 'Class', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'class' ),
+      'add_new_item'       => __( 'Add new class' ),
+      'edit_item'          => __( 'Edit class' ),
+      'new_item'           => __( 'New class' ),
+      'all_items'          => __( 'All classes' ),
+      'view_item'          => __( 'View class' ),
+      'search_items'       => __( 'Search classes' ),
+      'not_found'          => __( 'No classes found' ),
+      'not_found_in_trash' => __( 'No classes found in the Trash' ),
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Classes'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds content used for classes',
+        'rewrite'       => array('slug' => 'classes'),
+        'public'        => true,
+        'menu_icon'     => 'dashicons-welcome-learn-more',
+        'menu_position' => 5,
+        'show_in_rest'  => true,
+        'supports'      => array('editor', 'title', 'thumbnail'),
+        // 'template'      => array('acf/hero'),
+        'has_archive'   => true,
+        // displays categories in classes
+        'taxonomies' => array('category', 'tags')
+    );
+    register_post_type( 'classes', $args );
+}
+add_action( 'init', 'cp_classes' );
+
+
+
+// ------ CUSTOM POST TYPE - TOPICS -------
+// Custom Post types - WOOT! This creates a new menu in the wp admin section
+function cp_webinars() {
+    $labels = array(
+      'name'               => _x( 'Webinars', 'post type general name' ),
+      'singular_name'      => _x( 'Topic', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'topic' ),
+      'add_new_item'       => __( 'Add new topic' ),
+      'edit_item'          => __( 'Edit topic' ),
+      'new_item'           => __( 'New topic' ),
+      'all_items'          => __( 'All webinars' ),
+      'view_item'          => __( 'View topic' ),
+      'search_items'       => __( 'Search webinars' ),
+      'not_found'          => __( 'No webinars found' ),
+      'not_found_in_trash' => __( 'No webinars found in the Trash' ),
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Webinars'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds content used for Webinars',
+        'public'        => true,
+        'menu_icon'     => 'dashicons-star-filled',
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'editor', 'thumbnail', 'comments' ),
+        'has_archive'   => true,
+        // displays categories in webinars
+        'taxonomies' => array('category', 'tags')
+    );
+    register_post_type( 'webinars', $args );
+}
+add_action( 'init', 'cp_webinars' );
+
+
+
+
 
 
 //------------------------------------------
@@ -512,11 +608,34 @@ add_action( 'init', 'publications_register_template' );
 function events_register_template() {
     $post_type_object = get_post_type_object( 'events' );
     $post_type_object->template = array(
-        array( 'acf/hero' ),
-        array( 'acf/lead' ),
+        array( 'mdlr/featured-image' ),
+        array( 'acf/options' ),
+        array( 'core/columns', array(), array(
+            array( 'core/column', array(), array(
+                array( 'acf/lead', array () ),
+            ) ),
+            array( 'core/column', array(), array(
+                array( 'core/html', array() ),
+            ) ),
+            
+        ) ),
     );
 }
 add_action( 'init', 'events_register_template' );
+
+
+
+function classes_register_template() {
+    $post_type_object = get_post_type_object( 'classes' );
+    $post_type_object->template = array(
+        array( 'mdlr/featured-image' ),
+        array( 'acf/options' ),
+        array( 'acf/lead'),
+    );
+}
+add_action( 'init', 'classes_register_template' );
+
+
 
 function myplugin_register_template() {
     $post_type_object = get_post_type_object( 'post' );
