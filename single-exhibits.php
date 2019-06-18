@@ -127,7 +127,7 @@
 
     </header>
 
-    <section class="post_content wide_content">
+    <section class="post_content wide_content nospaceCovers">
         <?php the_content(); ?>
     </section>
 

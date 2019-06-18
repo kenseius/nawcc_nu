@@ -146,22 +146,6 @@
             <?php } ?>
             
         </section>
-                
-<!--
-                <div class="event_content">
-                    <h1><?php the_title(); ?></h1> 
-                    <p class="lead">Join Us For A Festival Of Beer, Food, Live Music + Horology</p>
-                </div>
--->
-   
-        
-<!--
-        <section class="article_title event_title">
-            <p class="subtitle">Events</p>
-            <h1><?php the_title(); ?></h1>
-            <p class="lead">Friday, July 12, 2019 | 6-9pm</p>
-        </section>
--->
 
     </header>
     
