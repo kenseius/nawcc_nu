@@ -137,6 +137,8 @@
     
     @include article;
     
+    margin: 0 auto;
+    
     & > a {
         display: inline-block;
         border-right: 3px solid transparent;
@@ -156,7 +158,8 @@
         & > h2, 
         & > h3, 
         & > h4, 
-        & > h5 { max-width: $scale_12; }
+        & > h5,
+        & > p.lead { max-width: $scale_12; }
     }
 
 }
@@ -195,6 +198,35 @@
 //    margin-right: auto;
 //}
 
+
+.details {
+
+    // background: #eaeaea;
+    
+    background: #fff;
+    border: 2px solid #eaeaea;
+    
+    // max-width: $scale_8;
+    
+    //    h3 {
+    //        display: block; 
+    //        margin: 0 auto $scale_1;
+    //        padding: 1rem; 
+    //        background: #252525; 
+    //        color: #fafafa;
+    //        font-size: $scale_1;
+    //    }
+    
+    & > h3,
+    & > ul, 
+    & > p,
+    & > address {padding-left: 1rem; padding-right: 1rem;}
+
+    & > *:first-child {padding-top: $scale_1;}
+    & > *:last-child {padding-bottom: $scale_1;}
+
+}
+
 .eventDetails {
     
     background: #eaeaea;
@@ -216,6 +248,153 @@
     & > *:last-child {padding-bottom: $scale_1;}
 
 }
+
+
+
+// ============================
+//  events / dateblock 
+// ============================
+
+
+.dateBox {
+                
+    display: flex;
+    flex-flow: column;
+    max-width: $scale_8;
+    width: 100%;
+
+    .dB_month, .dB_year, .dB_hours {
+        background: #eaeaea;
+        padding: 5px;
+        font-size: $scale_1;
+        text-align: center;
+    }
+    .dB_month, .dB_year {
+        letter-spacing: 0.5rem;
+        text-indent: 0.5rem; // offsets letter-spacing, so text-align: center appears correctly
+        border: 2px solid #eaeaea;
+    }
+    .dB_month {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .dB_day {
+        font-family: $title-font;
+        font-size: $h1;
+        line-height: $scale-value_1;
+        padding: 5px;
+        text-align: center;
+        background: #fff;
+        border: 2px solid #eaeaea;
+    }
+}
+        
+        
+
+
+
+
+// ============================
+//  article title
+// ============================
+
+
+.article_title {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+    width: 100%;
+    max-width: $wide-max-width;
+    
+    height: 100%;
+    min-height: $default-height; // $scale_9;
+    
+    // padding: $base-vertical-padding 0;
+    margin: auto;
+        
+
+    // & > * {flex: 1;}
+
+    h1, .subtitle, .meta, .lead {
+ 
+        width: 100%;
+        max-width: $wide-max-width; // $base-max-width;
+        margin-bottom: $scale_1;
+
+        // @include wrap($base-max-width, auto);
+        @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+        @media #{$medium-only} { max-width: $article-max-width; }
+    }
+    & > h1 {font-size: $h1;}
+
+
+// &.event_title,
+//    & > .event_title {
+
+//        display: flex;
+//        flex-flow: row;
+//        width: 100%;
+//        max-width: $scale_12;
+//
+//        & > * {flex: 1;}
+
+
+        // moved to .strapless.css - can delete
+
+//            .dateBox {
+//                
+//                display: flex;
+//                flex-flow: column;
+//                max-width: $scale_8;
+//                width: 100%;
+//                
+//                .dB_month, .dB_year, .dB_hours {
+//                    background: #eaeaea;
+//                    padding: 5px;
+//                    font-size: $scale_1;
+//                    text-align: center;
+//                }
+//                .dB_month, .dB_year {
+//                    letter-spacing: 0.5rem;
+//                    text-indent: 0.5rem; // offsets letter-spacing, so text-align: center appears correctly
+//                    border: 2px solid #eaeaea;
+//                }
+//                .dB_month {
+//                    text-transform: uppercase;
+//                    font-weight: bold;
+//                }
+//                .dB_day {
+//                    font-family: $title-font;
+//                    font-size: $h1;
+//                    line-height: $scale-value_1;
+//                    padding: 5px;
+//                    text-align: center;
+//                    background: #fff;
+//                    border: 2px solid #eaeaea;
+//                }
+//            }
+
+        // h1, .lead,
+        // & > div,
+        // & > section,
+//        & > .event_content {
+//            padding-left: $scale_1;
+//            max-width: 100%;
+//            @media #{$small-only} {padding-left: 0;}
+//        }
+//
+//        .lead {font-size:$h4;}
+
+//    }
+
+}
+
+
+
+
  
 // ============================
 //  Wordpress Columns (via gutenberg blocks)
@@ -250,23 +429,70 @@
         flex-direction: column; 
         align-items: center;
     }
+    
+    @media #{$extra-large-down} { 
+        padding-left: $scale_1;
+        padding-right: $scale_1;
+    }
 
     
     
     .wp-block-column {
         flex: 1;
-        margin-left: 14px;
-        margin-right: 14px;
+        // margin-left: 14px;
+        margin-right: 1.7rem;
         max-width: 483.08px; // $article-max-width;
         //        flex-basis: calc(50% - 44px);
         //        flex-grow: 0;
+        @media #{$small-only} { 
+            flex: 2;
+            margin: auto;
+        }
     }
     
 }
 
 
-// wp-gallery 
 
+// variations
+
+
+main.events {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    header {width: 100%;}
+    .article_title {
+        padding: $scale_4 0 $scale_4;
+        min-height: 0;
+    }
+}
+
+
+.event_content {
+    .wp-block-columns .has-2-columns,
+    .wp-block-columns {
+        max-width: $wide-max-width;
+        .wp-block-column {
+            max-width: $scale_8;
+            &:nth-child(2) {max-width: $scale_12;}
+            & > p.lead {
+                font-size:$h4;
+                max-width: $scale_11;
+            }
+            & > p, 
+            & > ul {max-width: $article-max-width;}
+        }
+    }            
+}
+
+
+
+        
+// ============================
+// wp-gallery 
+// ============================
 
 //<ul class="wp-block-gallery columns-3 is-cropped">
 //    <li class="blocks-gallery-item">
@@ -353,6 +579,8 @@ ul.wp-block-gallery,
     @extend .hero;
     @extend .hero_image;
     margin: 0 auto $scale_3;
+    width: 100vw;
+    max-width: 100%;
     .wp-block-cover__inner-container {
         z-index: 999999;
         color: #fafafa;
@@ -362,18 +590,43 @@ ul.wp-block-gallery,
         & > p,
         & > h1,
         & > h2, 
-        & > h3 {
+        & > h3,
+        & > ul {
             max-width: $article-max-width;
             margin-left: 0;
             // float: left;
+            color: #fafafa;
             @media #{$extra-large-down} { 
                 padding-left: $base-horizontal-padding; 
                 padding-right: $base-horizontal-padding; 
             }
         }
+        @media #{$extra-large-down} { 
+            padding-left: 0; 
+            padding-right: 0; 
+        }
     }
+    
+    &:nth-of-type(odd) {
+        & > .wp-block-cover__inner-container {
+            & > p,
+            & > h1,
+            & > h2, 
+            & > h3 {margin:0 0 $scale_small auto;}
+        }
+    }
+    
+    &:last-child {margin: 0 auto;}
+    
+    &.has-parallax {background-attachment: fixed;}
+    
 }
 
+
+.nospaceCovers, 
+.nospaceCovers .wp-block-cover {
+    margin: auto 0;
+}
 
 
 

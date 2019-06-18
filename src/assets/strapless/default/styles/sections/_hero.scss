@@ -10,6 +10,7 @@
 
 //  1.1 hero
 // ************************
+
 .hero {
     
     // display: block;
@@ -23,6 +24,7 @@
     justify-content: center;
     flex-flow: column;
 
+    width: 100%;
     min-height: $default-height;
     
     &.hero_tall {min-height: $section-height-tall;}
@@ -70,27 +72,12 @@
     & > .hero_image {
         @extend %bg_image; 
         // background-attachment: fixed;
-        img {
+        img {margin: 0 auto 1rem;}
+        p {color: #252525;}
+        p, a, img {
             position: relative;
             z-index: 99999;
         }
-    }
-    &.article_title,
-    & > .article_title {
-        
-        min-height: $scale_9;
-        
-        h1, .subtitle, .meta {
-            
-            width: 100%;
-            max-width: $base-max-width;
-            margin-bottom: $scale_2;
-            
-            // @include wrap($base-max-width, auto);
-            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
-            @media #{$medium-only} { max-width: $article-max-width; }
-        }
-        & > h1 {font-size: $h1;}
         
     }
     
@@ -117,6 +104,16 @@
     }
     
     &.bg_clockwork {color: $wht;}
+    
+    &.hero_event {
+        .date {
+            font-size: $h4; 
+            padding: 5px; 
+            background: #fafafa;
+            margin: auto; 
+            text-align: center;
+        }
+    }
     
     img,
     object {
@@ -148,7 +145,7 @@
 
         // default, header
         &:first-of-type{
-            background: $pch;
+            background: $pch; 
             h1, h2, p {color: $slate;}
             h2 {@include type-setting(4);}
         }

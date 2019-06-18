@@ -132,6 +132,8 @@ $scale-value_3: 2.827; // 45.234px
 $scale-value_2: 1.999; // 31.99px
 $scale-value_1: 1.414; // 22.624px
 $scale-value_0: 1;     // 16px
+$scale-value_small: 0.707;
+
 
 $scale_12: ($scale-value_12) * 1rem; 
 $scale_11: ($scale-value_11) * 1rem; 
@@ -146,6 +148,7 @@ $scale_3: ($scale-value_3) * 1rem; // 45.234px
 $scale_2: ($scale-value_2) * 1rem; // 31.99px
 $scale_1: ($scale-value_1) * 1rem; // 22.624px
 $scale_0: ($scale-value_0) * 1rem; // 16px
+$scale_small: ($scale-value_small) * 1rem; 
 
 
 $h1: $scale_5; // 5.653 = 90.441px
@@ -155,13 +158,15 @@ $h4: $scale_2; // 1.999 = 31.99px
 $h5: $scale_1; // 1.414 = 22.624px
 $pLead: $scale_1; // 1.414 = 22.624px
 $p1: $scale_0; // 16px
-
+$small: $scale_small; 
 
 
 $base-width:            100%;
 $base-max-width:        $scale_11; 
 $article-max-width:     $scale_10; // 31.952rem = 511.227px
 $text-max-width:        $article-max-width;
+$wide-max-width:        $scale_12; 
+
 $base-border:           0.2rem solid $gry_muted;// $grylite;
 
 
