@@ -89,11 +89,19 @@
         </svg>
     </a>
     <div class="links">
-        <a href="join.html" class="navitem  ">Join</a>            
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
+            <i class="fa fa-home"></i>
+            <span>Dashboard</span>
+        </a>    
+        <a href="join" class="navitem  ">Join</a>            
         <a href="about.html" class="navitem  ">About</a>            
         <a href="shop.html" class="navitem  ">Shop</a>            
         <a href="donate.html" class="navitem  ">Donate</a>            
-        <a href="login.html" class="navitem  ">Log In</a>    
+        <a href="login.html" class="navitem  ">Log In</a>  
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>search" <?php if ( is_page_template( 'page-search.php' ) ) { ?> class="active" <?php }  ?> >
+            <i class="fa fa-search"></i>
+            <span>Search</span>
+        </a> 
     </div>
     <a class="nav-trigger nav-open">
         <div class="inner"></div>

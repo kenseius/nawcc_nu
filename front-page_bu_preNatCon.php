@@ -1,53 +1,8 @@
-<!--
-============================================================
+<?php get_header(); ?>
 
-     POST TEMPLATE
-    ==============================
-
-        1. HERO - Background Image pulled from "Featured Image"
-        2. CONTENT - article, title, subtitle, metadata, content
-
-============================================================
--->
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php }
-            elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php }
-            else { echo get_the_title(); ?> | NAWCC <?php } ?>
-    </title>
-    
-    <!-- METADATA -->
-    <meta name="description" content="<?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC <?php } ?>" />
-	<meta name="keywords"    content="<?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC <?php } ?>" />
-    
-    <!-- METADATA - facebook -->
-	<meta property="fb:page_id" content="" />
-	<meta property="og:image" content="" />
-	<meta property="og:description" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?><?php } ?>"/>
-	<meta property="og:title" content="NAWCC"/>
-    
-	<!-- METADATA - google+ -->
-	<meta itemprop="name" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC<?php } ?>"/>
-	<meta itemprop="description" content="The National Association Of Watch &amp; Clock Collectors">
-	<meta itemprop="image" content="">
-    
-    <!--    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />-->
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/fabricator/styles/f.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/strapless/styles/strapless.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    
-</head>
-    
-<body>   
-
-<nav class="nav primary_navigation" role="navigation">
-    <a class="logo" href="https://nawcc.org/">
+<header class="hero hero_frontpage">
+    <div class="twoCol">
+        <h1 class="sr-only">The National Association Of Watch &amp; Clock Collectors</h1>
         <svg width="370" height="65" viewBox="0 0 370 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="Logo">
                 <g id="Logo Icon">
@@ -82,89 +37,200 @@
                 </g>
                 <g id="National Association Of Watch &#38; Clock Collectors">
                     <text fill="#252525" xml:space="preserve" style="white-space: pre" font-family="Arvo" font-size="22.624" font-weight="bold" letter-spacing="0em">
-                        <tspan x="66" y="45.1504">Watch &amp; Clock Collectors</tspan>
+                        <tspan x="66" y="45.1504">Watch &#38; Clock Collectors</tspan>
                     </text>
                     <text fill="#252525" xml:space="preserve" style="white-space: pre" font-family="Arvo" font-size="16" letter-spacing="0em">
-                        <tspan x="66" y="19.0273">National Association Of</tspan>
+                        <tspan x="66" y="19.0273">National Association Of &#10;</tspan>
                     </text>
                 </g>
             </g>
         </svg>
-    </a>
-<!--
-    <div class="links">
-        <a href="join.html" class="navitem  ">Join</a>            
-        <a href="about.html" class="navitem  ">About</a>            
-        <a href="shop.html" class="navitem  ">Shop</a>            
-        <a href="donate.html" class="navitem  ">Donate</a>            
-        <a href="login.html" class="navitem  ">Log In</a>    
+        <p>The world's largest museum, research library, &amp; horological community</p>
     </div>
-    <a class="nav-trigger nav-open">
-        <div class="inner"></div>
-        <span class="menulabel">Menu</span>
-    </a>
--->
-</nav>
+</header>
 
-<main class="events">
+<main>    
     
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-    <?php
     
-    // Load values and assing defaults.
-    $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
-    $icon             = get_field( 'post_icon' );
-    $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-    $background_color = get_field( 'background_color' ) ?: '#fafafa';
+       
     
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+    
+    
+<?php 
 
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'publications',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
     ?>
-
-    <header class="hero wideTitle">
-        
-        <section         
-            class="hero wideTitle hero_event
-                <?php if($background_color): ?> hero_color <?php endif; ?> 
-                <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
-            style="
-                <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
-                <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
-        >
-            
-            <?php if ( $logo ) { ?>
-                <div>
-                    <img src="<?php echo $logo; ?>" alt="<?php the_title(); ?>" />
-                    <p class="date">Friday, July 12, 2019 | 6-9pm</p>
-                    <a class="button" href="https://net.nawcc.org/NAWCC/Store/Events/NAWCC/Store/StoreLayouts/Products_by_Category.aspx?category=stevents&hkey=8d00f729-096c-4d6a-b59b-f07df7fe5dce">Buy Tickets</a>
-                </div>
-            <?php } elseif ( $icon ) { ?> 
-                <div>
-                    <?php echo $icon; ?>
-                </div>
-            <?php } ?>
-            
-        </section>
-
-    </header>
     
-    <section class="article_title event_title">
-        <p class="subtitle">Events</p>
-        <h1><?php the_title(); ?></h1> 
-    </section>
-    <section class="post_content wide_content nospaceCovers event_content">
-        <?php the_content(); ?>
-    </section>
+    <!-- Featured Post - Publications --> 
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   s
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo' ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+      
+	<?php endwhile; ?>
+        
+    
+<?php endif; ?>
 
-</main>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>    
+        
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<?php 
+// Set the arguments for the query
+$args = array( 
+  'numberposts'		=> 1, // -1 is for all
+  'post_type'		=> 'events', // or 'post', 'page'
+  // 'orderby' 		=> 'title', // or 'date', 'rand'
+  // 'order' 		=> 'ASC', // or 'DESC'
+  //'category' 		=> $category_id,
+  //'exclude'		=> get_the_ID()
+  // ...
+  // http://codex.wordpress.org/Template_Tags/get_posts#Usage
+);
+    
 
+
+// Get the posts
+$myposts = get_posts($args);
+
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';    
+   
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+    
+// If there are postsr
+if($myposts):
+  // Loop the posts
+  foreach ($myposts as $mypost):
+?>
+    
+    <!-- Featured Post - Events --> 
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo' ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
+        </div>
+        <?php } ?>
+    </article>
+ 
+
+  <?php endforeach; wp_reset_postdata(); ?>
+<?php endif; ?>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?> 
+    
+<?php 
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+    $background_image = get_field( 'background_image', $post->ID );
+?>
+   
+    <!-- Featured Post -->
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php the_title(); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo' ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
+        </div>
+        <?php } ?>
+    </article>
+ 
 <?php endwhile; else: ?>
   <p><?php _e('Sorry, there are no posts.'); ?></p>
 <?php endif; ?>
+    
+</main>
 
 <?php get_footer(); ?>
-
-
-
-

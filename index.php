@@ -7,7 +7,7 @@
     </section>
 
 <?php endwhile; else: ?>
-  <p><?php _e('Sorry, there are no posts.'); ?></p>
+  <p><?php _e('Sorry, there are no posts. - index.php'); ?></p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

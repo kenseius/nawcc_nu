@@ -9,6 +9,13 @@
 
 ============================================================
 -->
+
+<?php
+/*
+Template Name: Unused! Search Page
+*/
+?>
+
 <?php get_header(); ?>
 
 
@@ -30,7 +37,7 @@
     </header>   
 
     <section class="post_content">
-        <?php the_content(); ?>
+        <?php get_search_form(); ?>
     </section>
 
 <?php endwhile; else: ?>

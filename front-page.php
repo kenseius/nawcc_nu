@@ -49,34 +49,453 @@
     </div>
 </header>
 
-<main>
-
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
+<main>    
+    
+  
+<!-- 
+========================================
+    Events 
+======================================== -->   
+    
 <?php 
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
-    $background_image = get_field( 'background_image', $post->ID );
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'events',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
 ?>
-   
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+    
+    <!-- Featured Post - Events --> 
     <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
-        <div>   
+        <div>   s
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-            <h2><?php the_title(); ?></h2>    
+            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
             <div class="btnBar">
-                <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
+                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
             </div>
         </div>
-        <?php $post_logo = get_field( 'post_logo' ); ?>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
         <?php if ( $post_logo ) { ?>
         <div>
-            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
         </div>
         <?php } ?>
-    </article>
- 
-<?php endwhile; else: ?>
-  <p><?php _e('Sorry, there are no posts.'); ?></p>
+    </article>   
+      
+	<?php endwhile; ?>
+        
+    
 <?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>        
+    
+    
+
+    
+<!-- 
+========================================
+    Publications 
+======================================== -->   
+    
+<?php 
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'publications',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+    
+    <!-- Featured Post - Publications --> 
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>       
+            <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
+            <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Publications</a></p>
+            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+      
+	<?php endwhile; ?>
+        
+    
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>        
+        
+    
+    
+ 
+    
+    
+<!-- 
+========================================
+    Causes 
+======================================== -->   
+    
+<?php 
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'causes',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+    
+    <!-- Featured Post - Causes --> 
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   s
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+      
+	<?php endwhile; ?>
+        
+    
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>     
+   
+    
+    
+    
+    
+    
+    
+    
+    
+
+<!-- 
+------------------------------------
+    Exhibits 
+------------------------------------ -->   
+    
+<?php 
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'exhibits',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php 
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+    
+    <!-- Featured Post - Exhibits --> 
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   s
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+      
+	<?php endwhile; ?>
+        
+    
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?> 
+    
+    
+    
+    
+    
+<div class="twoCol">
+    <!-- 
+    ========================================
+        Classes 
+    ======================================== -->   
+
+    <?php 
+
+    // args
+    $args = array(
+        'numberposts'	=> 1,
+        'post_type'		=> 'classes',
+        'posts_per_page'=> '1',
+        'post_count'    => '1',
+    //	'meta_key'		=> 'location',
+    //	'meta_value'	=> 'Melbourne'
+    );
+
+
+    // query
+    $the_query = new WP_Query( $args );
+
+
+    // Set up fields.
+    $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    $background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+    ?>
+    <?php if( $the_query->have_posts() ): ?>
+
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php 
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+            $background_image = get_field( 'background_image', $post->ID );
+        ?>
+
+        <!-- Featured Post - Classes --> 
+        <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+            <div>       
+                <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
+                <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Classes</a></p>
+                <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+                <div class="btnBar">
+                    <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                </div>
+            </div>
+            <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+            <?php if ( $post_logo ) { ?>
+            <div>
+                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+            </div>
+            <?php } ?>
+        </article>   
+
+        <?php endwhile; ?>
+
+
+    <?php endif; ?>
+
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>            
+    
+    <!-- 
+    ========================================
+        Webinars 
+    ======================================== -->   
+
+    <?php 
+
+    // args
+    $args = array(
+        'numberposts'	=> 1,
+        'post_type'		=> 'webinars',
+        'posts_per_page'=> '1',
+        'post_count'    => '1',
+    //	'meta_key'		=> 'location',
+    //	'meta_value'	=> 'Melbourne'
+    );
+
+
+    // query
+    $the_query = new WP_Query( $args );
+
+
+    // Set up fields.
+    $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    $background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+    ?>
+    <?php if( $the_query->have_posts() ): ?>
+
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php 
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+            $background_image = get_field( 'background_image', $post->ID );
+        ?>
+
+        <!-- Featured Post - Webinars --> 
+        <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+            <div>       
+                <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
+                <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Webinars</a></p>
+                <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+                <div class="btnBar">
+                    <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                </div>
+            </div>
+            <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+            <?php if ( $post_logo ) { ?>
+            <div>
+                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+            </div>
+            <?php } ?>
+        </article>   
+
+        <?php endwhile; ?>
+
+
+    <?php endif; ?>
+
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>       
+
+</div>    
+  
+    
+
+<div class="wp-block-columns has-2-columns bg_grey">
+<div class="wp-block-column" style="max-width: 250px;">
+<figure class="wp-block-image" style="max-height: 450px; overflow: hidden;"><img src="http://localhost/nawcc_wpLocal/wp-content/uploads/2019/06/civilwar_BookCover.jpg" alt="" class="wp-image-820" srcset="http://localhost/nawcc_wpLocal/wp-content/uploads/2019/06/civilwar_BookCover.jpg 600w, http://localhost/nawcc_wpLocal/wp-content/uploads/2019/06/civilwar_BookCover-240x300.jpg 240w" sizes="(max-width: 600px) 100vw, 600px"></figure>
+</div>
+
+
+
+<div class="wp-block-column" style="max-width: 800px;">
+<h2>Get Your Copy Of The Book</h2>
+
+
+
+            <p class="lead">“The Appreciation and Authentication of Civil War Timepieces”</p>
+
+
+
+<div class="wp-block-button"><a class="wp-block-button__link" href="https://net.nawcc.org/ItemDetail?iProductCode=02020&amp;Category=STBOOKS&amp;WebsiteKey=dcd15410-1f8f-4470-b1ca-5991592773b6">Get The Book (Hard Cover)</a></div>
+
+</div>
+</div> 
+    
+    
+    
+
+
     
 </main>
 

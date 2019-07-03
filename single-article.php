@@ -19,7 +19,7 @@
     </section>
 
 <?php endwhile; else: ?>
-  <p><?php _e('Sorry, there are no posts. - single.php'); ?></p>
+  <p><?php _e('Sorry, there are no posts.'); ?></p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

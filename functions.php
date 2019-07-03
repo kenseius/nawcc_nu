@@ -356,10 +356,11 @@ function options_block_callback( $block, $content = '', $is_preview = false) {
     // Load values and assing defaults.
     $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
     $icon             = get_field( 'post_icon' );
-    $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    // $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
     $background_color = get_field( 'background_color' ) ?: '#fafafa';
     
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+    // $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id (), 'single-post-thumbnail'); 
 
     ?>
 
@@ -369,7 +370,7 @@ function options_block_callback( $block, $content = '', $is_preview = false) {
             <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
         style="
             <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
-            <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
+            <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_color; ?>');<?php endif; ?>"
     >
 
     <?php if ( $logo ) { ?>
@@ -418,16 +419,16 @@ function cp_publications() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for Publications',
-        'rewrite'       => array('slug' => 'publications'),
+        'rewrite'       => array('slug' => 'publications','with_front' => true), 
         'public'        => true,
         'menu_icon'     => 'dashicons-book-alt',
-        'menu_position' => 5,
+        'menu_position' => 2,
         'show_in_rest'  => true,
         'supports'      => array('editor', 'title', 'thumbnail'),
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in publications
-        'taxonomies' => array('category', 'tags')
+        'taxonomies' => array('category', 'post_tag')
     );
     register_post_type( 'publications', $args );
 }
@@ -456,16 +457,16 @@ function cp_events() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for events',
-        'rewrite'       => array('slug' => 'events'),
+        'rewrite'       => array('slug' => 'events','with_front' => true),
         'public'        => true,
         'menu_icon'     => 'dashicons-tickets-alt',
-        'menu_position' => 5,
+        'menu_position' => 3,
         'show_in_rest'  => true,
         'supports'      => array('editor', 'title', 'thumbnail'),
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in events
-        'taxonomies' => array('category', 'tags')
+        'taxonomies' => array('category', 'post_tag')
     );
     register_post_type( 'events', $args );
 }
@@ -489,21 +490,21 @@ function cp_exhibits() {
       'not_found'          => __( 'No exhibits found' ),
       'not_found_in_trash' => __( 'No exhibits found in the Trash' ),
       'parent_item_colon'  => '',
-      'menu_name'          => 'Exhibits'
+      'menu_name'          => 'Museum'
     );
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for exhibits',
-        'rewrite'       => array('slug' => 'exhibits'),
+        'rewrite'       => array('slug' => 'exhibits','with_front' => true),
         'public'        => true,
         'menu_icon'     => 'dashicons-money',
-        'menu_position' => 5,
+        'menu_position' => 4,
         'show_in_rest'  => true,
         'supports'      => array('editor', 'title', 'thumbnail'),
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in exhibits
-        'taxonomies' => array('category', 'tags')
+        'taxonomies' => array('category', 'post_tag')
     );
     register_post_type( 'exhibits', $args );
 }
@@ -533,7 +534,7 @@ function cp_classes() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for classes',
-        'rewrite'       => array('slug' => 'classes'),
+        'rewrite'       => array('slug' => 'classes','with_front' => true),
         'public'        => true,
         'menu_icon'     => 'dashicons-welcome-learn-more',
         'menu_position' => 5,
@@ -542,7 +543,7 @@ function cp_classes() {
         // 'template'      => array('acf/hero'),
         'has_archive'   => true,
         // displays categories in classes
-        'taxonomies' => array('category', 'tags')
+        'taxonomies' => array('category', 'post_tag')
     );
     register_post_type( 'classes', $args );
 }
@@ -550,18 +551,18 @@ add_action( 'init', 'cp_classes' );
 
 
 
-// ------ CUSTOM POST TYPE - TOPICS -------
+// ------ CUSTOM POST TYPE - WEBINARS -------
 // Custom Post types - WOOT! This creates a new menu in the wp admin section
 function cp_webinars() {
     $labels = array(
       'name'               => _x( 'Webinars', 'post type general name' ),
-      'singular_name'      => _x( 'Topic', 'post type singular name' ),
-      'add_new'            => _x( 'Add new', 'topic' ),
-      'add_new_item'       => __( 'Add new topic' ),
-      'edit_item'          => __( 'Edit topic' ),
-      'new_item'           => __( 'New topic' ),
+      'singular_name'      => _x( 'Webinar', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'webinar' ),
+      'add_new_item'       => __( 'Add new webinar' ),
+      'edit_item'          => __( 'Edit webinar' ),
+      'new_item'           => __( 'New webinar' ),
       'all_items'          => __( 'All webinars' ),
-      'view_item'          => __( 'View topic' ),
+      'view_item'          => __( 'View webinar' ),
       'search_items'       => __( 'Search webinars' ),
       'not_found'          => __( 'No webinars found' ),
       'not_found_in_trash' => __( 'No webinars found in the Trash' ),
@@ -571,18 +572,56 @@ function cp_webinars() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for Webinars',
+        'rewrite'       => array('slug' => 'webinars','with_front' => true),
         'public'        => true,
         'menu_icon'     => 'dashicons-star-filled',
-        'menu_position' => 5,
+        'menu_position' => 6,
+        'show_in_rest'  => true,
         'supports'      => array( 'title', 'editor', 'thumbnail', 'comments' ),
         'has_archive'   => true,
         // displays categories in webinars
-        'taxonomies' => array('category', 'tags')
+        'taxonomies' => array('category', 'post_tag')
     );
     register_post_type( 'webinars', $args );
 }
 add_action( 'init', 'cp_webinars' );
 
+
+
+// ------ CUSTOM POST TYPE - CAUSES -------
+// Custom Post types - WOOT! This creates a new menu in the wp admin section
+function cp_causes() {
+    $labels = array(
+      'name'               => _x( 'Causes', 'post type general name' ),
+      'singular_name'      => _x( 'Cause', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'cause' ),
+      'add_new_item'       => __( 'Add new cause' ),
+      'edit_item'          => __( 'Edit cause' ),
+      'new_item'           => __( 'New cause' ),
+      'all_items'          => __( 'All causes' ),
+      'view_item'          => __( 'View cause' ),
+      'search_items'       => __( 'Search causes' ),
+      'not_found'          => __( 'No causes found' ),
+      'not_found_in_trash' => __( 'No causes found in the Trash' ),
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Causes'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds content used for causes',
+        'rewrite'       => array('slug' => 'causes','with_front' => true),
+        'public'        => true,
+        'menu_icon'     => 'dashicons-star-filled',
+        'menu_position' => 7,
+        'show_in_rest'  => true,
+        'supports'      => array( 'title', 'editor', 'thumbnail', 'comments' ),
+        'has_archive'   => true,
+        // displays categories in causes
+        'taxonomies' => array('category', 'post_tag')
+    );
+    register_post_type( 'causes', $args );
+}
+add_action( 'init', 'cp_causes' );
 
 
 
