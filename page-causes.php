@@ -116,7 +116,7 @@ $background_image = get_field( 'background_image', $post->ID );
             <?php else : ?> 
 
                 <!-- Featured Image = [ img ] -->
-                <?php echo wp_get_attachment_image( $thumb_id, 'thumbnail' ); ?>
+                <?php echo wp_get_attachment_image( 'thumbnail' ); ?>
 
             <?php endif; ?>
 

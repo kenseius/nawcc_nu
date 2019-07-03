@@ -89,78 +89,15 @@
         </svg>
     </a>
     <div class="links">
-        <?php if ( is_front_page() && is_home() ) { ?> 
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>join" class="navitem  ">
-                <i class="fa fa-check-square"></i>
-                Join
-            </a>            
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=938" class="navitem  ">About</a>   
-        <?php } 
-            elseif ( is_page_template( 'page-dashboard.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-publications.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-events.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-blog.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-causes.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-education.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-museum.php' ) ) { ?> <?php } 
-            elseif ( is_page_template( 'page-research.php' ) ) { ?> <?php }
-            elseif ( is_page_template( 'page-resources.php' ) ) { ?> <?php }        
-        else { ?> 
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>join" class="navitem  ">
-                <i class="fa fa-check-square"></i>
-                Join
-            </a>            
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=938" class="navitem  ">About</a>   
-        <?php } 
-      ?>          
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=940" class="navitem  ">Market</a>            
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=941" class="navitem  ">Donate</a>            
-        <?php if ( is_front_page() && is_home() ) { ?> 
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">Log In</a>  
-            <?php } 
-            elseif ( is_page_template( 'page-dashboard.php, page-publications.php' ) ) { ?> 
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a> <?php } 
-            elseif ( is_page_template( 'page-publications.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php } 
-            elseif ( is_page_template( 'page-events.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php } 
-            elseif ( is_page_template( 'page-blog.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php } 
-            elseif ( is_page_template( 'page-causes.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php } 
-            elseif ( is_page_template( 'page-education.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php } 
-            elseif ( is_page_template( 'page-museum.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php } 
-            elseif ( is_page_template( 'page-research.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php }
-            elseif ( is_page_template( 'page-resources.php' ) ) { ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">
-                    <i class="fa fa-user"></i>
-                    <span>Welcome, John Example</span>
-                </a>  <?php }        
-        else { ?> 
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" class="navitem  ">Log In</a>  
-        <?php } 
-      ?> 
-        
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=934" <?php if ( is_page_template( 'page-search.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>join" class="navitem  ">
+            <i class="fa fa-check-square"></i>
+            Join
+        </a>            
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>about" class="navitem  ">About</a>            
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>market" class="navitem  ">Market</a>            
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>donate" class="navitem  ">Donate</a>            
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" class="navitem  ">Log In</a>  
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>search" <?php if ( is_page_template( 'page-search.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-search"></i>
             <span>Search</span>
         </a> 

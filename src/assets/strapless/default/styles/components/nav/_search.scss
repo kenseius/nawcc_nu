@@ -16,8 +16,14 @@
     width: 100%;
     height: 100%;
     // max-height: $section-height-short;
-    background-color: #252525;
-    .search {padding: $scale_2 0;}
+    // background-color: #eaeaea;
+    // margin: auto auto $scale_2; 
+    .search {
+        padding: $scale_2 0;
+    }
+    .pseudo-search {
+        border: 0.2rem solid #eaeaea;
+    }
 }
 
 
@@ -31,7 +37,7 @@
 
 .search form,
 form.search { 
-    max-width: 64rem; 
+    max-width: $base-max-width; 
 }
 
 
@@ -146,7 +152,7 @@ form.search {
     input[type="search"]:active ~ button.fa {
         background-color:$wht;
         color: $placholderTextcolor;
-        border-color: $wht;
+        border-color: #252525;
         @include hover() { color: $slate; &.fa {color: $slate;} }
     }
 
@@ -165,7 +171,7 @@ form.search {
     // ************************************************************************
     @include hover() {
         color: $placholderTextcolor;
-        border-color: $wht;
+        border-color: #252525;
         background: $wht;
         select  {
             color: $placholderTextcolor;

@@ -95,17 +95,17 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
     
     <!-- Featured Post - Events --> 
     <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
-        <div>   s
+        <div>   
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <h2><?php echo get_the_title(); ?></h2>    
             <div class="btnBar">
-                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
             </div>
         </div>
         <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
         <?php if ( $post_logo ) { ?>
         <div>
-            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
         </div>
         <?php } ?>
     </article>   
@@ -166,15 +166,15 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
         <div>       
             <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
             <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Publications</a></p>
-            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <h2><?php echo get_the_title(); ?></h2>    
             <div class="btnBar">
-                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
             </div>
         </div>
         <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
         <?php if ( $post_logo ) { ?>
         <div>
-            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
         </div>
         <?php } ?>
     </article>   
@@ -236,15 +236,15 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
     <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
         <div>   s
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <h2><?php echo get_the_title(); ?></h2>    
             <div class="btnBar">
-                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
             </div>
         </div>
         <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
         <?php if ( $post_logo ) { ?>
         <div>
-            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
         </div>
         <?php } ?>
     </article>   
@@ -310,15 +310,15 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
     <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
         <div>   s
             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-            <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+            <h2><?php echo get_the_title(); ?></h2>    
             <div class="btnBar">
-                <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
             </div>
         </div>
         <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
         <?php if ( $post_logo ) { ?>
         <div>
-            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
         </div>
         <?php } ?>
     </article>   
@@ -381,15 +381,15 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
             <div>       
                 <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
                 <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Classes</a></p>
-                <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+                <h2><?php echo get_the_title(); ?></h2>    
                 <div class="btnBar">
-                    <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                    <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
                 </div>
             </div>
             <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
             <?php if ( $post_logo ) { ?>
             <div>
-                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
             </div>
             <?php } ?>
         </article>   
@@ -447,15 +447,15 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
             <div>       
                 <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
                 <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Webinars</a></p>
-                <h2><?php echo get_the_title($mypost->ID); ?></h2>    
+                <h2><?php echo get_the_title(); ?></h2>    
                 <div class="btnBar">
-                    <a href="<?php echo get_permalink($mypost->ID); ?>" class="button ">Read More</a>
+                    <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
                 </div>
             </div>
             <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
             <?php if ( $post_logo ) { ?>
             <div>
-                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title($mypost->ID); ?>" />
+                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
             </div>
             <?php } ?>
         </article>   
