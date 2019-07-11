@@ -114,6 +114,15 @@
             text-align: center;
         }
     }
+
+    .hero_title_overlay {
+        & > div {
+            max-width: $wide-max-width;
+        }
+        p,
+        p.subtitle,
+        h1 {color: #fafafa;}
+    }
     
     img,
     object {

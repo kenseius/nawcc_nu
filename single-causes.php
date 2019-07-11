@@ -31,7 +31,7 @@
     <header class="hero wideTitle">
         
         <section         
-            class="hero wideTitle hero_event
+            class="hero wideTitle hero_title_overlay hero_event 
                 <?php if($background_color): ?> hero_color <?php endif; ?> 
                 <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
             style="
@@ -41,9 +41,9 @@
             
             <?php if ( $logo ) { ?>
                 <div>
-                    <p class="subtitle" style="color:#fafafa;">Causes</p>
-                    <h1 style="color:#fafafa !important;"><?php the_title(); ?></h1> 
-                    <a class="button" href="#">Donate</a>
+                    <p class="subtitle">Funds</p>
+                    <h1><?php the_title(); ?></h1> 
+                    <a class="button" href="#">Pledge</a>
                 </div>
             <?php } elseif ( $icon ) { ?> 
                 <div>
@@ -55,11 +55,14 @@
 
     </header>
     
+    <!--
     <section class="article_title event_title">
         <p class="subtitle">Events</p>
         <h1><?php the_title(); ?></h1> 
     </section>
-    <section class="post_content wide_content nospaceCovers event_content">
+    -->
+    
+    <section class="post_content wide_content nospaceCovers">
         <?php the_content(); ?>
     </section>
 

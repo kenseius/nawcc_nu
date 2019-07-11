@@ -5,7 +5,9 @@
 // ===========================================
 
 // grey background, segmented inner-form containers
-.formgroup {
+
+.grunion-field-wrap, // = for wordpress > jetpack > gutenberg blocks > forms
+.formgroup { 
     display: block;
     padding: $base-horizontal-padding $base-horizontal-padding 0; // $base-padding;
     margin:0 auto $base-horizontal-padding;

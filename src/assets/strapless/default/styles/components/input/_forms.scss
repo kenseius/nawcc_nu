@@ -69,6 +69,21 @@ form, form:not(#aspnetForm) {
     hr {margin-top: 1rem; margin-bottom: 1rem;} // TODO: remove this
 }
 
+
+
+
+// variations 
+
+
+// wordpress > jetpack > form.contact-form
+.contact-form {
+    padding-left: $scale_1;
+    background: #eaeaea;
+}
+
+
+
+
 //  2. OPTIONAL FORMGROUPS
 // ************************
 
