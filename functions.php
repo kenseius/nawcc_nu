@@ -626,6 +626,43 @@ add_action( 'init', 'cp_causes' );
 
 
 
+// ------ CUSTOM POST TYPE - CAUSES -------
+// Custom Post types - WOOT! This creates a new menu in the wp admin section
+function cp_website() {
+    $labels = array(
+      'name'               => _x( 'Website posts', 'post type general name' ),
+      'singular_name'      => _x( 'Website post', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'Website post' ),
+      'add_new_item'       => __( 'Add new Website post' ),
+      'edit_item'          => __( 'Edit Website post' ),
+      'new_item'           => __( 'New Website post' ),
+      'all_items'          => __( 'All Website posts' ),
+      'view_item'          => __( 'View Website post' ),
+      'search_items'       => __( 'Search Website posts' ),
+      'not_found'          => __( 'No Website posts found' ),
+      'not_found_in_trash' => __( 'No Website posts found in the Trash' ),
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Website Posts'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds content used for Website Posts',
+        'rewrite'       => array('slug' => 'Website Posts','with_front' => true),
+        'public'        => true,
+        'menu_icon'     => 'dashicons-star-filled',
+        'menu_position' => 7,
+        'show_in_rest'  => true,
+        'supports'      => array( 'title', 'editor', 'thumbnail', 'comments' ),
+        'has_archive'   => true,
+        // displays categories in Website Posts
+        'taxonomies' => array('category', 'post_tag')
+    );
+    register_post_type( 'website', $args );
+}
+add_action( 'init', 'cp_website' );
+
+
+
 
 //------------------------------------------
 //     ------ BLOCK TEMPLATE -------

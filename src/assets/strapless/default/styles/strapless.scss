@@ -600,8 +600,10 @@ main.events {
     }
     
     
-    // fund / cause content    
+    // fund / cause content  
     &.fund_overview {
+        max-width: $wide-max-width;
+        justify-content: space-between;
         .wp-block-column {
             // max-width: $scale_9;
             &:nth-child(2) {
