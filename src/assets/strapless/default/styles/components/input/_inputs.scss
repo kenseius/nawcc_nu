@@ -12,7 +12,8 @@
 //  4. inputs - input, textarea, select
 // ***************************************
 
-input:not(.accordion_input), textarea, select {
+input:not(.accordion_input):not(.wpcf7-submit),
+textarea, select {
 
     // allows font awesome icons in placeholder text
     font-family: FontAwesome, 'Montserrat', sans-serif;

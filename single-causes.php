@@ -12,7 +12,7 @@
 
 <?php get_header(); ?>
 
-<main class="events">
+<main class="funds">
     
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -62,9 +62,13 @@
     </section>
     -->
     
+<!--
     <section class="post_content wide_content nospaceCovers">
         <?php the_content(); ?>
     </section>
+-->
+
+    <?php the_content(); ?>
 
 </main>
 

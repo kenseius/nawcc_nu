@@ -20,20 +20,20 @@
         width: 100%;
         border: 0;
         padding: 0.707rem 0 0.707rem 1rem; // .5rem 0 .5rem 1rem
-        line-height: $base-line-height; //1.6em
+        line-height: $scale_2; // $base-line-height; //1.6em
         i.fa,
         .material-icons {
             position: absolute;
             top: 0.69671875rem;
             left: $base-padding;
-            line-height: $base-line-height;
+            line-height: $scale_2; // $base-line-height;
             font-size: $scale_1;
         }
         span {
             vertical-align: middle;
             display: block;
             margin-left: $scale_3; // 1.875em;
-            line-height: $base-line-height;
+            line-height: $scale_2; // $base-line-height;
         }
         @include anim($global-animation);
         @include hover() {color: $slate; background: $pch;}

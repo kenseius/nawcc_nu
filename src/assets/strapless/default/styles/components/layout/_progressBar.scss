@@ -1,0 +1,142 @@
+// =================================
+//
+//      Progress Bar 
+// 
+// =================================
+
+// Circle w/ centered percent
+// =============================
+//  - via https://codepen.io/shankarcabus/pen/GzAfb?depth=everything&limit=all&order=popularity&page=2&q=progress+bar&show_forks=false
+// =============================
+
+@mixin circle($size) {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - #{$size/2});
+  top: calc(50% - #{$size/2});
+  width: $size;
+  height: $size;
+}
+
+$size: 200px;
+$larger-size: 300px;
+
+.progress-pie-chart {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: $wht;// #E5E5E5;
+    position: relative;
+    display: block; 
+    margin: 0 auto $base-padding;
+    &.gt-50 {
+        background-color:  $org; // #81CE97;
+    }
+    .ppc-progress {
+        @include circle($size);
+        clip: rect(0, $size, $size, #{$size/2});
+        .ppc-progress-fill {
+            @include circle($size);
+            clip: rect(0, #{$size/2}, $size, 0);
+            background: $org; // #81CE97;
+            transform: rotate(60deg);
+            @include anim($global-animation);
+        }
+        .gt-50 & {
+            clip: rect(0, #{$size/2}, $size, 0);
+            .ppc-progress-fill {
+                clip: rect(0, $size, $size, #{$size/2});
+                background: #E5E5E5;
+            }
+        }
+    }
+    @include hover(){
+        .ppc-progress .ppc-progress-fill {transform: rotate(90deg)}
+    }
+    .ppc-percents {
+        @include circle(#{$size/1.15});
+        background: $wht;
+        text-align: center;
+        display: table;
+        .pcc-percents-wrapper {
+            p {font-weight: bold; margin-bottom: 0.75rem;}
+            & > span {
+                display: block;
+                font-size: 2.369rem;
+                font-weight: bold;
+                color: $org; // #81CE97;
+            }
+        }
+    }
+    .pcc-percents-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+
+// color variations 
+
+.progress-pie-chart {
+    
+    &.uxScore_Deliverables,
+    &.uxScore_Attributes,
+    &.uxScore_Cycle {background: $gryslvr;}
+
+    &.uxScore_Deliverables {
+        & > .ppc-progress > .ppc-progress-fill {background: $blu;}
+        .ppc-percents {
+            .pcc-percents-wrapper {& > span {color:$blu;}}
+        }
+    }
+    &.uxScore_Attributes {
+        .ppc-progress {
+            .ppc-progress-fill {background: $grn;}
+        } 
+        .ppc-percents {
+            .pcc-percents-wrapper {& > span {color:$grn;}}
+        }
+    }
+    &.uxScore_Cycle {
+        .ppc-progress {
+            .ppc-progress-fill {background: $red;}
+        } 
+        .ppc-percents {
+            .pcc-percents-wrapper {& > span {color:$red;}}
+        }
+    } 
+
+    &.overall_uxScore {
+        width: $larger-size;
+        height: $larger-size;
+        background-color: $gryslvr;// #E5E5E5;
+        .ppc-progress {
+            @include circle($larger-size);
+            clip: rect(0, $larger-size, $larger-size, #{$larger-size/2});
+            .ppc-progress-fill {
+                @include circle($larger-size);
+                clip: rect(0, #{$larger-size/2}, $larger-size, 0);
+                background: $org; // #81CE97;
+                transform: rotate(60deg);
+            }
+            .gt-50 & {
+                clip: rect(0, #{$larger-size/2}, $larger-size, 0);
+                .ppc-progress-fill {
+                    clip: rect(0, $larger-size, $larger-size, #{$larger-size/2});
+                    background: #E5E5E5;
+                }
+            }
+        }
+        .ppc-percents {
+            @include circle(#{$larger-size/1.15});
+            .pcc-percents-wrapper {
+                p {
+                    font-size: 1.778rem;
+                    margin-bottom: 1rem;
+                }
+                & > span {font-size: 3.157rem;}
+            }
+        }
+    }
+}

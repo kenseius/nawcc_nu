@@ -12,6 +12,7 @@
 <!-- particleground -->
 <!-- <script src="http://jnicol.github.io/particleground/js/jquery.particleground.js"></script> -->
 <!-- <script src="./src/assets/hackathon/scripts/jquery.particleground.js"></script> -->
+<!--
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function () {
 		particleground(document.getElementById('particles'), {
@@ -22,6 +23,20 @@
 		var intro = document.getElementById('intro');
 		intro.style.marginTop = - intro.offsetHeight / 2 + 'px';
 	}, false);
+</script>
+-->
+
+<script>
+	$(function(){
+	var $ppc = $('.progress-pie-chart'),
+		percent = parseInt($ppc.data('percent')),
+		deg = 360*percent/100;
+	if (percent > 50) {
+		$ppc.addClass('gt-50');
+	}
+	$('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+	$('.ppc-percents span').html(percent+'%');
+	});
 </script>
 
 </body>

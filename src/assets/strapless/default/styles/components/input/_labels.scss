@@ -19,3 +19,18 @@ label {
          @include span(12 of 12);
      }
 }
+
+
+// variations 
+
+// .contact-form = wordpress > jetpack > form.contact-form
+// .wpcf7-form  = wordpress > contact form 7 > form.wpcf7-form
+
+.contact-form,
+.wpcf7-form {
+    label {
+        margin-bottom: 0;
+        text-transform: none;
+        font-size: 1rem;
+    }
+}

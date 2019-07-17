@@ -73,12 +73,31 @@ form, form:not(#aspnetForm) {
 
 
 // variations 
+// ------------------
 
+// .contact-form = wordpress > jetpack > form.contact-form
+// .wpcf7-form  = wordpress > contact form 7 > form.wpcf7-form
 
-// wordpress > jetpack > form.contact-form
-.contact-form {
-    padding-left: $scale_1;
+.contact-form,
+.wpcf7-form {
+    margin-left: $scale_1;
     background: #eaeaea;
+    
+    .formgroup {
+        margin: 0 auto;
+        .optional {margin-bottom: 1rem;}
+        
+    }
+    
+    .wpcf7-submit,
+    .contact-submit,
+    p {
+        display: block;
+        width: 100%;
+        padding: 0 $scale_2; // $base-padding;
+        margin: $scale_2 auto $scale_3;
+    }
+    
 }
 
 
