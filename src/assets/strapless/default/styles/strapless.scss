@@ -614,8 +614,22 @@ main.events {
         }
     }
     
-    
 }   
+
+
+.fundStatusList {
+    .wp-block-column {
+        max-width: $scale_9;
+        &:nth-child(2) {max-width: $scale_12;}
+        & > p.lead {
+            font-size:$h4;
+            max-width: $scale_11;
+        }
+        & > p, 
+        & > ul {max-width: $article-max-width;}
+        &:last-child {margin: 0 auto 0 $scale_2;}
+    }
+} 
 
 
 main.funds {

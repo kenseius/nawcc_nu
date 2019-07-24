@@ -125,7 +125,7 @@
     <header class="hero wideTitle">
         
         <section         
-            class="hero wideTitle hero_event
+            class="hero wideTitle hero_title_overlay hero_event
                 <?php if($background_color): ?> hero_color <?php endif; ?> 
                 <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
             style="
@@ -133,6 +133,14 @@
                 <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
         >
             
+            <div>
+                <p class="subtitle">Events</p>
+                <h1><?php the_title(); ?></h1> 
+                <p class="date">Friday, July 12, 2019 | 6-9pm</p>
+                <a class="button" href="https://net.nawcc.org/NAWCC/Store/Events/NAWCC/Store/StoreLayouts/Products_by_Category.aspx?category=stevents&hkey=8d00f729-096c-4d6a-b59b-f07df7fe5dce">Buy Tickets</a>
+            </div>
+            
+<!--
             <?php if ( $logo ) { ?>
                 <div>
                     <img src="<?php echo $logo; ?>" alt="<?php the_title(); ?>" />
@@ -143,16 +151,26 @@
                 <div>
                     <?php echo $icon; ?>
                 </div>
+            <?php } else { ?> 
+                <div>
+                    <p class="subtitle">Events</p>
+                    <h1><?php the_title(); ?></h1> 
+                    <p class="date">Friday, July 12, 2019 | 6-9pm</p>
+                    <a class="button" href="https://net.nawcc.org/NAWCC/Store/Events/NAWCC/Store/StoreLayouts/Products_by_Category.aspx?category=stevents&hkey=8d00f729-096c-4d6a-b59b-f07df7fe5dce">Buy Tickets</a>
+                </div>
             <?php } ?>
+-->
             
         </section>
 
     </header>
     
+<!--
     <section class="article_title event_title">
         <p class="subtitle">Events</p>
         <h1><?php the_title(); ?></h1> 
     </section>
+-->
     <section class="post_content wide_content nospaceCovers event_content">
         <?php the_content(); ?>
     </section>
