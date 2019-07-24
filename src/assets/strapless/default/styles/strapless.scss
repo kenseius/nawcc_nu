@@ -68,6 +68,15 @@
     @import 'components/content/svg';
 
 
+    // input
+    @import 'components/input/forms';
+    @import 'components/input/labels';
+    @import 'components/input/inputs';
+    @import 'components/input/checkboxes';
+    @import 'components/input/formgroup';
+    @import 'components/input/validation';
+
+
     // navigation 
     @import 'components/nav/topnav'; 
     @import 'components/nav/sidenav'; 
@@ -98,15 +107,6 @@
     @import 'components/layout/modals';
     @import 'components/layout/updown-caret';
     @import 'components/layout/progressBar';
-
-
-    // input
-    @import 'components/input/forms';
-    @import 'components/input/labels';
-    @import 'components/input/inputs';
-    @import 'components/input/checkboxes';
-    @import 'components/input/formgroup';
-    @import 'components/input/validation';
 
 
 

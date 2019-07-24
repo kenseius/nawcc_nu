@@ -1,4 +1,59 @@
 
+
+
+
+
+<!-- Categories
+========================================================  -->
+
+
+
+
+
+
+<!-- Display The Current Post's Categories -->   
+<?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?>-->
+
+
+
+
+
+
+
+
+<!-- Custom Post Types 
+========================================================  -->
+
+
+
+    <!-- Get Current Post Type Slug -->
+    <?php $post_type = get_post_type(); ?>
+    <?php if ( $post_type )
+    {
+        $post_type_data = get_post_type_object( $post_type );
+        $post_type_slug = $post_type_data->rewrite['slug'];
+        echo $post_type_slug;
+    } ?>"
+
+           
+    <!-- Get Current Post Type Name -->
+    <?php $postType = get_post_type_object(get_post_type()); ?>
+    <?php if ($postType) {
+        echo esc_html($postType->labels->singular_name);
+    } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
     $args = array(
         'post_type'   => 'publications',

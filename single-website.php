@@ -41,9 +41,8 @@
             
             <?php if ( $logo ) { ?>
                 <div>
-                    <p class="subtitle">Funds</p>
+                    <p class="subtitle">The Website Project</p>
                     <h1><?php the_title(); ?></h1> 
-                    <a class="button" href="#">Pledge</a>
                 </div>
             <?php } elseif ( $icon ) { ?> 
                 <div>
@@ -55,7 +54,13 @@
 
     </header>
     
-    <?php the_content(); ?>
+    <section class="article_title event_title">
+        <p class="subtitle">The Website Project</p>
+        <h1><?php the_title(); ?></h1> 
+    </section>
+    <section class="post_content wide_content nospaceCovers">
+        <?php the_content(); ?>
+    </section>
 
 </main>
 
