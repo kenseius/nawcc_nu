@@ -91,8 +91,7 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
 $args = array(
 	'numberposts'	=> -1,
 	'post_type'		=> 'causes',
-//	'meta_key'		=> 'location',
-//	'meta_value'	=> 'Melbourne'
+    'offset'        => '1'
 );
 
 

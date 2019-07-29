@@ -618,17 +618,32 @@ main.events {
 
 
 .fundStatusList {
-    .wp-block-column {
-        max-width: $scale_9;
-        &:nth-child(2) {max-width: $scale_12;}
-        & > p.lead {
-            font-size:$h4;
-            max-width: $scale_11;
+    
+    h2 {margin: 0 auto $scale_4;}
+    
+    // max-width: $wide-max-width;
+    margin: auto;
+    
+    .wp-block-columns .has-2-columns,
+    .wp-block-columns {
+        
+        max-width: $wide-max-width;
+        margin: 0 auto $scale_5;
+        
+        .wp-block-column {
+            max-width: $scale_12;
+            &:nth-child(2) {max-width: $scale_9;}
+            & > p.lead {
+                font-size:$h4;
+                max-width: $scale_11;
+            }
+            & > p, 
+            & > ul {max-width: $article-max-width;}
+            &:last-child {margin: 0 auto 0 $scale_2;}
         }
-        & > p, 
-        & > ul {max-width: $article-max-width;}
-        &:last-child {margin: 0 auto 0 $scale_2;}
+        
     }
+    
 } 
 
 
@@ -645,10 +660,27 @@ main.funds {
     //    }
 
     // intended global typography styles
-    h1, .meta, p, ul, ol {margin-bottom: $scale_1;}
-    h2, h3, h4, h5, pre {margin-bottom: $scale_2;}
+    
+    h1, h2, h3 {    
+        max-width: $wide-max-width;
+        margin: auto;
+    }
+    
+    h1, .meta, p, ul, ol {margin-bottom: $scale_2;}
+    h2 {margin-bottom: $scale_4;}
+    h3, h4, h5, pre {margin-bottom: $scale_2;}
     section, hr {margin-bottom: $base-horizontal-padding;}
     // li {margin-bottom: 0.333em;}
+    // a {color: $blu;}
+    
+    .bg_grey {
+        margin-bottom: $scale_4;
+        h2, .postList {    
+            max-width: $wide-max-width;
+            div {max-width: $article-max-width;}
+            margin: auto;
+        }
+    }
     
 }
 

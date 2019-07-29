@@ -271,6 +271,19 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
+        
+        // post list 
+        acf_register_block_type(array(
+            'name'              => 'postListCategories',
+            'title'             => __('postList - Categories'),
+            'description'       => __('A custom postList block.'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-postList-cat.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
             
             
     }
