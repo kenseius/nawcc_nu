@@ -189,7 +189,8 @@ main {
 
 
 
-.dashboard_layout {
+.dashboard_layout,
+.postList_2col_layout {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -197,9 +198,8 @@ main {
     flex-wrap: wrap;
     background: #eaeaea;
     padding: $scale_1 0;
-    
-    section.postList {
-        max-width: 30%;
+    .postList {
+        // max-width: 30%;
         padding: $scale_1;
         border: 2px solid #eaeaea;
         background: #fafafa;
@@ -226,7 +226,16 @@ main {
     @media #{$medium-down} { 
         flex-direction: column;
     }
+    
 }
+
+.dashboard_layout {
+    section.postList { max-width: 30%; }
+}
+.postList_2col_layout {
+    section.postList { max-width: 100%; margin: 0 auto $scale_2; }
+}
+
 
 
 
@@ -666,20 +675,24 @@ main.funds {
         margin: auto;
     }
     
-    h1, .meta, p, ul, ol {margin-bottom: $scale_2;}
-    h2 {margin-bottom: $scale_4;}
-    h3, h4, h5, pre {margin-bottom: $scale_2;}
+    h1, .meta, p, ul, ol {margin:0 auto $scale_2;}
+    h2 {margin: 0 auto $scale_3;}
+    h3, h4, h5, pre {margin:0 auto $scale_2;}
     section, hr {margin-bottom: $base-horizontal-padding;}
     // li {margin-bottom: 0.333em;}
     // a {color: $blu;}
     
     .bg_grey {
         margin-bottom: $scale_4;
-        h2, .postList {    
+        h2, .postList, p {    
             max-width: $wide-max-width;
-            div {max-width: $article-max-width;}
-            margin: auto;
         }
+        .postList {margin: auto;}
+        h2 {margin: 0 auto $scale_2;}
+        //        p {
+        //            max-width: $article-max-width;
+        //            margin: 0 0 auto 0;
+        //        }
     }
     
 }

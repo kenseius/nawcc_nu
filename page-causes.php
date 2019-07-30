@@ -30,8 +30,6 @@ $args = array(
 	'post_type'		=> 'causes',
     'posts_per_page'=> '1',
     'post_count'    => '1',
-//	'meta_key'		=> 'location',
-//	'meta_value'	=> 'Melbourne'
 );
 
 
