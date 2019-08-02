@@ -65,19 +65,67 @@ $args = array(
 	'post_type'		=> 'events',
     'posts_per_page'=> '1',
     'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
 );
 
-// query
-$the_query = new WP_Query( $args ); ?>
-    
-<?php if( $the_query->have_posts() ): ?>
-	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-    
-        <!-- Featured Post - Events --> 
-        <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
 
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
+    
+    <!-- Featured Post - Events --> 
+<!--
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   
+            <p class="subtitle">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?><?php $post_type = get_post_type(); ?><?php if ( $post_type )
+                    {
+                        $post_type_data = get_post_type_object( $post_type );
+                        $post_type_slug = $post_type_data->rewrite['slug'];
+                        echo $post_type_slug;
+                    } ?>">
+                    <?php $postType = get_post_type_object(get_post_type()); ?>
+                    <?php if ($postType) {
+                        echo esc_html($postType->labels->name);
+                    } ?>
+                </a>
+            </p>
+            <h2><?php echo get_the_title(); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+-->
+      
 	<?php endwhile; ?>
+        
+    
 <?php endif; ?>
+
 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>        
     
     
@@ -124,8 +172,27 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
         $background_image = get_field( 'background_image', $post->ID );
     ?>
     
-    <!-- Featured Post - Publications --> 
     <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
+    
+    <!-- Featured Post - Publications --> 
+<!--
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>       
+             <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> 
+            <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Publications</a></p>
+            <h2><?php echo get_the_title(); ?></h2>    
+            <div class="btnBar">
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+        </div>
+        <?php } ?>
+    </article>   
+-->
       
 	<?php endwhile; ?>
         

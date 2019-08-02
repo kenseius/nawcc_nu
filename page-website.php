@@ -4,26 +4,14 @@
 
 <?php get_template_part( 'partials/material', 'sidenav' ); ?>
 
-<main class="f-container">
+<main class="f-container funds">
     
-    
-    <!-- TEST -->
-    
-    
-<!-- ==============================
-    Hero
-=================================== -->   
-<!--
-<?php $background_color = get_field( 'background_color' ) ?: '#fafafa'; ?>
-<?php if($background_color): ?>
-<header class="hero hero_color hero_loggedInPages" style="background-color:<?php echo $background_color; ?>">
-<?php endif; ?>
-    <h1><?php the_title(); ?></h1>   
-</header>    
--->
 
     
- 
+<!-- 
+========================================
+    Hero
+======================================== -->   
     
 <?php
     
@@ -64,15 +52,29 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
 
 </header>
     
+ 
+    
+<!-- 
+========================================
+    Content
+======================================== -->   
+    
+<section class="post_content">
     
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 the_content();
 endwhile; else: ?>
 <p>Sorry, no posts matched your criteria.</p>
 <?php endif; ?>
-  
+ 
+    
+</section>    
     
     
+<!-- 
+========================================
+    Featured Post 
+======================================== -->   
     
 <?php 
 
@@ -82,69 +84,33 @@ $args = array(
 	'post_type'		=> 'website',
     'posts_per_page'=> '1',
     'post_count'    => '1',
-//	'meta_key'		=> 'location',
-//	'meta_value'	=> 'Melbourne'
 );
 
-
 // query
-$the_query = new WP_Query( $args );
-
-
-// Set up fields.
-$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
-$icon             = get_field( 'post_icon' );
-$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-$background_color = get_field( 'background_color' ) ?: '#fafafa';
-
-$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
-
-
-?>
+$the_query = new WP_Query( $args ); ?>
+    
 <?php if( $the_query->have_posts() ): ?>
-
 	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-    <?php 
-        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
-        $background_image = get_field( 'background_image', $post->ID );
-    ?>
     
-    <!-- Featured Post --> 
-    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
-        <div>   
-            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-            <h2><?php the_title(); ?></h2>    
-            <div class="btnBar">
-                <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
-            </div>
-        </div>
-        <?php $post_logo = get_field( 'post_logo' ); ?>
-        <?php if ( $post_logo ) { ?>
-        <div>
-            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
-        </div>
-        <?php } ?>
-    </article>   
-      
+        <!-- Featured Post - Events --> 
+        <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
+
 	<?php endwhile; ?>
-        
-	</section>
-    
 <?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>   
+    
+    
 
-<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>    
-        
-    
-    
+<!-- 
+========================================
+    Post List 
+======================================== -->   
 <?php 
 
 // args
 $args = array(
 	'numberposts'	=> -1,
-	'post_type'		=> 'causes',
-//	'meta_key'		=> 'location',
-//	'meta_value'	=> 'Melbourne'
+	'post_type'		=> 'website'
 );
 
 
@@ -193,10 +159,6 @@ $background_image = get_field( 'background_image', $post->ID );
 <?php endif; ?>
 
 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>    
-    
-
-    
-</section>    
     
 
 </main>

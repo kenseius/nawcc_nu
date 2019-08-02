@@ -12,7 +12,7 @@
 
 <?php get_header(); ?>
 
-<main class="funds">
+<main class="websitePost">
     
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -54,13 +54,30 @@
 
     </header>
     
+<!--
     <section class="article_title event_title">
         <p class="subtitle">The Website Project</p>
         <h1><?php the_title(); ?></h1> 
     </section>
-    <section class="post_content wide_content nospaceCovers">
+--> 
+<!--
+    <section class="post_content nospaceCovers">
         <?php the_content(); ?>
     </section>
+-->
+    
+    <section class="blog_content staggered_content">
+        <?php the_content(); ?>
+    </section>
+    
+
+    <section><hr /><hr /><hr /></section>
+    
+    
+    <section class="post_content">
+        <?php the_content(); ?>
+    </section>
+
 
 </main>
 

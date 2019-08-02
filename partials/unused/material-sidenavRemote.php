@@ -24,11 +24,11 @@
                     <span>Front Page</span>
                 </a>
         -->
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=939" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-home"></i>
             <span>Dashboard</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>blog" <?php if ( is_page_template( 'page-blog.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=936" <?php if ( is_page_template( 'page-blog.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-bullhorn"></i>
             <span>HQ News</span>
         </a>
@@ -40,11 +40,11 @@
             <i class="fa fa-calendar"></i>
             <span>Events</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>museum" <?php if ( is_page_template( 'page-exhibits.php' ) ) { ?> class="active" <?php }  ?> >
-            <i class="fa fa-warehouse"></i>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=929" <?php if ( is_page_template( 'page-exhibits.php' ) ) { ?> class="active" <?php }  ?> >
+            <i class="fa fa-university"></i>
             <span>Museum</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>wc_education" <?php if ( is_page_template( 'page-webinars.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=930" <?php if ( is_page_template( 'page-webinars.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-graduation-cap"></i>
             <span>Education</span>
         </a>
@@ -58,11 +58,11 @@
             <span>Classes</span>
         </a>
         -->
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>wc_causes" <?php if ( is_page_template( 'page-webinars.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=931" <?php if ( is_page_template( 'page-webinars.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-star"></i>
             <span>Causes</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>research" <?php if ( is_page_template( 'page-research.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=937" <?php if ( is_page_template( 'page-research.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-binoculars"></i>
             <span>Research</span>
         </a>

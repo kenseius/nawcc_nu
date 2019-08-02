@@ -4,7 +4,8 @@
 // ===================================
 
 // used largely for the WIZARD
-.tabs {
+.tabs,
+.leftnav {
     @include clear();
 
     // old tab styles -> moved .iconButton styles to _buttons.scss

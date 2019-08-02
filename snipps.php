@@ -2,6 +2,29 @@
 
 
 
+<!-- Get Template Part -->
+
+<?php get_template_part( 'partials/material', 'sidenav' ); ?>
+
+
+
+
+
+<!-- php if snipp + acf get_field -->
+
+<?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+<?php if ( $post_logo ) { ?>
+<div>
+    <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+</div>
+<?php } ?>
+
+
+
+
+
+
+
 
 <!-- Categories
 ========================================================  -->

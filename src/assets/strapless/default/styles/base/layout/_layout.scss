@@ -19,7 +19,8 @@ body {
         
     //    & > section:not(.postList),
     //    & > section:not(.article_title),    
-    & > article, 
+    // & > article, 
+    & > .post,
     & > section > div,
     & > article > div,
     & > .twoCol > article > div,
@@ -53,13 +54,15 @@ body {
         & > blockquote,
         // & > .meta,
         iframe,
-        & > .btnBar {
+        & > .btnBar,
+        & > .breadcrumbs {
             position: relative;
             line-height: 1.414em;
-            @include wrap($article-max-width, auto);
+            @include wrap($wide-max-width, auto);
             @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
             @media #{$medium-only} { max-width: $article-max-width; }
         }
+
 
         a {
             display: inline-block;
@@ -104,6 +107,31 @@ body {
         // }
 
     }
+        
+        
+                
+    & > article.post.twoCol > div,
+    & > .twoCol_grid > article > div {
+        & > h1,
+        & > h2,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > p,
+        & > ul,
+        & > blockquote,
+        // & > .meta,
+        iframe,
+        & > .btnBar,
+        & > .breadcrumbs {
+            position: relative;
+            line-height: 1.414em;
+            @include wrap($article-max-width, auto);
+            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
+            @media #{$medium-only} { max-width: $article-max-width; }
+        }
+    }
+        
         
     }
 
@@ -180,7 +208,7 @@ body {
     // align-self: stretch;
     // flex-basis: 50%;
     & > article {
-        min-height: $default-height;
+        min-height: $section-height-tall; // $default-height;
         flex: 1 0 50%;
         display: flex;
         align-items: center;

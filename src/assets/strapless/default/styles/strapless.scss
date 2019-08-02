@@ -33,7 +33,7 @@
 
     // base
     @import 'base/base';
-
+ 
     //    // variables
     //    @import 'variablesNAWCC';
     //
@@ -132,15 +132,18 @@
 .post {
     @extend %bg_image;
     color: $wht;
+    padding: $scale_3 0;
 }
-
-.post_content {
+ 
+%post_content {
     
+    // .blog_content below is extending from .post_content's styles
+
     @include article;
     
     margin: 0 auto;
     
-    & > a {
+    & > a:not(.button) {
         display: inline-block;
         border-right: 3px solid transparent;
         border-left: 3px solid transparent;
@@ -150,8 +153,16 @@
     }
     
     margin: 0 auto $scale_3;
+ 
+    h3 {margin: 0 auto $scale_2;} 
+    
+}
 
-    h3 {margin: 0 auto $scale_2;}
+.post_content { @extend %post_content; }
+
+.post_content,
+.event_content,
+.blog_content {
     
     &.wide_content {
         & > p,
@@ -164,6 +175,24 @@
         & > table { max-width: $scale_12; }
     }
 
+    // ---------------------------
+    //  Staggered Width Content
+    // ---------------------------
+    //  - headings + .lead have a width of $scale_11 = 45.18rem  //  722.875px
+    &.staggered_content {
+
+        // & > h1,
+        & > h2, 
+        & > h3, 
+        & > h4, 
+        & > h5,
+        & > p.lead,
+        & > table { max-width: $scale_11; }
+        
+        & > p, ul { max-width: $scale_11; }
+        
+    }
+
 }
 
 .postList {
@@ -172,7 +201,6 @@
     // h4 {margin-bottom: 1rem;}
     & > a .meta.meta_article {border: none;}
 }
-
 
 
 main {
@@ -185,6 +213,14 @@ main {
     & > p.lead,
     & > table { max-width: $scale_12; margin-left: auto; margin-right: auto; }
     h3 {margin-bottom: $scale_2;}
+}
+
+
+
+
+.breadcrumbs {
+    position: relative;
+    z-index: 99999;
 }
 
 
@@ -588,6 +624,41 @@ main.events {
     }            
 }
 
+
+.blog_content {
+    
+    /* test - 
+        color: blue;
+    */
+
+    @extend %post_content;
+    
+    & > div { 
+        max-width: $base-max-width; 
+        margin: 0 auto $scale_2;
+        & > p.lead {
+            font-size:$h4;
+            max-width: $base-max-width;
+        }
+        & > p, 
+        & > ul {
+            max-width: $article-max-width;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    &.blog_alignLeft {
+        & > div {
+            & > p,
+            & > ul {margin: 0 auto 0 0;}
+        }
+    }
+         
+}
+
+
+
 .wp-block-columns .has-2-columns,
 .wp-block-columns {
     
@@ -640,15 +711,21 @@ main.events {
         margin: 0 auto $scale_5;
         
         .wp-block-column {
+            
             max-width: $scale_12;
-            &:nth-child(2) {max-width: $scale_9;}
+            &:nth-child(2) {
+                max-width: $scale_9;
+                margin-left: 121.528px;
+            }
+            
             & > p.lead {
                 font-size:$h4;
                 max-width: $scale_11;
             }
             & > p, 
             & > ul {max-width: $article-max-width;}
-            &:last-child {margin: 0 auto 0 $scale_2;}
+            // &:last-child {margin: 0 auto 0 $scale_2;}
+            
         }
         
     }
@@ -687,14 +764,22 @@ main.funds {
         h2, .postList, p {    
             max-width: $wide-max-width;
         }
-        .postList {margin: auto;}
+        .postList {
+            margin: auto;
+            h4 {margin: auto;}
+        }
         h2 {margin: 0 auto $scale_2;}
+
         //        p {
         //            max-width: $article-max-width;
         //            margin: 0 0 auto 0;
         //        }
     }
     
+}
+
+main .postList_wide {
+    .postList > a {align-items: center;}
 }
 
 
@@ -920,5 +1005,126 @@ ul.wp-block-gallery,
         color: $color_white;
     }
     
+}
+
+
+
+
+// sidenav / tabs 
+// ========================
+//  - padding 1rem is for top level left nav. 
+//  - no padding for accordion sub items
+//  - no padding for left nav when nested within page content (the styles for this are via .buttonList)
+
+
+.leftnav {
+    & > a {padding: 1rem;}
+}
+
+
+
+
+
+
+
+
+
+//  table 
+// ====================================
+//  - styles via UX Playbook 
+//  - TODO: merge with tables.scss
+// ====================================
+
+table {
+    
+    // padding-bottom: $scale_2;
+    // border-bottom: 0.2rem solid #bdbdbd;
+
+    a {
+        display: block;
+        position: relative;
+        width: 100%;
+        border: 0 !important;
+        padding: .5rem 0 .5rem 1rem !important;
+        line-height: 1.6em;
+        .fa,
+        .material-icons {
+            position: absolute;
+            top: .3745rem;
+            left: .85rem;
+            line-height: 1.6em;
+            font-size: 1.2em;
+        }
+        .material-icons {
+            font-size: 1.333rem;
+        }
+        span {
+            vertical-align: middle;
+            display: block;
+            margin-left: 1.875em;
+            line-height: 1.6em;
+        }
+        @include anim($global-animation);
+        @include hover() {background: $pch;}
+        &.is-active {
+            background: $slate; 
+            color: $wht;
+            &:before {
+                // arrow
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: inset .8em;
+                border-color: transparent transparent transparent $slate;
+                border-left-style: solid;
+                position: absolute;
+                top: .45rem;
+                right: -1.45rem;
+            }
+            @include hover() {background: $slate;}
+        }
+    }
+
+    // unique style overrides 
+    td {
+        font-family: $base-font;
+        padding-top: $scale_1; // $base-horizontal-padding;
+        padding-bottom: $scale_1; // $base-horizontal-padding;
+    }
+    thead {
+        & > tr th {
+            // padding-left: 1.875em;
+            background: $wht;
+            color: #999; // $gry_muted;
+            @include type-setting(0);
+            text-transform: none; 
+            // &:not(:first-child) {
+            //    text-transform: none; 
+            //    @include type-setting(0);
+            // }
+            // &:first-child {visibility: hidden;}
+        }
+    }
+    tbody {        
+        margin-top: $scale_1;
+        margin-bottom: $scale_1;
+    }
+    tbody tr {
+        background: $wht; // #ffffff; 
+        &:nth-child(even) {background: $wht;}
+    }
+    
+    // disable hover
+    tr {
+        //        &:first-child { td {border-top: $scale_1 solid $wht;} }
+        //        &:last-child  { td {border-bottom: $scale_1 solid $wht;} }
+        @include hover() {
+            a, td {color: $slate !important;}
+            background: $gry !important; 
+            cursor: initial;
+        }
+    }
+
 }
 
