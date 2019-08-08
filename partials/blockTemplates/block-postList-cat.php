@@ -13,11 +13,11 @@
 
 // set up fields
 $category             = get_field( 'category' );
-
+// $post_object          = get_field( 'postType' );
 
 // args
 $args = array(
-    'post_type'		=> 'causes',
+    'post_type'		=> 'any',
     'category_name' => $category,
 	'numberposts'	=> -1,
     // 'offset'        => 1,
@@ -38,7 +38,7 @@ $the_query = new WP_Query( $args );
                 
                 <!-- <p class="subtitle"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>-->
                 <h4><?php the_title(); ?></h4>
-                
+
                 <?php if ( get_field( 'include_meta' ) == 1 ): ?>
                 <div class="meta meta_article">
                     <p>Written by <?php the_author(); ?></p>

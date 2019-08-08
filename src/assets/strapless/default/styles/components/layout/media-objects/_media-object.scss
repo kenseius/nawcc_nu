@@ -2,13 +2,15 @@
 
 %media_objects {
     
-    & > a {
+    & > a,
+    .vkpb-card-item {
         
         display: flex;
         align-items: flex-start;
         padding: 1rem;
         margin: 0 0 $scale_2 0;
-        & > img {
+        & > img,
+        .vkpb-card-item img {
             margin: 0 $scale_2 0 0;
             max-width: $scale_7;
         }
@@ -21,7 +23,8 @@
         
     }
     
-    &.circleImages > a > img {border-radius: 50%;}
+    &.circleImages > a > img,
+    .vkpb-card-item img {border-radius: 50%;}
     
 }
 

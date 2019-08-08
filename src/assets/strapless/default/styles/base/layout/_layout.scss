@@ -64,7 +64,11 @@ body {
         }
 
 
-        a {
+        //    section:not(.postList) > a,
+        //    div:not(.postList) > a,
+        //    section:not(.buttonList) > a,
+        //    div:not(.buttonList) > a, 
+        &:not(.postList) > a { 
             display: inline-block;
             border-top: 3px solid transparent;
             border-right: 3px solid transparent;

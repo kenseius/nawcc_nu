@@ -5,10 +5,19 @@
 <?php 
     $image              = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
     $background_image   = get_field( 'background_image', $post->ID );
+    $background_color = get_field( 'background_color' ) ?: '#fafafa';
     $post_logo          = get_field( 'post_logo', $post->ID );
 ?>
 
-<article class="post <?php if ( $post_logo ) { ?>twoCol<?php } ?>" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+<article         
+    class="post 
+        <?php if ( $post_logo ) { ?>twoCol<?php } ?> 
+        <?php if($background_color): ?> hero_color <?php endif; ?> 
+        <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
+    style="
+        <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
+        <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
+>    
     <div>   
         <p class="subtitle">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?><?php $post_type = get_post_type(); ?><?php if ( $post_type )

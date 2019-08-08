@@ -284,6 +284,19 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
+        
+        // link list 
+        acf_register_block_type(array(
+            'name'              => 'linkList',
+            'title'             => __('linkList'),
+            'description'       => __('A custom list of links block.'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-linkList.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
             
             
     }
@@ -655,7 +668,7 @@ function cp_website() {
       'not_found'          => __( 'No Website posts found' ),
       'not_found_in_trash' => __( 'No Website posts found in the Trash' ),
       'parent_item_colon'  => '',
-      'menu_name'          => 'Website Posts'
+      'menu_name'          => 'Website Blog'
     );
     $args = array(
         'labels'        => $labels,
@@ -729,7 +742,7 @@ add_action( 'init', 'classes_register_template' );
 function myplugin_register_template() {
     $post_type_object = get_post_type_object( 'post' );
     $post_type_object->template = array(
-        array( 'mdlr/featured-image' ),
+        // array( 'mdlr/featured-image' ),
         array( 'acf/hero' ),
         array( 'acf/lead' ),
         array( 'core/columns', array(), array(

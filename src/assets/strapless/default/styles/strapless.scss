@@ -143,6 +143,10 @@
     
     margin: 0 auto;
     
+    //    section:not(.postList) > a,
+    //    div:not(.postList) > a,
+    //    section:not(.buttonList) > a,
+    //    div:not(.buttonList) > a, 
     & > a:not(.button) {
         display: inline-block;
         border-right: 3px solid transparent;
@@ -195,7 +199,8 @@
 
 }
 
-.postList {
+.postList,
+.wp-block-vikoder-posts-block-posts {
     @include global-container(100%, $base-max-width, $scale_3, 0);
     @extend %media_objects;
     // h4 {margin-bottom: 1rem;}
@@ -218,9 +223,28 @@ main {
 
 
 
+table,
+.wp-block-group__inner-container {
+    max-width: $wide-max-width;
+    margin: 0 auto $scale_3;
+}
+
+
+
+
 .breadcrumbs {
     position: relative;
     z-index: 99999;
+}
+
+
+.wp-block-vikoder-posts-block-posts {
+    .vkpb-card-item {
+        width: 30%;
+        padding: $scale_1;
+        //        div.vkpb-card-thumb
+        //        img 
+    }
 }
 
 
@@ -234,7 +258,8 @@ main {
     flex-wrap: wrap;
     background: #eaeaea;
     padding: $scale_1 0;
-    .postList {
+    .postList,
+    .wp-block-vikoder-posts-block-posts {
         // max-width: 30%;
         padding: $scale_1;
         border: 2px solid #eaeaea;
@@ -266,10 +291,12 @@ main {
 }
 
 .dashboard_layout {
-    section.postList { max-width: 30%; }
+    section.postList,
+    .wp-block-vikoder-posts-block-posts { max-width: 30%; }
 }
 .postList_2col_layout {
-    section.postList { max-width: 100%; margin: 0 auto $scale_2; }
+    section.postList,
+    .wp-block-vikoder-posts-block-posts { max-width: 100%; margin: 0 auto $scale_2; }
 }
 
 
@@ -336,6 +363,14 @@ main {
     & > *:last-child {padding-bottom: $scale_1;}
 
 }
+
+
+.detailsTitle {
+    font-style: italic; 
+    text-align: center; 
+    margin-bottom: 0px;
+}
+
 
 .eventDetails {
     
@@ -545,6 +580,24 @@ main {
         padding-right: $scale_1;
     }
 
+    .wp-block-column {
+        flex: 1;
+        // margin-left: 14px;
+        margin-right: 1.7rem;
+        // margin-right: 2.14rem; // 1.7rem;
+        &:nth-child(2) {
+            margin-left: 1.7rem;
+            margin-right: 0;
+        }
+        max-width: 483.08px; // $article-max-width;
+        //        flex-basis: calc(50% - 44px);
+        //        flex-grow: 0;
+        @media #{$small-only} { 
+            flex: 2;
+            margin: auto;
+        }
+    }
+
  
     &.has-2-columns {   
     
@@ -565,6 +618,7 @@ main {
                 margin: auto;
             }
         }
+
     }
         
     &.has-3-columns {
@@ -632,6 +686,11 @@ main.events {
     */
 
     @extend %post_content;
+
+    .wp-block-columns .has-2-columns,
+    .wp-block-columns {
+        max-width: $wide-max-width; 
+    }
     
     & > div { 
         max-width: $base-max-width; 
@@ -694,7 +753,56 @@ main.events {
         }
     }
     
+    
+    // fund / cause content  
+    &.website_overview {
+        
+        max-width: $wide-max-width;
+        justify-content: space-between;
+        
+        .wp-block-column {
+            max-width: $scale_9;
+            &:nth-child(2) {
+                max-width: $scale_12;
+                margin-left: 121.528px;
+                // & > * {max-width: $scale_9;}
+            }
+        }
+        
+        
+        .wp-block-table table {
+            
+            margin: 0 auto 0;   
+            
+            & > tbody tr,
+            & > thead tr {
+                background: transparent;
+            }
+            
+        }
+        
+        
+    }
+    
+    
 }   
+
+
+.websitePage {
+    .wp-block-columns .has-2-columns,
+    .wp-block-columns {
+        max-width: $wide-max-width;
+        justify-content: space-between;
+        .wp-block-column {
+            // max-width: $scale_9;
+            &:nth-child(2) {
+                max-width: $scale_9;
+                margin-left: 121.528px;
+                // & > * {max-width: $scale_9;}
+            }
+        }
+    }
+}
 
 
 .fundStatusList {
@@ -853,6 +961,8 @@ ul.wp-block-gallery,
 
 
 
+
+
 // wp cover 
 
 //<div class="wp-block-cover has-background-dim" style="background-image:url(http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/sonja-langford-357-unsplash.jpg)">
@@ -978,6 +1088,18 @@ ul.wp-block-gallery,
     min-height: $default-height;
     align-items: flex-start;
     padding-top: $scale_4;
+    
+    table > tbody > tr {
+        //        &:first-child { td {border-top: $scale_1 solid $wht;} }
+        //        &:last-child  { td {border-bottom: $scale_1 solid $wht;} }
+        @include hover() {
+            a, td {color: $slate !important;}
+            background: $wht !important; 
+            cursor: initial;
+        }
+    }
+    
+    
 }
 
 // applied within wordpress > editor > block > advanced > custom css 
@@ -1110,9 +1232,11 @@ table {
         margin-top: $scale_1;
         margin-bottom: $scale_1;
     }
+
+    // disable background
     tbody tr {
-        background: $wht; // #ffffff; 
-        &:nth-child(even) {background: $wht;}
+        background: transparent; // #ffffff; 
+        &:nth-child(even) {background: transparent; } // $wht
     }
     
     // disable hover

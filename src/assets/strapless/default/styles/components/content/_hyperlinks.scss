@@ -12,8 +12,12 @@ $hyperlink_Color: $bludrk;
 
 // *:not(.nav):not(.btnBar):not(.links):not(.accordion_sidenav):not(.sidenav_header):not(.pagination):not(.buttonList):not(.tabs):not(.tableOfContents):not(.accordion):not(.results) > a:not(.button):not(.nav-tile):not(.tag) {
 
-.article a,    
-.post_content a {
+// .post_content a,
+//    section:not(.postList) > a,
+//    div:not(.postList) > a,
+//    section:not(.buttonList) > a,
+//    div:not(.buttonList) > a, 
+.article a {
     display: inline-block;
     padding: 1.333px 1.333px 0;
     border-bottom: 1.333px solid $hyperlink_Color;

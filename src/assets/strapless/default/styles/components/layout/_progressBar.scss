@@ -79,45 +79,18 @@ $larger-size: 300px;
 // color variations 
 
 .progress-pie-chart {
-    
-    &.uxScore_Deliverables,
-    &.uxScore_Attributes,
-    &.uxScore_Cycle {background: $gryslvr;}
-
-    &.uxScore_Deliverables {
-        & > .ppc-progress > .ppc-progress-fill {background: $blu;}
-        .ppc-percents {
-            .pcc-percents-wrapper {& > span {color:$blu;}}
-        }
-    }
-    &.uxScore_Attributes {
-        .ppc-progress {
-            .ppc-progress-fill {background: $grn;}
-        } 
-        .ppc-percents {
-            .pcc-percents-wrapper {& > span {color:$grn;}}
-        }
-    }
-    &.uxScore_Cycle {
-        .ppc-progress {
-            .ppc-progress-fill {background: $red;}
-        } 
-        .ppc-percents {
-            .pcc-percents-wrapper {& > span {color:$red;}}
-        }
-    } 
 
     &.overall_uxScore {
         width: $larger-size;
         height: $larger-size;
-        background-color: $gryslvr;// #E5E5E5;
+        background-color: $color_orange;// #E5E5E5;
         .ppc-progress {
             @include circle($larger-size);
             clip: rect(0, $larger-size, $larger-size, #{$larger-size/2});
             .ppc-progress-fill {
                 @include circle($larger-size);
                 clip: rect(0, #{$larger-size/2}, $larger-size, 0);
-                background: $org; // #81CE97;
+                background: $gryslvr; // #81CE97;
                 transform: rotate(60deg);
             }
             .gt-50 & {
@@ -139,4 +112,46 @@ $larger-size: 300px;
             }
         }
     }
+
+
+
+    &.overall_uxScore:nth-child(2) {background: $color_blueLight;}
+    &.overall_uxScore:nth-child(3) {background: $color_green;}
+    &.overall_uxScore:nth-child(4) {background: $color_blueDark;}
+    &.overall_uxScore:nth-child(5) {background: $color_red;}
+    &.overall_uxScore:nth-child(6) {background: $color_black;}
+
+
+    // inverted 
+    //    &.uxScore_Deliverables,
+    //    &.uxScore_Attributes,
+    //    &.uxScore_Cycle {background: $gryslvr;}
+    //
+    //    &.uxScore_Deliverables,
+    //    &.overall_uxScore:nth-child(2) {
+    //        & > .ppc-progress > .ppc-progress-fill {background: $blu;}
+    //        .ppc-percents {
+    //            .pcc-percents-wrapper {& > span {color:$blu;}}
+    //        }
+    //    }
+    //    &.uxScore_Attributes,
+    //    &.overall_uxScore:nth-child(3) {
+    //        .ppc-progress {
+    //            .ppc-progress-fill {background: $grn;}
+    //        } 
+    //        .ppc-percents {
+    //            .pcc-percents-wrapper {& > span {color:$grn;}}
+    //        }
+    //    }
+    //    &.uxScore_Cycle,
+    //    &.overall_uxScore:nth-child(4) {
+    //        .ppc-progress {
+    //            .ppc-progress-fill {background: $red;}
+    //        } 
+    //        .ppc-percents {
+    //            .pcc-percents-wrapper {& > span {color:$red;}}
+    //        }
+    //    } 
+
+
 }

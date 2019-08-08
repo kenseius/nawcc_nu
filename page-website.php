@@ -2,11 +2,9 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'partials/material', 'sidenav' ); ?>
-
-<main class="f-container funds">
     
-
+<main class="funds">   
+    
     
 <!-- 
 ========================================
@@ -38,9 +36,9 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
 
         <?php if ( $logo ) { ?>
             <div>
-                <p class="subtitle">Funds</p>
+                <p class="subtitle">HQ Projecs</p>
                 <h1><?php the_title(); ?></h1> 
-                <a class="button" href="#">Pledge</a>
+                <a class="button" href="#">Explore The Beta Site</a>
             </div>
         <?php } elseif ( $icon ) { ?> 
             <div>
@@ -110,6 +108,7 @@ $the_query = new WP_Query( $args ); ?>
 // args
 $args = array(
 	'numberposts'	=> -1,
+    'offset'        => 1,
 	'post_type'		=> 'website'
 );
 
@@ -121,8 +120,11 @@ $background_image = get_field( 'background_image', $post->ID );
 
 ?>
 <?php if( $the_query->have_posts() ): ?>
+    
     <section class="postList circleImages">
-	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+	
+    <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+        
         <a href="<?php the_permalink(); ?>">
 
             <?php the_post_thumbnail('thumbnail'); ?>
@@ -150,8 +152,6 @@ $background_image = get_field( 'background_image', $post->ID );
 
         </a>
         
-        
-
 	<?php endwhile; ?>
         
 	</section>
