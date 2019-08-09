@@ -129,7 +129,7 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 
 /**
- * Display Post Blocks 
+ * Display Post Blocks
  *
  */
 //function ea_display_post_blocks() {
@@ -141,10 +141,10 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 
 //function my_acf_init() {
-//	
+//
 //	// check function exists
 //	if( function_exists('acf_register_block') ) {
-//		
+//
 //		// register a testimonial block
 //		acf_register_block(array(
 //			'name'				=> 'hero',
@@ -163,10 +163,10 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 //
 //
 //function my_acf_block_render_callback_2( $block ) {
-//	
+//
 //	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
 //	$slug = str_replace('acf/', '', $block['name']);
-//	
+//
 //	// include a template part from within the "template-parts/block" folder
 //	if( file_exists( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") ) ) {
 //		include( get_theme_file_path("/partials/blockTemplates/block-{$slug}.php") );
@@ -182,8 +182,8 @@ function my_register_blocks() {
     if( function_exists('acf_register_block_type') ) {
 
         // registers blocks
-         
-        // testimonial (initial test) 
+
+        // testimonial (initial test)
         acf_register_block_type(array(
             'name'              => 'test',
             'title'             => __('test'),
@@ -193,7 +193,7 @@ function my_register_blocks() {
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'formatting',
         ));
-        
+
         // hero
         acf_register_block_type(array(
             'name'              => 'hero',
@@ -219,7 +219,7 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-        
+
         // heroOptions
         acf_register_block_type(array(
             'name'              => 'options',
@@ -232,7 +232,7 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-        
+
         // hero_article
         acf_register_block_type(array(
             'name'              => 'hero_article',
@@ -245,8 +245,8 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-        
-        // lead sentence 
+
+        // lead sentence
         acf_register_block_type(array(
             'name'              => 'lead',
             'title'             => __('lead'),
@@ -258,8 +258,8 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-        
-        // post list 
+
+        // post list
         acf_register_block_type(array(
             'name'              => 'postList',
             'title'             => __('postList'),
@@ -271,8 +271,8 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-        
-        // post list 
+
+        // post list
         acf_register_block_type(array(
             'name'              => 'postListCategories',
             'title'             => __('postList - Categories'),
@@ -284,8 +284,8 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-        
-        // link list 
+
+        // link list
         acf_register_block_type(array(
             'name'              => 'linkList',
             'title'             => __('linkList'),
@@ -297,8 +297,8 @@ function my_register_blocks() {
             'icon'              => 'archive',
             'mode'              => 'edit',
         ));
-            
-            
+
+
     }
 }
 
@@ -370,7 +370,7 @@ function lead_block_callback( $block, $content = '', $is_preview = false) {
 
     <?php if( $lead ): ?>
         <p class="lead"><?php echo $lead; ?></p>
-    <?php endif; ?>  
+    <?php endif; ?>
 
     <?php
 }
@@ -384,18 +384,18 @@ function options_block_callback( $block, $content = '', $is_preview = false) {
     $icon             = get_field( 'post_icon' );
     // $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
     $background_color = get_field( 'background_color' ) ?: '#fafafa';
-    
-    // $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id (), 'single-post-thumbnail'); 
+
+    // $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id (), 'single-post-thumbnail');
 
     ?>
 
-    <header 
-        class="hero 
-            <?php if($background_color): ?> hero_color <?php endif; ?> 
+    <header
+        class="hero
+            <?php if($background_color): ?> hero_color <?php endif; ?>
             <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
         style="
-            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
+            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
             <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_color; ?>');<?php endif; ?>"
     >
 
@@ -403,14 +403,14 @@ function options_block_callback( $block, $content = '', $is_preview = false) {
         <div>
             <img src="<?php echo $logo; ?>" alt="<?php the_title(); ?>" />
         </div>
-    <?php } elseif ( $icon ) { ?> 
+    <?php } elseif ( $icon ) { ?>
         <div>
             <?php echo $icon; ?>
         </div>
     <?php } ?>
-        
-    </header>    
-    
+
+    </header>
+
     <?php
 }
 
@@ -445,7 +445,7 @@ function cp_publications() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for Publications',
-        'rewrite'       => array('slug' => 'publications','with_front' => true), 
+        'rewrite'       => array('slug' => 'publications','with_front' => true),
         'public'        => true,
         'menu_icon'     => 'dashicons-book-alt',
         'menu_position' => 2,
@@ -656,15 +656,15 @@ add_action( 'init', 'cp_causes' );
 // Custom Post types - WOOT! This creates a new menu in the wp admin section
 function cp_website() {
     $labels = array(
-      'name'               => _x( 'Website posts', 'post type general name' ),
-      'singular_name'      => _x( 'Website post', 'post type singular name' ),
-      'add_new'            => _x( 'Add new', 'Website post' ),
-      'add_new_item'       => __( 'Add new Website post' ),
-      'edit_item'          => __( 'Edit Website post' ),
-      'new_item'           => __( 'New Website post' ),
-      'all_items'          => __( 'All Website posts' ),
-      'view_item'          => __( 'View Website post' ),
-      'search_items'       => __( 'Search Website posts' ),
+      'name'               => _x( 'Website Posts', 'post type general name' ),
+      'singular_name'      => _x( 'Website Post', 'post type singular name' ),
+      'add_new'            => _x( 'Add new', 'Website Post' ),
+      'add_new_item'       => __( 'Add new Website Post' ),
+      'edit_item'          => __( 'Edit Website Post' ),
+      'new_item'           => __( 'New Website Post' ),
+      'all_items'          => __( 'All Website Posts' ),
+      'view_item'          => __( 'View Website Post' ),
+      'search_items'       => __( 'Search Website Posts' ),
       'not_found'          => __( 'No Website posts found' ),
       'not_found_in_trash' => __( 'No Website posts found in the Trash' ),
       'parent_item_colon'  => '',
@@ -673,7 +673,7 @@ function cp_website() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Holds content used for Website Posts',
-        'rewrite'       => array('slug' => 'Website Posts','with_front' => true),
+        'rewrite'       => array('slug' => 'website','with_front' => true),
         'public'        => true,
         'menu_icon'     => 'dashicons-star-filled',
         'menu_position' => 7,
@@ -719,7 +719,7 @@ function events_register_template() {
             array( 'core/column', array(), array(
                 array( 'core/html', array() ),
             ) ),
-            
+
         ) ),
     );
 }
@@ -752,7 +752,7 @@ function myplugin_register_template() {
             array( 'core/column', array(), array(
                 array( 'acf/hero', array() ),
             ) ),
-            
+
         ) ),
 //        array( 'core/heading' ),
 //        array( 'acf/test' ),
@@ -834,7 +834,7 @@ add_action( 'init', 'myplugin_register_template' );
 
 
 
-// ==========================================  
+// ==========================================
 //     TESTS
 
 
@@ -988,18 +988,18 @@ add_action( 'init', 'myplugin_register_template' );
 
 //
 //function acf_set_featured_image( $value, $post_id, $field  ){
-//    
+//
 //    if($value != ''){
 //	    //Add the value which is the image ID to the _thumbnail_id meta data for the current post
 //	    add_post_meta($post_id, '_thumbnail_id', $value);
 //    }
-// 
+//
 //    return $value;
 //}
 //
 //// acf/update_value/name={$field_name} - filter for a specific field based on it's name
 //add_filter('acf/update_value/name=background_image', 'acf_set_featured_image', 10, 3);
- 
+
 
 
 
@@ -1136,5 +1136,5 @@ add_action('admin_menu', 'remove_admin_menu_links_2');
   //
   //     echo json_encode($tweets);
   // }
-  
+
 ?>

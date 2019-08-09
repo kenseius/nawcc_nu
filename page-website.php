@@ -36,7 +36,7 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
 
         <?php if ( $logo ) { ?>
             <div>
-                <p class="subtitle">HQ Projecs</p>
+                <p class="subtitle">HQ Projects</p>
                 <h1><?php the_title(); ?></h1> 
                 <a class="button" href="#">Explore The Beta Site</a>
             </div>

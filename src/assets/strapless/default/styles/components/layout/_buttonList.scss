@@ -10,7 +10,7 @@
     &.buttonList_uiToolkit {
         width: 100%;
         display: block;
-        margin: auto; 
+        margin: auto;
         a {@include span(3 of 12)}
         h4 a {border-bottom: 0;}
     }
@@ -21,7 +21,13 @@
         border: 0;
         padding: 0.707rem 0 0.707rem 1rem; // .5rem 0 .5rem 1rem
         line-height: $scale_2; // $base-line-height; //1.6em
+
+        // fa = fontawesome 4
+        // fas, fab, far = foneawesome 5
         i.fa,
+        i.fas,
+        i.fab,
+        i.far,
         .material-icons {
             position: absolute;
             // top: 0.69671875rem;
@@ -38,7 +44,7 @@
         @include anim($global-animation);
         @include hover() {color: $slate; background: $pch;}
         &.is-active {
-            background: $slate; 
+            background: $slate;
             color: $wht;
             span {color: $wht;}
             &:before {
