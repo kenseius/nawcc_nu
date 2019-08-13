@@ -59,56 +59,7 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
 
 <section class="post_content">
 
-<form class="taskList">
-
-    <div class="task">
-      <label class="control checkbox" for="AgreeToTerms">
-      	<input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
-      	<input name="AgreeToTerms" value="false" type="hidden">
-      	<span class="control__indicator"></span>
-      </label>
-      <div>
-        <h4>Well then! Now I simply must agree!</h4>
-      </div>
-    </div>
-    <div class="task">
-      <label class="control checkbox" for="AgreeToTerms">
-        <input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
-        <input name="AgreeToTerms" value="false" type="hidden">
-        <span class="control__indicator"></span>
-      </label>
-      <div>
-        <p>Well then! Now I simply must agree! Well then! Now I simply must agree!</p>
-      </div>
-    </div>
-    <div class="task">
-      <label class="control checkbox" for="AgreeToTerms">
-        <input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
-        <input name="AgreeToTerms" value="false" type="hidden">
-        <span class="control__indicator"></span>
-      </label>
-      <div>
-        <p class="has-medium-font-size">Well then! Now I simply must agree and now I simply must agree!</p>
-        <p>Details:</p>
-        <ul>
-            <li>hotdogs</li>
-            <li>carrots</li>
-        </ul>
-      </div>
-    </div>
-    <div class="task">
-      <label class="control checkbox" for="AgreeToTerms">
-        <input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
-        <input name="AgreeToTerms" value="false" type="hidden">
-        <span class="control__indicator"></span>
-      </label>
-      <div>
-        <p><strong>Well then!</strong></p>
-        <p>Now I simply must agree! Well then! Now I simply must agree! Now I simply must agree! Well then! Now I simply must agree!</p>
-      </div>
-    </div>
-
-</form>
+  
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 the_content();

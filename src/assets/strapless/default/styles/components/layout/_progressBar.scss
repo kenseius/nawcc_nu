@@ -1,7 +1,7 @@
 // =================================
 //
-//      Progress Bar 
-// 
+//      Progress Bar
+//
 // =================================
 
 // Circle w/ centered percent
@@ -28,18 +28,18 @@ $larger-size: 300px;
     border-radius: 50%;
     background-color: $wht;// #E5E5E5;
     position: relative;
-    display: block; 
+    display: block;
     margin: 0 auto $base-padding;
-    &.gt-50 {
-        background-color:  $org; // #81CE97;
-    }
+    // &.gt-50 {
+    //     background-color:  $color_orange; // $org; // #81CE97;
+    // }
     .ppc-progress {
         @include circle($size);
         clip: rect(0, $size, $size, #{$size/2});
         .ppc-progress-fill {
             @include circle($size);
             clip: rect(0, #{$size/2}, $size, 0);
-            background: $org; // #81CE97;
+            background: $color_orange; // #81CE97;
             transform: rotate(60deg);
             @include anim($global-animation);
         }
@@ -47,9 +47,14 @@ $larger-size: 300px;
             clip: rect(0, #{$size/2}, $size, 0);
             .ppc-progress-fill {
                 clip: rect(0, $size, $size, #{$size/2});
-                background: #E5E5E5;
+                background: $color_grey; // #E5E5E5;
             }
         }
+    }
+    &.gt-50 > .ppc-progress {
+        // transform: rotate(60deg);
+        transform: scale(-1);
+        // transform: rotate(60deg) scale(-1);
     }
     @include hover(){
         .ppc-progress .ppc-progress-fill {transform: rotate(90deg)}
@@ -60,12 +65,12 @@ $larger-size: 300px;
         text-align: center;
         display: table;
         .pcc-percents-wrapper {
-            p {font-weight: bold; margin-bottom: 0.75rem;}
+            // p {font-weight: bold; margin-bottom: 0.75rem;}
             & > span {
                 display: block;
                 font-size: 2.369rem;
                 font-weight: bold;
-                color: $org; // #81CE97;
+                color: $color_orange; // #81CE97;
             }
         }
     }
@@ -76,53 +81,133 @@ $larger-size: 300px;
 }
 
 
-// color variations 
+// large variation
+//
+//  - this one works.
+//  - TODO: Combine with above code + clean up styles
 
 .progress-pie-chart {
 
-    &.overall_uxScore {
+    &.overall_uxScore,
+    &.pie-chart-large {
         width: $larger-size;
         height: $larger-size;
-        background-color: $color_orange;// #E5E5E5;
+
+        // unfilled progress bar bg
+        background-color: $color_grey;// #E5E5E5;
+
         .ppc-progress {
             @include circle($larger-size);
             clip: rect(0, $larger-size, $larger-size, #{$larger-size/2});
             .ppc-progress-fill {
                 @include circle($larger-size);
                 clip: rect(0, #{$larger-size/2}, $larger-size, 0);
-                background: $gryslvr; // #81CE97;
+                background: $color_orange; // #81CE97;
                 transform: rotate(60deg);
             }
+
+            // for percents greater than 50 percent
             .gt-50 & {
                 clip: rect(0, #{$larger-size/2}, $larger-size, 0);
                 .ppc-progress-fill {
                     clip: rect(0, $larger-size, $larger-size, #{$larger-size/2});
-                    background: #E5E5E5;
+                    transform: scale(-1);
+                    background: $color_grey; //#E5E5E5;
                 }
             }
+
         }
+
+        // inverts colors for values > 50
+        &.gt-50 {
+            background:  $color_orange; // $org; // #81CE97;
+        }
+
+        &.gt-50 > .ppc-progress {
+            // transform: rotate(60deg);
+            transform: scale(-1);
+            // transform: rotate(60deg) scale(-1);
+             .ppc-progress-fill {
+                background: $color_grey;
+            }
+        }
+
         .ppc-percents {
             @include circle(#{$larger-size/1.15});
             .pcc-percents-wrapper {
                 p {
                     font-size: 1.778rem;
-                    margin-bottom: 1rem;
+                    margin-bottom: 0;
                 }
                 & > span {font-size: 3.157rem;}
+
             }
         }
+
     }
 
 
+    // Color Variations
 
-    &.overall_uxScore:nth-child(2) {background: $color_blueLight;}
-    &.overall_uxScore:nth-child(3) {background: $color_green;}
-    &.overall_uxScore:nth-child(4) {background: $color_blueDark;}
-    &.overall_uxScore:nth-child(5) {background: $color_red;}
-    &.overall_uxScore:nth-child(6) {background: $color_black;}
+    &:nth-child(2),
+    &:nth-of-type(2) {
+        background-color: $color_grey;
+        & > .ppc-progress > .ppc-progress-fill {background: $color_blueDark;}
+        &.gt-50 {
+          background:  $color_blueDark;
+            & > .ppc-progress .ppc-progress-fill { background: $color_grey; }
+        }
+        .ppc-percents { .pcc-percents-wrapper > span {color:$color_blueDark;} }
+    }
+    &:nth-child(3),
+    &:nth-of-type(3) {
+      background-color: $color_grey;
+      & > .ppc-progress > .ppc-progress-fill {background: $color_green;}
+      &.gt-50 {
+        background:  $color_green;
+          & > .ppc-progress .ppc-progress-fill { background: $color_grey; }
+      }
+      .ppc-percents { .pcc-percents-wrapper > span {color:$color_green;} }
+    }
+    &:nth-child(4),
+    &:nth-of-type(4) {
+      background-color: $color_grey;
+      & > .ppc-progress > .ppc-progress-fill {background: $blu;}
+      &.gt-50 {
+        background:  $blu;
+          & > .ppc-progress .ppc-progress-fill { background: $color_grey; }
+      }
+      .ppc-percents { .pcc-percents-wrapper > span {color:$blu;} }
+    }
+    &:nth-child(5),
+    &:nth-of-type(5) {
+      background-color: $color_grey;
+      & > .ppc-progress > .ppc-progress-fill {background: $color_red;}
+      &.gt-50 {
+        background:  $color_red;
+          & > .ppc-progress .ppc-progress-fill { background: $color_grey; }
+      }
+      .ppc-percents { .pcc-percents-wrapper > span {color:$color_red;} }
+    }
+    &:nth-child(6),
+    &:nth-of-type(6) {
+      background-color: $color_grey;
+      & > .ppc-progress > .ppc-progress-fill {background: $color_black;}
+      &.gt-50 {
+        background:  $color_black;
+          & > .ppc-progress .ppc-progress-fill { background: $color_grey; }
+      }
+      .ppc-percents { .pcc-percents-wrapper > span {color:$color_black;} }
+    }
 
 
-    // inverted 
+    // &.pie-chart-large:nth-child(2) {background: $color_blueLight;}
+    // &.pie-chart-large:nth-child(3) {background: $color_green;}
+    // &.pie-chart-large:nth-child(4) {background: $color_blueDark;}
+    // &.pie-chart-large:nth-child(5) {background: $color_red;}
+    // &.pie-chart-large:nth-child(6) {background: $color_black;}
+
+    // inverted
     //    &.uxScore_Deliverables,
     //    &.uxScore_Attributes,
     //    &.uxScore_Cycle {background: $gryslvr;}
@@ -138,7 +223,7 @@ $larger-size: 300px;
     //    &.overall_uxScore:nth-child(3) {
     //        .ppc-progress {
     //            .ppc-progress-fill {background: $grn;}
-    //        } 
+    //        }
     //        .ppc-percents {
     //            .pcc-percents-wrapper {& > span {color:$grn;}}
     //        }
@@ -147,11 +232,11 @@ $larger-size: 300px;
     //    &.overall_uxScore:nth-child(4) {
     //        .ppc-progress {
     //            .ppc-progress-fill {background: $red;}
-    //        } 
+    //        }
     //        .ppc-percents {
     //            .pcc-percents-wrapper {& > span {color:$red;}}
     //        }
-    //    } 
+    //    }
 
 
 }

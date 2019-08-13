@@ -231,7 +231,8 @@
     & > a .meta.meta_article {border: none;}
 }
 
-.bg_grey .postList {
+.bg_grey .postList a {
+  @include anim($global-animation);
   @include hover() {
       background: $wht;
       // color: lighten($blk, 30%);
