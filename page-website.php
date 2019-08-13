@@ -2,45 +2,45 @@
 
 <?php get_header(); ?>
 
-    
-<main class="funds">   
-    
-    
-<!-- 
+
+<main class="funds">
+
+
+<!--
 ========================================
     Hero
-======================================== -->   
-    
+======================================== -->
+
 <?php
-    
+
 // Load values and assing defaults.
 $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
 $icon             = get_field( 'post_icon' );
 $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
 $background_color = get_field( 'background_color' ) ?: '#fafafa';
 
-$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
 
 ?>
 
 <header class="hero wideTitle">
 
-    <section         
-        class="hero wideTitle hero_title_overlay hero_event 
-            <?php if($background_color): ?> hero_color <?php endif; ?> 
+    <section
+        class="hero wideTitle hero_title_overlay hero_event
+            <?php if($background_color): ?> hero_color <?php endif; ?>
             <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
         style="
-            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
+            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
             <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
     >
 
         <?php if ( $logo ) { ?>
             <div>
                 <p class="subtitle">HQ Projects</p>
-                <h1><?php the_title(); ?></h1> 
-                <a class="button" href="#">Explore The Beta Site</a>
+                <h1><?php the_title(); ?></h1>
+                <a class="button" href="http://wp.nawcc.org/home/">Explore The Beta Site</a>
             </div>
-        <?php } elseif ( $icon ) { ?> 
+        <?php } elseif ( $icon ) { ?>
             <div>
                 <?php echo $icon; ?>
             </div>
@@ -49,32 +49,83 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
     </section>
 
 </header>
-    
- 
-    
-<!-- 
+
+
+
+<!--
 ========================================
     Content
-======================================== -->   
-    
+======================================== -->
+
 <section class="post_content">
-    
+
+<form class="taskList">
+
+    <div class="task">
+      <label class="control checkbox" for="AgreeToTerms">
+      	<input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
+      	<input name="AgreeToTerms" value="false" type="hidden">
+      	<span class="control__indicator"></span>
+      </label>
+      <div>
+        <h4>Well then! Now I simply must agree!</h4>
+      </div>
+    </div>
+    <div class="task">
+      <label class="control checkbox" for="AgreeToTerms">
+        <input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
+        <input name="AgreeToTerms" value="false" type="hidden">
+        <span class="control__indicator"></span>
+      </label>
+      <div>
+        <p>Well then! Now I simply must agree! Well then! Now I simply must agree!</p>
+      </div>
+    </div>
+    <div class="task">
+      <label class="control checkbox" for="AgreeToTerms">
+        <input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
+        <input name="AgreeToTerms" value="false" type="hidden">
+        <span class="control__indicator"></span>
+      </label>
+      <div>
+        <p class="has-medium-font-size">Well then! Now I simply must agree and now I simply must agree!</p>
+        <p>Details:</p>
+        <ul>
+            <li>hotdogs</li>
+            <li>carrots</li>
+        </ul>
+      </div>
+    </div>
+    <div class="task">
+      <label class="control checkbox" for="AgreeToTerms">
+        <input data-val="true" data-val-enforcetrue="You must agree to the Terms of Service before you can Create an Account." id="AgreeToTerms" name="AgreeToTerms" value="true" aria-required="true" aria-describedby="AgreeToTerms-error" type="checkbox">
+        <input name="AgreeToTerms" value="false" type="hidden">
+        <span class="control__indicator"></span>
+      </label>
+      <div>
+        <p><strong>Well then!</strong></p>
+        <p>Now I simply must agree! Well then! Now I simply must agree! Now I simply must agree! Well then! Now I simply must agree!</p>
+      </div>
+    </div>
+
+</form>
+
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 the_content();
 endwhile; else: ?>
 <p>Sorry, no posts matched your criteria.</p>
 <?php endif; ?>
- 
-    
-</section>    
-    
-    
-<!-- 
+
+
+</section>
+
+
+<!--
 ========================================
-    Featured Post 
-======================================== -->   
-    
-<?php 
+    Featured Post
+======================================== -->
+
+<?php
 
 // args
 $args = array(
@@ -86,24 +137,24 @@ $args = array(
 
 // query
 $the_query = new WP_Query( $args ); ?>
-    
+
 <?php if( $the_query->have_posts() ): ?>
 	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-    
-        <!-- Featured Post - Events --> 
+
+        <!-- Featured Post - Events -->
         <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
 
 	<?php endwhile; ?>
 <?php endif; ?>
-<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>   
-    
-    
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
 
-<!-- 
+
+
+<!--
 ========================================
-    Post List 
-======================================== -->   
-<?php 
+    Post List
+======================================== -->
+<?php
 
 // args
 $args = array(
@@ -115,16 +166,16 @@ $args = array(
 
 // query
 $the_query = new WP_Query( $args );
-    
+
 $background_image = get_field( 'background_image', $post->ID );
 
 ?>
 <?php if( $the_query->have_posts() ): ?>
-    
+
     <section class="postList circleImages">
-	
+
     <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        
+
         <a href="<?php the_permalink(); ?>">
 
             <?php the_post_thumbnail('thumbnail'); ?>
@@ -133,7 +184,7 @@ $background_image = get_field( 'background_image', $post->ID );
 
                 <?php echo wp_get_attachment_image( $background_image, $size ); ?>
 
-            <?php else : ?> 
+            <?php else : ?>
 
                 <!-- Featured Image = [ img ] -->
                 <?php echo wp_get_attachment_image( 'thumbnail' ); ?>
@@ -146,20 +197,20 @@ $background_image = get_field( 'background_image', $post->ID );
                 <div class="meta meta_article">
                     <p>Written by <?php the_author(); ?></p>
                     <p><time><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></time></p>
-                </div> 
+                </div>
                 <p><?php the_excerpt(); ?></p>
             </div>
 
         </a>
-        
+
 	<?php endwhile; ?>
-        
+
 	</section>
-    
+
 <?php endif; ?>
 
-<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>    
-    
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
 
 </main>
 

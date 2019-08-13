@@ -1,17 +1,39 @@
 /*
 
-NAWCC GUTENBERG STYLES 
+NAWCC GUTENBERG STYLES
 ******************************
 
+- Editor width
 - Lead Paragraph
 - Blockquote
-- Metadata 
+- Metadata
 - Tags
 - Post List
 - Hero
 
 
 */
+
+
+
+/* Editor Width */
+
+
+/* Main column width */
+.wp-block {
+    max-width: 63.884rem; /* = $wide-max-width | old: 720px;*/
+}
+
+/* Width of "wide" blocks */
+.wp-block[data-align="wide"] {
+    max-width: 63.884rem; /* = $wide-max-width | old: 1080px
+}
+
+/* Width of "full-wide" blocks */
+.wp-block[data-align="full"] {
+    max-width: none;
+}
+
 
 
 
@@ -22,33 +44,33 @@ p.lead {
 
 
 blockquote {
-    
+
     display: block;
     margin: 0 auto 1.999rem;
     padding: 1.414rem;
     width: 100%;
     max-width: 511px;
-    
+
     font-size: 1.414rem;
     line-height: 1.999;
-    
+
     background: #e0e0e0;
-    
+
 }
 
 
 .meta {
-    
+
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    
+
     width: 100%;
     max-width: 45.18rem;
     margin-bottom: 1.999rem;
-    
+
     transition: all ease-in-out 0.3s;
-    
+
 }
 
 .meta.meta_article {
@@ -87,7 +109,7 @@ blockquote {
 
 
 .postList.circleImages > a > img { border-radius: 50%; }
-    
+
 
 
 
@@ -95,19 +117,19 @@ blockquote {
 /* HEROS */
 
 .hero {
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    
+
     width: 100%;
     height: 100%;
     min-height: 31.952rem;
-    
+
     text-align: left;
     transition: all ease 1s;
-    
+
 }
 
 .hero .hero_color {
@@ -118,18 +140,18 @@ blockquote {
 
 .hero.hero_image,
 .hero .hero_image {
-    
+
     position: relative;
     z-index: 1;
     background-attachment: scroll;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    
+
     width: 100%;
     height: 100%;
     min-height: 31.952rem;
-    
+
     color: #fafafa;
 
 }
@@ -157,7 +179,7 @@ blockquote {
 
 .acf-block-preview > .hero.hero_image img,
 .acf-block-preview > .hero > .hero_image img {
-    max-width: 200px; 
+    max-width: 200px;
     margin: 1.999rem auto;
     position: relative;
     z-index: 99999;
