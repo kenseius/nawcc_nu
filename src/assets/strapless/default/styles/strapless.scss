@@ -811,6 +811,30 @@ main.events {
     }
 
 
+    &.hero_ctaButtons {
+        max-width: $wide-max-width;
+        justify-content: flex-start;
+        @media #{$small-only} { justify-content: center; }
+
+        a.button {
+            flex: 1;
+            margin-right: 1.7rem;
+            &:nth-child(2) { margin-left: 1.7rem; margin-right: 0; }
+
+            max-width: $scale_8; // 483.08px; // $article-max-width;
+
+            @media #{$small-only} {
+                flex: 2;
+                margin: 0 auto $scale_2;
+                max-width: $article-max-width;
+                width: 100%;
+                &:nth-child(2) {margin: 0 auto $scale_2;}
+            }
+
+        }
+    }
+
+
 }
 
 

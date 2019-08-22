@@ -298,6 +298,45 @@ function my_register_blocks() {
             'mode'              => 'edit',
         ));
 
+        // circle progress bar
+        acf_register_block_type(array(
+            'name'              => 'progressCircle',
+            'title'             => __('progressCircle'),
+            'description'       => __('A circular progress bar meter.'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-progressCircle.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
+        // icon block
+        acf_register_block_type(array(
+            'name'              => 'iconBlock',
+            'title'             => __('iconBlock'),
+            'description'       => __('A font awesome icon'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-iconBlock.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
+        // icon title block
+        acf_register_block_type(array(
+            'name'              => 'iconTitle',
+            'title'             => __('iconTitle'),
+            'description'       => __('A circular progress bar meter.'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-iconTitle.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
 
     }
 }
