@@ -312,9 +312,6 @@ table,
             padding: 1rem;
         }
     }
-    .meta {display: none;}
-    p.the_excerpt,
-    p {display: none;}
 
     @media #{$medium-down} {
         flex-direction: column;
@@ -324,7 +321,12 @@ table,
 
 .dashboard_layout {
     section.postList,
-    .wp-block-vikoder-posts-block-posts { max-width: 30%; }
+    .wp-block-vikoder-posts-block-posts {
+        max-width: 30%;
+        .meta {display: none;}
+        p,
+        p.the_excerpt {display: none;}
+    }
 }
 .postList_2col_layout {
     section.postList,
@@ -408,6 +410,29 @@ table,
 }
 
 
+
+.blockOutlined {
+
+    background: #fff;
+    border: 2px solid #eaeaea;
+    padding: $scale_2;
+
+    .wp-block-button {
+        margin: 0;
+        .wp-block-button__link:last-child {margin: 0;}
+    }
+
+}
+
+
+// todo move to icon.scss
+.iconTitle {
+    span.title_subText {
+        font-size: $scale_2;
+        font-family: "Open Sans", Open Sans, sans-serif;
+        font-weight: 400;
+    }
+}
 
 // ============================
 //  events / dateblock
@@ -814,10 +839,14 @@ main.events {
     &.hero_ctaButtons {
         max-width: $wide-max-width;
         justify-content: flex-start;
+
         @media #{$small-only} { justify-content: center; }
 
         a.button {
+            @include type-setting(1);
+            font-weight: normal;
             flex: 1;
+            align-items: flex-start;
             margin-right: 1.7rem;
             &:nth-child(2) { margin-left: 1.7rem; margin-right: 0; }
 

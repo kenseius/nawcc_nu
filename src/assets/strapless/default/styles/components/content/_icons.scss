@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5, p {
             // height: span(2 of 12);
             // line-height: span(2 of 12) * 16;
 
-            @include type-setting(3);
+            @include type-setting(4);
             line-height: $scale_4;
 
             @media #{$medium-down} {
