@@ -7,7 +7,7 @@
 // grey background, segmented inner-form containers
 
 .grunion-field-wrap, // = for wordpress > jetpack > gutenberg blocks > forms
-.formgroup { 
+.formgroup {
     display: block;
     padding: $base-horizontal-padding $base-horizontal-padding 0; // $base-padding;
     margin:0 auto $base-horizontal-padding;
@@ -40,31 +40,51 @@
 // .formgroup.inline-icons
 .inlineIcons {
     // label {
-        margin-bottom: 0;
+        // margin-bottom: 0;
 
-        // social media icons
-        .fa {
+        // icons
+        .fa,
+        .far,
+        .fas,
+        .fab {
             display: block;
             float:left;
-            width: 10%;
-            padding: 1rem;
+            width: 15%;
+            padding: 0.5555rem; // 1rem;
             margin: auto 0;
             background: $wht;
             border: 0.2rem solid $wht;
-            font-size: 1.2rem;
+            font-size: $scale_1;// 1.2rem;
             line-height: $base-line-height;
-            max-height: 3.157rem + $base-horizontal-small;
+            height: 69.38px; // 3.157rem + $base-horizontal-small;
             text-align: center;
         }
-        .fa-facebook {color: $facebook;}
-        .fa-twitter {color: $twitter;}
 
         // input field
-        input {
-            width: 90%;
+        input.single-line,
+        input.text-box,
+        input[type="text"],
+        input[type="number"],
+        label > input,
+        .wpcf7-form-control-wrap > input,
+        .number-amount > input,
+        .wpcf7-form-control-wrap > select,
+        .number-amount > select,
+        label > select {
+            width: 85%;
             float: right;
             margin-top: 0;
+            border: 0.2rem solid $wht;
         }
+
+        // label text
+        .labelText {
+            display: block;
+            width: 100%;
+            margin: 0 auto 0.33333rem;
+            @include type-setting(0);
+        }
+
 
         @media #{$small-only} {
             .fa {font-size: 1rem; width: 10%;}
@@ -74,15 +94,32 @@
     // }
 }
 
+
+
+// For a list of inline Icons
+.inlineIconList {
+    label {
+        @extend .inlineIcons;
+        margin-bottom: 0;
+    }
+}
+
+
 // .formgroup.socialmedia
 .socialMedia {
     label {
         @extend .inlineIcons;
+        margin-bottom: 0;
+
         &:last-child {margin-bottom: $base-horizontal-padding;}
         @media #{$small-only} {
             .fa {padding: 1rem 0 1rem 0.778rem;}
         }
     }
+
+    .fa-facebook {color: $facebook;}
+    .fa-twitter {color: $twitter;}
+
 }
 
 .currentLocation {

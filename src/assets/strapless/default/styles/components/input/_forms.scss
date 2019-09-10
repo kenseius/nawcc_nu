@@ -60,19 +60,29 @@ form:not(#aspnetForm), .form {
     &:not(.search) {max-width: $article-max-width;}
     position: relative;
     &.wide {max-width:$base-max-width;}
-    
+
+    .wp-block-columns {
+        width: 100%;
+        margin: 0 auto;
+        .wp-block-column {min-width: 200px;}
+    }
+
 }
 
 form, form:not(#aspnetForm) {
     h2, p {max-width: 100%;}
     h2 { @include h2_styles; margin-bottom: 0; }
     hr {margin-top: 1rem; margin-bottom: 1rem;} // TODO: remove this
+    p.label {
+        padding: 0;
+        margin: 0 auto 0.333333;
+    }
 }
 
 
 
 
-// variations 
+// variations
 // ------------------
 
 // .contact-form = wordpress > jetpack > form.contact-form
@@ -81,14 +91,14 @@ form, form:not(#aspnetForm) {
 .contact-form,
 .wpcf7-form {
     margin-left: $scale_1;
-    background: #eaeaea;
-    
+    // background: #eaeaea;
+
     .formgroup {
-        margin: 0 auto;
+        // margin: 0 auto;
         .optional {margin-bottom: 1rem;}
-        
+
     }
-    
+
     .wpcf7-submit,
     .contact-submit,
     p {
@@ -97,7 +107,7 @@ form, form:not(#aspnetForm) {
         padding: 0 $scale_2; // $base-padding;
         margin: $scale_2 auto $scale_3;
     }
-    
+
 }
 
 

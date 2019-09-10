@@ -288,7 +288,6 @@ table,
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
-    background: #eaeaea;
     padding: $scale_1 0;
     .postList,
     .wp-block-vikoder-posts-block-posts {
@@ -320,6 +319,7 @@ table,
 }
 
 .dashboard_layout {
+    background: #eaeaea;
     section.postList,
     .wp-block-vikoder-posts-block-posts {
         max-width: 30%;
@@ -795,15 +795,27 @@ main.events {
           max-width: $wide-max-width;
           justify-content: space-between;
           .wp-block-column {
-              max-width: $scale_12;
+              max-width: $scale_12; // left col
               &:nth-child(2) {
-                  max-width: $scale_9;
+                  max-width: $scale_9; // right col
                   // margin-left: 121.528px;
                   // & > * {max-width: $scale_9;}
               }
           }
     }
 
+    &.leftcol_9 {
+          max-width: $wide-max-width;
+          justify-content: space-between;
+          .wp-block-column {
+              max-width: $scale_9; // left col
+              &:nth-child(2) {
+                max-width: $scale_12; // right col
+                  // margin-left: 121.528px;
+                  // & > * {max-width: $scale_9;}
+              }
+          }
+    }
 
     // fund / cause content
     &.website_overview {
@@ -1158,17 +1170,21 @@ ul.wp-block-gallery,
 // form.tasklist
 .taskList {
 
-    & > .task {
+    .task {
 
         display: flex;
         align-items: flex-start;
         padding: 1rem;
         margin: 0 0 $scale_2 0;
-        & > .checkbox {
+
+        & > .checkbox,
+        .checkbox {
             margin: 0 $scale_2 0 0;
             max-width: $scale_3;
         }
         & > div {flex: 1;}
+
+        p.lead, p.has-medium-font-size {line-height: normal;}
 
         @include hover() {
             background: $gry;

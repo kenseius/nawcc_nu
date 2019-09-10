@@ -44,17 +44,15 @@
                     <p class="subtitle">Funds</p>
                     <h1><?php the_title(); ?></h1>
 
-                    <div class="wp-block-columns has-2-columns
+                    <div class="wp-block-columns has-2-columns <?php if ( get_field( 'secondary_cta_button' ) == 1 ): ?>hero_ctaButtons<?php endif; ?>">
 
                     <?php if ( get_field( 'cta_button' ) == 1 ): ?>
-                        ">
                         <a class="button wp-block-column" href="<?php the_field( 'cta_button_link' ); ?>">
                             <?php the_field( 'cta_button_text' ); ?>
                         </a>
                     <?php endif; ?>
 
                     <?php if ( get_field( 'secondary_cta_button' ) == 1 ): ?>
-                        hero_ctaButtons">
                         <a class="button gry wp-block-column" href="<?php the_field( 'secondary_cta_button_link' ); ?>">
                             <?php the_field( 'secondary_cta_button_text' ); ?>
                         </a>

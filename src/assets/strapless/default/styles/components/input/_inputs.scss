@@ -12,6 +12,7 @@
 //  4. inputs - input, textarea, select
 // ***************************************
 
+input:not([type="checkbox"]):not([type="submit"]),
 input:not(.accordion_input):not(.wpcf7-submit),
 textarea, select {
 
@@ -79,6 +80,7 @@ select {
     text-transform: none;
 
     & option {
+        @include type-setting(0);
         color: $placholderTextcolor; // lighten($slate, 40%);
         background: $whtalt;
         // &:not(:first-child){
