@@ -57,7 +57,7 @@
 // ----------------------------------
 
 // disable inserting tags
-add_filter('wpcf7_autop_or_not', '__return_false');  
+add_filter('wpcf7_autop_or_not', '__return_false');
 
 
 
@@ -337,7 +337,7 @@ function my_register_blocks() {
         acf_register_block_type(array(
             'name'              => 'iconTitle',
             'title'             => __('iconTitle'),
-            'description'       => __('A circular progress bar meter.'),
+            'description'       => __('An icon adjactent to a title.'),
             // 'render_callback'   => 'postList_block_callback',
             'render_template'   => get_template_directory() . '/partials/blockTemplates/block-iconTitle.php',
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
@@ -346,6 +346,32 @@ function my_register_blocks() {
             'mode'              => 'edit',
         ));
 
+        // icon title block
+        acf_register_block_type(array(
+            'name'              => 'Date Block',
+            'title'             => __('dateBlock'),
+            'description'       => __('A date block for showing upcoming things'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-dateBlock.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
+
+        // icon button block
+        acf_register_block_type(array(
+            'name'              => 'Icon Button Block',
+            'title'             => __('iconButton'),
+            'description'       => __('A date block for showing upcoming things'),
+            // 'render_callback'   => 'postList_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-iconButton.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'formatting',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
 
     }
 }

@@ -21,30 +21,30 @@
             elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php }
             else { echo get_the_title(); ?> | NAWCC <?php } ?>
     </title>
-    
+
     <!-- METADATA -->
     <meta name="description" content="<?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC <?php } ?>" />
 	<meta name="keywords"    content="<?php if ( is_front_page() && is_home() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?> The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC <?php } ?>" />
-    
+
     <!-- METADATA - facebook -->
 	<meta property="fb:page_id" content="" />
 	<meta property="og:image" content="" />
 	<meta property="og:description" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?><?php } ?>"/>
 	<meta property="og:title" content="NAWCC"/>
-    
+
 	<!-- METADATA - google+ -->
 	<meta itemprop="name" content="<?php if ( is_front_page() && is_home() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } elseif ( is_front_page() ) { ?>The National Association Of Watch &amp; Clock Collectors<?php } else { echo get_the_title(); ?> | NAWCC<?php } ?>"/>
 	<meta itemprop="description" content="The National Association Of Watch &amp; Clock Collectors">
 	<meta itemprop="image" content="">
-    
+
     <!--    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />-->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/fabricator/styles/f.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/assets/strapless/styles/strapless.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    
+
 </head>
-    
-<body>   
+
+<body>
 
 <nav class="nav primary_navigation" role="navigation">
     <a class="logo" href="https://nawcc.org/">
@@ -65,7 +65,7 @@
                     <g id="top hand">
                         <path id="Polygon_2" d="M22.2574 5.11528L1.89465 30.3119L1.89435 27.6054L22.2574 5.11528Z" fill="#252525"/>
                         <circle id="Ellipse 2.10" cx="7.80956" cy="21.9049" r="1.7065" transform="rotate(-39.3836 7.80956 21.9049)" fill="white" stroke="#252525" stroke-width="2"/>
-                    </g>         
+                    </g>
                     <g id="clock numbers">
                         <g id="II">
                             <path d="M24.3658 16.9786L24.7613 17.6731C25.1506 18.3566 25.5482 18.6704 25.9543 18.6143C26.3645 18.5656 27.9882 17.7335 30.8251 16.1179L34.5624 13.9897C37.5023 12.3155 39.0894 11.3339 39.3238 11.0447C39.5581 10.7555 39.5079 10.3169 39.1731 9.72893L38.6645 8.83595L39.3591 8.44043C40.0024 9.68977 40.6631 10.9098 41.3411 12.1004C41.9061 13.0926 42.4446 13.9783 42.9564 14.7575L42.2619 15.153L41.7785 14.3041C41.4813 13.7823 41.2326 13.4908 41.0323 13.4296C40.832 13.3685 40.472 13.4713 39.9524 13.738C39.145 14.1491 37.7344 14.9281 35.7206 16.0748L31.9172 18.2408C29.0582 19.8689 27.5173 20.8291 27.2944 21.1215C27.0789 21.4096 27.1637 21.8918 27.5488 22.568L27.9631 23.2956L27.2686 23.6911C26.8052 22.7578 26.2701 21.7583 25.6632 20.6926C24.9559 19.4505 24.2919 18.3443 23.6713 17.3741L24.3658 16.9786Z" fill="#444444"/>
@@ -93,11 +93,11 @@
     </a>
 <!--
     <div class="links">
-        <a href="join.html" class="navitem  ">Join</a>            
-        <a href="about.html" class="navitem  ">About</a>            
-        <a href="shop.html" class="navitem  ">Shop</a>            
-        <a href="donate.html" class="navitem  ">Donate</a>            
-        <a href="login.html" class="navitem  ">Log In</a>    
+        <a href="join.html" class="navitem  ">Join</a>
+        <a href="about.html" class="navitem  ">About</a>
+        <a href="shop.html" class="navitem  ">Shop</a>
+        <a href="donate.html" class="navitem  ">Donate</a>
+        <a href="login.html" class="navitem  ">Log In</a>
     </div>
     <a class="nav-trigger nav-open">
         <div class="inner"></div>
@@ -107,68 +107,59 @@
 </nav>
 
 <main class="events">
-    
+
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <?php
-    
+
     // Load values and assing defaults.
     $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
     $icon             = get_field( 'post_icon' );
     $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
     $background_color = get_field( 'background_color' ) ?: '#fafafa';
-    
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail'); 
+
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
 
     ?>
 
     <header class="hero wideTitle">
-        
-        <section         
+
+        <section
             class="hero wideTitle hero_title_overlay hero_event
-                <?php if($background_color): ?> hero_color <?php endif; ?> 
+                <?php if($background_color): ?> hero_color <?php endif; ?>
                 <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
             style="
-                <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>        
+                <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
                 <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
         >
-            
+
             <div>
+
                 <p class="subtitle">Events</p>
-                <h1><?php the_title(); ?></h1> 
-                <p class="date">Friday, July 12, 2019 | 6-9pm</p>
-                <a class="button" href="https://net.nawcc.org/NAWCC/Store/Events/NAWCC/Store/StoreLayouts/Products_by_Category.aspx?category=stevents&hkey=8d00f729-096c-4d6a-b59b-f07df7fe5dce">Buy Tickets</a>
+                <h1><?php the_title(); ?></h1>
+                <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?>
+                <?php if ( get_field( 'cta_button' ) == 1 ): ?>
+                    <a class="button wp-block-column" href="<?php the_field( 'cta_button_link' ); ?>">
+                        <?php the_field( 'cta_button_text' ); ?>
+                    </a>
+                <?php endif; ?>
+
+                <?php if ( get_field( 'secondary_cta_button' ) == 1 ): ?>
+                    <a class="button gry wp-block-column" href="<?php the_field( 'secondary_cta_button_link' ); ?>">
+                        <?php the_field( 'secondary_cta_button_text' ); ?>
+                    </a>
+                <?php endif; ?>
+
             </div>
-            
-<!--
-            <?php if ( $logo ) { ?>
-                <div>
-                    <img src="<?php echo $logo; ?>" alt="<?php the_title(); ?>" />
-                    <p class="date">Friday, July 12, 2019 | 6-9pm</p>
-                    <a class="button" href="https://net.nawcc.org/NAWCC/Store/Events/NAWCC/Store/StoreLayouts/Products_by_Category.aspx?category=stevents&hkey=8d00f729-096c-4d6a-b59b-f07df7fe5dce">Buy Tickets</a>
-                </div>
-            <?php } elseif ( $icon ) { ?> 
-                <div>
-                    <?php echo $icon; ?>
-                </div>
-            <?php } else { ?> 
-                <div>
-                    <p class="subtitle">Events</p>
-                    <h1><?php the_title(); ?></h1> 
-                    <p class="date">Friday, July 12, 2019 | 6-9pm</p>
-                    <a class="button" href="https://net.nawcc.org/NAWCC/Store/Events/NAWCC/Store/StoreLayouts/Products_by_Category.aspx?category=stevents&hkey=8d00f729-096c-4d6a-b59b-f07df7fe5dce">Buy Tickets</a>
-                </div>
-            <?php } ?>
--->
-            
+
         </section>
 
     </header>
-    
+
 <!--
     <section class="article_title event_title">
         <p class="subtitle">Events</p>
-        <h1><?php the_title(); ?></h1> 
+        <h1><?php the_title(); ?></h1>
     </section>
 -->
     <section class="post_content wide_content nospaceCovers event_content">
@@ -182,7 +173,3 @@
 <?php endif; ?>
 
 <?php get_footer(); ?>
-
-
-
-

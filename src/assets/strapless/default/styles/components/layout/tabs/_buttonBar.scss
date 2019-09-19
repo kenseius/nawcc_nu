@@ -13,12 +13,12 @@
 
 
 .btnBar {
-    
+
     @include wrap($base-max-width, auto);
-        
+
     button, .button, .btn,
     .tag, a[rel="tag"] {display: inline-block;}
-    
+
 }
 
 
@@ -61,13 +61,14 @@
 }
 
 .tabBar {
-    .iconButtonHyperlink {    
+    .iconButtonHyperlink {
         @include span(3 of 12);
         &:nth-of-type(4n){@include last;} // 4 tabs
     }
 }
 
 // a tags with with icons
+a.iconButtonHyperlink,
 .iconButtonHyperlink {
     // Change this depending on the number of tabs
     // @include span(3 of 12);
@@ -86,7 +87,8 @@
     border-bottom: 0;
     border-top:2px solid transparent;
 
-    i {
+    i,
+    & > i {
         display: block;
         margin: auto;
         font-size: 4.209rem;
@@ -94,6 +96,13 @@
         // @include anim($global-animation);
         @media #{$small-only} {font-size: 2.369rem;}
         @media #{$medium-only} {font-size: 3.157rem;}
+    }
+
+    p,
+    & > p {
+        margin: 0 auto;
+        @include type-setting(2);
+        font-weight: normal;
     }
 
     // @include anim($global-animation);
@@ -116,7 +125,8 @@
 .iconBar {
     @include clear();
     background: $gry;
-    .iconButtonHyperlink {
+    .iconButtonHyperlink,
+    a.iconButtonHyperlink {
         border-bottom: 0;
         @include hover() {background-color:$wht; color: $slate; span, i {color: $slate;}}
     }

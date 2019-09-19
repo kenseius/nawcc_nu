@@ -240,6 +240,18 @@
 }
 
 
+.postList_wide {
+    h2, .postList, p {
+        max-width: $wide-max-width;
+    }
+    .postList {
+        margin: auto;
+        h4 {margin: auto;}
+    }
+    h2 {margin: 0 auto $scale_2;}
+}
+
+
 main {
     & > p,
     & > h1,
@@ -377,6 +389,14 @@ table,
     & > *:first-child {padding-top: $scale_1;}
     & > *:last-child {padding-bottom: $scale_1;}
 
+    & > *:last-child.wp-block-group__inner-container,
+    & > .wp-block-group__inner-container
+    .wp-block-group__inner-container {
+        padding-bottom: 0;
+        .label {margin: 0 auto 0.9rem;}
+        & > *:last-child {margin-bottom: $scale_1;}
+    }
+
 }
 
 
@@ -417,10 +437,10 @@ table,
     border: 2px solid #eaeaea;
     padding: $scale_2;
 
-    .wp-block-button {
-        margin: 0;
-        .wp-block-button__link:last-child {margin: 0;}
-    }
+    // .wp-block-button {
+    //     margin: 0;
+    //     .wp-block-button__link:last-child {margin: 0;}
+    // }
 
 }
 
@@ -961,7 +981,7 @@ main.funds {
 
     // intended global typography styles
 
-    h1, h2, h3 {
+    h1, h2, h3, p {
         max-width: $wide-max-width;
         margin: auto;
     }
@@ -973,16 +993,22 @@ main.funds {
     // li {margin-bottom: 0.333em;}
     // a {color: $blu;}
 
+    a.iconButtonHyperlink p {margin: 0 auto;}
+
     .bg_grey {
         margin-bottom: $scale_4;
-        h2, .postList, p {
-            max-width: $wide-max-width;
-        }
-        .postList {
-            margin: auto;
-            h4 {margin: auto;}
-        }
-        h2 {margin: 0 auto $scale_2;}
+
+
+        // moved to .postList_wide
+        // h2, .postList, p {
+        //     max-width: $wide-max-width;
+        // }
+        // .postList {
+        //     margin: auto;
+        //     h4 {margin: auto;}
+        // }
+        // h2 {margin: 0 auto $scale_2;}
+
 
         //        p {
         //            max-width: $article-max-width;
@@ -1101,7 +1127,9 @@ ul.wp-block-gallery,
         & > h1,
         & > h2,
         & > h3,
-        & > ul {
+        & > ul,
+        & > .button,
+        & > .wp-block-button, & > .wp-block-button__link  {
             max-width: $article-max-width;
             margin-left: 0;
             // float: left;
@@ -1117,12 +1145,14 @@ ul.wp-block-gallery,
         }
     }
 
-    &:nth-of-type(odd) {
+    &:nth-child(even) {     // was  nth-of-type(odd)
         & > .wp-block-cover__inner-container {
             & > p,
             & > h1,
             & > h2,
-            & > h3 {margin:0 0 $scale_small auto;}
+            & > h3,
+            & > .button,
+            & > .wp-block-button, & > .wp-block-button__link {margin:0 0 $scale_small auto;}
         }
     }
 
@@ -1140,25 +1170,56 @@ ul.wp-block-gallery,
 
 
 
+
+
+// WP BLOCK BUTTONS
+// =============================================
+
+
+.wp-block-button {
+    margin-bottom: $scale_0;
+    &:last-child {margin-bottom: 0;}
+}
+
 .wp-block-button .wp-block-button__link {
     @extend .button;
     line-height: $scale_2;
+    font-size: $scale_0;
+    font-weight: normal;
     color: $wht;
-    &:last-child {margin-bottom: $scale_2;}
+
+    &.has-background {border: 0;}
+    &.has-cyan-bluish-gray-background-color {background-color: #abb8c3;}
+
 }
 
 
 .wp-block-columns {
-    .wp-block-button,
-    .wp-block-file {
-        &:last-child {margin-bottom: $scale_4;}
-    }
+    // .wp-block-button,
+    // .wp-block-file {
+    //     &:last-child {margin-bottom: $scale_4;}
+    // }
 }
 
 
 
 .has-medium-font-size {font-size: $scale_1;}
 .has-large-font-size {font-size: $scale_2;}
+
+
+
+
+
+
+// iconButtonHyperlink
+
+.iconButtonHyperlink,
+a.iconButtonHyperlink {
+    padding: $scale_3 1rem;
+    background: $whtlite;
+}
+
+
 
 
 

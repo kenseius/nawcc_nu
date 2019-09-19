@@ -86,7 +86,7 @@ blockquote {
 
 
 // LISTS
-ul {
+ul, ol {
     // list-style: none;
     list-style-position: inside;
     margin-left:1rem;
@@ -100,8 +100,8 @@ ul {
 
 
 // elements with consistent dimensions a global level
-// LISTS 
-section, article, .article {
+// LISTS
+// section, article, .article {
     ul {list-style: disc;}
     ol {list-style-type: decimal}
     ol, ul {
@@ -109,12 +109,13 @@ section, article, .article {
         padding-left: $base-vertical;
         margin-bottom: $base-vertical;;
     }
-}
+// }
 
 
 
 // ITALICS
-em {font-style: italic;}
+em,
+.italic {font-style: italic;}
 
 
 
@@ -185,6 +186,21 @@ body > .article,
     line-height: 0.8em;
     &.mb {margin-bottom: 0.5em;}
 }
+
+
+
+
+figcaption {
+    @include type-setting(0);
+    text-align: center;
+    font-style: italic;
+    margin: 0 auto;
+    padding: $scale_0;
+    border-right: 2px solid $gry;
+    border-left: 2px solid $gry;
+    border-bottom: 2px solid $gry;
+}
+
 
 
 
