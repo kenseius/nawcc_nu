@@ -75,7 +75,7 @@ form, form:not(#aspnetForm) {
     hr {margin-top: 1rem; margin-bottom: 1rem;} // TODO: remove this
     p.label {
         padding: 0;
-        margin: 0 auto 0.333333;
+        margin: 0 auto $scale_2; // 0.333333;
     }
 }
 

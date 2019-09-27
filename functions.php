@@ -25,20 +25,47 @@
 //      'after_title' => '',
 //    ));
 
+// ===================================
+//   Register our sidebars and widgetized areas.
+// ===================================
 
+function arphabet_widgets_init() {
 
-  if ( function_exists('register_sidebar') )
+	register_sidebar( array(
+		'name'          => 'Sidenav Widget Area',
+		'id'            => 'sidenav-main',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<p class="bold">',
+		'after_title'   => '</p>',
+	) );
+
     register_sidebar( array(
-       'name' => __( 'Main Sidebar', 'theme-slug' ),
-
+       'name' => __( 'Unused Sidebar', 'theme-slug' ),
        'id' => 'sidebar-1',  // Add only this line
-
        'description' => __( 'Widgets in this area will be shown on all posts and pages.', 'theme-slug' ),
        'before_widget' => '',
        'after_widget'  => '',
        'before_title'  => '',
        'after_title'   => '',
     ) );
+
+
+}
+add_action( 'widgets_init', 'arphabet_widgets_init' );
+
+  // if ( function_exists('register_sidebar') )
+  //   register_sidebar( array(
+  //      'name' => __( 'Main Sidebar', 'theme-slug' ),
+  //      'id' => 'sidebar-1',  // Add only this line
+  //      'description' => __( 'Widgets in this area will be shown on all posts and pages.', 'theme-slug' ),
+  //      'before_widget' => '',
+  //      'after_widget'  => '',
+  //      'before_title'  => '',
+  //      'after_title'   => '',
+  //   ) );
+
+
 
 
 
@@ -87,6 +114,62 @@ add_editor_style( '' . get_template_directory_uri() . '/dist/assets/strapless/st
 
 
 
+//===============================================
+//     ----- COMMENTS ------
+//-----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+//===============================================
+//     BUDDY PRESS
+//-----------------------------------------------
+
+
+// add_theme_support( 'buddypress' );
+
+
+// Cover Images
+// ------------------
+
+// Profile
+// function your_theme_xprofile_cover_image( $settings = array() ) {
+//     $settings['width']  = 1170;
+//     $settings['height'] = 250;
+//
+//     return $settings;
+// }
+// add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );
+//
+// // Groups
+// function your_theme_xprofile_cover_image( $settings = array() ) {
+//     $settings['default_cover'] = 'http://site.url/to/your/default_cover_image.jpg';
+//
+//     return $settings;
+// }
+// add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //===============================================
 //  ----- CUSTOM FIELDS, ACF & ADMIN ------
@@ -120,7 +203,7 @@ add_editor_style( '' . get_template_directory_uri() . '/dist/assets/strapless/st
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 20;
+    return 35;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 

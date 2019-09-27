@@ -12,8 +12,13 @@
 //  4. inputs - input, textarea, select
 // ***************************************
 
-input:not([type="checkbox"]):not([type="submit"]),
-input:not(.accordion_input):not(.wpcf7-submit),
+// input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]):not(.accordion_input):not(.wpcf7-submit),
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
 textarea, select {
 
     // allows font awesome icons in placeholder text

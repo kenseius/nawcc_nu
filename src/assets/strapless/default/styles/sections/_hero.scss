@@ -33,7 +33,13 @@
     text-align: left;
     h1, h2, p {text-align: left;}
 
-    .outline, div {margin: auto;}
+    .outline {margin: auto;}
+    & > div {
+        margin: auto;
+        width: 100%;
+        max-width: $scale_12;
+    }
+
     // & > div:not(.search) {max-width: $article-max-width;}
 
     // for use when building the transparent nav

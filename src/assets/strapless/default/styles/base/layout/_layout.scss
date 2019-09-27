@@ -15,16 +15,20 @@ body {
 
     main,
     .main {
-    
-        
+
+
     //    & > section:not(.postList),
-    //    & > section:not(.article_title),    
-    // & > article, 
+    //    & > section:not(.article_title),
+    // & > article,
     & > .post,
     & > section > div,
     & > article > div,
     & > .twoCol > article > div,
     & > .twoCol_grid > article > div,
+    & > .twoCol_grid > .wp-block-columns > .wp-block-column,
+    & > .twoCol_grid > .wp-block-column,
+    & > .twoCol_grid > .wp-block-media-text > .wp-block-media-text__media,
+    & > .twoCol_grid > .wp-block-media-text > .wp-block-media-text__content,
     & > article.post_article > div {
 
         // section widths
@@ -32,9 +36,9 @@ body {
         // no padding - @include global-container(auto, 64rem, 3.157rem, 0);
         // @include global-container(100%, 100%, 3.175rem, 0);
         // margin-bottom: $base-vertical;
-        
-        // TODO: revise global-container 
-        
+
+        // TODO: revise global-container
+
         // @include global-container(100%, 100%, 0, 0);
         // display: block;
         width: 100%;
@@ -42,7 +46,7 @@ body {
         margin: auto;
         // padding: 0 0;
 
-        
+
         // targets just the immediate child elements
         & > h1,
         & > h2,
@@ -67,8 +71,8 @@ body {
         //    section:not(.postList) > a,
         //    div:not(.postList) > a,
         //    section:not(.buttonList) > a,
-        //    div:not(.buttonList) > a, 
-        &:not(.postList) > a { 
+        //    div:not(.buttonList) > a,
+        &:not(.postList) > a {
             display: inline-block;
             border-top: 3px solid transparent;
             border-right: 3px solid transparent;
@@ -77,9 +81,9 @@ body {
             color: #999;
             @include hover() {background: $org; color: $wht;}
         }
-        
+
         // & > h1 {margin-bottom: $base-vertical;}
-        
+
         // & > h2,
         & > .meta,
         & > pre,
@@ -93,8 +97,8 @@ body {
         // & > p,
         & > .pseudo-search  {
             position: relative;
-            max-width: $base-max-width; 
-            margin-left: auto; 
+            max-width: $base-max-width;
+            margin-left: auto;
             margin-right: auto;
             @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
             @media #{$medium-only} { max-width: $article-max-width; }
@@ -111,11 +115,12 @@ body {
         // }
 
     }
-        
-        
-                
+
+
+
     & > article.post.twoCol > div,
-    & > .twoCol_grid > article > div {
+    & > .twoCol_grid > article > div,
+    & > .twoCol_grid > .wp-block-media-text > .wp-block-media-text__content {
         & > h1,
         & > h2,
         & > h3,
@@ -135,34 +140,33 @@ body {
             @media #{$medium-only} { max-width: $article-max-width; }
         }
     }
-        
-        
-    }
+
+    } // main
 
 }
 
 
 
 .post {
-    & > div {padding: $scale_2 0;}
+    & > div {
+        padding: $scale_2 0;
+        min-height: $default-height;
+    }
 }
-
-
-
 
 
 // layouts
 
 
 .twoCol {
-    
+
     // @include global-container(100%, 100%, 0, 0);
     // display: block;
     width: 100%;
     max-width: 100%;
     margin: auto;
     // padding: 0 0;
-    
+
     min-height: $default-height;
 
     & > article {
@@ -176,33 +180,35 @@ body {
         // align-self: stretch;
         flex-basis: 50%;
     }
-    
-    // vertically centers child elements 
+
+    // vertically centers child elements
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    
+
     & > div,
     & > section,
     & > article + article  {
         margin: auto;
         // padding-top: $scale_2;
         width: 50%;
-        
+
         // fallback for flexbox
         float: left;
         &:nth-child(even) {float: right;}
-        
+
         & > img {max-width: $article-max-width;}
-        
+
     }
-    
+
 }
 
 
-.twoCol_grid {
+.twoCol_grid,
+.wp-block-media-text {
+
     display: flex;
     // flex-direction: row;
     justify-content: flex-start;
@@ -211,12 +217,54 @@ body {
     flex-wrap: wrap;
     // align-self: stretch;
     // flex-basis: 50%;
-    & > article {
+
+    & > article,
+    & > .post {
         min-height: $section-height-tall; // $default-height;
         flex: 1 0 50%;
         display: flex;
         align-items: center;
     }
+
+    & > .wp-block-media-text__content,
+    & > .wp-block-media-text__media {
+        flex: 1 0 50%;
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        & > *:not(img):not(figure) {
+            position: relative;
+            // line-height: 1.414em;
+            display: block;
+            max-width:$article-max-width; // 31.952rem;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            // margin-right: 0;
+        }
+    }
+
+    & > .wp-block-media-text__media,
+    & > figure,
+    & > figure > img {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    &.has-media-on-the-right {
+        & > figure,
+        & > img,
+        & > .wp-block-media-text__media {order: 1;}
+        & > .wp-block-media-text__content {order: 0;}
+    }
+
+    &.is-vertically-aligned-top {
+        & > .wp-block-media-text__content {
+            margin: $scale_4 auto 0;
+            justify-content: flex-start;
+        }
+    }
+
 }
 
 
@@ -242,11 +290,11 @@ body {
     &.col10 { & > * {@include span(3 of 12); &:nth-child(10n){@include last;} } }
     &.col11 { & > * {@include span(2 of 12); &:nth-child(11n){@include last;} } }
     &.col12 { & > * {@include span(1 of 12); &:nth-child(12n){@include last;} } }
-    
+
     // mobile
     &.col1,
     &.col2,
-    &.col3, 
+    &.col3,
     &.col4,
     &.col5,
     &.col6,
@@ -255,9 +303,9 @@ body {
     &.col9,
     &.col10,
     &.col11,
-    &.col12 { 
+    &.col12 {
         & > * { @media #{$small-only} {@include span(12 of 12);} }
-    } 
+    }
 }
 
 
@@ -268,14 +316,14 @@ body {
     & > *,
     & > * > * {@include clear();}
     & > * {
-        @include span(3 of 12); 
+        @include span(3 of 12);
         &:nth-child(2n){
             @include span(9 of 12 last);
             max-width: $article-max-width;
-            @media #{$medium-down} { @include span(12 of 12);}             
-        } 
-        @media #{$medium-down} { @include span(12 of 12);} 
-    } 
+            @media #{$medium-down} { @include span(12 of 12);}
+        }
+        @media #{$medium-down} { @include span(12 of 12);}
+    }
 }
 
 .layout_4col_8col {
@@ -285,14 +333,14 @@ body {
     & > *,
     & > * > * {@include clear();}
     & > * {
-        @include span(4 of 12); 
+        @include span(4 of 12);
         &:nth-child(2n){
             @include span(8 of 12 last);
             max-width: $article-max-width;
-            @media #{$medium-down} { @include span(12 of 12);}             
-        } 
-        @media #{$medium-down} { @include span(12 of 12);} 
-    } 
+            @media #{$medium-down} { @include span(12 of 12);}
+        }
+        @media #{$medium-down} { @include span(12 of 12);}
+    }
 }
 
 
@@ -326,7 +374,7 @@ body {
     }
 }
 
-// sidenav 
+// sidenav
 
 .layout_sidenav {
     @include wrap($base-max-width, auto);
@@ -351,8 +399,8 @@ body {
     @include span(3 of 12);
     width: 17.713em;
 
-    @media #{$medium-down} { @include span(12 of 12);} 
-    
+    @media #{$medium-down} { @include span(12 of 12);}
+
     &.accordion,
     > .accordion,
     .accordion > div {
@@ -399,7 +447,7 @@ body {
         @include hover() {background: $pch;}
         &.is-active,
         &.active {
-            background: $slate; 
+            background: $slate;
             color: $wht;
             span, i {color: $wht;}
             &:before {
@@ -423,7 +471,7 @@ body {
 
 
 
-// old layout styles 
+// old layout styles
 
 
 .col2, .col3 {@include clear;}
@@ -458,7 +506,7 @@ body {
 // .col3 {
 //     @include span(12 of 12);
 //     section {
-//         @include span(4 of 12 0.7778);      
+//         @include span(4 of 12 0.7778);
 //         &:last-child {@include last;}
 //         @media #{$small-only} {@include span(12 of 12);}
 //     }

@@ -12,7 +12,7 @@
 
 <?php get_header(); ?>
 
-<main class="websitePost">
+<main class="funds">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -31,35 +31,48 @@
     <header class="hero wideTitle">
 
         <section
-            class="hero wideTitle hero_event
+            class="hero wideTitle hero_title_overlay hero_event
                 <?php if($background_color): ?> hero_color <?php endif; ?>
-                <?php if (has_post_thumbnail () ): ?> hero_title_overlay hero_image <?php endif; ?>"
+                <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
             style="
                 <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
                 <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
         >
 
-            <?php if ( $logo ) { ?>
                 <div>
-                    <p class="subtitle">The Website Project</p>
+
+                    <p class="subtitle">Funds</p>
                     <h1><?php the_title(); ?></h1>
+
+                    <div class="wp-block-columns has-2-columns <?php if ( get_field( 'secondary_cta_button' ) == 1 ): ?>hero_ctaButtons<?php endif; ?>">
+
+                    <?php if ( get_field( 'cta_button' ) == 1 ): ?>
+                        <a class="button wp-block-column" href="<?php the_field( 'cta_button_link' ); ?>">
+                            <?php the_field( 'cta_button_text' ); ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ( get_field( 'secondary_cta_button' ) == 1 ): ?>
+                        <a class="button gry wp-block-column" href="<?php the_field( 'secondary_cta_button_link' ); ?>">
+                            <?php the_field( 'secondary_cta_button_text' ); ?>
+                        </a>
+                    <?php endif; ?>
+
                 </div>
-            <?php } elseif ( $icon ) { ?>
-                <div>
-                    <?php echo $icon; ?>
-                </div>
-            <?php } ?>
+
+                <?php if ( $logo ): ?>
+                    <!-- Logo -->
+                <?php elseif ( $icon ): ?>
+                    <div>
+                        <?php echo $icon; ?>
+                    </div>
+                <?php endif; ?>
 
         </section>
 
     </header>
 
-    <section class="blog_content staggered_content article">
-        <?php the_content(); ?>
-    </section>
-
-    <?php comments_template(); ?>
-
+    <?php the_content(); ?>
 
 </main>
 

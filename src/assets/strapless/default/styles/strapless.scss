@@ -182,7 +182,10 @@
 
     margin: 0 auto $scale_3;
 
-    h3 {margin: 0 auto $scale_2;}
+    h3 {
+        margin: 0 auto $scale_2;
+        max-width: $scale_11;
+    }
 
 }
 
@@ -235,7 +238,7 @@
   @include anim($global-animation);
   @include hover() {
       background: $wht;
-      // color: lighten($blk, 30%);
+      color: $slate; // lighten($blk, 30%);
   }
 }
 
@@ -252,28 +255,75 @@
 }
 
 
-main {
-    & > p,
-    & > h1,
-    & > h2,
-    & > h3,
-    & > h4,
-    & > h5,
-    & > p.lead,
-    & > table { max-width: $scale_12; margin-left: auto; margin-right: auto; }
-    h3 {margin-bottom: $scale_2;}
-}
+// main {
+//     & > p,
+//     & > h1,
+//     & > h2,
+//     & > h3,
+//     & > h4,
+//     & > h5,
+//     & > p.lead,
+//     & > table { max-width: $scale_12; margin-left: auto; margin-right: auto; }
+//     h3 {margin-bottom: $scale_2;}
+// }
 
 
 
 
 table,
-.wp-block-group__inner-container {
+.wp-block-group__inner-container,
+.buddypress-wrap {
     max-width: $wide-max-width;
     margin: 0 auto $scale_3;
 }
 
 
+
+// buddyPress
+// =============================
+
+// MARKUP
+
+// Groups
+//
+// div #buddypress .buddypress-wrap
+//     div #item-header .groups-header .single.headers
+//         div #item-actions .group-item-actions
+//             h2
+//             dl .moderators-lists
+//                 dt .moderators-title
+//                 dd .user-list .admins
+//                     ul #group-admins
+//                         li
+//                             a .bp-tooltip
+//                                 img
+//         div #item-header-content
+//             p .highlight .group-status
+//             p .activity
+//             div .group-description
+//                 p
+//     div .bp-wrap
+//         nav #object-nav .main-navs .bp-navs .single-screen-navs .horizontal .groups-nav
+//             ul
+//                 // #$-groups-li = replace $ with home, activity, members, invite, admin
+//                 li #home-groups-li .bp-groups-tab .current .selected
+//                     a #home
+//                 li #members-groups-li .bp-groups-tab
+//                     a #members
+//                         span .count
+//         div #item-body .item-body
+//             div .group-front-page
+//                 div .bp-feedback .custom-homepage-info .info .no-icon
+//                     strong
+//                     p
+//                 div .bp-plugin-widgets
+
+// Profile (site.com/members/membername)
+//
+// div #buddypress .buddypress-wrap
+//     div #item-header .users-header .single.headers
+//         div #cover-image-container
+//             div #header-cover-image
 
 
 .breadcrumbs {
@@ -608,8 +658,8 @@ table,
 // div.wp-block-columns .has-2-columns
 //     div.wp-block-column
 
-
-.wp-block-columns {
+// .wp-block-media-text,
+.wp-block-columns, {
     display: flex;
     justify-content: center;
     // flex-direction: column;
@@ -638,7 +688,9 @@ table,
         padding-right: $scale_1;
     }
 
-    .wp-block-column {
+    .wp-block-column,
+    .wp-block-media-text__media,
+    .wp-block-media-text__content {
         flex: 1;
         // margin-left: 14px;
         margin-right: 1.7rem;
@@ -650,6 +702,7 @@ table,
         max-width: 483.08px; // $article-max-width;
         //        flex-basis: calc(50% - 44px);
         //        flex-grow: 0;
+
         @media #{$small-only} {
             flex: 2;
             margin: auto;

@@ -4,19 +4,19 @@
 
 <!-- SIDENAV - MOBILE SIDE SLIDEOUT MENU -->
 <nav class="accordion_sidenav accordion_sidenav_strapless f-menu sidenav_strapless_JSref">
-	
+
 <!--
 	<div class="sidenav_header">
 	     <a href="/webappstandards.html" data-balloon="Back to All Components" data-balloon-pos="bottom">
 	        <i class="fa fa-chevron-left"></i>
 	        <span>Back</span>
-	    </a> 
+	    </a>
 	    <p class="sidenav_title">
 	        <i class="fa fa-paint-brush"></i> <span>Structure</span>
-        </p> 
-	</div> 
+        </p>
+	</div>
 -->
-    
+
     <div class="leftnav buttonList" data-tabgroup="">
         <!--
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" <?php if ( is_page_template( 'page-events.php' ) ) { ?> class="active" <?php }  ?> >
@@ -72,7 +72,9 @@
         </a>
     </div>
 
-    </nav>
+	<?php /* dynamic_sidebar( 'sidenav-main' ); */ ?>
+
+</nav>
 
 <div class="f-control-bar">
     <div class="f-control f-menu-toggle">

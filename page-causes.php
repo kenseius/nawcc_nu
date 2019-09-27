@@ -4,8 +4,8 @@
 
 <?php get_template_part( 'partials/material', 'sidenav' ); ?>
 
-<!-- <main class="f-container"> -->
-<main>
+<main class="f-container">
+<!-- <main> -->
 
     <!-- TEST -->
 
