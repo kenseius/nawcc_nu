@@ -317,8 +317,8 @@ function my_register_blocks() {
             'name'              => 'options',
             'title'             => __('Hero Options'),
             'description'       => __('A custom hero banner block.'),
-            'render_callback'   => 'options_block_callback',
-            // 'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
+            // 'render_callback'   => 'options_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'layout',
             'icon'              => 'archive',
@@ -341,7 +341,7 @@ function my_register_blocks() {
         // lead sentence
         acf_register_block_type(array(
             'name'              => 'lead',
-            'title'             => __('lead'),
+            'title'             => __('Lead Sentence'),
             'description'       => __('A custom lead block.'),
             'render_callback'   => 'lead_block_callback',
             // 'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero_article.php',
@@ -456,6 +456,19 @@ function my_register_blocks() {
             'mode'              => 'edit',
         ));
 
+		// Details Block
+        acf_register_block_type(array(
+            'name'              => 'detailsBlock',
+            'title'             => __('Details Block'),
+            'description'       => __('A details block for calling out side content.'),
+            'render_callback'   => 'details_block_callback',
+            // 'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero_article.php',
+            // 'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
     }
 }
 
@@ -505,7 +518,7 @@ function my_acf_block_render_callback( $block, $content = '', $is_preview = fals
             <?php echo wp_get_attachment_image( $image, 'full' ); ?>
         </div>
         <style type="text/css">
-            #<?php echo $id; ?> {
+            <?php echo $id; ?> {
                 background: <?php echo $background_color; ?>;
                 color: <?php echo $text_color; ?>;
             }
@@ -531,6 +544,26 @@ function lead_block_callback( $block, $content = '', $is_preview = false) {
 
     <?php
 }
+
+
+
+
+function details_block_callback( $block, $content = '', $is_preview = false) {
+
+    // Load values and assing defaults.
+    $detailsContent = get_field('details_content') ?: 'Write your details_content sentence here...';
+
+    ?>
+
+    <?php if( $detailsContent ): ?>
+		<div class="details">
+        	<?php echo $detailsContent; ?>
+		</div>
+    <?php endif; ?>
+
+    <?php
+}
+
 
 
 
@@ -871,17 +904,34 @@ function events_register_template() {
         array( 'acf/options' ),
         array( 'core/columns', array(), array(
             array( 'core/column', array(), array(
-                array( 'acf/lead', array () ),
+                array( 'acf/dateBlock', array () ),
             ) ),
             array( 'core/column', array(), array(
-                array( 'core/html', array() ),
+                array( 'core/lead', array() ),
             ) ),
-
         ) ),
     );
 }
 add_action( 'init', 'events_register_template' );
 
+
+function events_register_template() {
+    $post_type_object = get_post_type_object( 'events' );
+    $post_type_object->template = array(
+        array( 'mdlr/featured-image' ),
+        array( 'acf/options' ),
+        array( 'core/columns', array(), array(
+            array( 'core/column', array(), array(
+                array( 'acf/dateBlock', array () ),
+				array( 'acf/detailsBlock', array () ),
+            ) ),
+            array( 'core/column', array(), array(
+                array( 'core/lead', array() ),
+            ) ),
+        ) ),
+    );
+}
+add_action( 'init', 'events_register_template' );
 
 
 function classes_register_template() {

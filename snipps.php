@@ -269,7 +269,7 @@ endif;
 
 
 
-
+<?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>
 
 
 

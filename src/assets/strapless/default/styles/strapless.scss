@@ -195,7 +195,8 @@
 .event_content,
 .blog_content {
 
-    &.wide_content {
+    &.wide_content,
+    &.wide_content > .wp-block-group__inner-container {
         & > p,
         & > h1,
         & > h2,
@@ -210,7 +211,10 @@
     //  Staggered Width Content
     // ---------------------------
     //  - headings + .lead have a width of $scale_11 = 45.18rem  //  722.875px
-    &.staggered_content {
+    &.staggered_content,
+    &.staggered_content > .wp-block-group__inner-container  {
+
+        max-width: $scale_11;
 
         // & > h1,
         & > h2,
@@ -659,7 +663,7 @@ table,
 //     div.wp-block-column
 
 // .wp-block-media-text,
-.wp-block-columns, {
+.wp-block-columns {
     display: flex;
     justify-content: center;
     // flex-direction: column;
@@ -720,6 +724,9 @@ table,
             &:nth-child(2) {
                 margin-left: 1.7rem;
                 margin-right: 0;
+                @media #{$small-only} {
+                    margin: auto 0;
+                }
             }
             max-width: 483.08px; // $article-max-width;
             //        flex-basis: calc(50% - 44px);
@@ -741,6 +748,9 @@ table,
             &:nth-child(3) {
                 margin-left: $scale_1;
                 margin-right: 0;
+                @media #{$small-only} {
+                    margin: auto 0;
+                }
             }
             max-width: calc(30% - 22.624px);
             @media #{$small-only} {
@@ -750,8 +760,13 @@ table,
         }
     }
 
+    &:last-of-type {margin: 0 auto;}
+
 }
 
+.bg_grey {
+    &:last-of-type {margin: 0 auto;}
+}
 
 
 // variations
@@ -952,6 +967,26 @@ main.events {
 }
 
 
+a.button.hero_ctaButton,
+.hero_ctaButton {
+    @include type-setting(1);
+    font-weight: normal;
+    flex: 1;
+    align-items: flex-start;
+    margin: 0 auto $scale_4 0;
+    max-width: $scale_8; // 483.08px; // $article-max-width;
+
+    @media #{$small-only} {
+        flex: 2;
+        margin: 0 auto $scale_2;
+        max-width: $article-max-width;
+        width: 100%;
+    }
+
+}
+
+
+
 .websitePage {
     .wp-block-columns .has-2-columns,
     .wp-block-columns {
@@ -1018,6 +1053,11 @@ main.events {
 
 
 
+main.post_content,
+main.staggered_content {
+    margin: 0 auto;
+}
+
 
 
 main.funds {
@@ -1034,7 +1074,7 @@ main.funds {
 
     // intended global typography styles
 
-    h1, h2, h3, p {
+    h1, & > h2, h3, p {
         max-width: $wide-max-width;
         margin: auto;
     }
@@ -1512,6 +1552,26 @@ table {
 }
 
 
+
+
+
+//  VIDEOS
+// =========================
+
+// wp / vimeo embed
+
+.wp-block-embed.is-type-video {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 60%;
+    width: 100%;
+}
+.wp-block-embed.is-type-video iframe {
+    height: 100% !important;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100% !important;
+}
 
 
 

@@ -138,6 +138,23 @@ $base-font-size:        1rem; // = 16px
 // ---------------------------------------
 
 
+
+// values for wp | select - acf
+// 63.884 : $scale-value_12
+// 45.180 : $scale-value_11
+// 31.952 : $scale-value_10
+// 22.597 : $scale-value_9
+// 15.981 : $scale-value_8
+// 11.302 : $scale-value_7
+// 7.993 : $scale-value_6
+// 5.653 : $scale-value_5
+// 3.998 : $scale-value_4
+// 2.827 : $scale-value_3
+// 1.999 : $scale-value_2
+// 1.414 : $scale-value_1
+// 1 : $scale-value_0
+// 0.707 : $scale-value_small
+
 $scale-value_12: 63.884; // 1022.146px
 $scale-value_11: 45.18;  //  722.875px
 $scale-value_10: 31.952; //  511.227px
@@ -153,21 +170,20 @@ $scale-value_1: 1.414; // 22.624px
 $scale-value_0: 1;     // 16px
 $scale-value_small: 0.707;
 
- 
-$scale_12: ($scale-value_12) * 1rem; 
+$scale_12: ($scale-value_12) * 1rem;
 $scale_11: ($scale-value_11) * 1rem; // 45.18rem;  //  722.875px
 $scale_10: ($scale-value_10) * 1rem; // 31.952rem; // 511.227px
-$scale_9: ($scale-value_9) * 1rem; 
-$scale_8: ($scale-value_8) * 1rem; 
-$scale_7: ($scale-value_7) * 1rem; 
-$scale_6: ($scale-value_6) * 1rem; 
+$scale_9: ($scale-value_9) * 1rem;
+$scale_8: ($scale-value_8) * 1rem;
+$scale_7: ($scale-value_7) * 1rem;
+$scale_6: ($scale-value_6) * 1rem;
 $scale_5: ($scale-value_5) * 1rem; // 90.441px
 $scale_4: ($scale-value_4) * 1rem; // 63.961px
 $scale_3: ($scale-value_3) * 1rem; // 45.234px
 $scale_2: ($scale-value_2) * 1rem; // 31.99px
 $scale_1: ($scale-value_1) * 1rem; // 22.624px
 $scale_0: ($scale-value_0) * 1rem; // 16px
-$scale_small: ($scale-value_small) * 1rem; 
+$scale_small: ($scale-value_small) * 1rem;
 
 
 $h1: $scale_5; // 5.653 = 90.441px
@@ -177,14 +193,14 @@ $h4: $scale_2; // 1.999 = 31.99px
 $h5: $scale_1; // 1.414 = 22.624px
 $pLead: $scale_1; // 1.414 = 22.624px
 $p1: $scale_0; // 16px
-$small: $scale_small; 
+$small: $scale_small;
 
 
 $base-width:            100%;
-$base-max-width:        $scale_11; 
+$base-max-width:        $scale_11;
 $article-max-width:     $scale_10; // 31.952rem = 511.227px
 $text-max-width:        $article-max-width;
-$wide-max-width:        $scale_12; 
+$wide-max-width:        $scale_12;
 
 $base-border:           0.2rem solid $gry_muted;// $grylite;
 
@@ -220,7 +236,7 @@ $base-horizontal-padding:       1.999rem;
 $base-horizontal-small:         0.707rem;
 $base-vertical-padding:         $base-font-size * 5.653;
 $base-vertical-padding-small:   $base-font-size * 2.827; // 2;
-$base-vertical-scale:           1.414;                                
+$base-vertical-scale:           1.414;
 $base-vertical:                 1.414rem;
 
 $base-padding-value:            $scale-value_1; // 1.414

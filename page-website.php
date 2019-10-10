@@ -50,6 +50,56 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'sing
 
 </header>
 
+<section class="hero wideTitle scroll-animations">
+
+    <section
+        class="hero wideTitle hero_title_overlay hero_event
+            <?php if($background_color): ?> hero_color <?php endif; ?>
+            <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
+        style="
+            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
+            <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
+    >
+
+        <?php if ( $logo ) { ?>
+            <div class="animated">
+                <p class="subtitle">HQ Projects</p>
+                <h1><?php the_title(); ?></h1>
+                <a class="button" href="http://wp.nawcc.org/home/">Explore The Beta Site</a>
+            </div>
+        <?php } elseif ( $icon ) { ?>
+            <div class="animated">
+                <?php echo $icon; ?>
+            </div>
+        <?php } ?>
+
+    </section>
+
+    <section
+        class="hero wideTitle hero_title_overlay hero_event
+            <?php if($background_color): ?> hero_color <?php endif; ?>
+            <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
+        style="
+            <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
+            <?php if (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?><?php else: ?><?php echo $background_image; ?>');<?php endif; ?>"
+    >
+
+        <?php if ( $logo ) { ?>
+            <div class="animated">
+                <p class="subtitle">HQ Projects</p>
+                <h1><?php the_title(); ?></h1>
+                <a class="button" href="http://wp.nawcc.org/home/">Explore The Beta Site</a>
+            </div>
+        <?php } elseif ( $icon ) { ?>
+            <div class="animated">
+                <?php echo $icon; ?>
+            </div>
+        <?php } ?>
+
+    </section>
+
+</section>
+
 
 
 <!--

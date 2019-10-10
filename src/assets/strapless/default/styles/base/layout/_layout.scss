@@ -199,8 +199,22 @@ body {
         float: left;
         &:nth-child(even) {float: right;}
 
-        & > img {max-width: $article-max-width;}
+        & > img {
+            max-width: $article-max-width;
+            margin: auto;
+            padding: $scale_3 $scale_3 $scale_3 0;
+        }
 
+    }
+
+    & > div.heroContent,
+    .heroContent {padding-top: $scale_4;}
+
+    &.heroLogoContent {
+        & > div.heroLogo {width: 30%;}
+        & > div.heroContent, .heroContent {width: 70%;}
+        // & > div.heroImage {width: $scale_8;}
+        // & > div.heroContent, .heroContent {width: $scale_12;}
     }
 
 }
