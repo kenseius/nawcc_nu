@@ -431,12 +431,12 @@ function my_register_blocks() {
 
         // icon title block
         acf_register_block_type(array(
-            'name'              => 'Date Block',
+            'name'              => 'dateBlock',
             'title'             => __('dateBlock'),
             'description'       => __('A date block for showing upcoming things'),
             // 'render_callback'   => 'postList_block_callback',
             'render_template'   => get_template_directory() . '/partials/blockTemplates/block-dateBlock.php',
-            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            // 'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'formatting',
             'icon'              => 'archive',
             'mode'              => 'edit',
@@ -904,45 +904,50 @@ function events_register_template() {
         array( 'acf/options' ),
         array( 'core/columns', array(), array(
             array( 'core/column', array(), array(
-                array( 'acf/dateBlock', array () ),
+				array( 'core/paragraph', array(
+					'placeholder' => 'Place the dateBlock, detailsBlock and Button in this column'
+				) ),
             ) ),
             array( 'core/column', array(), array(
-                array( 'core/lead', array() ),
+                array( 'acf/lead', array() ),
             ) ),
+
         ) ),
     );
 }
 add_action( 'init', 'events_register_template' );
-
-
-function events_register_template() {
-    $post_type_object = get_post_type_object( 'events' );
-    $post_type_object->template = array(
-        array( 'mdlr/featured-image' ),
-        array( 'acf/options' ),
-        array( 'core/columns', array(), array(
-            array( 'core/column', array(), array(
-                array( 'acf/dateBlock', array () ),
-				array( 'acf/detailsBlock', array () ),
-            ) ),
-            array( 'core/column', array(), array(
-                array( 'core/lead', array() ),
-            ) ),
-        ) ),
-    );
-}
-add_action( 'init', 'events_register_template' );
-
 
 function classes_register_template() {
     $post_type_object = get_post_type_object( 'classes' );
     $post_type_object->template = array(
         array( 'mdlr/featured-image' ),
         array( 'acf/options' ),
-        array( 'acf/lead'),
+        array( 'core/columns', array(), array(
+            array( 'core/column', array(), array(
+				array( 'core/paragraph', array(
+					'placeholder' => 'Place the dateBlock, detailsBlock and Button in this column'
+				) ),
+            ) ),
+            array( 'core/column', array(), array(
+                array( 'acf/lead', array() ),
+            ) ),
+
+        ) ),
     );
 }
 add_action( 'init', 'classes_register_template' );
+
+
+//
+// function classes_register_template() {
+//     $post_type_object = get_post_type_object( 'classes' );
+//     $post_type_object->template = array(
+//         array( 'mdlr/featured-image' ),
+//         array( 'acf/options' ),
+//         array( 'acf/lead'),
+//     );
+// }
+// add_action( 'init', 'classes_register_template' );
 
 
 

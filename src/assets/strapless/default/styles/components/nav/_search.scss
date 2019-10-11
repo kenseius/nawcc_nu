@@ -199,6 +199,196 @@ form.search {
 
 
 
+// edit font rendering -> tip: use for light text on dark backgrounds
+@mixin fontSmooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// crop top space on text elements - caused by line height
+@mixin lhCrop($line-height, $capital-letter: 1) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
+  }
+}
+
+// CSS triangle
+@mixin triangle ($direction: up, $width: 12px, $color: red) {
+  width: 0;
+  height: 0;
+  border: $width solid transparent;
+
+  @if( $direction == left ) {
+    border-right-color: $color;
+  } @else if( $direction == right ) {
+    border-left-color: $color;
+  } @else if( $direction == down ) {
+    border-top-color: $color;
+  } @else {
+    border-bottom-color: $color;
+  }
+}
+
+// reset user agent style
+@mixin reset {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  appearance: none;
+}
+
+// --------------------------------
+
+// Color functions
+
+// --------------------------------
+
+// define HSL color variable
+@mixin defineColorHSL($color, $hue, $saturation, $lightness){
+  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");#{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
+}
+
+// return color with different opacity value
+@function alpha($color, $opacity){
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color+'-h'});
+  $color-s: var(#{$color+'-s'});
+  $color-l: var(#{$color+'-l'});
+  @return hsla($color-h, $color-s, $color-l, $opacity);
+}
+
+// return color with different lightness value
+@function lightness($color, $lightnessMultiplier){
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color+'-h'});
+  $color-s: var(#{$color+'-s'});
+  $color-l: var(#{$color+'-l'});
+  @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
+}
+
+// replace substring with another string
+// credits: https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+// --------------------------------
+
+// Edit Units
+
+// --------------------------------
+
+@mixin spaceUnit($space-unit) { // edit the space unit on a component level
+  --space-unit:  #{$space-unit};
+  --space-xxxxs: calc(0.125 * #{$space-unit});
+  --space-xxxs:  calc(0.25 * #{$space-unit});
+  --space-xxs:   calc(0.375 * #{$space-unit});
+  --space-xs:    calc(0.5 * #{$space-unit});
+  --space-sm:    calc(0.75 * #{$space-unit});
+  --space-md:    calc(1.25 * #{$space-unit});
+  --space-lg:    calc(2 * #{$space-unit});
+  --space-xl:    calc(3.25 * #{$space-unit});
+  --space-xxl:   calc(5.25 * #{$space-unit});
+  --space-xxxl:  calc(8.5 * #{$space-unit});
+  --space-xxxxl: calc(13.75 * #{$space-unit});
+  --component-padding: var(--space-md);
+}
+
+@mixin textUnit($text-unit, $text-scale-ratio: 1.2) { // edit the text unit and the type scale on a component level
+  --text-xs: calc((#{$text-unit} / #{$text-scale-ratio}) / #{$text-scale-ratio});
+  --text-sm: calc(var(--text-xs) * #{$text-scale-ratio});
+  --text-md: calc(var(--text-sm) * #{$text-scale-ratio} * #{$text-scale-ratio});
+  --text-lg: calc(var(--text-md) * #{$text-scale-ratio});
+  --text-xl: calc(var(--text-lg) * #{$text-scale-ratio});
+  --text-xxl: calc(var(--text-xl) * #{$text-scale-ratio});
+  --text-xxxl: calc(var(--text-xxl) * #{$text-scale-ratio});
+  font-size: $text-unit;
+}
+
+
+
+
+
+
+
+
+
+
+
+:root, [data-theme="default"] {
+  // main
+  @include defineColorHSL(--color-primary-darker, 220, 90%, 36%);
+  @include defineColorHSL(--color-primary-dark, 220, 90%, 46%);
+  @include defineColorHSL(--color-primary, 220, 90%, 56%);
+  @include defineColorHSL(--color-primary-light, 220, 90%, 66%);
+  @include defineColorHSL(--color-primary-lighter, 220, 90%, 76%);
+
+  // black + white
+  @include defineColorHSL(--color-black, 240, 8%, 12%);
+  @include defineColorHSL(--color-white, 0, 0%, 100%);
+
+  // color contrasts
+  @include defineColorHSL(--color-bg, 0, 0%, 100%);
+  @include defineColorHSL(--color-contrast-lower, 0, 0%, 95%);
+  @include defineColorHSL(--color-contrast-low, 240, 1%, 83%);
+  @include defineColorHSL(--color-contrast-medium, 240, 1%, 48%);
+  @include defineColorHSL(--color-contrast-high, 240, 4%, 20%);
+  @include defineColorHSL(--color-contrast-higher, 240, 8%, 12%);
+}
+
+[data-theme] {
+  background-color: var(--color-bg);
+  color: var(--color-contrast-high);
+}
+
+[data-theme="dark"] {
+	@supports(--css: variables) {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		/* color primary */
+		@include defineColorHSL(--color-primary-darker, 355, 80%, 44%);
+  @include defineColorHSL(--color-primary-dark, 355, 80%, 54%);
+  @include defineColorHSL(--color-primary, 355, 90%, 61%);
+  @include defineColorHSL(--color-primary-light, 355, 90%, 68%);
+  @include defineColorHSL(--color-primary-lighter, 356, 89%, 93%);
+		/* color contrast */
+		@include defineColorHSL(--color-bg, 240, 8%, 12%);
+  @include defineColorHSL(--color-contrast-lower, 240, 5%, 18%);
+  @include defineColorHSL(--color-contrast-low, 240, 3%, 27%);
+  @include defineColorHSL(--color-contrast-medium, 240, 1%, 57%);
+  @include defineColorHSL(--color-contrast-high, 0, 0%, 89%);
+  @include defineColorHSL(--color-contrast-higher, 0, 0%, 100%);
+	}
+}
+
+[data-theme="soft"] {
+	@supports(--css: variables) {
+		/* color primary */
+		@include defineColorHSL(--color-bg, 221, 78%, 93%);
+  @include defineColorHSL(--color-contrast-lower, 222, 46%, 88%);
+  @include defineColorHSL(--color-contrast-low, 222, 20%, 77%);
+  @include defineColorHSL(--color-contrast-medium, 223, 6%, 45%);
+  @include defineColorHSL(--color-contrast-high, 231, 7%, 19%);
+  @include defineColorHSL(--color-contrast-higher, 240, 8%, 12%);
+	}
+}
+
+
+
+
 
 
 
