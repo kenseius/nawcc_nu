@@ -211,12 +211,17 @@ body {
     .heroContent {padding-top: $scale_4;}
 
     &.heroLogoContent {
-        & > div.heroLogo {width: 30%;}
-        & > div.heroContent, .heroContent {width: 70%;}
+        // padding: $scale_4 0;
+        & > div.hero_Logo {width: 30%;}
+        & > div.hero_Content, .hero_Content {width: 70%;}
         // & > div.heroImage {width: $scale_8;}
         // & > div.heroContent, .heroContent {width: $scale_12;}
     }
 
+}
+
+.hero_Padding {
+    padding: $scale_4 0 $scale_1;
 }
 
 

@@ -214,20 +214,32 @@
     &.staggered_content,
     &.staggered_content > .wp-block-group__inner-container  {
 
-        max-width: $scale_11;
+        //vmax-width: $scale_11;
+
+        // & > header,
+        & > header.hero.wideTitle {
+            max-width: 100vw;
+            width: 100vw;
+        }
 
         // & > h1,
-        & > h2, 
+        & > h2,
         & > h3,
         & > h4,
         & > h5,
         & > p.lead,
-        & > table { max-width: $scale_11; }
+        & > table,
+        & > .buttonList { max-width: $scale_11; }
+
+        & > .buttonList {margin-left: auto; margin-right: auto;}
 
         & > p, ul { max-width: $article-max-width; }
 
     }
 
+    &.staggered_content > .wp-block-group__inner-container  {
+        max-width: $scale_11;
+    }
 }
 
 .postList,
@@ -777,7 +789,12 @@ main.events {
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    header {width: 100%;}
+    width: 100%;
+    header,
+    header.hero_image {
+        width: 100%;
+        width: 100vw;
+    }
     .article_title {
         padding: $scale_4 0 $scale_4;
         min-height: 0;
@@ -1253,6 +1270,21 @@ ul.wp-block-gallery,
 
     &.has-parallax {background-attachment: fixed;}
 
+}
+
+.wideTitle,
+header.hero.widetitle,
+.hero.widetitle {
+    width: 100vw !important;
+}
+
+
+.heroFeaturedIntro {
+    // min-height: $scale_11;
+    @media #{$extra-large-down} {
+        min-height: auto;
+        padding: $scale_2;
+    }
 }
 
 

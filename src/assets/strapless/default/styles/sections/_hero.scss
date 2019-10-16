@@ -112,13 +112,14 @@
     &.bg_clockwork {color: $wht;}
 
     &.hero_event {
+        h1 {margin: 0 auto $scale_2;}
         .date {
             display: inline-block;
             font-size: $h4;
             padding: 5px 1rem; // 5px;
             background: #fafafa;
             color: $slate;
-            margin: 0 auto auto 0;
+            margin: 0 auto $scale_2; // 0 auto auto 0;
             text-align: left; // center
             // max-width: $article-max-width;
         }

@@ -436,7 +436,7 @@ function my_register_blocks() {
             'description'       => __('A date block for showing upcoming things'),
             // 'render_callback'   => 'postList_block_callback',
             'render_template'   => get_template_directory() . '/partials/blockTemplates/block-dateBlock.php',
-            // 'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'formatting',
             'icon'              => 'archive',
             'mode'              => 'edit',
@@ -445,8 +445,8 @@ function my_register_blocks() {
 
         // icon button block
         acf_register_block_type(array(
-            'name'              => 'Icon Button Block',
-            'title'             => __('iconButton'),
+            'name'              => 'iconButton',
+            'title'             => __('Icon Button Block'),
             'description'       => __('A date block for showing upcoming things'),
             // 'render_callback'   => 'postList_block_callback',
             'render_template'   => get_template_directory() . '/partials/blockTemplates/block-iconButton.php',
@@ -463,7 +463,7 @@ function my_register_blocks() {
             'description'       => __('A details block for calling out side content.'),
             'render_callback'   => 'details_block_callback',
             // 'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero_article.php',
-            // 'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'layout',
             'icon'              => 'archive',
             'mode'              => 'edit',
@@ -552,11 +552,15 @@ function details_block_callback( $block, $content = '', $is_preview = false) {
 
     // Load values and assing defaults.
     $detailsContent = get_field('details_content') ?: 'Write your details_content sentence here...';
+    $detailsTitle = get_field('details_title') ?: 'An h3 for this section';
 
     ?>
 
     <?php if( $detailsContent ): ?>
 		<div class="details">
+			<?php if( $detailsTitle ): ?>
+				<h3><?php echo $detailsTitle; ?></h3>
+			<?php endif; ?>
         	<?php echo $detailsContent; ?>
 		</div>
     <?php endif; ?>

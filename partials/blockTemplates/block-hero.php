@@ -5,18 +5,20 @@
  */
 
     // Load values and assing defaults.
-    // $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
-    $logo             = get_field( 'post_logo' );
-    $icon             = get_field( 'post_icon' );
-    // $background_image = get_field( 'background_image', $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-    $background_image = get_field( 'background_image', $post->ID );
-    $background_color = get_field( 'background_color' ) ?: '#ffffff';
-
+    $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    $icon               = get_field( 'post_icon' );
+    $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
     $text_color         = get_field( 'text_color' );
-
     $marginBottom       = get_field( 'margin_Bottom' );
 
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+    $background_image   = get_field( 'background_image');
+	$thumb_id = get_post_thumbnail_id();
+	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+	$image = $thumb_url_array[0];
+
+    // doesn't work for some reason? todo: remove if no errors from thumb_id code
+    // $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
 
     // $subtitle_link_items =  get_field( 'subtitle_link' ); // for multiple link items
 
@@ -24,6 +26,8 @@
 
 <header
     class="hero wideTitle
+        <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
+        <?php if ( get_field( 'hero_Padding' ) == 1 ): ?>hero_Padding<?php endif; ?>
         <?php if( get_field( 'overlay' ) == 1 ): ?> hero_title_overlay<?php endif; ?>
         <?php if($background_color): ?> hero_color <?php endif; ?>
         <?php if (has_post_thumbnail () ): ?> hero_image <?php endif; ?>"
@@ -31,23 +35,23 @@
         <?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
         <?php if($background_image): ?>
             background-image: url(<?php echo $background_image; ?>);
-            <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image[0]; ?>');
+            <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
         <?php endif; ?>
         <?php if($marginBottom): ?>margin: 0 auto <?php echo $marginBottom; ?>rem;<?php endif; ?>"
 >
 
 <?php if ( $logo ): ?>
     <div class="twoCol heroLogoContent">
-        <div class="heroLogo">
+        <div class="hero_Logo">
             <img src="<?php echo $logo; ?>">
         </div>
-        <div class="heroContent">
+        <div class="hero_Content">
 <?php elseif ( $icon ): ?>
     <div class="twoCol heroLogoContent">
-        <div class="heroLogo">
+        <div class="hero_Logo">
             <?php echo $icon; ?>
         </div>
-        <div class="heroContent">
+        <div class="hero_Content">
 <?php else: ?>
     <div>
 <?php endif; ?>
@@ -68,6 +72,10 @@
         <?php endif; ?>
 
         <h1 <?php if ( $text_color ): ?>style="color:<?php echo $text_color; ?>;"<?php endif; ?> ><?php the_title(); ?></h1>
+
+        <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>
+            <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?></p>
+        <?php endif; ?>
 
         <?php if ( get_field( 'secondary_cta_button' ) == 1 ): ?><div class="wp-block-columns has-2-columns hero_ctaButtons"><?php endif; ?>
 

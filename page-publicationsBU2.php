@@ -37,7 +37,7 @@ $the_query = new WP_Query( $args );
         <div class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
             <div class="wp-block-media-text__content">
                 <h2>Publications</h2>
-                <p class="has-large-font-size">The team that brings you <span class="italic">The Watch & Clock Bulletin, The Mart & Watchnews</span></p>
+                <p class="has-large-font-size">NAWCC's Official Horological magazine.</p>
                 <!--
                 <div class="buttonList">
                     <a href="#">

@@ -38,9 +38,13 @@ figure {
     & > img {
         margin: 0 auto;
     }
+    &.wp-block-image {
+        & > figcaption {
+            max-width: $scale_11;
+            margin: 0 auto;
+        }
+    }
 }
-
-
 
 
 
