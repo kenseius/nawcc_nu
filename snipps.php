@@ -2,7 +2,18 @@
 
 
 
-<!-- Forms - Inline Icons -->
+media queries:
+
+
+    @media #{$large-down} { @include type-setting(5); }
+    @media #{$small-down} { @include type-setting(5); }
+
+
+
+
+
+
+<!-- Forms - Inline Icons --=\
 
 
 <div class="formgroup socialMedia">

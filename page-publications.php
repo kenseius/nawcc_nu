@@ -34,8 +34,8 @@ $the_query = new WP_Query( $args );
             $image = $thumb_url_array[0];
         ?>
 
-        <div class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
-            <div class="wp-block-media-text__content">
+        <div class="heroFeaturedIntro marginBottom wp-block-media-text alignwide has-media-on-the-right">
+            <div class="wp-block-media-text__content" style="background: #fff;">
                 <h2>Publications</h2>
                 <p class="has-large-font-size">The team that brings you <span class="italic">The Watch & Clock Bulletin, The Mart & Watchnews</span></p>
                 <!--
@@ -55,7 +55,11 @@ $the_query = new WP_Query( $args );
                 background-image: url(<?php echo $background_image; ?>);
                 <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
             <?php endif; ?>">
-                <h2 class="has-large-font-size txt-wht"><?php the_title(); ?></h2>
+				<p class="subtitle" style="color:#eaeaea; font-size: 1rem;">Featured Article</p>
+                <a class="link" href="<?php the_permalink(); ?>">
+					<h2 style="font-size: 3rem; font-weight: normal"><?php the_title(); ?></h2>
+				</a>
+				<!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
             </div>
         </div>
 
@@ -67,124 +71,12 @@ $the_query = new WP_Query( $args );
 
 
 
-<div class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
-    <div class="wp-block-media-text__content hero hero_image hero_title_overlay" style="<?php if($background_image): ?>
-        background-image: url(<?php echo $background_image; ?>);
-        <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
-    <?php endif; ?>">
-        <p class="has-large-font-size">The National Watch &amp; Clock Museum</p>
-    </div>
-    <div class="wp-block-media-text__content">
-        <h2><?php the_title(); ?></h2>
-        <p class="has-large-font-size">The National Watch &amp; Clock Museum</p>
-        <button class="button">Button</button>
-    </div>
-</div>
-
-<div class="wp-block-media-text alignwide has-media-on-the-right">
-    <figure class="wp-block-media-text__media">
-        <img src="http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/matt-seymour-1489876-unsplash-1024x1024.jpg" alt="" class="wp-image-560" srcset="http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/matt-seymour-1489876-unsplash-1024x1024.jpg 1024w, http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/matt-seymour-1489876-unsplash-150x150.jpg 150w, http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/matt-seymour-1489876-unsplash-300x300.jpg 300w, http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/matt-seymour-1489876-unsplash-768x768.jpg 768w, http://localhost/nawcc_wpLocal/wp-content/uploads/2019/05/matt-seymour-1489876-unsplash.jpg 1499w" sizes="(max-width: 1024px) 100vw, 1024px">
-    </figure>
-    <div class="wp-block-media-text__content hero_image" style="<?php if($background_image): ?>
-        background-image: url(<?php echo $background_image; ?>);
-        <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
-    <?php endif; ?>">
-        <p class="has-large-font-size">The National Watch &amp; Clock Museum</p>
-    </div>
-</div>
+<section class="searchbar post_content wide_content">
+	<h3>Browse Publications</h3>
+    <?php get_search_form(); ?>
 
 
 
-<!-- ==============================
-    Hero
-=================================== -->
-<?php $background_color = get_field( 'background_color' ) ?: '#fafafa'; ?>
-<?php if($background_color): ?>
-<header class="hero hero_color hero_loggedInPages" style="background-color:<?php echo $background_color; ?>">
-<?php endif; ?>
-    <h1><?php the_title(); ?></h1>
-</header>
-
-
-
-<?php
-
-// args
-$args = array(
-	'numberposts'	=> 1,
-	'post_type'		=> 'publications',
-    'posts_per_page'=> '1',
-    'post_count'    => '1',
-//	'meta_key'		=> 'location',
-//	'meta_value'	=> 'Melbourne'
-);
-
-
-// query
-$the_query = new WP_Query( $args );
-
-
-// Set up fields.
-// $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
-// $icon             = get_field( 'post_icon' );
-// $background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-// $background_color = get_field( 'background_color' ) ?: '#fafafa';
-
-$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
-
-
-?>
-<?php if( $the_query->have_posts() ): ?>
-
-	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-    <?php
-        // $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
-        // $background_image = get_field( 'background_image', $post->ID );
-	    $background_image   = get_field( 'background_image');
-		$thumb_id = get_post_thumbnail_id();
-		$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
-		$image = $thumb_url_array[0];
-    ?>
-
-    <!-- Featured Post -->
-    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
-        <div>
-            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
-            <h2><?php the_title(); ?></h2>
-            <div class="btnBar">
-                <a href="<?php the_permalink(); ?>" class="button ">Read More</a>
-            </div>
-        </div>
-        <?php $post_logo = get_field( 'post_logo' ); ?>
-        <?php if ( $post_logo ) { ?>
-        <div>
-            <img src="<?php echo $post_logo['url']; ?>" alt="<?php echo $post_logo['alt']; ?>" />
-        </div>
-        <?php } ?>
-    </article>
-
-	<?php endwhile; ?>
-
-<?php endif; ?>
-
-<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-
-
-
-
-
-
-
-
-
-
-    <section class="searchbar">
-        <?php get_search_form(); ?>
-    </section>
-
-
-<?php get_template_part( 'partials/blockTemplates/block', 'linkList' ); ?>
 
 
 <?php
@@ -251,10 +143,6 @@ $background_image = get_field( 'background_image', $post->ID );
 <?php endif; ?>
 
 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-
-
-
-</section>
 
 
 </main>

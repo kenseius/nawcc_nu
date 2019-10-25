@@ -66,7 +66,7 @@ ul.accordion li,  // for fabricator sidenav
     }
 
     .accordion_title {
-        @include type-setting(2); 
+        @include type-setting(2);
         font-weight: bold;
     }
 
@@ -100,14 +100,14 @@ ul.accordion li,  // for fabricator sidenav
     }
 
     &.accordion_uiComponents {
-        // border-top: 3px solid $gryslvr; 
+        // border-top: 3px solid $gryslvr;
         // padding-top: 1.778rem;
         .accordion_title {color: lighten($slate,20%);}
     }
 
     @media #{$extra-large-down} { padding-left: $base-vertical; padding-right: $base-vertical; }
 
-} 
+}
 
 // this is the content container. adjust depending on your usage.
 // - If you have multiple types of content, use <section class="accordion"> <div> <!-- Whatever Content -->
@@ -118,7 +118,7 @@ ul.accordion li,  // for fabricator sidenav
 .accordion > p:not(.accordion_title),
 .faqs .accordion > p:not(.accordion_title) {
     position: relative;
-    max-height: 10000px;
+    max-height: 999999px; // 10000px;
     margin: 0 0 $base-horizontal-padding;
     z-index: 2;
     transform: translate( 0 , 0 );
@@ -127,7 +127,7 @@ ul.accordion li,  // for fabricator sidenav
     @extend .transition;
 }
 
-// sidenav 
+// sidenav
 // when using the accordion in the sidenav menu
 .accordion_sidenav {
     .accordion > a,
@@ -149,7 +149,7 @@ ul.accordion li,  // for fabricator sidenav
         span {
             display : inline-block;
             line-height: 1.778;
-        }  
+        }
 
         i {
             display : inline-block; // = .fa is already inline-block
@@ -176,16 +176,16 @@ ul.accordion li,  // for fabricator sidenav
         //     color: $slate;
         //     span {background: $slate;}
         // }
-        
+
         &.active {
             background: $slate;
             color: $wht;
-            span, label {color: $wht;} 
+            span, label {color: $wht;}
             // font-weight: 700; // 400
         }
     }
-    .accordion { 
-        & > div {margin: 0;} 
+    .accordion {
+        & > div {margin: 0;}
         @media #{$extra-large-down} { padding-left: 0; padding-right: 0; }
     }
     i:not(.fa) {

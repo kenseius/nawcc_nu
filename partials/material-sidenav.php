@@ -72,7 +72,7 @@
         </a>
     </div>
 
-	<?php /* dynamic_sidebar( 'sidenav-main' ); */ ?>
+	<?php dynamic_sidebar( 'sidenav-main' ); ?>
 
 </nav>
 

@@ -1,8 +1,8 @@
 // ==========================
-//  
-//   Hyperlinks 
+//
+//   Hyperlinks
 //  -----------------------------
-//   - for styling hyperlinks on a global level 
+//   - for styling hyperlinks on a global level
 //   - or, styling exceptions to global a styles
 //
 // ==========================
@@ -16,8 +16,9 @@ $hyperlink_Color: $bludrk;
 //    section:not(.postList) > a,
 //    div:not(.postList) > a,
 //    section:not(.buttonList) > a,
-//    div:not(.buttonList) > a, 
-.article a {
+//    div:not(.buttonList) > a,
+.article a,
+.hyperlink {
     display: inline-block;
     padding: 1.333px 1.333px 0;
     border-bottom: 1.333px solid $hyperlink_Color;
@@ -25,12 +26,24 @@ $hyperlink_Color: $bludrk;
     @include hover() {background: $hyperlink_Color; color: $wht;}
 }
 
+.link {
+    display: inline-block;
+    color: $color_white;
+    &.wht {color: $color_white;}
+    &.drk {color: $color_black;}
+    // border-bottom: 1.333px solid transparent;
+    @include hover() {
+        background: $color_orange; // $hyperlink_Color; 
+        color: $wht;
+    }
+
+}
 
 // old: delete this probably
 
 // a {
 //     color: $bluer;
-//     background: lighten($ylw,25%); 
+//     background: lighten($ylw,25%);
 //     color: $slate;
 //     @include hover() {background: $wht; color: darken($slate,15%);}
 //     border-bottom: 2px solid $ylw; color: $slate;
@@ -40,4 +53,3 @@ $hyperlink_Color: $bludrk;
 //     }
 //     @include hover() {background-color: $ylw; color: darken($slate,15%);}
 // }
-

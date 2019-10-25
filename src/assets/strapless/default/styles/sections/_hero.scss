@@ -31,13 +31,17 @@
     &.hero_short {min-height: $section-height-short;}
 
     text-align: left;
-    h1, h2, p {text-align: left;}
+    h1, h2, p { text-align: left; }
+
+    h1 { @media #{$medium-down} { @include type-setting(3); } }
 
     .outline {margin: auto;}
     & > div {
         margin: auto;
         width: 100%;
         max-width: $scale_12;
+        @media #{$medium-down} { padding-left: $scale_1; padding-right: $scale_1; }
+        @media #{$small-only} { padding-left: $scale_0; padding-right: $scale_0; }
     }
 
     // & > div:not(.search) {max-width: $article-max-width;}

@@ -14,16 +14,16 @@
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
+    <?php get_template_part( 'partials/blocks', 'hero_article' ); ?>
 
-<?php get_template_part( 'partials/material', 'sidenav' ); ?>
-
-<main class="f-container">
-
-    <div class="post_content staggered_content">
-        <?php the_content(); ?>
-    </div>
-
-</main>
+    <section class="wp-block-columns leftcol_8">
+        <div class="wp-block-column">
+            <?php dynamic_sidebar( 'sidenav-main' ); ?>
+        </div>
+        <div class="post_content staggered_content wp-block-column">
+            <?php the_content(); ?>
+        </div>
+    </section>
 
 <?php endwhile; else: ?>
   <p><?php _e('Sorry, there are no posts. - single.php'); ?></p>

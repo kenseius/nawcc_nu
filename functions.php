@@ -114,6 +114,14 @@ add_editor_style( '' . get_template_directory_uri() . '/dist/assets/strapless/st
 
 
 
+// allow admin plugins js
+add_action( 'admin_enqueue_scripts', 'my_scripts_method' );
+
+
+
+
+
+
 //===============================================
 //     ----- COMMENTS ------
 //-----------------------------------------------
@@ -292,7 +300,7 @@ function my_register_blocks() {
             'title'             => __('hero'),
             'description'       => __('A custom hero banner block.'),
             // 'render_callback'   => 'my_acf_block_render_callback',
-            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero.php',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero_article.php',
             'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
             'category'          => 'layout',
             'icon'              => 'archive',
@@ -469,6 +477,33 @@ function my_register_blocks() {
             'mode'              => 'edit',
         ));
 
+		// Accordion Block
+        acf_register_block_type(array(
+            'name'              => 'accordionBlock',
+            'title'             => __('Accordion Block'),
+            'description'       => __('A details block for calling out side content.'),
+            'render_callback'   => 'accordion_block_callback',
+            // 'render_template'   => get_template_directory() . '/partials/blockTemplates/block-hero_article.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
+		// Featured Intro
+        acf_register_block_type(array(
+            'name'              => 'featuredIntro',
+            'title'             => __('Featured Intro'),
+            'description'       => __('A hero block with 2 columns, combining the Intro and Featured Post blocks.'),
+            // 'render_callback'   => 'accordion_block_callback',
+            'render_template'   => get_template_directory() . '/partials/blockTemplates/block-featuredIntro.php',
+            'enqueue_style'     => get_template_directory_uri() . '/partials/blockTemplates/gutenberg.css',
+            'category'          => 'layout',
+            'icon'              => 'archive',
+            'mode'              => 'edit',
+        ));
+
+
     }
 }
 
@@ -558,11 +593,37 @@ function details_block_callback( $block, $content = '', $is_preview = false) {
 
     <?php if( $detailsContent ): ?>
 		<div class="details">
-			<?php if( $detailsTitle ): ?>
+			<?php /* if( $detailsTitle ): ?>
 				<h3><?php echo $detailsTitle; ?></h3>
-			<?php endif; ?>
+			<?php endif; */ ?>
         	<?php echo $detailsContent; ?>
 		</div>
+    <?php endif; ?>
+
+    <?php
+}
+
+
+
+
+
+function accordion_block_callback( $block, $content = '', $is_preview = false) {
+
+    // Load values and assing defaults.
+    $accordionContent = get_field('accordion_content') ?: 'Write your Accordion Content here...';
+    $accordionTitle = get_field('accordion_title') ?: 'An accordion title for this section';
+
+    ?>
+
+	<?php if( $accordionContent ): ?>
+	<section class="accordion accordion_uiComponents">
+		<input type="checkbox" class="accordion_input" checked="" aria-hidden="true">
+		<i aria-hidden="true"></i>
+		<p class="accordion_title"><?php echo $accordionTitle; ?></p>
+		<div>
+			<?php echo $accordionContent; ?>
+		</div>
+	</section>
     <?php endif; ?>
 
     <?php
@@ -894,8 +955,12 @@ add_action( 'init', 'cp_website' );
 function publications_register_template() {
     $post_type_object = get_post_type_object( 'publications' );
     $post_type_object->template = array(
+		array( 'mdlr/featured-image' ),
         array( 'acf/hero' ),
         array( 'acf/lead' ),
+		array( 'core/paragraph', array(
+		 	'placeholder' => 'Enter your article content here.'
+		) ),
     );
 }
 add_action( 'init', 'publications_register_template' );
@@ -958,18 +1023,24 @@ add_action( 'init', 'classes_register_template' );
 function myplugin_register_template() {
     $post_type_object = get_post_type_object( 'post' );
     $post_type_object->template = array(
-        // array( 'mdlr/featured-image' ),
+		array( 'mdlr/featured-image' ),
         array( 'acf/hero' ),
         array( 'acf/lead' ),
-        array( 'core/columns', array(), array(
-            array( 'core/column', array(), array(
-                array( 'mdlr/featured-image', array () ),
-            ) ),
-            array( 'core/column', array(), array(
-                array( 'acf/hero', array() ),
-            ) ),
-
-        ) ),
+		array( 'core/paragraph', array(
+		 	'placeholder' => 'Enter your article content here.'
+		) ),
+        // array( 'mdlr/featured-image' ),
+        // array( 'acf/hero' ),
+        // array( 'acf/lead' ),
+        // array( 'core/columns', array(), array(
+        //     array( 'core/column', array(), array(
+        //         array( 'mdlr/featured-image', array () ),
+        //     ) ),
+        //     array( 'core/column', array(), array(
+        //         array( 'acf/hero', array() ),
+        //     ) ),
+		//
+        // ) ),
 //        array( 'core/heading' ),
 //        array( 'acf/test' ),
 //        array( 'core/paragraph', array(

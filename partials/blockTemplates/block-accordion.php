@@ -1,7 +1,7 @@
 <?php
-/** ***********************************************
+/**
  * The template used for displaying a Hero block.
- * ***********************************************
+ *
  */
 
     // Load values and assing defaults.
@@ -19,10 +19,12 @@
     // doesn't work for some reason? todo: remove if no errors from thumb_id code
     // $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
 
+
     // $subtitle_link_items =  get_field( 'subtitle_link' ); // for multiple link items
 
 ?>
-<<?php if( get_field('block_semantics') == 'Header' ): ?>header<?php endif; ?><?php if( get_field('block_semantics') == 'Section' ): ?>section<?php endif; ?>
+
+<header
     class="hero wideTitle
         <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
         <?php if ( get_field( 'hero_Padding' ) == 1 ): ?>hero_Padding<?php endif; ?>
@@ -101,4 +103,4 @@
     </div>
 <?php endif; ?>
 
-</<?php if( get_field('block_semantics') == 'Header' ): ?>header<?php endif; ?><?php if( get_field('block_semantics') == 'Section' ): ?>section<?php endif; ?>>
+</header>

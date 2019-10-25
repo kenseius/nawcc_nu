@@ -117,7 +117,10 @@
     </div>
 
 <?php endwhile; else: ?>
-  <p><?php _e('Sorry, there are no posts.'); ?></p>
+    <section class="sectionCentered">
+        <h2>Whoops.</h2>
+        <p><?php _e('Sorry, there are no posts.'); ?></p>
+    </section>
 <?php endif; ?>
 
 </main>

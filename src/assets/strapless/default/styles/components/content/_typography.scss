@@ -27,16 +27,53 @@
 
 //  1. main
 // *************************
-h1 { @include type-setting(5); }
-h2 { @include type-setting(4); }
-h3 { @include type-setting(3); }
-h4 { @include type-setting(2); }
-h5 { @include type-setting(1); }
-p  { @include type-setting(0); }
-li { @include type-setting(0); }
+// h1 { @include type-setting(5); }
+// h2 { @include type-setting(4); }
+// h3 { @include type-setting(3); }
+// h4 { @include type-setting(2); }
+// h5 { @include type-setting(1); }
+// p  { @include type-setting(0); }
+// li { @include type-setting(0); }
+
+
+h1 {
+                            @include type-setting(5);
+    @media #{$large-down} { @include type-setting(4); }
+    @media #{$small-only} { @include type-setting(3); }
+}
+h2 {
+                            @include type-setting(4);
+    @media #{$large-down} { @include type-setting(3); }
+    @media #{$small-only} { @include type-setting(2); }
+}
+h3 {
+                            @include type-setting(3);
+    @media #{$large-down} { @include type-setting(2); }
+    @media #{$small-only} { @include type-setting(1); }
+}
+h4 {
+                            @include type-setting(2);
+    @media #{$large-down} { @include type-setting(1); }
+    @media #{$small-only} { @include type-setting(0); }
+}
+h5 {
+                            @include type-setting(1);
+    @media #{$large-down} { @include type-setting(0); }
+    @media #{$small-only} { @include type-setting(0); }
+}
+p  {
+                            @include type-setting(0);
+    @media #{$large-down} { @include type-setting(0); }
+    @media #{$small-only} { @include type-setting(0); }
+}
+li {
+                            @include type-setting(0);
+    @media #{$large-down} { @include type-setting(0); }
+    @media #{$small-only} { @include type-setting(0); }
+}
+
 
 p.lead { @include type-setting(1); }
-
 
 
 //  2. article
@@ -196,7 +233,7 @@ figcaption {
     font-style: italic;
     margin: 0 auto;
     padding: $scale_0;
-    
+
     // border-right: 2px solid $gry;
     // border-left: 2px solid $gry;
     // border-bottom: 2px solid $gry;
