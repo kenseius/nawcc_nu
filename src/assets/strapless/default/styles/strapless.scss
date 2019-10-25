@@ -240,6 +240,12 @@
     &.staggered_content > .wp-block-group__inner-container  {
         max-width: $scale_11;
     }
+
+    .postlist > a,
+    section.postList > a {
+        max-width: $base-max-width;
+    }
+
 }
 
 .postList,
@@ -384,6 +390,7 @@ table,
             max-width: 47%;
         }
         @media #{$medium-down} {
+            margin: 0 auto $scale_1;
             width: 100%;
             max-width: 100%;
             padding: 1rem;
@@ -404,6 +411,7 @@ table,
         .meta {display: none;}
         p,
         p.the_excerpt {display: none;}
+        @media #{$medium-down} { max-width: 100%; width: 100%; }
     }
 }
 .postList_2col_layout {
@@ -447,7 +455,7 @@ table,
     //        font-size: $scale_1;
     //    }
 
-    & > h3,
+    & > h1, & > h2, & > h3, & > h4, & > h5,
     & > ul,
     & > p,
     & > address {padding-left: 1rem; padding-right: 1rem;}
@@ -581,6 +589,8 @@ table,
     height: 100%;
     min-height: $default-height; // $scale_9;
 
+    // @media #{$medium-down} { min-height: 35vh; }
+
     // padding: $base-vertical-padding 0;
     margin: auto;
 
@@ -595,9 +605,17 @@ table,
 
         // @include wrap($base-max-width, auto);
         @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
-        @media #{$medium-only} { max-width: $article-max-width; }
+        @media #{$medium-only} {
+            // max-width: $article-max-width;
+            max-width: $base-max-width;
+        }
     }
-    & > h1 {font-size: $h1;}
+    & > h1 {
+        // font-size: $h1;
+        // @include type-setting(5);
+        // @media #{$medium-only} { max-width: $article-max-width; }
+        // @media #{$medium-down} { }
+    }
 
 
 // &.event_title,
@@ -718,10 +736,15 @@ table,
         max-width: 483.08px; // $article-max-width;
         //        flex-basis: calc(50% - 44px);
         //        flex-grow: 0;
-
+        @media #{$medium-down} {
+            flex: 2;
+            margin: auto 0;
+            &:nth-child(2) {margin: auto 0;}
+        }
         @media #{$small-only} {
             flex: 2;
             margin: auto;
+            &:nth-child(2) {margin: auto 0;}
         }
     }
 
@@ -798,6 +821,8 @@ main.events {
     .article_title {
         padding: $scale_4 0 $scale_4;
         min-height: 0;
+        @media #{$medium-down} { padding: $scale_2 0; }
+        @media #{$small-only} { padding: $scale_1 0;  }
     }
 }
 
@@ -814,6 +839,8 @@ main.events {
             & > p.lead {
                 font-size:$h4;
                 max-width: $scale_11;
+                @media #{$medium-down} { @include type-setting(1); }
+                @media #{$small-only} { @include type-setting(0); }
             }
             & > p,
             & > ul {max-width: $article-max-width;}
@@ -841,6 +868,8 @@ main.events {
         & > p.lead {
             font-size:$h4;
             max-width: $base-max-width;
+            @media #{$medium-down} { @include type-setting(1); }
+            @media #{$small-only} { @include type-setting(0); }
         }
         & > p,
         & > ul {
@@ -878,10 +907,13 @@ main.events {
             & > p.lead {
                 font-size:$h4;
                 max-width: $scale_11;
+                @media #{$medium-down} { @include type-setting(1); }
+                @media #{$small-only} { @include type-setting(0); }
             }
             & > p,
             & > ul {max-width: $article-max-width;}
             &:last-child {margin: 0 auto 0 $scale_2;}
+            @media #{$small-only} { max-width: 100%; }
         }
     }
 
@@ -896,6 +928,10 @@ main.events {
                 max-width: $scale_9;
                 margin-left: 121.528px;
                 // & > * {max-width: $scale_9;}
+                @media #{$small-only} {
+                    max-width: 100%;
+                    margin: auto;
+                }
             }
         }
     }
@@ -909,7 +945,9 @@ main.events {
                   max-width: $scale_9; // right col
                   // margin-left: 121.528px;
                   // & > * {max-width: $scale_9;}
+                  @media #{$small-only} { max-width: 100%; }
               }
+              @media #{$small-only} { max-width: 100%; }
           }
     }
 
@@ -922,7 +960,9 @@ main.events {
                 max-width: $scale_12; // right col
                   // margin-left: 121.528px;
                   // & > * {max-width: $scale_9;}
+                  @media #{$small-only} { max-width: 100%; }
               }
+              @media #{$small-only} { max-width: 100%; }
           }
     }
 
@@ -935,7 +975,9 @@ main.events {
                 max-width: $scale_12; // right col
                   // margin-left: 121.528px;
                   // & > * {max-width: $scale_9;}
+                 @media #{$small-only} { max-width: 100%; }
               }
+              @media #{$small-only} { max-width: 100%; }
           }
     }
 
@@ -1032,7 +1074,9 @@ a.button.hero_ctaButton,
                 max-width: $scale_9;
                 margin-left: 121.528px;
                 // & > * {max-width: $scale_9;}
+                @media #{$small-only} { max-width: 100%; }
             }
+            @media #{$small-only} { max-width: 100%; }
         }
     }
 }
@@ -1057,11 +1101,15 @@ a.button.hero_ctaButton,
             &:nth-child(2) {
                 max-width: $scale_9;
                 margin-left: 121.528px;
+                @media #{$small-only} { max-width: 100%; margin: auto; }
             }
+            @media #{$small-only} { max-width: 100%; }
 
             & > p.lead {
                 font-size:$h4;
                 max-width: $scale_11;
+                @media #{$medium-down} { @include type-setting(1); }
+                @media #{$small-only} { @include type-setting(0); }
             }
             & > p,
             & > ul {max-width: $article-max-width;}
@@ -1345,8 +1393,17 @@ header.hero.widetitle,
 
 
 
-.has-medium-font-size {font-size: $scale_1;}
-.has-large-font-size {font-size: $scale_2;}
+.has-medium-font-size {
+    // font-size: $scale_1;
+    @include type-setting(1);
+    @media #{$small-only} { @include type-setting(0); }
+}
+.has-large-font-size {
+    // font-size: $scale_2;
+    @include type-setting(2);
+    @media #{$medium-down} { @include type-setting(1); }
+    @media #{$small-only} { @include type-setting(0); }
+}
 
 
 
@@ -1420,6 +1477,9 @@ a.iconButtonHyperlink {
 
     & > h1 {
         @include type-setting(4);
+        @media #{$large-down} { @include type-setting(3); }
+        @media #{$medium-down} { @include type-setting(2); }
+        @media #{$small-only} { @include type-setting(1); }
     }
 
     & > p.subtitle {

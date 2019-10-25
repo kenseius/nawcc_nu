@@ -39,7 +39,9 @@
 h1 {
                             @include type-setting(5);
     @media #{$large-down} { @include type-setting(4); }
+    @media #{$medium-only} { @include type-setting(4); }
     @media #{$small-only} { @include type-setting(3); }
+    // @media #{$smaller-only} { @include type-setting(2); }
 }
 h2 {
                             @include type-setting(4);
@@ -73,7 +75,11 @@ li {
 }
 
 
-p.lead { @include type-setting(1); }
+p.lead {
+                            @include type-setting(1);
+    @media #{$large-down} { @include type-setting(0); }
+    @media #{$small-only}  { @include type-setting(0); }
+}
 
 
 //  2. article
@@ -99,7 +105,11 @@ blockquote {
     padding: $base-horizontal-padding;
     margin-bottom: $base-horizontal-padding;
     background: $grylite;
-    & > p {@include type-setting(1); margin-bottom: 0;}
+    & > p {
+        @include type-setting(1);
+        margin-bottom: 0;
+        @media #{$small-only}  { @include type-setting(0); }
+    }
     span, cite {
         @include type-setting(0);
         display: block;
@@ -212,9 +222,14 @@ body > .article,
 
 .subtitle {
     font-family: $title-font;
-    font-size: $scale_2;
+    // font-size: $scale_2;
     color: #999;
     margin-bottom: $scale_1;
+    @include type-setting(2);
+    @media #{$large-down} { @include type-setting(1); }
+    @media #{$small-only}  {
+        @include type-setting(0);
+    }
 }
 
 .subtitle_small {

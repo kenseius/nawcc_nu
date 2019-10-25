@@ -24,9 +24,9 @@
     z-index: $navZIndex;
     @include clear();
     overflow: hidden;
-    
+
     @include anim($global-animation);
-    & > * {@include anim($global-animation);} 
+    & > * {@include anim($global-animation);}
 
     // ---| positioning - moved to ul |---
     // padding-left: 0%; // 3% | 1.04167%
@@ -84,7 +84,7 @@
         @media #{$larger-topnav-down} {
             // float: left;
             left: -$menu-width;
-            transform: translate(-$menu-width, 0); // translate(-17.713em, 0); 
+            transform: translate(-$menu-width, 0); // translate(-17.713em, 0);
             // width: $menu-width;  // 17.713em;
         }
         &.active {
@@ -94,7 +94,7 @@
             // width: 100%;
             width: $menu-width;
             // max-width: 15rem;
-            transform: translate(0, 0); 
+            transform: translate(0, 0);
             left: 0;
             a {text-align: left;}
         }
@@ -169,7 +169,7 @@
         }
         // @media only screen and (max-width: 68em) {padding-top: 0.625em; padding-right: 0;}
 
-        @media #{$medium-down} {padding: 8.5px 0;}
+        // @media #{$medium-down} {padding: 8.5px 0;}
     }
 
 
@@ -293,7 +293,7 @@
         transform: translate(-100%,0);
         a {
             text-align: center;
-            @include type-setting(1); 
+            @include type-setting(1);
         }
     }
     &.active {width:100%; left: 0; transform: translate(0,0);}
@@ -309,14 +309,14 @@
     &.wht {background: $wht;}
     &.gry {background: $gry;}
     &.slate {
-        background: $slate; 
+        background: $slate;
         .links a {color: $wht;}
     }
     &.blu {
-        background: $blu; 
+        background: $blu;
         .links a {color: $wht;}
-        .logo #paLogoWebAppStandards { 
-            .dotgov path, .paKeystone .keystone {fill: $wht;} 
+        .logo #paLogoWebAppStandards {
+            .dotgov path, .paKeystone .keystone {fill: $wht;}
             .paKeystone .pa {fill: $blu;}
             .logoTitle, text {fill: $wht;}
         }

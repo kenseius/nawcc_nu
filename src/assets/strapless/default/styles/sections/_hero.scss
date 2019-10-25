@@ -29,11 +29,16 @@
 
     &.hero_tall {min-height: $section-height-tall;}
     &.hero_short {min-height: $section-height-short;}
+    &.hero_tall, &.hero_short { @media #{$small-only}  { max-height: auto; } }
+
+    @media #{$small-only}  { max-height: auto; }
 
     text-align: left;
     h1, h2, p { text-align: left; }
 
-    h1 { @media #{$medium-down} { @include type-setting(3); } }
+    // h1 {
+    //     @media #{$medium-down} { @include type-setting(3); }
+    // }
 
     .outline {margin: auto;}
     & > div {
@@ -66,6 +71,15 @@
         min-height: $default-height;
         padding: $base-vertical-padding 0;
         margin: auto;
+
+        @media #{$medium-down} {
+            padding: $scale_2 0;
+            min-height: 35vh;
+        }
+        // @media #{$small-only} {
+        //     padding: $scale_1 0;
+        //     min-height: 0;
+        // }
 
     }
 
@@ -126,6 +140,8 @@
             margin: 0 auto $scale_2; // 0 auto auto 0;
             text-align: left; // center
             // max-width: $article-max-width;
+            @media #{$medium-down} { @include type-setting(1); }
+            @media #{$small-only} { @include type-setting(0); }
         }
     }
 
@@ -153,7 +169,7 @@
         @media #{$medium-only} { width: 80%;}
         @media #{$small-only} { width: 90%;}
     }
-    @media #{$small-only} {padding: $base-horizontal-padding 0;}
+    // @media #{$small-only} {padding: $base-horizontal-padding 0;}
 
 
 } // end header .hero
