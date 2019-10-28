@@ -571,6 +571,36 @@ table,
 
 
 
+.iconButtonHyperlink_list {
+
+    max-width: $wide-max-width;
+    margin: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    // align-items: flex-start;
+    // align-content: flex-start;
+
+    .iconButtonHyperlink {
+        max-width: 25%;
+        width: 100%;
+        margin: 0;
+        background-color: #fafafa;
+        // background: transparent;
+    }
+
+}
+
+
+
+
+
+
+
+
+
 // ============================
 //  article title
 // ============================

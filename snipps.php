@@ -1,6 +1,25 @@
 
 
 
+Display a list of categories
+
+
+    <div class="layout_grid col3">
+        <?php
+            $categories = get_categories();
+            foreach($categories as $category) {
+               echo '<a href="' . get_category_link($category->term_id) . '" class="iconButtonHyperlink"><i class="fa fa-university"></i><span>' . $category->name . '</span></a>';
+            }
+        ?>
+    </div>
+
+
+
+
+
+
+
+
 
 media queries:
 

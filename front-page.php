@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<header class="hero hero_frontpage">
+<header class="hero hero_frontpage hero_tall">
     <div class="twoCol">
         <h1 class="sr-only">The National Association Of Watch &amp; Clock Collectors</h1>
         <svg width="370" height="65" viewBox="0 0 370 55" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,13 +45,23 @@
                 </g>
             </g>
         </svg>
-        <p>The world's largest museum, research library, &amp; horological community</p>
-    </div>
+
+        <!-- <p>The world's largest museum, research library, &amp; horological community</p> -->
+
+        <div class="wp-block-columns has-2-columns hero_ctaButtons">
+            <a class="button wp-block-column" href="#">
+                Join Today
+            </a>
+            <a class="button gry wp-block-column" href="#">
+                Sign In
+            </a>
+        </div>
+
 </header>
 
-<?php get_template_part( 'partials/material', 'sidenav' ); ?>
+<?php /* get_template_part( 'partials/material', 'sidenav' ); */ ?>
 
-<main class="f-container">
+<main>
 
 <!-- <main> -->
 
@@ -62,14 +72,214 @@
 <section class="searchbar post_content wide_content">
 	<h3>Explore</h3>
     <?php get_search_form(); ?>
-    <div class="buttonList">
-        <?php
-            $categories = get_categories();
-            foreach($categories as $category) {
-               echo '<a href="' . get_category_link($category->term_id) . '"><i class="fa fa-university"></i><span>' . $category->name . '</span></a>';
-            }
-        ?>
+
+    <section class="iconButtonHyperlink_list">
+        <a href="#blog"  class="iconButtonHyperlink">
+            <i class="fa fa-bullhorn"></i>
+            <p>Community</p>
+        </a>
+        <a href="#publications" class="iconButtonHyperlink">
+            <i class="fa fa-book"></i>
+            <p>Publications</p>
+        </a>
+        <a href="#events" class="iconButtonHyperlink">
+            <i class="fa fa-calendar"></i>
+            <p>Events</p>
+        </a>
+        <a href="#museum" class="iconButtonHyperlink">
+            <i class="fa fa-university"></i>
+            <p>Museum</p>
+        </a>
+        <a href="#education"  class="iconButtonHyperlink">
+            <i class="fa fa-graduation-cap"></i>
+            <p>Education</p>
+        </a>
+        <a href="#causes" class="iconButtonHyperlink">
+            <i class="fa fa-star"></i>
+            <p>Donate</p>
+        </a>
+        <a href="#research" class="iconButtonHyperlink">
+            <i class="fa fa-book"></i>
+            <p>Library &amp; Research</p>
+        </a>
+        <a href="#research" class="iconButtonHyperlink">
+            <i class="fa fa-binoculars"></i>
+            <p>Library &amp; Research</p>
+        </a>
+    </section>
+
 </section>
+
+<!--
+========================================
+    Publications
+======================================== -->
+
+<section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
+
+    <div class="wp-block-media-text__content article" style="background: #fafafa;">
+        <br>
+        <h2>Community</h2>
+        <br>
+        <p class="has-large-font-size">
+            The NAWCC's Greatest Asset
+        </p>
+        <br>
+        <h4>Members</h4>
+        <ul>
+            <li>A 11,000+ international membership community</li>
+            <li>An assembly of 150 member chapters around the globe</li>
+            <li>The largest affiliation of volunteer subject matter experts on time and timekeeping.</li>
+        </ul>
+
+        <h4>Message Board</h4>
+        <p>An Internet-based public forum community on horological issues and subject matter with a participation rate of 1.5 million entries per year with 854,000 unique users.</p>
+
+        <!-- <h4>Events</h4>
+        <ul>
+            <li>18 regional U.S. conventions and 1 annual, international convention for horology enthusiasts</li>
+            <li>An internationally and academically renowned annual symposium on time-related topics</li>
+        </ul> -->
+
+        <!--
+        <div class="buttonList">
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+        </div>
+        <button class="button">Button</button> -->
+    </div>
+
+    <?php
+    $args = array( 'numberposts' => 1, 'post_type' => 'post', 'posts_per_page' => '1', 'post_count' => '1', );
+    $the_query = new WP_Query( $args ); ?>
+    <?php if( $the_query->have_posts() ): ?>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php
+            // Load values and assing defaults.
+            $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+            $icon               = get_field( 'post_icon' );
+            $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
+            $text_color         = get_field( 'text_color' );
+            $background_image   = get_field( 'background_image');
+        	$thumb_id = get_post_thumbnail_id();
+        	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+        	$image = $thumb_url_array[0];
+        ?>
+
+        <div
+            class="wp-block-media-text__content hero hero_tall hero_color
+                <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
+                <?php if($background_color): ?> hero_color <?php endif; ?>"
+
+            style="background-color: #003b49">
+            <p class="subtitle" style="color:#eaeaea">Join The Community</p>
+            <a class="link" href="/join">
+                <h2>Become A Member Today</h2>
+            </a>
+            <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>
+                <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?></p>
+            <?php endif; ?>
+            <
+            <!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
+        </div>
+
+        <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+</section>
+
+
+<!--
+========================================
+    Events
+======================================== -->
+<section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
+
+    <?php
+    $args = array( 'numberposts' => 1, 'post_type' => 'events', 'posts_per_page' => '1', 'post_count' => '1', );
+    $the_query = new WP_Query( $args ); ?>
+    <?php if( $the_query->have_posts() ): ?>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php
+            // Load values and assing defaults.
+            $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+            $icon               = get_field( 'post_icon' );
+            $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
+            $text_color         = get_field( 'text_color' );
+            $background_image   = get_field( 'background_image');
+        	$thumb_id = get_post_thumbnail_id();
+        	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+        	$image = $thumb_url_array[0];
+        ?>
+
+        <div
+            class="wp-block-media-text__content hero hero_image hero_tall hero_title_overlay
+                <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
+                <?php if($background_color): ?> hero_color <?php endif; ?>"
+
+            style="<?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
+                    <?php if($background_image): ?>
+                        background-image: url(<?php echo $background_image; ?>);
+                        <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
+                    <?php endif; ?>
+                    <?php if($marginBottom): ?>margin: 0 auto <?php echo $marginBottom; ?>rem;<?php endif; ?>"
+        >
+            <p class="subtitle" style="color:#eaeaea; font-size: 1rem;">Featured Event</p>
+            <a class="link" href="<?php the_permalink(); ?>">
+                <h2 style="font-size: 3rem; font-weight: normal"><?php the_title(); ?></h2>
+            </a>
+            <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>
+                <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?></p>
+            <?php endif; ?>
+            <!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
+        </div>
+
+        <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+    <div class="wp-block-media-text__content" style="background: #fafafa;">
+        <h2>Events</h2>
+        <br>
+        <p class="lead">
+            Events allow us to engage with the community, while a introduction for audiences that otherwise wouldn’t be interested in horology.
+        </p>
+        <br>
+        <ul>
+            <li>18 regional U.S. conventions and 1 annual, international convention for horology enthusiasts</li>
+            <li>An internationally and academically renowned annual symposium on time-related topics</li>
+        </ul>
+
+        <!--
+        <div class="buttonList">
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+        </div>
+        <button class="button">Button</button> -->
+    </div>
+
+
+
+</section>
+
+
+
+
 
 
 <!--
@@ -144,6 +354,155 @@
 </section>
 
 
+<!--
+========================================
+    Museum
+======================================== -->
+
+<section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
+
+    <div class="wp-block-media-text__content" style="background: #fafafa;">
+        <h2>The National Watch & Clock Museum</h2>
+        <p class="has-large-font-size">The National Watch &amp; Clock Museum</p>
+
+        <!--
+        <div class="buttonList">
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+        </div>
+        <button class="button">Button</button> -->
+    </div>
+
+    <?php
+    $args = array( 'numberposts' => 1, 'post_type' => 'exhibits', 'posts_per_page' => '1', 'post_count' => '1', );
+    $the_query = new WP_Query( $args ); ?>
+    <?php if( $the_query->have_posts() ): ?>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php
+            // Load values and assing defaults.
+            $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+            $icon               = get_field( 'post_icon' );
+            $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
+            $text_color         = get_field( 'text_color' );
+            $background_image   = get_field( 'background_image');
+        	$thumb_id = get_post_thumbnail_id();
+        	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+        	$image = $thumb_url_array[0];
+        ?>
+
+        <div
+            class="wp-block-media-text__content hero hero_image hero_title_overlay
+                <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
+                <?php if($background_color): ?> hero_color <?php endif; ?>"
+
+            style="<?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
+                    <?php if($background_image): ?>
+                        background-image: url(<?php echo $background_image; ?>);
+                        <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
+                    <?php endif; ?>
+                    <?php if($marginBottom): ?>margin: 0 auto <?php echo $marginBottom; ?>rem;<?php endif; ?>"
+        >
+            <p class="subtitle" style="color:#eaeaea; font-size: 1rem;">Featured Article</p>
+            <a class="link" href="<?php the_permalink(); ?>">
+                <h2 style="font-size: 3rem; font-weight: normal"><?php the_title(); ?></h2>
+            </a>
+            <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>
+                <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?></p>
+            <?php endif; ?>
+            <!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
+        </div>
+
+        <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+</section>
+
+
+
+
+<!--
+========================================
+    Causes
+======================================== -->
+
+<section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
+
+    <div class="wp-block-media-text__content" style="background: #fafafa;">
+        <h2>Causes</h2>
+        <p class="has-large-font-size">As a non-profit, we rely on the genreous contributions from members & the community.</p>
+
+        <!--
+        <div class="buttonList">
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+        </div>
+        <button class="button">Button</button> -->
+    </div>
+
+    <?php
+    $args = array( 'numberposts' => 1, 'post_type' => 'causes', 'posts_per_page' => '1', 'post_count' => '1', );
+    $the_query = new WP_Query( $args ); ?>
+    <?php if( $the_query->have_posts() ): ?>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php
+            // Load values and assing defaults.
+            $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+            $icon               = get_field( 'post_icon' );
+            $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
+            $text_color         = get_field( 'text_color' );
+            $background_image   = get_field( 'background_image');
+        	$thumb_id = get_post_thumbnail_id();
+        	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+        	$image = $thumb_url_array[0];
+        ?>
+
+        <div
+            class="wp-block-media-text__content hero hero_image hero_title_overlay
+                <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
+                <?php if($background_color): ?> hero_color <?php endif; ?>"
+
+            style="<?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
+                    <?php if($background_image): ?>
+                        background-image: url(<?php echo $background_image; ?>);
+                        <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
+                    <?php endif; ?>
+                    <?php if($marginBottom): ?>margin: 0 auto <?php echo $marginBottom; ?>rem;<?php endif; ?>"
+        >
+            <p class="subtitle" style="color:#eaeaea; font-size: 1rem;">Featured Article</p>
+            <a class="link" href="<?php the_permalink(); ?>">
+                <h2 style="font-size: 3rem; font-weight: normal"><?php the_title(); ?></h2>
+            </a>
+            <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>
+                <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?></p>
+            <?php endif; ?>
+            <!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
+        </div>
+
+        <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+</section>
+
+
+
+
+
 
 <!--
 ========================================
@@ -171,7 +530,12 @@
     </div>
 
     <?php
-    $args = array( 'numberposts' => 1, 'post_type' => 'causes', 'posts_per_page' => '1', 'post_count' => '1', );
+        $background_image   = get_field( 'background_image');
+    	$thumb_id = get_post_thumbnail_id();
+    	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+    	$image = $thumb_url_array[0];
+
+    $args = array( 'numberposts' => 1, 'post_type' => 'event', 'posts_per_page' => '1', 'post_count' => '1', );
     $the_query = new WP_Query( $args ); ?>
     <?php if( $the_query->have_posts() ): ?>
         <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>

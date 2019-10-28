@@ -25,18 +25,22 @@
                 </a>
         -->
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
+            <i class="fa fa-user"></i>
+            <span>Your Profile</span>
+        </a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-home"></i>
-            <span>Dashboard</span>
+            <span>Community</span>
         </a>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>blog" <?php if ( is_page_template( 'page-blog.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-bullhorn"></i>
             <span>HQ News</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>wc_publications" <?php if ( is_page_template( 'page-publications.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>articles" <?php if ( is_page_template( 'page-publications.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-book"></i>
             <span>Publications</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>wc_events" <?php if ( is_page_template( 'page-events.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>events" <?php if ( is_page_template( 'page-events.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-calendar"></i>
             <span>Events</span>
         </a>
@@ -72,7 +76,7 @@
         </a>
     </div>
 
-	<?php dynamic_sidebar( 'sidenav-main' ); ?>
+	<?php /* dynamic_sidebar( 'sidenav-main' ); */ ?>
 
 </nav>
 

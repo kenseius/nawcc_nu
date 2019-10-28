@@ -78,7 +78,7 @@ body {
             border-right: 3px solid transparent;
             border-left: 3px solid transparent;
             border-bottom: 2px solid $org;
-            color: #999;
+            // color: #999;
             @include hover() {background: $org; color: $wht;}
         }
 
@@ -134,10 +134,16 @@ body {
         & > .btnBar,
         & > .breadcrumbs {
             position: relative;
-            line-height: 1.414em;
+            line-height: 1.99; // 1.414em;
             @include wrap($article-max-width, auto);
-            @media #{$extra-large-down} {padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding; }
-            @media #{$medium-only} { max-width: $article-max-width; }
+        }
+        @media #{$large-down} {
+            padding: $scale_1 $scale_0;
+            // padding-left: $base-horizontal-padding; padding-right: $base-horizontal-padding;
+        }
+        @media #{$medium-only} {
+            max-height: auto;
+            // max-width: $article-max-width;
         }
     }
 
@@ -145,6 +151,12 @@ body {
 
 }
 
+
+.order {
+    &.order_0 {order: 0;}
+    &.order_1 {order: 1;}
+    &.order_2 {order: 2;}
+}
 
 
 .post {
