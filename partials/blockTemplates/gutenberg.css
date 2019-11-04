@@ -116,7 +116,7 @@ blockquote {
 
 /* HEROS */
 
-.hero {
+.editor-styles-wrapper .hero {
 
     display: flex;
     align-items: center;
@@ -132,14 +132,14 @@ blockquote {
 
 }
 
-.hero .hero_color {
+.editor-styles-wrapper .hero .hero_color {
     width: 100%;
     height: 100%;
     min-height: 31.952rem;
 }
 
-.hero.hero_image,
-.hero .hero_image {
+.editor-styles-wrapper .hero.hero_image,
+.editor-styles-wrapper .hero .hero_image {
 
     position: relative;
     z-index: 1;
@@ -156,8 +156,8 @@ blockquote {
 
 }
 
-.hero.hero_image:before,
-.hero .hero_image:before {
+.editor-styles-wrapper .hero.hero_image:before,
+.editor-styles-wrapper .hero .hero_image:before {
     content: '';
     position: absolute;
     top: 0;

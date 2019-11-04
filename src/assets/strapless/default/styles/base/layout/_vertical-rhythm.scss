@@ -88,14 +88,14 @@ $p1: $scale_0; // 16px
 
 
 
-// establish vertical rhythm 
+// establish vertical rhythm
 // ---------------------------
 
 $type-settings: (
     -1: ( font-size: $base-font-size * 0.707,           line-height: $scale_1 ),            // -1 | small text
      0: ( font-size: $base-font-size,                   line-height: $base-line-height ),   //  0 | base font size (16px)
      1: ( font-size: $base-font-size * $scale-value_1,  line-height: $base-line-height ),   //  1 | h5
-     2: ( font-size: $base-font-size * $scale-value_2,  line-height: $base-font-size * $scale-value_3 ),   //  2 | h4
+     2: ( font-size: $base-font-size * $scale-value_2,  line-height: $base-font-size * $scale-value_4 ),   //  2 | h4
      3: ( font-size: $base-font-size * $scale-value_3,  line-height: $base-font-size * $scale-value_4 ),   //  3 | h3
      4: ( font-size: $base-font-size * $scale-value_4,  line-height: $base-font-size * $scale-value_5 ),   //  4 | h2
      5: ( font-size: $base-font-size * $scale-value_5,  line-height: $base-font-size * 7.993 ) // 127.884px //  5 | h1
@@ -148,4 +148,3 @@ $type-settings: (
 //      4: ( font-size: $base-font-size * 3.157,   line-height: $base-line-height * 2.369 ),   //  4 | h2
 //      5: ( font-size: $base-font-size * 4.209,   line-height: $base-line-height * 3.157 )    //  5 | h1
 // );
-

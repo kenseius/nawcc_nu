@@ -1,6 +1,5 @@
-
 <nav class="nav primary_navigation" role="navigation">
-    <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <a class="logo" href="https://nawcc.org/">
         <svg width="370" height="65" viewBox="0 0 370 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="Logo">
                 <g id="Logo Icon">
@@ -44,19 +43,17 @@
             </g>
         </svg>
     </a>
+<!--
     <div class="links">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>join" class="navitem  ">Join</a>
-        <!-- <a href="<?php echo esc_url( home_url( '/' ) ); ?>about" class="navitem  ">About</a> -->
-        <!-- <a href="<?php echo esc_url( home_url( '/' ) ); ?>market" class="navitem  ">Market</a> -->
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>donate" class="navitem  ">Donate</a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" class="navitem  ">Log In</a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>search" <?php if ( is_page_template( 'page-search.php' ) ) { ?> class="active" <?php }  ?> >
-            <i class="fa fa-search"></i>
-            <span>Search</span>
-        </a>
+        <a href="join.html" class="navitem  ">Join</a>
+        <a href="about.html" class="navitem  ">About</a>
+        <a href="shop.html" class="navitem  ">Shop</a>
+        <a href="donate.html" class="navitem  ">Donate</a>
+        <a href="login.html" class="navitem  ">Log In</a>
     </div>
     <a class="nav-trigger nav-open">
         <div class="inner"></div>
         <span class="menulabel">Menu</span>
     </a>
+-->
 </nav>

@@ -25,7 +25,7 @@
                 </a>
         -->
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
-            <i class="fa fa-user"></i>
+            <i class="fa fa-user-circle"></i>
             <span>Your Profile</span>
         </a>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>dashboard" <?php if ( is_page_template( 'page-dashboard.php' ) ) { ?> class="active" <?php }  ?> >
@@ -36,7 +36,7 @@
             <i class="fa fa-bullhorn"></i>
             <span>HQ News</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>articles" <?php if ( is_page_template( 'page-publications.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>publications" <?php if ( is_page_template( 'page-publications.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-book"></i>
             <span>Publications</span>
         </a>
@@ -66,9 +66,9 @@
             <i class="fa fa-star"></i>
             <span>Causes</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>research" <?php if ( is_page_template( 'page-research.php' ) ) { ?> class="active" <?php }  ?> >
-            <i class="fa fa-binoculars"></i>
-            <span>Research</span>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>library" <?php if ( is_page_template( 'page-research.php' ) ) { ?> class="active" <?php }  ?> >
+            <i class="fa fa-book"></i>
+            <span>Library &amp; Research</span>
         </a>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>resources" <?php if ( is_page_template( 'page-resources.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-laptop"></i>
@@ -80,10 +80,10 @@
 
 </nav>
 
-<div class="f-control-bar">
+<!-- <div class="f-control-bar">
     <div class="f-control f-menu-toggle">
         <svg>
             <use xlink:href="#f-icon-menu" />
         </svg>
     </div>
-</div>
+</div> -->

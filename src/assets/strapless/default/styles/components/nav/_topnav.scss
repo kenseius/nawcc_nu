@@ -412,6 +412,95 @@
 }
 
 
+////////////////////////////////
+//    SEARCH NAV
+///////////////////////////////
+
+
+
+nav.search_nav  {
+
+    display: flex;
+
+    .logo > span.desktop {
+        display: block;
+        @media #{$larger-topnav-down} { display: none; }
+    }
+    .logo > span.mobile {
+        display: none;
+        @media #{$larger-topnav-down} { display: block; }
+    }
+
+    .nav-trigger {
+        display: block;
+        float: left;
+        margin-left: 15px;
+        margin-right: 0;
+        // top:1em; // 2.1em if no label
+        // left: -1em;
+        // right: 0;
+        .menuLabel,
+        .inner {
+            right: 0.5em;
+            top: 0.1em;
+            @media #{$medium-down} {
+                right: 0.5em;
+                top: 0.1em;
+            }
+        }
+
+    }
+
+    form:not(#aspnetForm).search {
+        max-width: 100%;
+        margin: auto 0 auto auto;
+        .pseudo-search {
+            width: auto;
+            @media #{$medium-down} { display: flex; }
+            button,
+            .search-button {
+                @media #{$medium-down} { width: auto; }
+                @media #{$small-only} { width: auto; }
+            }
+        }
+    }
+
+    // overlay
+
+    .links {
+
+        margin-top: 65px;
+        & > a {display: none;}
+        // .active {
+            // & > a {display: block;}
+            // display: block;
+            // @media #{$larger-topnav-down} {
+            //     margin-top: 65px;
+            // }
+        // }
+        &.active {
+            display: none;
+            // @extend #nav-menu;
+            // @include anim($global-animation);
+            // & > * {@include anim($global-animation);}
+            // width: 100%;
+            // width: $menu-width;
+            // max-width: 15rem;
+            // transform: translate(0, 0);
+            // left: 0;
+            // a {text-align: left;}
+        }
+    }
+
+}
+
+
+
+
+
+////////////////////////////////
+//    SUBNAV - dropdowns possibly
+///////////////////////////////
 
 
 // SUBNAV

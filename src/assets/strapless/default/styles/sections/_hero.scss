@@ -29,7 +29,10 @@
 
     &.hero_tall {min-height: $section-height-tall;}
     &.hero_short {min-height: $section-height-short;}
-    &.hero_tall, &.hero_short { @media #{$small-only}  { max-height: auto; } }
+    &.hero_tall, &.hero_short {
+        @media #{$medium-only}  { min-height: $default-height; }
+        @media #{$small-only}  { min-height: $section-height-short; }
+    }
 
     @media #{$small-only}  { max-height: auto; }
 
@@ -109,9 +112,12 @@
     &.hero_frontpage {
 
         background-repeat: no-repeat;
-        background-position: bottom;
         background-size: cover;
-        background-image: url('http://wp.nawcc.org/wp-content/uploads/2019/10/Frame-13.png');
+        background-position: center;
+        background-image: url('http://wp.nawcc.org/wp-content/uploads/2019/10/gearBackground.png');
+        // background-image: url('http://wp.nawcc.org/wp-content/uploads/2019/10/gearbg.jpg');
+        // background-position: bottom;
+        // background-image: url('http://wp.nawcc.org/wp-content/uploads/2019/10/Frame-13.png');
 
         width: 100%;
 
@@ -126,12 +132,19 @@
         & > div,
         & > div.hero_ctaButtons {
             min-height: auto;
+            @media #{$medium-down}  {
+                max-width: $base-max-width;
+                width: 100%;
+            }
         }
 
         @media #{$medium-down} {
             padding: $scale_2 0;
-            min-height: 35vh;
+            // min-height: 35vh;
         }
+
+        @media #{$medium-only}  { min-height: $default-height; }
+        @media #{$small-only}  { min-height: $section-height-short; }
 
         // white bg / centered
         // & > .twoCol {

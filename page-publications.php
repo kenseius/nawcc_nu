@@ -77,6 +77,103 @@ $the_query = new WP_Query( $args );
 
 
 
+<!-- TODO
+
+	Sort = Categories
+	2col - sidenav & results
+
+-->
+
+
+<div class="wp-block-columns leftcol_8">
+	<div class="wp-block-column">
+		<div class="buttonList">
+		  <a href="#" class="active">
+		    <i class="fa fa-file" aria-hidden="true"></i>
+		    <span>Fund Info Sheet</span>
+		  </a>
+		  <a href="#">
+		    <i class="fa fa-file" aria-hidden="true"></i>
+		    <span>Pledge Form</span>
+		  </a>
+		</div>
+	</div>
+
+	<div class="wp-block-column">
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> -1,
+	'post_type'		=> 'publications',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+$background_image = get_field( 'background_image', $post->ID );
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+    <section class="postList circleImages" style="margin-top: 0;">
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+	    <?php
+		    $background_image   = get_field( 'background_image');
+			$thumb_id = get_post_thumbnail_id();
+			$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+			$image = $thumb_url_array[0];
+	    ?>
+
+        <a href="<?php the_permalink(); ?>">
+
+            <!-- ?php the_post_thumbnail('thumbnail'); ? -->
+
+            <?php if( $background_image ): ?>
+
+                <?php echo wp_get_attachment_image( $background_image, $size ); ?>
+
+            <?php else : ?>
+
+                <!-- Featured Image = [ img ] -->
+                <?php echo wp_get_attachment_image( $thumb_id, 'thumbnail' ); ?>
+
+            <?php endif; ?>
+
+            <div>
+                <!-- <p class="subtitle"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>-->
+                <h4><?php the_title(); ?></h4>
+                <div class="meta meta_article">
+                    <p>Written by <?php the_author(); ?></p>
+                    <p><time><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></time></p>
+                </div>
+                <p><?php the_excerpt(); ?></p>
+            </div>
+
+        </a>
+
+
+
+	<?php endwhile; ?>
+
+	</section>
+
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+	</div>
+</div>
+
+
+
+</section> <!-- end search / browse area -->
+
+
 
 
 <?php

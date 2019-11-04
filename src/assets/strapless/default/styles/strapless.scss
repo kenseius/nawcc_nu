@@ -589,6 +589,45 @@ table,
         margin: 0;
         background-color: #fafafa;
         // background: transparent;
+        span, p {font-size: $scale_1;}
+    }
+
+    @media #{$large-down}  {
+        span, p {
+            // font-size: $scale_1;
+            @include type-setting(1);
+        }
+    }
+
+    @media #{$large-only}  {
+        .iconButtonHyperlink {
+            max-width: 33%;
+            padding: $scale_1;
+            i {font-size: $scale_4;}
+            // span, p {font-size: $scale_1;}
+        }
+    }
+    // @media #{$medium-down}  {
+    //     line-height: 1;
+    // }
+    @media #{$medium-only}  {
+        .iconButtonHyperlink {
+            max-width: 33%;
+            padding: $scale_1;
+            i {font-size: $scale_3;}
+            // span, p {font-size: $scale_1;}
+        }
+    }
+    @media #{$small-only}  {
+        .iconButtonHyperlink {
+            max-width: 33%;
+            padding: $scale_0;
+            i {font-size: $scale_2;}
+            span, p {
+                // font-size: $scale_0;
+                @include type-setting(0);
+            }
+        }
     }
 
 }
@@ -752,9 +791,7 @@ table,
         padding-right: $scale_1;
     }
 
-    .wp-block-column,
-    .wp-block-media-text__media,
-    .wp-block-media-text__content {
+    .wp-block-column {
         flex: 1;
         // margin-left: 14px;
         margin-right: 1.7rem;
@@ -764,19 +801,77 @@ table,
             margin-right: 0;
         }
         max-width: 483.08px; // $article-max-width;
-        //        flex-basis: calc(50% - 44px);
-        //        flex-grow: 0;
-        @media #{$medium-down} {
-            flex: 2;
-            margin: auto 0;
-            &:nth-child(2) {margin: auto 0;}
+
+        @media #{$large-down} {
+            // max-width: 100%;
+            // width: 100%;
+            // flex: 2;
+            margin-top: 0;
+            &:nth-child(2) {margin-top: 0;}
         }
+        // @media #{$medium-down} {
+        //     max-width: 100%;
+        //     width: 100%;
+        //     flex: 2;
+        //     margin: auto 0;
+        //     // margin-top: 0;
+        //     &:nth-child(2) {
+        //         // margin-top: 0;
+        //         margin: auto 0;
+        //     }
+        // }
         @media #{$small-only} {
             flex: 2;
             margin: auto;
+            max-width: $article-max-width;
             &:nth-child(2) {margin: auto 0;}
         }
+
     }
+
+    // &.wp-block-media-text {
+    //     @media #{$extra-large-down} { padding: 0; }
+    //     // @media #{$medium-down} { flex: 2; margin: auto; }
+    //     // @media #{$small-only} {max-width: 100%;}
+    // }
+    //
+    // // .wp-block-column,
+    // .wp-block-media-text__media,
+    // .wp-block-media-text__content {
+    //     flex: 1;
+    //     // margin-left: 14px;
+    //     margin-right: 1.7rem;
+    //     // margin-right: 2.14rem; // 1.7rem;
+    //     &:nth-child(2) {
+    //         margin-left: 1.7rem;
+    //         margin-right: 0;
+    //     }
+    //     max-width: 483.08px; // $article-max-width;
+    //     //        flex-basis: calc(50% - 44px);
+    //     //        flex-grow: 0;
+    //     @media #{$medium-down} {
+    //         max-width: 100%;
+    //         width: 100%;
+    //         // max-height: 35vh;
+    //
+    //         flex: 2;
+    //         margin: auto 0;
+    //         &:nth-child(2) {margin: auto 0;}
+    //     }
+    //     @media #{$small-only} {
+    //         flex: 2;
+    //         margin: auto;
+    //         &:nth-child(2) {margin: auto 0;}
+    //     }
+    // }
+    //
+    //
+    // .wp-block-media-text__content {
+    //     @media #{$large-only} {
+    //         padding: $scale_1 0;
+    //         &:nth-child(2) {padding: $scale_1 0;}
+    //     }
+    // }
 
 
     &.has-2-columns {
@@ -796,10 +891,12 @@ table,
             max-width: 483.08px; // $article-max-width;
             //        flex-basis: calc(50% - 44px);
             //        flex-grow: 0;
-            @media #{$small-only} {
+            @media #{$medium-down} {
                 flex: 2;
                 margin: auto;
             }
+            @media #{$small-only} {max-width: 100%;}
+
         }
 
     }
@@ -816,12 +913,16 @@ table,
                 @media #{$small-only} {
                     margin: auto 0;
                 }
+                @media #{$medium-down} {
+                    margin: auto;
+                }
             }
             max-width: calc(30% - 22.624px);
-            @media #{$small-only} {
+            @media #{$medium-down} {
                 flex: 2;
                 margin: auto;
             }
+            @media #{$small-only} {max-width: 100%;}
         }
     }
 
@@ -1043,9 +1144,15 @@ main.events {
 
 
     &.hero_ctaButtons {
+
         max-width: $wide-max-width;
         justify-content: flex-start;
 
+        @media #{$medium-down}  {
+            width: 100%;
+            flex-direction: row;
+            align-items: stretch;
+        }
         @media #{$small-only} { justify-content: center; }
 
         a.button {
@@ -1058,12 +1165,20 @@ main.events {
 
             max-width: $scale_8; // 483.08px; // $article-max-width;
 
-            @media #{$small-only} {
+            @media #{$medium-down} {
                 flex: 2;
                 margin: 0 auto $scale_2;
-                max-width: $article-max-width;
+                max-width: 100%;
+                // max-width: $article-max-width;
                 width: 100%;
                 &:nth-child(2) {margin: 0 auto $scale_2;}
+            }
+
+            @media #{$small-only} {
+                font-size: 1rem;
+                line-height: 3;
+                padding: 0.5rem;
+                align-self: center;
             }
 
         }
@@ -1365,6 +1480,10 @@ ul.wp-block-gallery,
 
     &.has-parallax {background-attachment: fixed;}
 
+    @media #{$medium-down} {
+        min-height: 35vh;
+    }
+
 }
 
 .wideTitle,
@@ -1378,7 +1497,18 @@ header.hero.widetitle,
     // min-height: $scale_11;
     @media #{$extra-large-down} {
         min-height: auto;
-        padding: $scale_2;
+        // padding: $scale_2;
+    }
+    & > div {
+        @media #{$extra-large-down} {
+            padding: $scale_2 $scale_1;
+            min-height: auto;
+        }
+        @media #{$medium-down} {
+            flex: 2;
+            margin: auto;
+        }
+        // @media #{$small-only} {max-width: 100%;}
     }
 }
 

@@ -1,17 +1,9 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'partials/material', 'sidenav' ); ?>
-
-<main class="f-container">
-
-<!-- <main> -->
-
-
-
-<header class="hero hero_frontpage hero_tall" style="background-color:#b6cfd0;">
+<header class="hero hero_frontpage hero_tall">
     <div class="twoCol">
         <h1 class="sr-only">The National Association Of Watch &amp; Clock Collectors</h1>
-        <svg style="background: #fafafa; border: 2px solid #999;" width="370" height="65" viewBox="0 0 370 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="370" height="65" viewBox="0 0 370 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="Logo">
                 <g id="Logo Icon">
                     <g id="Background">
@@ -67,11 +59,18 @@
 
 </header>
 
+<?php /* get_template_part( 'partials/material', 'sidenav' ); */ ?>
+
+<main>
+
+<!-- <main> -->
+
+
 
 
 
 <section class="searchbar post_content wide_content">
-	<!-- <h3>Explore</h3> -->
+	<h3>Explore</h3>
     <?php get_search_form(); ?>
 
     <section class="iconButtonHyperlink_list">
@@ -87,17 +86,13 @@
             <i class="fa fa-calendar"></i>
             <p>Events</p>
         </a>
-        <a href="#education"  class="iconButtonHyperlink">
-            <i class="fa fa-graduation-cap"></i>
-            <p>Education</p>
-        </a>
         <a href="#museum" class="iconButtonHyperlink">
             <i class="fa fa-university"></i>
             <p>Museum</p>
         </a>
-        <a href="#research" class="iconButtonHyperlink">
-            <i class="fa fa-comment-alt"></i>
-            <p>Message Board</p>
+        <a href="#education"  class="iconButtonHyperlink">
+            <i class="fa fa-graduation-cap"></i>
+            <p>Education</p>
         </a>
         <a href="#causes" class="iconButtonHyperlink">
             <i class="fa fa-star"></i>
@@ -107,13 +102,17 @@
             <i class="fa fa-book"></i>
             <p>Library &amp; Research</p>
         </a>
+        <a href="#research" class="iconButtonHyperlink">
+            <i class="fa fa-binoculars"></i>
+            <p>Library &amp; Research</p>
+        </a>
     </section>
 
 </section>
 
 <!--
 ========================================
-    Community
+    Publications
 ======================================== -->
 
 <section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
@@ -121,14 +120,20 @@
     <div class="wp-block-media-text__content article" style="background: #fafafa;">
         <br>
         <h2>Community</h2>
+        <br>
         <p class="has-large-font-size">
-            Members are the NAWCC's greatest asset
+            The NAWCC's Greatest Asset
         </p>
+        <br>
+        <h4>Members</h4>
         <ul>
             <li>A 11,000+ international membership community</li>
             <li>An assembly of 150 member chapters around the globe</li>
             <li>The largest affiliation of volunteer subject matter experts on time and timekeeping.</li>
         </ul>
+
+        <h4>Message Board</h4>
+        <p>An Internet-based public forum community on horological issues and subject matter with a participation rate of 1.5 million entries per year with 854,000 unique users.</p>
 
         <!-- <h4>Events</h4>
         <ul>
@@ -169,7 +174,7 @@
         ?>
 
         <div
-            class="wp-block-media-text__media hero hero_tall hero_color
+            class="wp-block-media-text__content hero hero_tall hero_color
                 <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
                 <?php if($background_color): ?> hero_color <?php endif; ?>"
 
@@ -196,7 +201,7 @@
 ========================================
     Events
 ======================================== -->
-<section class="heroFeaturedIntro wp-block-media-text alignwide">
+<section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
 
     <?php
     $args = array( 'numberposts' => 1, 'post_type' => 'events', 'posts_per_page' => '1', 'post_count' => '1', );
@@ -217,7 +222,7 @@
         ?>
 
         <div
-            class="wp-block-media-text__media hero hero_image hero_tall hero_title_overlay
+            class="wp-block-media-text__content hero hero_image hero_tall hero_title_overlay
                 <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
                 <?php if($background_color): ?> hero_color <?php endif; ?>"
 
@@ -273,80 +278,8 @@
 </section>
 
 
-<!--
-========================================
-    Events
-======================================== -->
-<section class="heroFeaturedIntro wp-block-media-text alignwide">
-
-    <?php
-    $args = array( 'numberposts' => 1, 'post_type' => 'events', 'posts_per_page' => '1', 'post_count' => '1', );
-    $the_query = new WP_Query( $args ); ?>
-    <?php if( $the_query->have_posts() ): ?>
-        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-        <?php
-            // Load values and assing defaults.
-            $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
-            $icon               = get_field( 'post_icon' );
-            $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
-            $text_color         = get_field( 'text_color' );
-            $background_image   = get_field( 'background_image');
-        	$thumb_id = get_post_thumbnail_id();
-        	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
-        	$image = $thumb_url_array[0];
-        ?>
-
-        <div
-            class="wp-block-media-text__media hero hero_image hero_tall hero_title_overlay
-                <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
-                <?php if($background_color): ?> hero_color <?php endif; ?>"
-
-            style="<?php if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; ?>
-                    <?php if($background_image): ?>
-                        background-image: url(<?php echo $background_image; ?>);
-                        <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
-                    <?php endif; ?>
-                    <?php if($marginBottom): ?>margin: 0 auto <?php echo $marginBottom; ?>rem;<?php endif; ?>"
-        >
-            <p class="subtitle" style="color:#eaeaea; font-size: 1rem;">Featured Event</p>
-            <a class="link" href="<?php the_permalink(); ?>">
-                <h2 style="font-size: 3rem; font-weight: normal"><?php the_title(); ?></h2>
-            </a>
-            <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>
-                <p class="date"><?php the_field( 'event_weekday' ); ?>, <?php the_field( 'event_date' ); ?> | <?php the_field( 'event_startTime' ); ?> - <?php the_field( 'event_endTime' ); ?></p>
-            <?php endif; ?>
-            <!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
-        </div>
-
-        <?php endwhile; ?>
-    <?php endif; ?>
-    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-
-    <div class="wp-block-media-text__content" style="background: #fafafa;">
-        <h2>Message Board</h2>
-        <p class="lead">
-            A public forum community on horological issues and subject matter.
-        </p>
-        <p>Has a participation rate of 1.5 million entries per year with 854,000 unique users.</p>
-
-        <!--
-        <div class="buttonList">
-            <a href="#">
-                    <i class="far fa-grin-squint" aria-hidden="true"></i>
-                    <span>Hi</span>
-            </a>
-            <a href="#">
-                    <i class="far fa-grin-squint" aria-hidden="true"></i>
-                    <span>Hi</span>
-            </a>
-        </div>
-        <button class="button">Button</button> -->
-    </div>
 
 
-
-</section>
 
 
 <!--
@@ -393,7 +326,7 @@
         ?>
 
         <div
-            class="wp-block-media-text__media hero hero_image hero_tall hero_title_overlay
+            class="wp-block-media-text__content hero hero_image hero_title_overlay
                 <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
                 <?php if($background_color): ?> hero_color <?php endif; ?>"
 
@@ -426,7 +359,25 @@
     Museum
 ======================================== -->
 
-<section class="heroFeaturedIntro wp-block-media-text alignwide">
+<section class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
+
+    <div class="wp-block-media-text__content" style="background: #fafafa;">
+        <h2>The National Watch & Clock Museum</h2>
+        <p class="has-large-font-size">The National Watch &amp; Clock Museum</p>
+
+        <!--
+        <div class="buttonList">
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+        </div>
+        <button class="button">Button</button> -->
+    </div>
 
     <?php
     $args = array( 'numberposts' => 1, 'post_type' => 'exhibits', 'posts_per_page' => '1', 'post_count' => '1', );
@@ -447,7 +398,7 @@
         ?>
 
         <div
-            class="wp-block-media-text__media hero hero_image hero_tall hero_title_overlay
+            class="wp-block-media-text__content hero hero_image hero_title_overlay
                 <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
                 <?php if($background_color): ?> hero_color <?php endif; ?>"
 
@@ -471,24 +422,6 @@
         <?php endwhile; ?>
     <?php endif; ?>
     <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-
-    <div class="wp-block-media-text__content" style="background: #fafafa;">
-        <h2>The National Watch & Clock Museum</h2>
-        <p class="has-large-font-size">The National Watch &amp; Clock Museum</p>
-
-        <!--
-        <div class="buttonList">
-            <a href="#">
-                    <i class="far fa-grin-squint" aria-hidden="true"></i>
-                    <span>Hi</span>
-            </a>
-            <a href="#">
-                    <i class="far fa-grin-squint" aria-hidden="true"></i>
-                    <span>Hi</span>
-            </a>
-        </div>
-        <button class="button">Button</button> -->
-    </div>
 
 </section>
 
@@ -539,7 +472,7 @@
         ?>
 
         <div
-            class="wp-block-media-text__media hero hero_image  hero_tall hero_title_overlay
+            class="wp-block-media-text__content hero hero_image hero_title_overlay
                 <?php if ( get_field( 'is_this_an_event' ) == 1 ): ?>hero_event<?php endif; ?>
                 <?php if($background_color): ?> hero_color <?php endif; ?>"
 
@@ -567,6 +500,446 @@
 </section>
 
 
+
+
+
+
+<!--
+========================================
+    Events
+======================================== -->
+
+<article class="heroFeaturedIntro wp-block-media-text alignwide has-media-on-the-right">
+
+    <div class="wp-block-media-text__content" style="background: #fafafa;">
+        <h2>Events</h2>
+        <p class="has-large-font-size">The team that brings you <span class="italic">The Watch & Clock Bulletin, The Mart & Watchnews</span></p>
+
+        <!--
+        <div class="buttonList">
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+            <a href="#">
+                    <i class="far fa-grin-squint" aria-hidden="true"></i>
+                    <span>Hi</span>
+            </a>
+        </div>
+        <button class="button">Button</button> -->
+    </div>
+
+    <?php
+        $background_image   = get_field( 'background_image');
+    	$thumb_id = get_post_thumbnail_id();
+    	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+    	$image = $thumb_url_array[0];
+
+    $args = array( 'numberposts' => 1, 'post_type' => 'event', 'posts_per_page' => '1', 'post_count' => '1', );
+    $the_query = new WP_Query( $args ); ?>
+    <?php if( $the_query->have_posts() ): ?>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+        <div class="wp-block-media-text__content hero hero_image hero_title_overlay" style="<?php if($background_image): ?>
+            background-image: url(<?php echo $background_image; ?>);
+            <?php elseif (has_post_thumbnail () ): ?> background-image:url('<?php echo $image; ?>');
+        <?php endif; ?>">
+            <p class="subtitle" style="color:#eaeaea; font-size: 1rem;">Featured Article</p>
+            <a class="link" href="<?php the_permalink(); ?>">
+                <h2 style="font-size: 3rem; font-weight: normal"><?php the_title(); ?></h2>
+            </a>
+            <!-- <a class="button" href="<?php the_permalink(); ?>">Read Article</a> -->
+        </div>
+        <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+</article>
+
+
+
+
+
+<!--
+========================================
+    Events
+======================================== -->
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'events',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+);
+
+// query
+$the_query = new WP_Query( $args ); ?>
+
+<?php if( $the_query->have_posts() ): ?>
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <!-- Featured Post - Events -->
+        <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
+
+	<?php endwhile; ?>
+<?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+<?php
+$args = array( 'numberposts' => 1, 'post_type' => 'events', 'posts_per_page' => '1', 'post_count' => '1', );
+$the_query = new WP_Query( $args ); ?>
+<?php if( $the_query->have_posts() ): ?>
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <!-- Featured Post - Events -->
+        <?php get_template_part( 'partials/material', 'featuredIntro' ); ?>
+
+	<?php endwhile; ?>
+<?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+
+
+
+<!--
+========================================
+    Publications
+======================================== -->
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'publications',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+
+    <!-- Featured Post - Publications -->
+    <?php get_template_part( 'partials/material', 'featuredPost' ); ?>
+
+	<?php endwhile; ?>
+
+
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+
+
+
+<!--
+========================================
+    Causes
+======================================== -->
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'causes',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+
+    <!-- Featured Post - Causes -->
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   s
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php echo get_the_title(); ?></h2>
+            <div class="btnBar">
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+        </div>
+        <?php } ?>
+    </article>
+
+	<?php endwhile; ?>
+
+
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+
+
+
+
+
+
+
+<!--
+------------------------------------
+    Exhibits
+------------------------------------ -->
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> 1,
+	'post_type'		=> 'exhibits',
+    'posts_per_page'=> '1',
+    'post_count'    => '1',
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+
+// query
+$the_query = new WP_Query( $args );
+
+
+// Set up fields.
+$logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+$icon             = get_field( 'post_icon' );
+$background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+$background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+    <?php
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+        $background_image = get_field( 'background_image', $post->ID );
+    ?>
+
+    <!-- Featured Post - Exhibits -->
+    <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+        <div>   s
+            <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p>
+            <h2><?php echo get_the_title(); ?></h2>
+            <div class="btnBar">
+                <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
+            </div>
+        </div>
+        <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+        <?php if ( $post_logo ) { ?>
+        <div>
+            <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+        </div>
+        <?php } ?>
+    </article>
+
+	<?php endwhile; ?>
+
+
+<?php endif; ?>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+
+
+<div class="twoCol">
+    <!--
+    ========================================
+        Classes
+    ======================================== -->
+
+    <?php
+
+    // args
+    $args = array(
+        'numberposts'	=> 1,
+        'post_type'		=> 'classes',
+        'posts_per_page'=> '1',
+        'post_count'    => '1',
+    //	'meta_key'		=> 'location',
+    //	'meta_value'	=> 'Melbourne'
+    );
+
+
+    // query
+    $the_query = new WP_Query( $args );
+
+
+    // Set up fields.
+    $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    $background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+    ?>
+    <?php if( $the_query->have_posts() ): ?>
+
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+            $background_image = get_field( 'background_image', $post->ID );
+        ?>
+
+        <!-- Featured Post - Classes -->
+        <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+            <div>
+                <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
+                <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Classes</a></p>
+                <h2><?php echo get_the_title(); ?></h2>
+                <div class="btnBar">
+                    <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
+                </div>
+            </div>
+            <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+            <?php if ( $post_logo ) { ?>
+            <div>
+                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+            </div>
+            <?php } ?>
+        </article>
+
+        <?php endwhile; ?>
+
+
+    <?php endif; ?>
+
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+    <!--
+    ========================================
+        Webinars
+    ======================================== -->
+
+    <?php
+
+    // args
+    $args = array(
+        'numberposts'	=> 1,
+        'post_type'		=> 'webinars',
+        'posts_per_page'=> '1',
+        'post_count'    => '1',
+    //	'meta_key'		=> 'location',
+    //	'meta_value'	=> 'Melbourne'
+    );
+
+
+    // query
+    $the_query = new WP_Query( $args );
+
+
+    // Set up fields.
+    $logo             = get_field( 'post_logo' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_logo.png';
+    $icon             = get_field( 'post_icon' );
+    $background_image = get_field( 'background_image' ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+    $background_color = get_field( 'background_color' ) ?: '#fafafa';
+
+    $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+
+
+    ?>
+    <?php if( $the_query->have_posts() ): ?>
+
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+        <?php
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail');
+            $background_image = get_field( 'background_image', $post->ID );
+        ?>
+
+        <!-- Featured Post - Webinars -->
+        <article class="post twoCol" style="background-image:url('<?php if (has_post_thumbnail () ) { echo $image[0]; } else { echo $background_image; } ?>')">
+            <div>
+                <!-- <p class="subtitle"><?php $the_category = the_category(' '); if ($the_category) { echo '<span class="pipe">|</span>' . $the_category . '';} ?></p> -->
+                <p class="subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>/publication/">Webinars</a></p>
+                <h2><?php echo get_the_title(); ?></h2>
+                <div class="btnBar">
+                    <a href="<?php echo get_permalink(); ?>" class="button ">Read More</a>
+                </div>
+            </div>
+            <?php $post_logo = get_field( 'post_logo', $post->ID ); ?>
+            <?php if ( $post_logo ) { ?>
+            <div>
+                <img src="<?php echo $post_logo ?>" alt="<?php echo get_the_title(); ?>" />
+            </div>
+            <?php } ?>
+        </article>
+
+        <?php endwhile; ?>
+
+
+    <?php endif; ?>
+
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+</div>
 
 
 

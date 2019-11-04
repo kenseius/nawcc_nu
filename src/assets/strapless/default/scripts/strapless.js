@@ -23,8 +23,8 @@
 
     /**
      * The name says it all
-     * 
-     * @param {HTMLElement} selector 
+     *
+     * @param {HTMLElement} selector
      */
     var hasParentThatMatchesSelector = function(parent, selector) {
         return parent !== undefined &&
@@ -61,8 +61,8 @@
 
     /**
      * Adds active class to targeted anchor element
-     * 
-     * @param {HtmlElement} activeLink 
+     *
+     * @param {HtmlElement} activeLink
      */
     var activateLink = function(activeLink) {
         activeLink.className += (' ' + classes.linkActive);
@@ -89,7 +89,7 @@
 
             // init top nav controls
             var $nav = document.getElementsByTagName('nav')[0];
-            var $navMenu = $nav.querySelector('.links')
+            // var $navMenu = $nav.querySelector('.links')
             var $navTrigger = document.getElementsByClassName('nav-trigger')[0];
 
             $navTrigger.addEventListener('click', function(e) {
@@ -109,7 +109,7 @@
                     activateLink(thisViewLink);
                 }
             }
-            
+
             this.leftNavLinkGroup.addEventListener('click', function(event) {
                 deactivateLinks();
                 var targetElement = event.target || event.srcElement;
@@ -121,8 +121,8 @@
             }, false);
 
             // // TABS
-            $('.tabgroup > div').hide(); 
-            $('.tabgroup > div:first-of-type').show(); 
+            $('.tabgroup > div').hide();
+            $('.tabgroup > div:first-of-type').show();
             $('.tabs a:not(.strapless_accordion_subnav)').click(function(e){
             e.preventDefault();
                 var $this = $(this),
@@ -136,13 +136,13 @@
                 // others.removeClass('active');
                 // otherse.removeClass('active');
                 // otherser.removeClass('active');
-                // othersers.removeClass('active'); 
+                // othersers.removeClass('active');
                 $this.addClass('active');
                 $(tabgroup).children('div').hide();
                 $(target).show();
             });
 
-            
+
 
         }
 
