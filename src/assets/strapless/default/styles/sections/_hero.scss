@@ -34,7 +34,12 @@
         @media #{$small-only}  { min-height: $section-height-short; }
     }
 
-    @media #{$small-only}  { max-height: auto; }
+    // @media #{$medium-down} { }
+    @media #{$small-only}  {
+        // max-height: auto;
+        // padding: $scale_2 0;
+        min-height: 35vh;
+    }
 
     text-align: left;
     h1, h2, p { text-align: left; }

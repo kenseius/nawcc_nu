@@ -40,7 +40,7 @@
             <i class="fa fa-book"></i>
             <span>Publications</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>events" <?php if ( is_page_template( 'page-events.php' ) ) { ?> class="active" <?php }  ?> >
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>wc_events" <?php if ( is_page_template( 'page-events.php' ) ) { ?> class="active" <?php }  ?> >
             <i class="fa fa-calendar"></i>
             <span>Events</span>
         </a>

@@ -211,7 +211,7 @@ add_action( 'admin_enqueue_scripts', 'my_scripts_method' );
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 35;
+    return 25;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 

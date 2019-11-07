@@ -275,7 +275,7 @@
 
 <!--
 ========================================
-    Events
+    Message Board
 ======================================== -->
 <section class="heroFeaturedIntro wp-block-media-text alignwide">
 

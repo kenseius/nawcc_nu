@@ -20,7 +20,7 @@
 
     <style type="text/css">
 
-        #myBtnContainer {display: flex;}
+        /* #myBtnContainer {display: flex;} */
 
         .container {
           overflow: hidden;
@@ -45,30 +45,30 @@
         }
 
         /* Style the buttons */
-        .btn {
+        /* .btn {
           border: none;
           outline: none;
           padding: 12px 16px;
           background-color: #f1f1f1;
           cursor: pointer;
-        }
+        } */
 
         /* Add a light grey background on mouse-over */
-        .btn:hover {
+        /* .btn:hover {
           background-color: #ddd;
-        }
+        } */
 
         /* Add a dark background to the active button */
-        .btn.active {
+        /* .btn.active {
           background-color: #666;
           color: white;
-        }
+        } */
     </style>
 
     <section class="searchbar post_content wide_content">
 
     <!-- Control buttons -->
-    <div id="myBtnContainer" class="tabs">
+    <div id="myBtnContainer" class="tabButtonBar">
       <button class="btn active" onclick="filterSelection('all')"> Show all</button>
       <button class="btn" onclick="filterSelection('publications')">Publications</button>
       <button class="btn" onclick="filterSelection('events')">Events</button>
@@ -86,8 +86,8 @@
     </div>
 
     <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-    <div class="container">
-f
+    <div class="container postList_thin">
+
         <?php if ( have_posts() ) : ?>
 
             <?php /* Start the Loop */ ?>
@@ -110,14 +110,65 @@ f
                 </div>
             <?php endwhile; ?>
 
-            <!-- </section> -->
-
             <?php else : ?>
 
                 <p>No go.</p>
 
         <?php endif; ?>
         <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+    <?php if ( have_posts() ) : ?>
+        <?php /* Start the Loop */ ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+            <?php
+                // Load values and assing defaults.
+                $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+                $icon               = get_field( 'post_icon' );
+                $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
+                $text_color         = get_field( 'text_color' );
+                $background_image   = get_field( 'background_image');
+                $thumb_id = get_post_thumbnail_id();
+                $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+                $image = $thumb_url_array[0];
+            ?>
+
+            <!-- < ? p h p   get_template_part( 'content', 'search' ); ?>-->
+            <a href="<?php the_permalink(); ?>" class="filterDiv <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+                {
+                    $post_type_data = get_post_type_object( $post_type );
+                    $post_type_slug = $post_type_data->rewrite['slug'];
+                    echo $post_type_slug;
+                } ?>">
+
+                <?php /* if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; */ ?>
+                
+                <?php if($background_image): ?>
+                    <img src="<?php echo $background_image; ?>">
+                    <?php elseif (has_post_thumbnail () ): ?><img src="<?php echo $image; ?>">
+                <?php endif; ?>
+
+                <div>
+                    <!-- <p class="subtitle"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>-->
+                    <h4><?php the_title(); ?></h4>
+                    <div class="meta meta_article">
+                        <p>Written by <?php the_author(); ?></p>
+                        <p><time><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></time></p>
+                    </div>
+                    <!-- <p><?php the_excerpt(); ?></p> -->
+                </div>
+
+            </a>
+        <?php endwhile; ?>
+        <!-- </section> -->
+        <?php else : ?>
+            <p>No go.</p>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
 
         <?php
         $args = array( 'numberposts' => 1, 'post_type' => 'publications', 'posts_per_page' => '-1', 'post_count' => '1', );

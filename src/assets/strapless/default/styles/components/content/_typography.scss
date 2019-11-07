@@ -39,8 +39,8 @@
 h1 {
                             @include type-setting(5);
     @media #{$large-down} { @include type-setting(4); }
-    @media #{$medium-only} { @include type-setting(4); }
-    @media #{$small-only} { @include type-setting(3); }
+    // @media #{$medium-only} { @include type-setting(4); }
+    // @media #{$small-only} { @include type-setting(4); }
     // @media #{$smaller-only} { @include type-setting(2); }
 }
 h2 {

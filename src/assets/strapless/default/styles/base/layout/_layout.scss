@@ -248,9 +248,11 @@ body {
     justify-content: flex-start;
     align-items: stretch;
     // flex: 1;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     // align-self: stretch;
     // flex-basis: 50%;
+
+    height: 100%;
 
     @media #{$medium-down} { flex-flow: column; }
 
@@ -270,7 +272,9 @@ body {
         justify-content: center;
         flex-flow: column;
 
-        & > *:not(img):not(figure) {
+        padding: $scale_1;
+
+        & > *:not(img):not(figure):not(.memberProfile) {
             position: relative;
             // line-height: 1.414em;
             display: block;
@@ -320,13 +324,23 @@ body {
     }
 
     & > .wp-block-media-text__content {
+        @media #{$extra-large} {
+            padding: $scale_1;
+            &:nth-child(2) {padding: $scale_1;}
+            // padding: $scale_1 $scale_0;
+            // &:nth-child(2) {padding: $scale_1 $scale_0;}
+        }
         @media #{$large-only} {
-            padding: $scale_1 $scale_0;
-            &:nth-child(2) {padding: $scale_1 $scale_0;}
+            padding: $scale_1;
+            &:nth-child(2) {padding: $scale_1;}
+            // padding: $scale_1 $scale_0;
+            // &:nth-child(2) {padding: $scale_1 $scale_0;}
         }
         @media #{$medium-down} {
-            padding: $scale_1 $scale_0;
-            &:nth-child(2) {padding: $scale_1 $scale_0;}
+            padding: $scale_1;
+            &:nth-child(2) {padding: $scale_1;}
+            // padding: $scale_1 $scale_0;
+            // &:nth-child(2) {padding: $scale_1 $scale_0;}
         }
     }
 

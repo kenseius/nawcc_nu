@@ -118,6 +118,12 @@ $(document).ready(function() {
 	});
 
 });
+
+$(document).ready(function(){
+	$('.nav-open').click(function(){
+		$(this).toggleClass('active');
+	});
+});
 </script>
 
 

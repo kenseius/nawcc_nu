@@ -36,7 +36,8 @@
 // ************************
 
 .search form,
-form.search {
+form.search,
+.search {
     max-width: $scale_12;
     // max-width: $base-max-width;
 }
@@ -81,8 +82,9 @@ form.search {
     select > option { line-height: 3.157rem  + $base-horizontal-small; vertical-align: middle; }
 
     // search input
-    // ************************ 
-    & > input[type="search"] {
+    // ************************
+    & > input[type="search"],
+    & > input[type="text"] {
         margin: auto;
         padding: 1rem $base-vertical;
         border:0;

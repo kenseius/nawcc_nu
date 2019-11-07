@@ -9,7 +9,7 @@
         <span class="mobile"><?php get_template_part( 'partials/logos/material', 'logoIcon_NAWCC' ); ?></span>
     </a>
 
-    <?php /* get_search_form();*/  ?>
+
 
     <form class="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
         <div class="pseudo-search">

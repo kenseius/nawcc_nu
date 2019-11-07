@@ -11,6 +11,39 @@
 
 
 
+.tabButtonBar {
+
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: $color_grey;
+
+    &.tabsLeft {
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    button {
+        padding: 1rem;
+        margin: 0;
+        border-color: transparent;
+        background: transparent; // $color_grey;
+        color: $slate;
+        &.active { background: $color_white; border-top-color: $slate; }
+    }
+
+    &.tabsTransparent { background: transparent; button {background: transparent;} }
+    &.tabsWhite { background: $color_white; button {background: transparent;} }
+
+}
+
+
+
+
+
 
 .btnBar {
 
