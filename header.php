@@ -53,6 +53,7 @@
 
   <?php if ( is_front_page() && is_home() ) { ?><?php get_template_part( 'partials/material', 'topnavSearch' ); ?><?php }
         elseif ( is_page_template( 'page-home.php' ) ) { ?><?php get_template_part( 'partials/material', 'topnavSearch' ); ?><?php }
+        elseif ( is_page_template( 'page-dashboard.php' ) ) { ?><?php get_template_part( 'partials/material', 'topnavSearch' ); ?><?php }
         elseif ( is_page_template( 'page-events.php' ) ) { ?><?php get_template_part( 'partials/material', 'topnavSearch' ); ?><?php }
         else { ?><?php get_template_part( 'partials/material', 'topnav' ); ?><?php }
   ?>
