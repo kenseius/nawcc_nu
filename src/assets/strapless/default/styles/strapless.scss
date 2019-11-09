@@ -496,7 +496,7 @@ table,
 
     & > img {
         margin: 0 $scale_2 0 0;
-        max-width: $scale_7;
+        max-width: $scale_6; // $scale_7;
     }
     & > div,
     & > h2 {flex: 1;}
@@ -614,7 +614,7 @@ table,
 //  events / dateblock
 // ============================
 
- 
+
 .dateBox {
 
     display: flex;

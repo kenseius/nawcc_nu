@@ -26,17 +26,19 @@
           overflow: hidden;
         }
 
+        .filterTiles .filterDiv {
+            float: left;
+            background-color: #2196F3;
+            color: #ffffff;
+            /* width: 100px; */
+            width: 200px;
+            height: 200px;
+            /* line-height: 100px; */
+            text-align: center;
+            margin: 2px;
+        }
         .filterDiv {
-          float: left;
-          background-color: #2196F3;
-          color: #ffffff;
-          /* width: 100px; */
-          width: 200px;
-          height: 200px;
-          /* line-height: 100px; */
-          text-align: center;
-          margin: 2px;
-          display: none; /* Hidden by default */
+            display: none; /* Hidden by default */
         }
 
         /* The "show" class is added to the filtered elements */
@@ -68,25 +70,148 @@
     <section class="searchbar post_content wide_content">
 
     <!-- Control buttons -->
-    <div id="myBtnContainer" class="tabButtonBar">
-      <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-      <button class="btn" onclick="filterSelection('publications')">Publications</button>
-      <button class="btn" onclick="filterSelection('events')">Events</button>
+    <div id="myBtnContainer" class="tabButtonBar narrowButtons">
+      <button class="btn active" onclick="filterSelection('all')">
+          <i class="fas fa-square-full"></i>
+          <span>Show all</span>
+      </button>
+      <button class="btn" onclick="filterSelection('publications')">
+          <i class="fa fa-book"></i>
+          Publications
+      </button>
+      <button class="btn" onclick="filterSelection('events')">
+          <i class="fa fa-calendar"></i>
+          Events
+      </button>
+      <button class="btn" onclick="filterSelection('exhibits')">
+          <i class="fa fa-university"></i>
+          Museum Exhibits
+      </button>
+      <button class="btn" onclick="filterSelection('education')">
+          <i class="fa fa-graduation-cap"></i>
+          Education
+      </button>
+      <button class="btn" onclick="filterSelection('publications')">
+          <i class="fa fa-book"></i>
+          Donations &amp; Causes
+      </button>
+      <button class="btn" onclick="filterSelection('events')">
+          <i class="fa fa-calendar"></i>
+          Library &amp; Research
+      </button>
+      <button class="btn" onclick="filterSelection('exhibits')">
+          Resources
+      </button>
+
       <?php /*
           $categories = get_categories();
           foreach($categories as $category) {
              echo '<button class="btn active" onclick="filterSelection(' . $category->slug . ')"><i class="fa fa-university"></i><span>' . $category->name . '</button>';
           }
       */ ?>
-      <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+      <!-- <button class="btn" onclick="filterSelection('cars')"> Cars</button>
       <button class="btn" onclick="filterSelection('cars')"> Cars</button>
       <button class="btn" onclick="filterSelection('animals')"> Animals</button>
       <button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
-      <button class="btn" onclick="filterSelection('colors')"> Colors</button>
+      <button class="btn" onclick="filterSelection('colors')"> Colors</button> -->
+
     </div>
 
+        <?php get_template_part( 'partials/blockTemplates/block', 'sortBar' ); ?>
+
+
+<!-- <div class="dashboard_layout" id="myUL"> -->
+
+<section class="post_content wide_content" style="padding-top:1.999rem;" id="myUL">
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> '3',
+	'post_type'		=> 'publications',
+    'posts_per_page' => 3
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+// query
+$the_query = new WP_Query( $args );
+$background_image = get_field( 'background_image', $post->ID );
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+    <section class="postList circleImages filterDiv <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+        {
+            $post_type_data = get_post_type_object( $post_type );
+            $post_type_slug = $post_type_data->rewrite['slug'];
+            echo $post_type_slug;
+        } ?>"
+    >
+        <h3>
+            <i class="fa fa-bullhorn"></i>
+            <span>Publications</span>
+            <?php
+                $postType = get_post_type_object(get_post_type());
+                if ($postType) {
+                    echo esc_html($postType->labels->singular_name);
+                }
+            ?>
+        </h3>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <?php get_template_part( 'partials/blockTemplates/block', 'mediaObject' ); ?>
+        <?php endwhile; ?>
+    </section>
+
+<?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> '3',
+	'post_type'		=> 'events',
+    'posts_per_page' => 3
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+// query
+$the_query = new WP_Query( $args );
+$background_image = get_field( 'background_image', $post->ID );
+?>
+<?php if( $the_query->have_posts() ): ?>
+    <section class="postList circleImages filterDiv events <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+        {
+            $post_type_data = get_post_type_object( $post_type );
+            $post_type_slug = $post_type_data->rewrite['slug'];
+            echo $post_type_slug;
+        } ?>"
+    >
+
+        <h3>
+            <i class="fa fa-bullhorn"></i>
+            <span>Events</span>
+        </h3>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <?php get_template_part( 'partials/blockTemplates/block', 'mediaObject' ); ?>
+        <?php endwhile; ?>
+
+    </section>
+
+<?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+</div>
+
+
+
     <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-    <div class="container postList_thin">
+    <div class="container filterTiles postList_thin">
 
         <?php if ( have_posts() ) : ?>
 
@@ -143,7 +268,7 @@
                 } ?>">
 
                 <?php /* if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; */ ?>
-                
+
                 <?php if($background_image): ?>
                     <img src="<?php echo $background_image; ?>">
                     <?php elseif (has_post_thumbnail () ): ?><img src="<?php echo $image; ?>">

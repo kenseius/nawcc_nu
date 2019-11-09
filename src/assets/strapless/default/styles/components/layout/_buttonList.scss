@@ -14,7 +14,8 @@
         a {@include span(3 of 12)}
         h4 a {border-bottom: 0;}
     }
-    a {
+    a,
+    button {
         display: block;
         position: relative;
         width: 100%;
@@ -63,4 +64,44 @@
             @include hover() {background: $slate;}
         }
     }
+
+    button,
+    .btn {
+        margin: 0;
+        background: #fafafa;
+        color: $color_greyDark;
+        text-align: left;
+        i {color: $color_black;}
+        &.active {
+            background: #eaeaea;
+            color: $color_black;
+            // i {color: #fafafa;}
+            &:before {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: inset .8em;
+                border-color: transparent transparent transparent #eaeaea;
+                border-left-style: solid;
+                position: absolute;
+                top: 1rem;
+                right: -1.45rem;
+            }
+        }
+    }
+
+    &.narrowButtons {
+        button,
+        .btm {
+            padding: .5rem 0 .5rem 1rem !important;
+            line-height: 1.6em;
+            font-weight: normal;
+            min-height: 0;
+            &.active {
+                &:before {top: 0.7rem;} // 0.45
+            }
+        }
+    }
+
 }

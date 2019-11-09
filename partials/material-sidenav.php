@@ -71,7 +71,7 @@
             <span>Library &amp; Research</span>
         </a>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>resources" <?php if ( is_page_template( 'page-resources.php' ) ) { ?> class="active" <?php }  ?> >
-            <i class="fa fa-laptop"></i>
+            <i class="fa fa-document"></i>
             <span>Resources</span>
         </a>
     </div>

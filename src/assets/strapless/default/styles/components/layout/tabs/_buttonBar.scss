@@ -22,17 +22,27 @@
     background: $color_grey;
 
     &.tabsLeft {
-        justify-content: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    &.tabsMaxWidth > div {
+        width: 100%;
+        max-width: $wide-max-width;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-start;
         align-items: flex-start;
     }
 
     button {
-        padding: 1rem;
+        padding: $scale_0 $scale_1;
         margin: 0;
         border-color: transparent;
         background: transparent; // $color_grey;
         color: $slate;
         &.active { background: $color_white; border-top-color: $slate; }
+
     }
 
     &.tabsTransparent { background: transparent; button {background: transparent;} }
