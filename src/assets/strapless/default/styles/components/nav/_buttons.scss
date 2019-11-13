@@ -16,7 +16,7 @@
     margin: $base-vertical 0;
     padding: 0 $base-horizontal-padding;
     border: 0.1875rem solid $border_color;
-    background:$bg; 
+    background:$bg;
     color: $color;
     @include type-setting(0);
     font-size: $base-font-size;
@@ -47,7 +47,7 @@ button:not(.nav-trigger),
         // @include hover() { border-bottom: 0.1875rem solid $org; }
 
         padding-top: 1rem;
-        padding-bottom: 1rem; 
+        padding-bottom: 1rem;
 
         i {
             display: block;
@@ -58,7 +58,7 @@ button:not(.nav-trigger),
             @media #{$small-only} {font-size: 2.369rem;}
             @media #{$medium-only} {font-size: 3.157rem;}
         }
-    
+
         // @include anim($global-animation);
         // @include hover() {
         //     background-color:$gry;
@@ -79,10 +79,30 @@ button:not(.nav-trigger),
     min-height: 65px; // = navbar height
     // max-height: 65px;
     // line-height: 65px;
-    
-    @include hover() { 
-        // background: $slate; 
-        // color: $wht; 
+
+    &.tag,
+    & [rel=tag] {
+        // @extend .tag;
+        min-width: $scale_5;
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+        height: $scale_2;
+        line-height: $scale_2;
+        vertical-align: middle;
+        text-align: center;
+        color: $slate;
+        background: $gry;
+
+        @include hover() {background: $org; color: $wht;}
+        &.active {background: $org; color: $wht;}
+
+        border-radius: 6px;
+    }
+
+
+    @include hover() {
+        // background: $slate;
+        // color: $wht;
         img { @include filter(brightness(80%)) }
     }
 
@@ -99,47 +119,47 @@ button:not(.nav-trigger),
     }
     &.gry {
         background: $gry; border-color: $gry; color: $slate;
-        @include hover_no-whatinput() { background: $wht; border-color: $gry; color: $slate; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $gry; color: $slate; }
     }
     &.wht {
         background: $wht; border-color: $wht; color: $slate;
-        @include hover_no-whatinput() { background: $wht; border-color: $slate; color: $slate; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $slate; color: $slate; }
     }
     &.blu {
         background: $blu; border-color: $blu; color: $wht;
-        @include hover_no-whatinput() { background: $wht; border-color: $blu; color: $blu; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $blu; color: $blu; }
     }
     &.bludrk {
         background: $bludrk; border-color: $bludrk; color: $wht;
-        @include hover_no-whatinput() { background: $wht; border-color: $bludrk; color: $bludrk; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $bludrk; color: $bludrk; }
     }
     &.blulite {
         background: $blulite; border-color: $blulite; color: $wht;
-        @include hover_no-whatinput() { background: $wht; border-color: $blulite; color: $blulite; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $blulite; color: $blulite; }
     }
     &.grn {
         background: $grn; border-color: $grn; color: $wht;
-        @include hover_no-whatinput() { background: $wht; border-color: $grn; color: $grn; }    
+        @include hover_no-whatinput() { background: $wht; border-color: $grn; color: $grn; }
     }
     &.red {
         background: $red; border-color: $red; color: $wht;
-        @include hover_no-whatinput() { background: $wht; border-color: $red; color: $red; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $red; color: $red; }
     }
     &.org {
         background: $org; border-color: $org; color: $wht;
-        @include hover_no-whatinput() { background: $wht; border-color: $org; color: $org; }        
+        @include hover_no-whatinput() { background: $wht; border-color: $org; color: $org; }
     }
     &.gld {
         background: $gld; border-color: $gld; color: $slate;
-        @include hover_no-whatinput() { background: $wht; border-color: $gld; color: $slate; }                
+        @include hover_no-whatinput() { background: $wht; border-color: $gld; color: $slate; }
     }
     &.pch {
         background: $pch; border-color: $pch; color: $slate;
-        @include hover_no-whatinput() { background: $wht; border-color: $pch; color: $slate; }                
+        @include hover_no-whatinput() { background: $wht; border-color: $pch; color: $slate; }
     }
     &.ylw {
         background: $ylw; border-color: $ylw; color: $slate;
-        @include hover_no-whatinput() { background: $wht; border-color: $ylw; color: $slate; }                
+        @include hover_no-whatinput() { background: $wht; border-color: $ylw; color: $slate; }
     }
 
     // oulined

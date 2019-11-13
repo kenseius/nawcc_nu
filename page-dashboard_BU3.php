@@ -13,7 +13,7 @@
     Hero
 =================================== -->
 <?php $background_color = get_field( 'background_color' ) ?: '#fafafa'; ?>
-<?php if($background_color): ?>``
+<?php if($background_color): ?>
 <header class="hero hero_color hero_loggedInPages" style="background-color:<?php echo $background_color; ?>">
 <?php endif; ?>
     <div>
@@ -181,11 +181,11 @@
 
 <h3>
     <i class="fa fa-bullhorn"></i>
-    <span>News & Announcements</span>
+    <span>HQ News</span>
 </h3>
 
 <div class="wp-block-columns leftcol_8">
-	<div class="wp-block-column" data-f-toggle="notes">
+	<div class="wp-block-column">
 		<div class="buttonList narrowButtons sidenav">
             <button class="btn active" onclick="filterSelection('all')">
                 <i class="fas fa-square-full"></i>
@@ -223,43 +223,6 @@
 
 	<div class="wp-block-column">
 
-
-        <?php get_template_part( 'partials/blockTemplates/block', 'sortBar' ); ?>
-
-        <div class="filterTags" data-f-toggle="notes">
-            <button class="tag active" onclick="filterSelection('all')">
-                <i class="fas fa-square-full"></i>
-                <span>Show all</span>
-            </button>
-            <button class="tag" onclick="filterSelection('publications')">
-                <i class="fa fa-book"></i>
-                <span>Publications</span>
-            </button>
-            <button class="tag" onclick="filterSelection('events')">
-                <i class="fa fa-calendar"></i>
-                <span>Events</span>
-            </button>
-            <button class="tag" onclick="filterSelection('exhibits')">
-                <i class="fa fa-university"></i>
-                <span>Museum Exhibits</span>
-            </button>
-            <button class="tag" onclick="filterSelection('education')">
-                <i class="fa fa-graduation-cap"></i>
-                <span>Education</span>
-            </button>
-            <button class="tag" onclick="filterSelection('publications')">
-                <i class="fa fa-star"></i>
-                <span>Donations &amp; Causes</span>
-            </button>
-            <button class="tag" onclick="filterSelection('events')">
-                <i class="fa fa-book"></i>
-                <span>Library &amp; Research</span>
-            </button>
-            <button class="tag" onclick="filterSelection('exhibits')">
-                <i class="fa fa-file"></i>
-                <span>Resources</span>
-            </button>
-        </div>
 
         <div class="pseudo-search">
 

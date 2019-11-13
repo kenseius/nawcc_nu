@@ -18,76 +18,7 @@
  */
 do_action( 'bp_before_member_header' ); ?>
 
-
-
-<!-- ==============================
-    Hero
-=================================== -->
-<?php $background_color = get_field( 'background_color' ) ?: '#eaeaea'; ?>
-<?php if($background_color): ?>
-<header class="hero hero_color hero_loggedInPages" style="background-color:<?php echo $background_color; ?>">
-<?php endif; ?>
-    <div>
-        <p class="subtitle"><?php the_title(); ?></p>
-        <div class="memberProfile circleImages">
-
-
-            <?php bp_displayed_user_avatar( 'type=full' ); ?>
-
-			<div>
-				<a href="<?php bp_displayed_user_link(); ?>">
-		            <h1>
-		                <!-- <i class="fa fa-user-circle"></i>  -->
-		                <!-- Calvin Hobbes -->
-						@<?php bp_displayed_user_mentionname(); ?>
-		            </h1>
-				</a>
-
-			<?php
-
-				/**
-				 * Fires in the member header actions section.
-				 *
-				 * @since 1.2.6
-				 */
-				do_action( 'bp_member_header_actions' ); ?>
-
-				<!-- <p><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_user_last_activity( bp_displayed_user_id() ) ); ?>"><?php bp_last_activity( bp_displayed_user_id() ); ?></span></p> -->
-
-			<?php
-
-			/**
-			 * Fires before the display of the member's header meta.
-			 *
-			 * @since 1.2.0
-			 */
-			do_action( 'bp_before_member_header_meta' ); ?>
-
-				<?php if ( bp_is_active( 'activity' ) ) : ?>
-
-						<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
-
-				<?php endif; ?>
-
-				<?php
-
-				 /**
-				  * Fires after the group header actions section.
-				  *
-				  * If you'd like to show specific profile fields here use:
-				  * bp_member_profile_data( 'field=About Me' ); -- Pass the name of the field
-				  *
-				  * @since 1.2.0
-				  */
-				 do_action( 'bp_profile_header_meta' );
-
-				 ?>
-
-        </div>
-    </div>
-</header>
-
-<!-- <div id="cover-image-container">
+<div id="cover-image-container">
 	<a id="header-cover-image" href="<?php bp_displayed_user_link(); ?>"></a>
 
 	<div id="item-header-cover-image">
@@ -97,8 +28,7 @@ do_action( 'bp_before_member_header' ); ?>
 				<?php bp_displayed_user_avatar( 'type=full' ); ?>
 
 			</a>
-		</div>
-		#item-header-avatar
+		</div><!-- #item-header-avatar -->
 
 		<div id="item-header-content">
 
@@ -113,8 +43,7 @@ do_action( 'bp_before_member_header' ); ?>
 				 *
 				 * @since 1.2.6
 				 */
-				do_action( 'bp_member_header_actions' ); ?></div>
-				#item-buttons
+				do_action( 'bp_member_header_actions' ); ?></div><!-- #item-buttons -->
 
 			<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_user_last_activity( bp_displayed_user_id() ) ); ?>"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
@@ -153,16 +82,12 @@ do_action( 'bp_before_member_header' ); ?>
 
 				 ?>
 
-			</div>
-			#item-meta
+			</div><!-- #item-meta -->
 
-		</div>
-		#item-header-content
+		</div><!-- #item-header-content -->
 
-	</div>
-	#item-header-cover-image
-</div>
-#cover-image-container -->
+	</div><!-- #item-header-cover-image -->
+</div><!-- #cover-image-container -->
 
 <?php
 

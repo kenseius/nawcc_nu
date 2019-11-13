@@ -21,11 +21,237 @@ Display a list of categories
 
 
 
+
+
 media queries:
 
 
     @media #{$large-down} { @include type-setting(5); }
     @media #{$small-down} { @include type-setting(5); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> '3',
+	'post_type'		=> 'publications',
+    'posts_per_page' => 3
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+// query
+$the_query = new WP_Query( $args );
+$background_image = get_field( 'background_image', $post->ID );
+?>
+<?php if( $the_query->have_posts() ): ?>
+
+    <section class="postList circleImages filterDiv <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+        {
+            $post_type_data = get_post_type_object( $post_type );
+            $post_type_slug = $post_type_data->rewrite['slug'];
+            echo $post_type_slug;
+        } ?>"
+    >
+        <h3>
+            <i class="fa fa-bullhorn"></i>
+            <span>Publications</span>
+            <?php
+                $postType = get_post_type_object(get_post_type());
+                if ($postType) {
+                    echo esc_html($postType->labels->singular_name);
+                }
+            ?>
+        </h3>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <?php get_template_part( 'partials/blockTemplates/block', 'mediaObject' ); ?>
+        <?php endwhile; ?>
+    </section>
+
+<?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+<?php
+
+// args
+$args = array(
+	'numberposts'	=> '3',
+	'post_type'		=> 'events',
+    'posts_per_page' => 3
+//	'meta_key'		=> 'location',
+//	'meta_value'	=> 'Melbourne'
+);
+
+// query
+$the_query = new WP_Query( $args );
+$background_image = get_field( 'background_image', $post->ID );
+?>
+<?php if( $the_query->have_posts() ): ?>
+    <section class="postList circleImages filterDiv events <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+        {
+            $post_type_data = get_post_type_object( $post_type );
+            $post_type_slug = $post_type_data->rewrite['slug'];
+            echo $post_type_slug;
+        } ?>"
+    >
+
+        <h3>
+            <i class="fa fa-bullhorn"></i>
+            <span>Events</span>
+        </h3>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <?php get_template_part( 'partials/blockTemplates/block', 'mediaObject' ); ?>
+        <?php endwhile; ?>
+
+    </section>
+
+<?php endif; ?>
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+</div>
+
+
+
+    <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+    <div class="container filterTiles postList_thin">
+
+        <?php if ( have_posts() ) : ?>
+
+            <?php /* Start the Loop */ ?>
+            <?php while ( have_posts() ) : the_post(); ?>
+                <div class="filterDiv <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+                    {
+                        $post_type_data = get_post_type_object( $post_type );
+                        $post_type_slug = $post_type_data->rewrite['slug'];
+                        echo $post_type_slug;
+                    } ?>"
+                >
+                <!-- <div class="filterDiv <?php /* $the_category = the_category(' '); if ($the_category) { echo ' ' . $the_category . ' ';} */ ?>"> -->
+                    <a class="link" href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                        <?php $postType = get_post_type_object(get_post_type()); ?>
+                        <?php if ($postType) {
+                            echo esc_html($postType->labels->name);
+                        } ?>
+                    </a>
+                </div>
+            <?php endwhile; ?>
+
+            <?php else : ?>
+
+                <p>No go.</p>
+
+        <?php endif; ?>
+        <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+    <?php if ( have_posts() ) : ?>
+        <?php /* Start the Loop */ ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+            <?php
+                // Load values and assing defaults.
+                $logo               = get_field( 'post_logo' ); // , $post->ID ) ?: get_template_directory_uri() . '/partials/blockTemplates/img/placeholder_bg.png';
+                $icon               = get_field( 'post_icon' );
+                $background_color   = get_field( 'background_color' ); // ?: '#ffffff';
+                $text_color         = get_field( 'text_color' );
+                $background_image   = get_field( 'background_image');
+                $thumb_id = get_post_thumbnail_id();
+                $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large-size', true);
+                $image = $thumb_url_array[0];
+            ?>
+
+            <!-- < ? p h p   get_template_part( 'content', 'search' ); ?>-->
+            <a href="<?php the_permalink(); ?>" class="filterDiv <?php $post_type = get_post_type(); ?><?php if ( $post_type )
+                {
+                    $post_type_data = get_post_type_object( $post_type );
+                    $post_type_slug = $post_type_data->rewrite['slug'];
+                    echo $post_type_slug;
+                } ?>">
+
+                <?php /* if($background_color): ?>background-color:<?php echo $background_color; ?>;<?php endif; */ ?>
+
+                <?php if($background_image): ?>
+                    <img src="<?php echo $background_image; ?>">
+                    <?php elseif (has_post_thumbnail () ): ?><img src="<?php echo $image; ?>">
+                <?php endif; ?>
+
+                <div>
+                    <!-- <p class="subtitle"><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></p>-->
+                    <h4><?php the_title(); ?></h4>
+                    <div class="meta meta_article">
+                        <p>Written by <?php the_author(); ?></p>
+                        <p><time><?php $the_time = the_time('F jS, Y'); if ($the_time) { echo $the_time ;} ?></time></p>
+                    </div>
+                    <!-- <p><?php the_excerpt(); ?></p> -->
+                </div>
+
+            </a>
+        <?php endwhile; ?>
+        <!-- </section> -->
+        <?php else : ?>
+            <p>No go.</p>
+    <?php endif; ?>
+    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+
+
+
+        <?php
+        $args = array( 'numberposts' => 1, 'post_type' => 'publications', 'posts_per_page' => '-1', 'post_count' => '1', );
+        $the_query = new WP_Query( $args ); ?>
+        <?php if( $the_query->have_posts() ): ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <div class="filterDiv cars">
+                    <a class="link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                </div>
+            <?php endwhile; ?>
+        <?php endif; ?>
+        <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+        <?php
+        $args = array('post_type' => 'events', 'posts_per_page' => '-1');
+        $the_query = new WP_Query( $args ); ?>
+        <?php if( $the_query->have_posts() ): ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <div class="filterDiv colors">
+                    <a class="link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                </div>
+            <?php endwhile; ?>
+        <?php endif; ?>
+        <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+      <div class="filterDiv colors fruits">Orange</div>
+      <div class="filterDiv cars">Volvo</div>
+      <div class="filterDiv colors">Red</div>
+      <div class="filterDiv cars animals">Mustang</div>
+      <div class="filterDiv colors">Blue</div>
+      <div class="filterDiv animals">Cat</div>
+      <div class="filterDiv animals">Dog</div>
+      <div class="filterDiv fruits">Melon</div>
+      <div class="filterDiv fruits animals">Kiwi</div>
+      <div class="filterDiv fruits">Banana</div>
+      <div class="filterDiv fruits">Lemon</div>
+      <div class="filterDiv animals">Cow</div>
+    </div>
+
+    </section>
 
 
 

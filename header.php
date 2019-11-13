@@ -57,3 +57,8 @@
         elseif ( is_page_template( 'page-events.php' ) ) { ?><?php get_template_part( 'partials/material', 'topnavSearch' ); ?><?php }
         else { ?><?php get_template_part( 'partials/material', 'topnav' ); ?><?php }
   ?>
+
+  <?php if ( 'events' == get_post_type() ) {  ?><?php get_template_part( 'partials/material', 'topnavLogoOnly' ); ?><?php }
+        elseif ( 'exhibit' == get_post_type() ) {  ?><?php get_template_part( 'partials/material', 'topnavLogoOnly' ); ?><?php }
+        else { ?><?php get_template_part( 'partials/material', 'topnavSearch' ); ?><?php }
+  ?>

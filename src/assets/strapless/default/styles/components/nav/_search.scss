@@ -73,7 +73,7 @@ form.search,
     @include anim($global-animation);
     & > * {@include anim($global-animation);}
 
-    @media #{$medium-down} { display: block; @include clear(); }
+    // @media #{$medium-down} { display: block; @include clear(); }
 
     //  forces equal heights - TODO: improve this
     // ************************

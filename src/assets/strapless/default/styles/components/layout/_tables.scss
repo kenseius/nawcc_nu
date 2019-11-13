@@ -62,6 +62,11 @@ table {
     // positioning checkbox within
     tbody.checkbox tr td { &:first-child {padding-left: 0;} }
 
+    &.table_short {
+        tbody tr td {padding-top: 0; padding-bottom: 0;}
+        &.table_detailsBlock tbody tr td:first-child {padding-left: 1rem;}
+    }
+
 }
 
 table {
@@ -93,7 +98,7 @@ table {
 // ======================================
 // Unique project-specific style variations and overrides
 //  - there's also responsive solutions commented out. they require some custom styling.
-//  - TODO: explain responsive tables 
+//  - TODO: explain responsive tables
 // ======================================
 
 

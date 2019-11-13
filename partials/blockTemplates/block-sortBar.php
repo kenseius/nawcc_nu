@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="pseudo-search">
+<div class="pseudo-search f-controls">
 
     <!-- Search -->
     <label for="s" class="hidden assistive-text">Search</label>
@@ -21,6 +21,39 @@
         <i class="fas fa-sort-alpha-down"></i>
         <span class="sr-only">Alphabetically</span>
     </button>
+
+    <button class="w3-btn"  data-f-toggle-control="code" title="Toggle Code">
+        <i class="fas fa-sort-alpha-down"></i>
+        <span class="sr-only">Alphabetically</span>
+    </button>
+
+    <button class="w3-btn"  data-f-toggle-control="notes" title="Toggle Notes">
+        <i class="fas fa-sort-alpha-down"></i>
+        <span class="sr-only">Alphabetically</span>
+    </button>
+
+    <button class="w3-btn"  data-f-toggle-control="labels" title="Toggle Labels">
+        <i class="fas fa-sort-alpha-down"></i>
+        <span class="sr-only">Alphabetically</span>
+    </button>
+
+    <!-- <div class="f-controls">
+    	<div class="f-control f-global-control" data-f-toggle-control="labels" title="Toggle Labels">
+    		<svg>
+    			<use xlink:href="#f-icon-labels" />
+    		</svg>
+    	</div>
+    	<div class="f-control f-global-control" data-f-toggle-control="notes" title="Toggle Notes">
+    		<svg>
+    			<use xlink:href="#f-icon-notes" />
+    		</svg>
+    	</div>
+    	<div class="f-control f-global-control" data-f-toggle-control="code" title="Toggle Code">
+    		<svg>
+    			<use xlink:href="#f-icon-code" />
+    		</svg>
+    	</div>
+    </div> -->
 
 </div>
 
